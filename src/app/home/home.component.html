@@ -1,0 +1,18 @@
+<div [class]="['wrap',nowPage]">
+    <div class="head">
+        <div class="logo" routerLink="/home">
+            <a><img src="./assets/images/logo.svg" alt=""></a>
+        </div>
+        <button class="icon_btn _home" routerLink="/home" *ngIf="nowPage!=='home'"></button>
+        <div class="user normal_sel">
+            <!-- 點擊在span class裡面加上on -->
+            <span class="normal_sel_title" [class.on]="menuShow" (click)="menuHandler()">Darren_KC_Huang</span>
+            <ul class="normal_sel_group">
+                <li class="normal_sel_item" (click)="logoutHandler()">Logout</li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <router-outlet></router-outlet>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="login">
+    <div class="logo">
+        <a><img src="./assets/images/logo.svg" alt=""></a>
+    </div>
+    <div class="login_txt">Manufacturing Automation & Reporting System</div>
+    <div class="login_box" *ngIf="!isForgot">
+        <div class="login_box_title">Login</div>
+        <label class="login_box_inp" data-txt="Username">
+            <input type="text" placeholder="username@wiwynn.com">
+        </label>
+        <label class="login_box_inp _pw" data-txt="Password">
+            <input type="password" placeholder="Password">
+            <button class="icon_btn _eyeclose"></button>
+        </label>
+        <div class="login_box_forgot" (click)="forgotHandlar()">Forgot Password?</div>
+        <button class="normal_btn _primary" (click)="loginSubmit()">Sign in</button>
+    </div>
+    <div class="login_box" *ngIf="isForgot">
+        <div class="login_box_title">Forgot Password</div>
+        <label class="login_box_inp" data-txt="工號">
+            <input type="text" placeholder="1234567890">
+        </label>
+        <label class="login_box_inp _pw" data-txt="email">
+            <input type="password" placeholder="username@wiwynn.com">
+        </label>
+        <button class="normal_btn _primary" (click)="forgotSubmit()">Sign in</button>
+    </div>
+</div>

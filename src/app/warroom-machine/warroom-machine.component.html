@@ -1,0 +1,109 @@
+<div class="machine" [class.on]="machineEvent.class" *ngIf="machineEvent.show">
+    <button class="icon_btn _close" (click)="alert_close('machine')"></button>
+    <button class="icon_btn _prev"></button>
+    <button class="icon_btn _next"></button>
+    <div class="machine_head">
+        <div class="pic">
+            <img src="./assets/images/machine_pic.jpg" alt="">
+        </div>
+        <ul class="info">
+            <li class="info_item _line" data-txt="線別：">S12345</li>
+            <li class="info_item" data-txt="機台名：">Printer</li>
+            <li class="info_item" data-txt="產品別：">YV3.5 MP FIO BOARD</li>
+            <li class="info_item" data-txt="料號：">B91.04G10.000F</li>
+            <li class="info_item" data-txt="稼動率：">90％</li>
+            <li class="info_item" data-txt="程式名：">21X067-1-TOP</li>
+        </ul>
+    </div>
+    <div class="machine_body">
+        <div class="machine_result">
+            <span>EQ_WAIT</span>
+            <span>異常原因描述，目前由於停電，機器無法運做。</span>
+        </div>
+        <div class="machine_tbBox">
+            <div class="title">關鍵參數監控</div>
+            <table class="normal_tb">
+                <tr>
+                    <th>項目</th>
+                    <th>參數</th>
+                    <th>範圍</th>
+                    <th>單位</th>
+                </tr>
+                <tr>
+                    <td>前刮刀壓力</td>
+                    <td>8</td>
+                    <td>6~12</td>
+                    <td>kg</td>
+                </tr>
+                <tr>
+                    <td>後刮刀壓力</td>
+                    <td>8</td>
+                    <td>6~12</td>
+                    <td>kg</td>
+                </tr>
+                <tr>
+                    <td>向前印刷速度</td>
+                    <td>40</td>
+                    <td>40~100</td>
+                    <td>mm/s</td>
+                </tr>
+                <tr>
+                    <td>向後印刷速度</td>
+                    <td>40</td>
+                    <td>40~100</td>
+                    <td>mm/s</td>
+                </tr>
+                <tr>
+                    <td>脫模速度</td>
+                    <td>0.2</td>
+                    <td>0~10</td>
+                    <td>mm/s</td>
+                </tr>
+                <tr>
+                    <td>脫模距離</td>
+                    <td>0.6</td>
+                    <td>0~3</td>
+                    <td>mm</td>
+                </tr>
+                <tr>
+                    <td>印刷空隙</td>
+                    <td>-0.8</td>
+                    <td>-1~1</td>
+                    <td>mm</td>
+                </tr>
+                <tr>
+                    <td>絲網擦拭頻率</td>
+                    <td>4</td>
+                    <td>0~8</td>
+                    <td>PCS</td>
+                </tr>
+                <tr>
+                    <td>溫度</td>
+                    <td>0</td>
+                    <td>22~28</td>
+                    <td>°C</td>
+                </tr>
+                <tr>
+                    <td>溫度</td>
+                    <td>53.1</td>
+                    <td>30~60</td>
+                    <td>RH%</td>
+                </tr>
+            </table>
+        </div>
+        <div class="machine_state">
+            <div class="title">治具狀態</div>
+            <ul class="group">
+                <!-- 需要紅字 span 加上 limit -->
+                <li class="item" data-name="鋼板">
+                    <span data-txt="使用次數" class="limit">20772</span>
+                    <span data-txt="使用上限">15000</span>
+                </li>
+                <li class="item" data-name="鋼板">
+                    <span data-txt="使用次數">12000</span>
+                    <span data-txt="使用上限">15000</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

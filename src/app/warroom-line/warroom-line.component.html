@@ -1,0 +1,72 @@
+<div class="line" [class.on]="lineEvent.class" *ngIf="lineEvent.show">
+    <button class="icon_btn _close" (click)="alert_close('line')"></button>
+    <ul class="normal_tab _large">
+        <li class="normal_tab_item" *ngFor="let item of tabEvent.lists ; index as i" [class.on]="tabEvent.now==i"
+            (click)="tabHandler(i)">{{item}}</li>
+    </ul>
+    <div class="line_info" [class.on]="tabEvent.now==0">
+        <ul class="normal_tab">
+            <!-- 亮色加上 .on -->
+            <li class="normal_tab_item" *ngFor="let item of tabSec.lists ; index as i" [class.on]="tabSec.now==i"
+                (click)="tabSecHandler(i)">{{item}}</li>
+        </ul>
+        <div class="line_info_chart">
+            <ul class="title" *ngIf="tabSec.now==0">
+                <li class="green">Output <br>(PCS)</li>
+                <li class="blue">Input <br>(PCS)</li>
+            </ul>
+            <ul class="title" *ngIf="tabSec.now==1">
+                <li class="blue">產品達成率</li>
+            </ul>
+            <canvas id="myChart" class="chart"></canvas>
+        </div>
+    </div>
+    <div class="line_staff" [class.on]="tabEvent.now==1">
+        <ul class="line_staff_group">
+            <li class="line_staff_item" data-txt="Process">SMT</li>
+            <li class="line_staff_item" data-txt="Job">領班</li>
+            <li class="line_staff_item" data-txt="工號">11106637F</li>
+            <li class="line_staff_item" data-txt="姓名">王大明</li>
+        </ul>
+        <ul class="line_staff_group">
+            <li class="line_staff_item" data-txt="Process">DIP</li>
+            <li class="line_staff_item" data-txt="Job">全才</li>
+            <li class="line_staff_item" data-txt="工號">234561G</li>
+            <li class="line_staff_item" data-txt="姓名">陳大明</li>
+        </ul>
+        <ul class="line_staff_group">
+            <li class="line_staff_item" data-txt="作業人數">3人</li>
+            <li class="line_staff_txt " data-txt="標準人力：">5人</li>
+        </ul>
+    </div>
+    <div class="line_energy" [class.on]="tabEvent.now==2">
+        <ul class="line_energy_group">
+            <li class="line_energy_item">
+                <div class="pic _power"></div>
+                <div class="txt" data-txt="電使用量">
+                    <span data-unit="Kwh">3653338</span>
+                </div>
+            </li>
+            <li class="line_energy_item">
+                <div class="pic _gas"></div>
+                <div class="txt" data-txt="氣使用量">
+                    <span data-unit="PA">886633</span>
+                </div>
+            </li>
+            <li class="line_energy_item">
+                <div class="pic _water"></div>
+                <div class="txt" data-txt="水使用量">
+                    <span data-unit="L">550000</span>
+                </div>
+            </li>
+        </ul>
+        <ul class="normal_tab">
+            <!-- 亮色加上 .on -->
+            <li class="normal_tab_item" *ngFor="let item of tabEnergy.lists ; index as i" [class.on]="tabEnergy.now==i"
+                (click)="tabEngergyHandler(i)">{{item}}</li>
+        </ul>
+        <div class="line_energy_chart">
+            <canvas id="energy_Chart" class="chart"></canvas>
+        </div>
+    </div>
+</div>
