@@ -1,1 +1,68 @@
-<p>option works!</p>
+<div class="container_title" data-tw="後台控制系統">Option</div>
+
+<div class="option_filter">
+
+    <div class="option_select" (click)="option_sel('permissions')" [class.on]="permissions_sel.on"
+        [class.show]="permissions_sel.show">
+        <div class="title">{{permissions_sel.title}}</div>
+        <div id="txt" class="txt">{{permissions_sel.txt}}</div>
+        <ul id="option_sel_ul" class="option_select_ul">
+            <li class="option_select_li" *ngFor="let item of permissions_sel.lists" (click)="option_item(item)">{{item}}
+            </li>
+        </ul>
+    </div>
+
+    <button class="option_btn">EPK 參數設定</button>
+</div>
+
+
+
+<div class="permissions">
+    <div class="permissions_head">
+        <button class="border_btn _add"><i></i>Add Account</button>
+    </div>
+    <div class="permissions_body">
+        <div class="permissions_item">
+            <div class="permissions_item_list _title">
+                <div></div>
+                <div>Cameron Williamson</div>
+            </div>
+            <div class="permissions_item_list">
+                <div>工號</div>
+                <div>11106637</div>
+            </div>
+            <div class="permissions_item_list">
+                <div>email</div>
+                <div>williamson_chen_12234567892223wiwynn.com.tw</div>
+            </div>
+            <div class="permissions_item_list">
+                <div>部門</div>
+                <div>MA1000</div>
+            </div>
+            <div class="permissions_item_list">
+                <div>職位</div>
+                <div>Engineer</div>
+            </div>
+            <div class="permissions_item_list">
+                <div>權限</div>
+                <div>Admin</div>
+            </div>
+            <div class="permissions_item_btnBox">
+                <label class="normal_switct">
+                    <input type="checkbox">
+                    <span class="normal_switct_ball"></span>
+                </label>
+                <button class="icon_btn _edit"></button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="alert _permissionsEdit">
+        <div class="alert_box">
+            <button class="icon_btn _close" (click)="alert_close('msg')"></button>
+            <div class="alert_title">Add Account</div>
+        </div>
+    </div>
+</div>

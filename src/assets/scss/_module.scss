@@ -308,9 +308,24 @@ h2 {
 		&._next {
 			background-image: url('../images/icon_arr_right.svg');
 		}
+
+		&._edit {
+			width: 28px;
+			height: 28px;
+			background: url('../images/icon_edit.svg')no-repeat center/16px #2E7FDF;
+			border-radius: 100%;
+			@extend %transition;
+
+			@include hv {
+				background-color: #2E55DF;
+			}
+
+			@include ac {
+				background-color: #1D3EB3;
+			}
+		}
 	}
 }
-
 
 .normal_sel {
 	position: relative;
@@ -510,6 +525,55 @@ h2 {
 	}
 }
 
+.normal_switct {
+	position: relative;
+	width: 36px;
+	height: 20px;
+
+
+	@extend %hand;
+
+	// .normal_switct_ball
+	&_ball {
+		position: relative;
+		display: block;
+		width: 100%;
+		height: 100%;
+		padding: 1px;
+		background-color: #D3D8EE;
+		border-radius: 360px;
+		box-shadow: 0px 0px 1px 0px #00000026;
+		@extend %transition;
+
+		&::before {
+			content: "";
+			position: absolute;
+			left: 1px;
+			display: block;
+			width: 18px;
+			height: 18px;
+			background-color: #fff;
+			border-radius: 100%;
+			box-shadow: 0px 0px 1px 0px #33333340;
+			@extend %transition;
+		}
+	}
+
+	input {
+		display: none;
+		position: absolute;
+		opacity: 0;
+	}
+
+	input:checked~&_ball {
+		background-color: #2E7FDF;
+
+		&::before {
+			transform: translateX(calc(100% - 2px));
+		}
+	}
+}
+
 .WAIT {
 	background-color: #FA2E2E;
 }
@@ -561,6 +625,7 @@ h2 {
 
 	// .container_title
 	&_title {
+		height: 26px;
 		font-size: 20px;
 		font-weight: 700;
 		line-height: 24px;
@@ -741,11 +806,6 @@ h2 {
 			width: 700px;
 			max-height: calc(100% - 40px);
 			min-height: 280px;
-
-			// .normal_sel {
-			// 	max-width: 420px;
-			// 	margin: auto;
-			// }
 		}
 
 		._msg & {
@@ -762,6 +822,9 @@ h2 {
 			right: 10px;
 			width: 36px;
 			height: 36px;
+		}
+		._permissionsEdit &{
+			min-width: 700px;
 		}
 
 	}
