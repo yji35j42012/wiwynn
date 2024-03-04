@@ -35,7 +35,7 @@ export class OptionComponent {
 		now: "機台/狀態註冊",
 		lists: [
 			{ page: 'maintain', name: '狀態維護' },
-			{ page: 'machine', name: '機況維護' },
+			{ page: 'condition', name: '機況維護' },
 			{ page: 'device', name: '變更設備' },
 			{ page: 'linefix', name: '線別維護' },
 		],
@@ -58,13 +58,13 @@ export class OptionComponent {
 	}
 
 
-	option_page(obj: any) {
-		if(obj.page=='permissions'){
+	option_page (obj: any) {
+		if (obj.page == 'permissions') {
 			this.router.navigate(['/home/Option/']);
-		}else{
+		} else {
 			this.router.navigate(['/home/Option/' + obj.page]);
 		}
-		
+
 		if (obj.title == 'permissions') {
 			this.permissions_sel.on = true
 			this.maintain_sel.on = false
@@ -89,7 +89,7 @@ export class OptionComponent {
 		// this.optionPage = s
 	}
 
-	alert_close(s: string) {
+	alert_close (s: string) {
 
 	}
 }
