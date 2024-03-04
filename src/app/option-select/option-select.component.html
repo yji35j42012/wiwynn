@@ -1,0 +1,10 @@
+<div class="option_select" (click)="option_sel('permissions')" [class.on]="selectContent.on"
+    [class.show]="selectContent.show" [ngStyle]="{width:selectContent.width}">
+    <div class="title">{{selectContent.now}}</div>
+    <div class="txt">{{selectContent.txt}}</div>
+    <ul id="option_sel_ul" class="option_select_ul">
+        <li class="option_select_li" *ngFor="let item of selectContent.lists; index as i"
+            (click)="option_item(selectContent.title, i)">{{item.name}}
+        </li>
+    </ul>
+</div>

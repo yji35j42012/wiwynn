@@ -1,9 +1,12 @@
 import { Component, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterOutlet, RouterModule, Router, NavigationEnd } from '@angular/router';
+import { OptionSelectComponent } from '../option-select/option-select.component';
+
 @Component({
 	selector: 'app-option',
 	standalone: true,
-	imports: [CommonModule],
+	imports: [RouterOutlet, RouterModule, CommonModule, OptionSelectComponent,],
 	templateUrl: './option.component.html',
 	styleUrl: './option.component.scss'
 })
@@ -11,31 +14,79 @@ import { CommonModule } from '@angular/common';
 
 
 export class OptionComponent {
-	constructor(private el: ElementRef) { }
+	constructor(private router: Router) { }
+	optionPage = ''
+	pageBtn = ''
 	permissions_sel = {
-		title: "權限設定",
-		lists: ['權限設定', '頁面設定', '角色設定'],
+		title: "permissions",
+		now: "權限設定",
+		lists: [
+			{ page: 'permissions', name: '權限設定' },
+			{ page: 'pageset', name: '頁面設定' },
+			{ page: 'roleset', name: '角色設定' },
+		],
 		show: false,
 		txt: "權限設定",
-		on: true
+		on: true,
+		width: '115px'
 	}
-	ngOnInit(): void {
-
+	maintain_sel = {
+		title: "maintain",
+		now: "機台/狀態註冊",
+		lists: [
+			{ page: 'maintain', name: '狀態維護' },
+			{ page: 'machine', name: '機況維護' },
+			{ page: 'device', name: '變更設備' },
+			{ page: 'linefix', name: '線別維護' },
+		],
+		show: false,
+		txt: "",
+		on: false,
+		width: '150px'
 	}
-	option_sel(s: string) {
-		switch (s) {
-			case 'permissions':
-				this.permissions_sel.show = !this.permissions_sel.show
-				break;
+	kpi_sel = {
+		title: "kpi",
+		now: "KPI指標",
+		lists: [
+			{ page: 'kpitarget', name: 'KPI算法Target' },
+			{ page: 'kpicreaet', name: 'KPI指標建立' },
+		],
+		show: false,
+		txt: "",
+		on: false,
+		width: '150px'
+	}
 
-			default:
-				break;
+
+	option_page(obj: any) {
+		if(obj.page=='permissions'){
+			this.router.navigate(['/home/Option/']);
+		}else{
+			this.router.navigate(['/home/Option/' + obj.page]);
 		}
-		console.log('this', s);
-
-	}
-	option_item(s: string) {
-		this.permissions_sel.txt = s
+		
+		if (obj.title == 'permissions') {
+			this.permissions_sel.on = true
+			this.maintain_sel.on = false
+			this.kpi_sel.on = false
+			this.pageBtn = ''
+		} else if (obj.title == 'maintain') {
+			this.permissions_sel.on = false
+			this.maintain_sel.on = true
+			this.kpi_sel.on = false
+			this.pageBtn = ''
+		} else if (obj.title == 'kpi') {
+			this.permissions_sel.on = false
+			this.maintain_sel.on = false
+			this.kpi_sel.on = true
+			this.pageBtn = ''
+		} else {
+			this.permissions_sel.on = false
+			this.maintain_sel.on = false
+			this.kpi_sel.on = false
+			this.pageBtn = obj.title
+		}
+		// this.optionPage = s
 	}
 
 	alert_close(s: string) {

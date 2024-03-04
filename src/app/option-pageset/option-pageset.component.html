@@ -1,0 +1,238 @@
+<div class="pageset_content">
+    <div class="pageset_head">
+        <button class="border_btn _add" (click)="addMenu()"><i></i>新増選單</button>
+        <button class="border_btn _edit" [class.on]="isEdit" (click)="pagesetEdit()"><i></i>編輯選單</button>
+    </div>
+    <div class="pageset_title">請編輯頁面名稱或拖曳順序</div>
+    <div class="pageset_body">
+        <!-- 整個group移動 class加上 _on -->
+        <ul class="collapse ">
+            <!-- 點點框線class加上 _dotted -->
+            <li class="collapse_item">
+                <i class="icon_btn _arr"></i>
+                <input class="collapse_item_inp" type="text" value="權限設定" [disabled]="!isEdit">
+                <span class="collapse_item_lineY"></span>
+                <div class="collapse_item_btnBox" *ngIf="isEdit">
+                    <button class="icon_btn _trash" (click)="delHandler()"></button>
+                    <button class="icon_btn _add" (click)="addSecMenu()"></button>
+                </div>
+            </li>
+            <li class="collapse_item">
+                <input class="collapse_item_inp" type="text" value="權限設定" [disabled]="!isEdit">
+                <span class="collapse_item_lineX"></span>
+                <span class="collapse_item_lineY"></span>
+                <div class="collapse_item_btnBox" *ngIf="isEdit">
+                    <button class="icon_btn _trash" (click)="delHandler()"></button>
+                    <button class="icon_btn _add" (click)="addSecMenu()"></button>
+                </div>
+            </li>
+            <li class="collapse_item">
+                <input class="collapse_item_inp" type="text" value="頁面設定" [disabled]="!isEdit">
+                <span class="collapse_item_lineX"></span>
+                <span class="collapse_item_lineY"></span>
+                <div class="collapse_item_btnBox" *ngIf="isEdit">
+                    <button class="icon_btn _trash" (click)="delHandler()"></button>
+                    <button class="icon_btn _add" (click)="addSecMenu()"></button>
+                </div>
+            </li>
+        </ul>
+        <!-- 沒有子項目 -->
+        <ul class="collapse _only">
+            <li class="collapse_item _title">
+                <input class="collapse_item_inp" type="text" value="EPK 參數設定" [disabled]="!isEdit">
+                <div class="collapse_item_btnBox" *ngIf="isEdit">
+                    <button class="icon_btn _trash" (click)="delHandler()"></button>
+                    <button class="icon_btn _add" (click)="addSecMenu()"></button>
+                </div>
+            </li>
+        </ul>
+        <ul class="collapse">
+            <li class="collapse_item _title">
+                <i class="icon_btn _arr"></i>
+                <input class="collapse_item_inp" type="text" value="機台/狀態註冊" [disabled]="!isEdit">
+                <span class="collapse_item_lineY"></span>
+                <div class="collapse_item_btnBox" *ngIf="isEdit">
+                    <button class="icon_btn _trash" (click)="delHandler()"></button>
+                    <button class="icon_btn _add" (click)="addSecMenu()"></button>
+                </div>
+            </li>
+            <li class="collapse_item">
+                <input class="collapse_item_inp" type="text" value="狀態維護" [disabled]="!isEdit">
+                <span class="collapse_item_lineX"></span>
+                <span class="collapse_item_lineY"></span>
+                <div class="collapse_item_btnBox" *ngIf="isEdit">
+                    <button class="icon_btn _trash" (click)="delHandler()"></button>
+                    <button class="icon_btn _add" (click)="addSecMenu()"></button>
+                </div>
+            </li>
+            <li class="collapse_item">
+                <input class="collapse_item_inp" type="text" value="機況維護" [disabled]="!isEdit">
+                <span class="collapse_item_lineX"></span>
+                <span class="collapse_item_lineY"></span>
+                <div class="collapse_item_btnBox" *ngIf="isEdit">
+                    <button class="icon_btn _trash" (click)="delHandler()"></button>
+                    <button class="icon_btn _add" (click)="addSecMenu()"></button>
+                </div>
+            </li>
+            <li class="collapse_item">
+                <input class="collapse_item_inp" type="text" value="變更設備" [disabled]="!isEdit">
+                <span class="collapse_item_lineX"></span>
+                <span class="collapse_item_lineY"></span>
+                <div class="collapse_item_btnBox" *ngIf="isEdit">
+                    <button class="icon_btn _trash" (click)="delHandler()"></button>
+                    <button class="icon_btn _add" (click)="addSecMenu()"></button>
+                </div>
+            </li>
+            <li class="collapse_item">
+                <input class="collapse_item_inp" type="text" value="線別維護" [disabled]="!isEdit">
+                <span class="collapse_item_lineX"></span>
+                <span class="collapse_item_lineY"></span>
+                <div class="collapse_item_btnBox" *ngIf="isEdit">
+                    <button class="icon_btn _trash" (click)="delHandler()"></button>
+                    <button class="icon_btn _add" (click)="addSecMenu()"></button>
+                </div>
+            </li>
+        </ul>
+        <!-- 沒有子項目 -->
+        <ul class="collapse _only">
+            <li class="collapse_item _title">
+                <input class="collapse_item_inp" type="text" value="人力/工時註冊" [disabled]="!isEdit">
+                <div class="collapse_item_btnBox" *ngIf="isEdit">
+                    <button class="icon_btn _trash" (click)="delHandler()"></button>
+                    <button class="icon_btn _add" (click)="addSecMenu()"></button>
+                </div>
+            </li>
+        </ul>
+        <!-- 沒有子項目 -->
+        <ul class="collapse _only">
+            <li class="collapse_item _title">
+                <input class="collapse_item_inp" type="text" value="產品Model/良率/UPH註冊" [disabled]="!isEdit">
+                <div class="collapse_item_btnBox" *ngIf="isEdit">
+                    <button class="icon_btn _trash" (click)="delHandler()"></button>
+                    <button class="icon_btn _add" (click)="addSecMenu()"></button>
+                </div>
+            </li>
+        </ul>
+
+        <ul class="collapse">
+            <li class="collapse_item _title">
+                <i class="icon_btn _arr"></i>
+                <input class="collapse_item_inp" type="text" value="KPI指標" [disabled]="!isEdit">
+                <span class="collapse_item_lineY"></span>
+                <div class="collapse_item_btnBox" *ngIf="isEdit">
+                    <button class="icon_btn _trash" (click)="delHandler()"></button>
+                    <button class="icon_btn _add" (click)="addSecMenu()"></button>
+                </div>
+            </li>
+            <li class="collapse_item">
+                <input class="collapse_item_inp" type="text" value="KPI算法Target" [disabled]="!isEdit">
+                <span class="collapse_item_lineX"></span>
+                <span class="collapse_item_lineY"></span>
+                <div class="collapse_item_btnBox" *ngIf="isEdit">
+                    <button class="icon_btn _trash" (click)="delHandler()"></button>
+                    <button class="icon_btn _add" (click)="addSecMenu()"></button>
+                </div>
+            </li>
+            <li class="collapse_item">
+                <input class="collapse_item_inp" type="text" value="KPI指標建立" [disabled]="!isEdit">
+                <span class="collapse_item_lineX"></span>
+                <span class="collapse_item_lineY"></span>
+                <div class="collapse_item_btnBox" *ngIf="isEdit">
+                    <button class="icon_btn _trash" (click)="delHandler()"></button>
+                    <button class="icon_btn _add" (click)="addSecMenu()"></button>
+                </div>
+            </li>
+        </ul>
+
+        <!-- 沒有子項目 -->
+        <ul class="collapse _only">
+            <li class="collapse_item _title">
+                <input class="collapse_item_inp" type="text" value="線別產品機台CycleTime" [disabled]="!isEdit">
+                <div class="collapse_item_btnBox" *ngIf="isEdit">
+                    <button class="icon_btn _trash" (click)="delHandler()"></button>
+                    <button class="icon_btn _add" (click)="addSecMenu()"></button>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- 新増選單 -->
+<div class="alert _option" *ngIf="alertmenu">
+    <div class="alert_box">
+        <button class="icon_btn _close" (click)="alert_close('addmenu')"></button>
+        <div class="alert_title">新増選單</div>
+        <div class="alert_info">
+            <div class="alert_info_inp" data-msg="中文名稱">
+                <input type="text" placeholder="新選單名稱">
+            </div>
+            <div class="alert_info_inp" data-msg="英文名稱">
+                <input type="text" placeholder="New Nav">
+            </div>
+            <div class="alert_info_inp" data-msg="選單網址">
+                <input type="text" placeholder="/home/material">
+            </div>
+            <div class="alert_info_box">
+                <button class="border_btn _add" (click)="createSecMenu()"><i></i>新増第二層選單</button>
+            </div>
+
+            <div class="alert_info_txt" *ngIf="showSecList">第二層選單</div>
+            <app-option-createsecmenu [menuContent]="secMenuArr"></app-option-createsecmenu>
+            <!-- <div class="alert_info_mult">
+                <div class="alert_info_inp" data-msg="中文名稱">
+                    <input type="text" placeholder="新選單名稱">
+                </div>
+                <div class="alert_info_inp" data-msg="英文名稱">
+                    <input type="text" placeholder="New Nav">
+                </div>
+                <div class="alert_info_inp" data-msg="選單網址">
+                    <input type="text" placeholder="/home/material">
+                </div>
+            </div> -->
+        </div>
+        <div class="alert_btnBox">
+            <button class="normal_btn _secondry" (click)="alert_close('addmenu')">取消</button>
+            <button class="normal_btn _primary">新増</button>
+        </div>
+    </div>
+</div>
+<!-- 新増第二層選單 -->
+<div class="alert _option" *ngIf="alertsecmenu">
+    <div class="alert_box">
+        <button class="icon_btn _close" (click)="alert_close('addsecmenu')"></button>
+        <div class="alert_title">新増第二層選單</div>
+        <div class="alert_info">
+            <div class="alert_info_inp" data-msg="上層選單">
+                <input type="text" value="權限設定" disabled>
+            </div>
+            <div class="alert_info_inp" data-msg="中文名稱">
+                <input type="text" placeholder="新第二層選單名稱">
+            </div>
+            <div class="alert_info_inp" data-msg="英文名稱">
+                <input type="text" placeholder="New Sub Nav">
+            </div>
+            <div class="alert_info_inp" data-msg="選單網址">
+                <input type="text" placeholder="/home/material">
+            </div>
+        </div>
+        <div class="alert_btnBox">
+            <button class="normal_btn _secondry" (click)="alert_close('addsecmenu')">取消</button>
+            <button class="normal_btn _primary">新増</button>
+        </div>
+    </div>
+</div>
+
+<!-- 確認刪除 -->
+<div class="alert _msg _pageset" *ngIf="alertDel">
+    <div class="alert_box">
+        <button class="icon_btn _close" (click)="alert_close('alertDel')"></button>
+        <div class="alert_title">刪除選單</div>
+        <div class="alert_info">
+            <span class="alert_info_txt">您確定要刪除此選單？</span>
+        </div>
+        <div class="alert_btnBox">
+            <button class="normal_btn _secondry" (click)="alert_close('alertDel')">取消</button>
+            <button class="normal_btn _primary" (click)="del_check()">確定</button>
+        </div>
+    </div>
+</div>

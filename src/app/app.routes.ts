@@ -9,6 +9,10 @@ import { EProcessComponent } from './e-process/e-process.component';
 import { EquipmentCenterComponent } from './equipment-center/equipment-center.component';
 import { AlarmCenterComponent } from './alarm-center/alarm-center.component';
 import { OptionComponent } from './option/option.component';
+import { OptionPermissionsComponent } from './option-permissions/option-permissions.component';
+import { OptionPagesetComponent } from './option-pageset/option-pageset.component';
+import { OptionRolesetComponent } from './option-roleset/option-roleset.component';
+
 export const routes: Routes = [
 	{ path: '', component: LoginComponent },
 	{
@@ -21,7 +25,15 @@ export const routes: Routes = [
 			{ path: 'E-Process', component: EProcessComponent },
 			{ path: 'Alarm-Center', component: AlarmCenterComponent },
 			{ path: 'Equipment-Center', component: EquipmentCenterComponent },
-			{ path: 'Option', component: OptionComponent },
+			{
+				path: 'Option',
+				component: OptionComponent,
+				children: [
+					{ path: '', component: OptionPermissionsComponent },
+					{ path: 'pageset', component: OptionPagesetComponent },
+					{ path: 'roleset', component: OptionRolesetComponent },
+				]
+			},
 		]
 	},
 ];
