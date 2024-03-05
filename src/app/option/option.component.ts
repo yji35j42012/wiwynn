@@ -1,6 +1,6 @@
-import { Component, ElementRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet, RouterModule, Router, NavigationEnd } from '@angular/router';
+import { RouterOutlet, RouterModule, Router } from '@angular/router';
 import { OptionSelectComponent } from '../option-select/option-select.component';
 
 @Component({
@@ -58,7 +58,7 @@ export class OptionComponent {
 	}
 
 
-	option_page (obj: any) {
+	option_page(obj: any) {
 		if (obj.page == 'permissions') {
 			this.router.navigate(['/home/Option/']);
 		} else {
@@ -89,7 +89,7 @@ export class OptionComponent {
 		// this.optionPage = s
 	}
 
-	alert_close (s: string) {
+	alert_close(s: string) {
 
 	}
 }

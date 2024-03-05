@@ -1,10 +1,10 @@
-<div class="pageset_content">
-    <div class="pageset_head">
+<div class="option_content">
+    <div class="option_head">
         <button class="border_btn _add" (click)="addMenu()"><i></i>新増選單</button>
         <button class="border_btn _edit" [class.on]="isEdit" (click)="pagesetEdit()"><i></i>編輯選單</button>
     </div>
     <div class="pageset_title">請編輯頁面名稱或拖曳順序</div>
-    <div class="pageset_body">
+    <div class="option_body">
         <!-- 整個group移動 class加上 _on -->
         <ul class="collapse ">
             <!-- 點點框線class加上 _dotted -->
@@ -222,17 +222,8 @@
     </div>
 </div>
 
-<!-- 確認刪除 -->
-<div class="alert _msg _pageset" *ngIf="alertDel">
-    <div class="alert_box">
-        <button class="icon_btn _close" (click)="alert_close('alertDel')"></button>
-        <div class="alert_title">刪除選單</div>
-        <div class="alert_info">
-            <span class="alert_info_txt">您確定要刪除此選單？</span>
-        </div>
-        <div class="alert_btnBox">
-            <button class="normal_btn _secondry" (click)="alert_close('alertDel')">取消</button>
-            <button class="normal_btn _primary" (click)="del_check()">確定</button>
-        </div>
-    </div>
-</div>
+
+
+
+<app-alert-delmsg *ngIf="alertMsg.show" [alertMsg]="alertMsg" (closeEvent)="alert_close($event)"
+    (alertCheck)="alert_del($event)"></app-alert-delmsg>

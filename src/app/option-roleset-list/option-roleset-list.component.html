@@ -1,0 +1,45 @@
+<div class="option_head">
+    <button class="border_btn _add" (click)="createRole()"><i></i>新増角色</button>
+</div>
+
+<div class="option_body">
+    <div class="roleset_item" (click)="editRole(1)">
+        Metaengineer
+        <button class="icon_btn _trash" (click)="delRole($event)"></button>
+    </div>
+    <div class="roleset_item" (click)="editRole(2)">
+        Metaengineer
+        <button class="icon_btn _trash" (click)="delRole($event)"></button>
+    </div>
+    <div class="roleset_item" (click)="editRole(3)">
+        Metaengineer
+        <button class="icon_btn _trash" (click)="delRole($event)"></button>
+    </div>
+    <div class="roleset_item" (click)="editRole(4)">
+        Metaengineer
+        <button class="icon_btn _trash" (click)="delRole($event)"></button>
+    </div>
+</div>
+
+
+
+<!-- 新增角色 -->
+<div class="alert _option" *ngIf="alert_crateRole">
+    <div class="alert_box">
+        <button class="icon_btn _close" (click)="alert_close('create')"></button>
+        <div class="alert_title">新増角色</div>
+        <div class="alert_info">
+            <div class="alert_info_inp" data-msg="職位">
+                <input type="text" placeholder="Engineer">
+            </div>
+            <div class="alert_btnBox">
+                <button class="normal_btn _secondry" (click)="alert_close('create')">取消</button>
+                <button class="normal_btn _primary">新增</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<app-alert-delmsg *ngIf="alertMsg.show" [alertMsg]="alertMsg" (closeEvent)="alert_close($event)"
+    (alertCheck)="alert_del($event)"></app-alert-delmsg>

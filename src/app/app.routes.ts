@@ -12,6 +12,8 @@ import { OptionComponent } from './option/option.component';
 import { OptionPermissionsComponent } from './option-permissions/option-permissions.component';
 import { OptionPagesetComponent } from './option-pageset/option-pageset.component';
 import { OptionRolesetComponent } from './option-roleset/option-roleset.component';
+import { OptionRolesetListComponent } from './option-roleset-list/option-roleset-list.component';
+import { OptionRolesetEditComponent } from './option-roleset-edit/option-roleset-edit.component';
 
 export const routes: Routes = [
 	{ path: '', component: LoginComponent },
@@ -31,7 +33,14 @@ export const routes: Routes = [
 				children: [
 					{ path: '', component: OptionPermissionsComponent },
 					{ path: 'pageset', component: OptionPagesetComponent },
-					{ path: 'roleset', component: OptionRolesetComponent },
+					{
+						path: 'roleset',
+						component: OptionRolesetComponent,
+						children: [
+							{ path: '', component: OptionRolesetListComponent },
+							{ path: ':id', component: OptionRolesetEditComponent },
+						]
+					},
 				]
 			},
 		]

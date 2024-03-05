@@ -2,12 +2,12 @@ import { Component, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WarroomLineComponent } from '../warroom-line/warroom-line.component';
 import { WarroomMachineComponent } from '../warroom-machine/warroom-machine.component';
-import { AlertMagComponent } from '../alert-mag/alert-mag.component';
+import { AlertMsgComponent } from '../alert-msg/alert-msg.component';
 import { ModelSelectComponent } from '../model-select/model-select.component';
 @Component({
 	selector: 'app-warroom',
 	standalone: true,
-	imports: [CommonModule, WarroomLineComponent, WarroomMachineComponent, AlertMagComponent, ModelSelectComponent],
+	imports: [CommonModule, WarroomLineComponent, WarroomMachineComponent, AlertMsgComponent, ModelSelectComponent],
 	templateUrl: './warroom.component.html',
 	styleUrl: './warroom.component.scss'
 })
