@@ -1,4 +1,4 @@
-<div class="option_content">
+<div class="option_content _pageset">
     <div class="option_head">
         <button class="border_btn _add" (click)="addMenu()"><i></i>新増選單</button>
         <button class="border_btn _edit" [class.on]="isEdit" (click)="pagesetEdit()"><i></i>編輯選單</button>
@@ -154,6 +154,11 @@
                 </div>
             </li>
         </ul>
+
+        <div class="option_body_btnbox">
+            <button class="normal_btn _secondry">取消</button>
+            <button class="normal_btn _primary">儲存變更</button>
+        </div>
     </div>
 </div>
 

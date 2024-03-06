@@ -2,15 +2,12 @@
 
 <div class="option_filter">
 	<app-option-select [selectContent]="permissions_sel" (selEvent)="option_page($event)"></app-option-select>
-	<button class="option_btn" [class.on]="pageBtn=='epkset'" (click)="option_page({title:'epkset',page:'epkset'})">EPK
-		參數設定</button>
+	<app-option-select [selectContent]="epkset_sel" (selEvent)="option_page($event)"></app-option-select>
 	<app-option-select [selectContent]="maintain_sel" (selEvent)="option_page($event)"></app-option-select>
-
 	<button class="option_btn" [class.on]="pageBtn=='working'"
 		(click)="option_page({title:'working',page:'working'})">人力/工時註冊</button>
 	<button class="option_btn" [class.on]="pageBtn=='model'"
 		(click)="option_page({title:'model',page:'model'})">產品Model/良率/UPH註冊</button>
-
 	<app-option-select [selectContent]="kpi_sel" (selEvent)="option_page($event)"></app-option-select>
 	<button class="option_btn" [class.on]="pageBtn=='cycleTime'"
 		(click)="option_page({title:'cycleTime',page:'cycleTime'})">線別產品機台CycleTime</button>
