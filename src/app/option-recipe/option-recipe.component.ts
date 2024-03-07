@@ -32,7 +32,7 @@ export class OptionRecipeComponent {
     isShow: false,
     msg: 'Model',
   };
-  selShow(s: string) {
+  selShow(s: any) {
     if (s == 'equipment_sel') {
       this.equipment_sel.isShow = !this.equipment_sel.isShow;
       this.model_sel.isShow = false;
