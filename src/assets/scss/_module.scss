@@ -640,6 +640,7 @@ h2 {
 	border-radius: 8px;
 	@extend %transition;
 
+
 	._newLine & {
 		width: 454px;
 		margin: auto;
@@ -793,6 +794,140 @@ h2 {
 			font-weight: 400;
 			line-height: 18px;
 			color: #565656;
+		}
+	}
+}
+
+.normal_selcheck {
+	position: relative;
+	min-width: 100px;
+
+	._parameter & {
+		min-width: 180px;
+	}
+
+	// .normal_sel_title
+	&_title {
+		position: relative;
+		display: block;
+		width: 100%;
+		height: 100%;
+		padding: 10px 44px 10px 12px;
+		border: 1px solid #BCBCBC;
+		background-color: #fff;
+		// color: #464646;
+		border-radius: 8px;
+		font-size: 16px;
+		font-weight: 400;
+		@extend %hand;
+		@extend %transition;
+
+		.user & {
+			background-color: transparent;
+
+			@include hoverHandler {
+				background-color: transparent;
+			}
+		}
+
+		._newLine {
+			width: calc(100% - 34px);
+		}
+
+		@include hoverHandler {
+			background-color: #E7F0FF;
+		}
+
+		&:after {
+			pointer-events: none;
+			content: "";
+			position: absolute;
+			right: 10px;
+			top: 0;
+			bottom: 0;
+			flex: none;
+			display: block;
+			width: 24px;
+			height: 24px;
+			margin: auto;
+			background-size: contain;
+			background-position: center/center;
+			background-repeat: no-repeat;
+			background-image: url('../images/icon_arrDown_sel.svg');
+			@extend %transition;
+			// 
+		}
+
+		&.on:after {
+			transform: rotate(180deg);
+		}
+
+		.user & {
+			@include d_f(flex);
+			flex-wrap: nowrap;
+			border: none;
+
+			&:after {
+				pointer-events: none;
+				background-image: url('../images/icon_arrDown_user.svg');
+			}
+		}
+
+		.home & {
+			color: #ffffff;
+
+			&:after {
+				background-image: url('../images/icon_arrDown_w.svg');
+			}
+		}
+
+		&.on {
+			background-color: #E7F0FF;
+		}
+
+		.user &.on {
+			background-color: transparent;
+		}
+	}
+
+	&._hasMsg::before {
+		content: attr(data-msg);
+		display: block;
+		margin-bottom: 8px;
+	}
+
+	// .normal_selcheck_group
+	&_group {
+		z-index: 20;
+		position: absolute;
+		right: 0;
+		top: calc(100% + 5px);
+		display: none;
+		width: 100%;
+		min-width: 180px;
+		padding: 10px 0;
+		background-color: #FFFFFF;
+		border: 1px solid #BCBCBC;
+		border-radius: 8px;
+
+		.on+& {
+			display: block;
+		}
+	}
+
+	// .normal_selcheck_item
+	&_item {
+		padding: 8px 15px;
+		background-color: #FFFFFF;
+		color: #565656;
+		font-size: 16px;
+		font-weight: 400;
+		line-height: 24px;
+		@extend %hand;
+		@extend %transition;
+
+		@include hoverHandler {
+			background-color: #D9DFE9;
 		}
 	}
 }
@@ -1634,21 +1769,21 @@ h2 {
 				}
 			}
 
-			&+&,
-			&+.normal_multsearch {
+			&+& {
 				margin-top: 20px;
 			}
 
 			&._filter {
 				@include d_f(flex, space-between);
 
-				.alert_info_inp,
-				.alert_info_sel {
+				.normal_inp,
+				.sel_box {
+					width: 100%;
 					max-width: 314px;
 				}
 
-				.normal_sel {
-					margin-top: 8px;
+				.normal_sel_title {
+					height: 40px;
 				}
 			}
 
@@ -1969,7 +2104,9 @@ h2 {
 		}
 
 		// .alert_clone_stage
-		&_stage {
+		// .alert_clone_parameter
+		&_stage,
+		&_parameter {
 			margin-top: 10px;
 
 			&::before {
@@ -2149,11 +2286,19 @@ h2 {
 	._clone & {
 		display: inline-flex;
 		height: 36px;
+		// margin-right: 8px;
+		// margin-bottom: 20px;
+		// padding: 8px 10px;
+		border-radius: 6px;
+		// background-color: #fff;
+	}
+
+	.alert_clone_parameter & {
 		margin-right: 20px;
 		margin-bottom: 20px;
-		padding: 8px 10px;
-		border-radius: 6px;
+		padding: 6px 10px;
 		background-color: #fff;
+
 	}
 
 	// .normal_check_inp
@@ -2218,6 +2363,24 @@ h2 {
 	// .normal_check_txt
 	&_txt {
 		position: relative;
+	}
+
+
+	._parameter & {
+		height: 40px;
+		padding-left: 15px;
+
+		&+.normal_check {
+			margin-top: 5px;
+		}
+
+		&_span {
+			margin-right: 8px;
+		}
+
+		&_bg {
+			border-radius: 0;
+		}
 	}
 }
 
@@ -2391,6 +2554,23 @@ h2 {
 	border-radius: 8px;
 	box-shadow: 0px 2px 12px 0px #00000008;
 	border: 1px solid #BCBEC0;
+	@extend %hand;
+
+	&._hasMsg {
+		margin-top: 38px;
+
+		&::before {
+			content: attr(data-msg);
+			position: absolute;
+			left: 0;
+			bottom: 100%;
+			display: block;
+			margin-bottom: 8px;
+			font-size: 12px;
+			font-weight: 400;
+			line-height: 18px;
+		}
+	}
 
 	&.on {
 		// @include d_f(flex,none,center);
@@ -2493,7 +2673,6 @@ h2 {
 		margin-right: 10px;
 		margin-bottom: 10px;
 		padding: 10px 6px;
-		background-color: #D9DFE9;
 		border-radius: 6px;
 
 		&_span {
@@ -2712,6 +2891,10 @@ h2 {
 
 	._parameter .option_clone_info & {
 		max-width: 300px;
+
+		&+.normal_inp {
+			margin-top: 0;
+		}
 	}
 
 	._parameter &+.normal_sel,

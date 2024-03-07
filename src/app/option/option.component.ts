@@ -11,7 +11,7 @@ import { OptionSelectComponent } from '../option-select/option-select.component'
   styleUrl: './option.component.scss',
 })
 export class OptionComponent {
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
   optionPage = '';
   option_sel = [
@@ -184,7 +184,7 @@ export class OptionComponent {
       this.option_sel[i].isOn = false;
     }
     this.option_sel[obj.id].isOn = true;
-    this.option_sel[obj.id].txt = obj.list.name; 
+    this.option_sel[obj.id].txt = obj.list.name;
     if (this.option_sel[obj.id].type == 'btn') {
       for (let i = 0; i < this.option_sel.length; i++) {
         this.option_sel[i].isShow = false;
@@ -197,5 +197,5 @@ export class OptionComponent {
     }
   }
 
-  alert_close(s: string) {}
+  alert_close(s: string) { }
 }

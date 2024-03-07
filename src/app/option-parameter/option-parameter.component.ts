@@ -38,13 +38,33 @@ export class OptionParameterComponent {
     isShow: false,
     msg: 'Model',
   };
+  line_sel = {
+    name: 'line_sel',
+    title: 's1',
+    lists: [
+      's1',
+      's2',
+      's3',
+      's4',
+      's5',
+      's6',
+    ],
+    isShow: false,
+    msg: 'line',
+  }
   selShow(s: string) {
     if (s == 'equipment_sel') {
       this.equipment_sel.isShow = !this.equipment_sel.isShow;
       this.model_sel.isShow = false;
+      this.line_sel.isShow = false;
     } else if (s == 'model_sel') {
       this.model_sel.isShow = !this.model_sel.isShow;
       this.equipment_sel.isShow = false;
+      this.line_sel.isShow = false;
+    } else if (s == 'line_sel') {
+      this.line_sel.isShow = !this.line_sel.isShow;
+      this.equipment_sel.isShow = false;
+      this.model_sel.isShow = false;
     }
   }
   selHandler(s: any) {
@@ -54,6 +74,9 @@ export class OptionParameterComponent {
     } else if (s.name == 'model_sel') {
       this.model_sel.title = s.title;
       this.model_sel.isShow = false;
+    } else if (s.name == 'line_sel') {
+      this.line_sel.title = s.title;
+      this.line_sel.isShow = false;
     }
   }
 

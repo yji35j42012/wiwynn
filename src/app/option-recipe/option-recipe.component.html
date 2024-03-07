@@ -1,87 +1,73 @@
 <div class="option_content _recipe">
 	<div class="option_head _borderB">
-	  <app-model-select
-		[selectContent]="equipment_sel"
-		(selShowEvent)="selShow($event)"
-		(selEvent)="selHandler($event)"
-	  ></app-model-select>
-	  <app-model-select
-		[selectContent]="model_sel"
-		(selShowEvent)="selShow($event)"
-		(selEvent)="selHandler($event)"
-	  ></app-model-select>
-	  <button class="normal_btn _primary" (click)="queryHandler()">Query</button>
+		<app-model-select [selectContent]="equipment_sel" (selShowEvent)="selShow($event)"
+			(selEvent)="selHandler($event)"></app-model-select>
+		<app-model-select [selectContent]="model_sel" (selShowEvent)="selShow($event)"
+			(selEvent)="selHandler($event)"></app-model-select>
+		<button class="normal_btn _primary" (click)="queryHandler()">Query</button>
 	</div>
 	<div class="option_body" *ngIf="recipe.isShow">
-	  <div class="option_body_btnbox">
-		<button class="border_btn _add" (click)="editHandler('add')">
-		  <i></i>新増 欄位
-		</button>
-	  </div>
-	  <div class="option_nodata" *ngIf="recipe.data.length == 0">
-		目前尚無資料，請點選新増欄位按鈕添加項目
-	  </div>
-	  <table class="normal_tb" *ngIf="recipe.data.length !== 0">
-		<tr>
-		  <th>項目名稱</th>
-		  <th>編輯刪除</th>
-		</tr>
-		<tr *ngFor="let item of recipe.data">
-		  <td>{{ item.name }}</td>
-		  <td>
-			<div class="normal_tb_box _jucc">
-			  <button class="icon_btn _trash" (click)="delHandler()"></button>
-			  <button
-				class="icon_btn _edit"
-				(click)="editHandler('edit')"
-			  ></button>
-			</div>
-		  </td>
-		</tr>
-	  </table>
-	  <ul class="normal_page" *ngIf="recipe.data.length !== 0">
-		<li class="normal_page_item _prev"></li>
-		<li class="normal_page_item on">1</li>
-		<li class="normal_page_item">2</li>
-		<li class="normal_page_item">3</li>
-		<li class="normal_page_item">4</li>
-		<li class="normal_page_item">5</li>
-		<li class="normal_page_item _dot">...</li>
-		<li class="normal_page_item">100</li>
-		<li class="normal_page_item _next"></li>
-	  </ul>
-	</div>
-  </div>
-  
-  <!-- 新増/編輯欄位 -->
-  <div class="alert _option" *ngIf="editAlert.isShow">
-	<div class="alert_box">
-	  <button class="icon_btn _close" (click)="alert_close('editAlert')"></button>
-	  <div class="alert_title" *ngIf="editAlert.state == 'add'">新増欄位</div>
-	  <div class="alert_title" *ngIf="editAlert.state == 'edit'">編輯欄位</div>
-	  <div class="alert_info">
-		<div class="alert_info_inp" data-msg="職位">
-		  <input type="text" placeholder="Engineer" />
+		<div class="option_body_btnbox">
+			<button class="border_btn _add" (click)="editHandler('add')">
+				<i></i>新増 欄位
+			</button>
 		</div>
-	  </div>
-	  <div class="alert_btnBox">
-		<button class="normal_btn _secondry" (click)="alert_close('editAlert')">
-		  取消
-		</button>
-		<button class="normal_btn _primary" *ngIf="editAlert.state == 'add'">
-		  新增
-		</button>
-		<button class="normal_btn _primary" *ngIf="editAlert.state == 'edit'">
-		  儲存變更
-		</button>
-	  </div>
+		<div class="option_nodata" *ngIf="recipe.data.length == 0">
+			目前尚無資料，請點選新増欄位按鈕添加項目
+		</div>
+		<table class="normal_tb" *ngIf="recipe.data.length !== 0">
+			<tr>
+				<th>項目名稱</th>
+				<th>編輯刪除</th>
+			</tr>
+			<tr *ngFor="let item of recipe.data">
+				<td>{{ item.name }}</td>
+				<td>
+					<div class="normal_tb_box _jucc">
+						<button class="icon_btn _trash" (click)="delHandler()"></button>
+						<button class="icon_btn _edit" (click)="editHandler('edit')"></button>
+					</div>
+				</td>
+			</tr>
+		</table>
+		<ul class="normal_page" *ngIf="recipe.data.length !== 0">
+			<li class="normal_page_item _prev"></li>
+			<li class="normal_page_item on">1</li>
+			<li class="normal_page_item">2</li>
+			<li class="normal_page_item">3</li>
+			<li class="normal_page_item">4</li>
+			<li class="normal_page_item">5</li>
+			<li class="normal_page_item _dot">...</li>
+			<li class="normal_page_item">100</li>
+			<li class="normal_page_item _next"></li>
+		</ul>
 	</div>
-  </div>
-  
-  <app-alert-delmsg
-	*ngIf="alertMsg.show"
-	[alertMsg]="alertMsg"
-	(closeEvent)="alert_close($event)"
-	(alertCheck)="alert_del($event)"
-  ></app-alert-delmsg>
-  
+</div>
+
+<!-- 新増/編輯欄位 -->
+<div class="alert _option" *ngIf="editAlert.isShow">
+	<div class="alert_box">
+		<button class="icon_btn _close" (click)="alert_close('editAlert')"></button>
+		<div class="alert_title" *ngIf="editAlert.state == 'add'">新増欄位</div>
+		<div class="alert_title" *ngIf="editAlert.state == 'edit'">編輯欄位</div>
+		<div class="alert_info">
+			<div class="alert_info_inp" data-msg="職位">
+				<input type="text" placeholder="Engineer" />
+			</div>
+		</div>
+		<div class="alert_btnBox">
+			<button class="normal_btn _secondry" (click)="alert_close('editAlert')">
+				取消
+			</button>
+			<button class="normal_btn _primary" *ngIf="editAlert.state == 'add'">
+				新增
+			</button>
+			<button class="normal_btn _primary" *ngIf="editAlert.state == 'edit'">
+				儲存變更
+			</button>
+		</div>
+	</div>
+</div>
+
+<app-alert-delmsg *ngIf="alertMsg.show" [alertMsg]="alertMsg" (closeEvent)="alert_close($event)"
+	(alertCheck)="alert_del($event)"></app-alert-delmsg>
