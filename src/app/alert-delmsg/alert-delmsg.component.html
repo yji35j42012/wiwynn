@@ -1,12 +1,12 @@
 <div class="alert _msg">
     <div class="alert_box">
-        <button class="icon_btn _close" (click)="alert_close('msg')"></button>
+        <button class="icon_btn _close" (click)="alert_close('delmsg')"></button>
         <div class="alert_title">{{alertMsg.title}}</div>
         <div class="alert_info">
             <span class="alert_info_txt">{{alertMsg.msg}}</span>
         </div>
         <div class="alert_btnBox">
-            <button class="normal_btn _secondry" (click)="alert_close('msg')">取消</button>
+            <button class="normal_btn _secondry" (click)="alert_close('delmsg')">取消</button>
             <button class="normal_btn _danger" (click)="alert_del(alertMsg.str)">刪除</button>
         </div>
     </div>

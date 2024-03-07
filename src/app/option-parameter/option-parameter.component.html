@@ -1,183 +1,196 @@
 <div class="option_content _parameter">
-    <div class="option_head _borderB">
-        <div class="normal_sel _hasMsg" data-msg="設備別">
-            <!-- 點擊在span class裡面加上on -->
-            <!-- <span class="normal_sel_title" [class.on]="selectShow" (click)="selHandler()">Dip</span>
-            <ul class="normal_sel_group">
-                <li class="normal_sel_item" *ngFor="let item of selectContent.lists"
-                    (click)="machineSel(item)">{{item}}</li>
-            </ul> -->
-        </div>
-        <div class="normal_sel _hasMsg" data-msg="Model">
-            <!-- 點擊在span class裡面加上on -->
-            <!-- <span class="normal_sel_title" [class.on]="selectShow" (click)="selHandler()">Dip</span>
-            <ul class="normal_sel_group">
-                <li class="normal_sel_item" *ngFor="let item of selectContent.lists"
-                    (click)="machineSel(item)">{{item}}</li>
-            </ul> -->
-        </div>
-        <button class="normal_btn _primary">Query</button>
-    </div>
-    <div class="option_clone">
-        <div class="option_clone_title">Clone</div>
-        <div class="option_clone_info">
-            <div class="normal_inp _hasMsg" data-msg="UPN(成品料號)">
-                <input type="text">
-            </div>
-            <div class="normal_inp _hasMsg" data-msg="SPN(半成品料號)">
-                <input type="text">
-            </div>
-            <div class="normal_sel _hasMsg" data-msg="Line">
-                <!-- 點擊在span class裡面加上on -->
-                <!-- <span class="normal_sel_title" [class.on]="selectShow" (click)="selHandler()">s1</span>
+  <div class="option_head _borderB">
+    <app-model-select
+      [selectContent]="equipment_sel"
+      (selShowEvent)="selShow($event)"
+      (selEvent)="selHandler($event)"
+    ></app-model-select>
+    <app-model-select
+      [selectContent]="model_sel"
+      (selShowEvent)="selShow($event)"
+      (selEvent)="selHandler($event)"
+    ></app-model-select>
+    <button class="normal_btn _primary" (click)="queryHandler()">Query</button>
+  </div>
+  <div class="option_clone" *ngIf="clone.isShow">
+    <div class="option_clone_title">Clone</div>
+    <div class="option_clone_info">
+      <div class="normal_inp _hasMsg" data-msg="UPN(成品料號)">
+        <input type="text" />
+      </div>
+      <div class="normal_inp _hasMsg" data-msg="SPN(半成品料號)">
+        <input type="text" />
+      </div>
+      <div class="normal_sel _hasMsg" data-msg="Line">
+        <!-- 點擊在span class裡面加上on -->
+        <!-- <span class="normal_sel_title" [class.on]="selectShow" (click)="selHandler()">s1</span>
                 <ul class="normal_sel_group">
                     <li class="normal_sel_item" *ngFor="let item of selectContent.lists"
                         (click)="machineSel(item)">{{item}}</li>
                 </ul> -->
-            </div>
-        </div>
-        <div class="option_clone_btnbox">
-            <button class="normal_btn _secondry">Cancel</button>
-            <button class="normal_btn _primary">Submit</button>
-        </div>
+      </div>
     </div>
-    <div class="option_body">
-        <div class="option_body_btnbox">
-            <button class="border_btn _clone"><i></i>Clone</button>
-        </div>
-        <div class="option_body_filter">
-            <div class="option_select _inside">
-                <div class="title">Printer</div>
-                <div id="txt" class="txt">Printer1111</div>
-                <!-- <ul id="option_sel_ul" class="option_select_ul">
-                    <li class="option_select_li" *ngfor="let item of permissions_sel.lists"
-                        (click)="option_item(item)">{{item}}
-                    </li>
-                </ul> -->
-            </div>
-            <div class="option_select _inside">
-                <div class="title">Printer</div>
-                <div id="txt" class="txt">Printer1111</div>
-                <!-- <ul id="option_sel_ul" class="option_select_ul">
-                    <li class="option_select_li" *ngfor="let item of permissions_sel.lists"
-                        (click)="option_item(item)">{{item}}
-                    </li>
-                </ul> -->
-            </div>
-            <div class="option_select _inside">
-                <div class="title">Printer</div>
-                <div id="txt" class="txt">Printer1111</div>
-                <!-- <ul id="option_sel_ul" class="option_select_ul">
-                    <li class="option_select_li" *ngfor="let item of permissions_sel.lists"
-                        (click)="option_item(item)">{{item}}
-                    </li>
-                </ul> -->
-            </div>
-            <div class="option_select _inside">
-                <div class="title">Printer</div>
-                <div id="txt" class="txt">Printer1111</div>
-                <!-- <ul id="option_sel_ul" class="option_select_ul">
-                    <li class="option_select_li" *ngfor="let item of permissions_sel.lists"
-                        (click)="option_item(item)">{{item}}
-                    </li>
-                </ul> -->
-            </div>
-            <div class="option_select _inside">
-                <div class="title">Printer</div>
-                <div id="txt" class="txt">Printer1111</div>
-                <!-- <ul id="option_sel_ul" class="option_select_ul">
-                    <li class="option_select_li" *ngfor="let item of permissions_sel.lists"
-                        (click)="option_item(item)">{{item}}
-                    </li>
-                </ul> -->
-            </div>
-            <div class="option_select _inside">
-                <div class="title">Printer</div>
-                <div id="txt" class="txt">Printer1111</div>
-                <!-- <ul id="option_sel_ul" class="option_select_ul">
-                    <li class="option_select_li" *ngfor="let item of permissions_sel.lists"
-                        (click)="option_item(item)">{{item}}
-                    </li>
-                </ul> -->
-            </div>
-            <div class="option_select _inside">
-                <div class="title">Printer</div>
-                <div id="txt" class="txt">Printer1111</div>
-                <!-- <ul id="option_sel_ul" class="option_select_ul">
-                    <li class="option_select_li" *ngfor="let item of permissions_sel.lists"
-                        (click)="option_item(item)">{{item}}
-                    </li>
-                </ul> -->
-            </div>
-            <div class="option_select _inside">
-                <div class="title">Printer</div>
-                <div id="txt" class="txt">Printer1111</div>
-                <!-- <ul id="option_sel_ul" class="option_select_ul">
-                    <li class="option_select_li" *ngfor="let item of permissions_sel.lists"
-                        (click)="option_item(item)">{{item}}
-                    </li>
-                </ul> -->
-            </div>
-            <div class="option_select _inside">
-                <div class="title">Printer</div>
-                <div id="txt" class="txt">Printer1111</div>
-                <!-- <ul id="option_sel_ul" class="option_select_ul">
-                    <li class="option_select_li" *ngfor="let item of permissions_sel.lists"
-                        (click)="option_item(item)">{{item}}
-                    </li>
-                </ul> -->
-            </div>
-            <div class="option_select _inside">
-                <div class="title">Printer</div>
-                <div id="txt" class="txt">Printer1111</div>
-                <!-- <ul id="option_sel_ul" class="option_select_ul">
-                    <li class="option_select_li" *ngfor="let item of permissions_sel.lists"
-                        (click)="option_item(item)">{{item}}
-                    </li>
-                </ul> -->
-            </div>
-        </div>
-        <table class="normal_tb">
-            <tr>
-                <th>項目名稱</th>
-                <th>範圍涵數</th>
-                <th>標準數值</th>
-                <th>單位</th>
-                <th>編輯</th>
-            </tr>
-            <tr>
-                <td>前刮刀壓力</td>
-                <td>(>=,<=)< /td>
-                <td>12,15</td>
-                <td>kg</td>
-                <td>
-                    <div class="normal_tb_box _jucc">
-                        <button class="icon_btn _edit"></button>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>前刮刀壓力</td>
-                <td>(>=,<=)< /td>
-                <td>12,15</td>
-                <td>kg</td>
-                <td>
-                    <div class="normal_tb_box _jucc">
-                        <button class="icon_btn _edit"></button>
-                    </div>
-                </td>
-            </tr>
-        </table>
-        <ul class="normal_page">
-            <li class="normal_page_item _prev"></li>
-            <li class="normal_page_item on">1</li>
-            <li class="normal_page_item">2</li>
-            <li class="normal_page_item">3</li>
-            <li class="normal_page_item">4</li>
-            <li class="normal_page_item">5</li>
-            <li class="normal_page_item _dot">...</li>
-            <li class="normal_page_item">100</li>
-            <li class="normal_page_item _next"></li>
-        </ul>
+    <div class="option_clone_btnbox">
+      <button class="normal_btn _secondry" (click)="cancelClone()">
+        Cancel
+      </button>
+      <button class="normal_btn _primary" (click)="submitClone()">
+        Submit
+      </button>
     </div>
+  </div>
+  <div class="option_body" *ngIf="parameter.isShow">
+    <div class="option_body_btnbox">
+      <button class="border_btn _clone" (click)="cloneHandler()">
+        <i></i>Clone
+      </button>
+    </div>
+    <div class="option_body_filter">
+      <app-option-select
+        *ngFor="let item of option_sel"
+        [selectContent]="item"
+        (selshow)="selShowHandler($event)"
+        (selEvent)="option_page($event)"
+      ></app-option-select>
+    </div>
+    <table class="normal_tb">
+      <tr>
+        <th>項目名稱</th>
+        <th>範圍涵數</th>
+        <th>標準數值</th>
+        <th>單位</th>
+        <th>編輯</th>
+      </tr>
+      <tr>
+        <td>前刮刀壓力</td>
+        <td>(>=,<=)</td>
+        <td>12,15</td>
+        <td>kg</td>
+        <td>
+          <div class="normal_tb_box _jucc">
+            <button class="icon_btn _edit"></button>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>前刮刀壓力</td>
+        <td>(>=,<=)</td>
+        <td>12,15</td>
+        <td>kg</td>
+        <td>
+          <div class="normal_tb_box _jucc">
+            <button class="icon_btn _edit"></button>
+          </div>
+        </td>
+      </tr>
+    </table>
+    <ul class="normal_page">
+      <li class="normal_page_item _prev"></li>
+      <li class="normal_page_item on">1</li>
+      <li class="normal_page_item">2</li>
+      <li class="normal_page_item">3</li>
+      <li class="normal_page_item">4</li>
+      <li class="normal_page_item">5</li>
+      <li class="normal_page_item _dot">...</li>
+      <li class="normal_page_item">100</li>
+      <li class="normal_page_item _next"></li>
+    </ul>
+  </div>
+</div>
+
+<!-- Clone -->
+<div class="alert _clone" *ngIf="cloneAlert.isShow">
+  <div class="alert_box">
+    <button class="icon_btn _close" (click)="alert_close('cloneAlert')"></button>
+    <div class="alert_title">Clone</div>
+    <div class="alert_info">
+      <ul class="alert_clone">
+        <li data-msg="UPN:">B91.04G10.0001</li>
+        <li data-msg="SPN:">B91.04G10.0001</li>
+        <li data-msg="Line:">S1</li>
+        <li data-msg="Type:">DIP</li>
+      </ul>
+      <div class="alert_clone_stage" data-msg="受影響的 Stage：">
+        <div class="alert_clone_item _show">
+          <div class="title">
+            <label class="normal_check">
+              <input type="checkbox" class="normal_check_inp" />
+              <span class="normal_check_span"></span>
+            </label>
+            TA
+          </div>
+          <ul class="alert_clone_detail" data-msg="Before">
+            <li data-msg="Cycle Time">100</li>
+            <li data-msg="Man Power">100</li>
+            <li>抽檢:20.2%</li>
+            <li>過版數: 100 pcs</li>
+            <li>Efficiency: 98 %</li>
+            <li>UPD：1234567890</li>
+          </ul>
+          <ul class="alert_clone_detail" data-msg="After">
+            <li data-msg="Cycle Time">200</li>
+            <li data-msg="Man Power">300</li>
+            <li>抽檢:20.2%</li>
+            <li>過版數: 100 pcs</li>
+            <li>Efficiency: 98 %</li>
+            <li>UPD：1234567890</li>
+          </ul>
+        </div>
+        <div class="alert_clone_item">
+          <div class="title">
+            <label class="normal_check">
+              <input type="checkbox" class="normal_check_inp" />
+              <span class="normal_check_span"></span>
+            </label>
+            TA
+          </div>
+          <ul class="alert_clone_detail" data-msg="Before">
+            <li data-msg="Cycle Time">100</li>
+            <li data-msg="Man Power">100</li>
+            <li>抽檢:20.2%</li>
+            <li>過版數: 100 pcs</li>
+            <li>Efficiency: 98 %</li>
+            <li>UPD：1234567890</li>
+          </ul>
+          <ul class="alert_clone_detail" data-msg="After">
+            <li data-msg="Cycle Time">200</li>
+            <li data-msg="Man Power">300</li>
+            <li>抽檢:20.2%</li>
+            <li>過版數: 100 pcs</li>
+            <li>Efficiency: 98 %</li>
+            <li>UPD：1234567890</li>
+          </ul>
+        </div>
+        <div class="alert_clone_item">
+          <div class="title">
+            <label class="normal_check">
+              <input type="checkbox" class="normal_check_inp" />
+              <span class="normal_check_span"></span>
+            </label>
+            TA
+          </div>
+          <ul class="alert_clone_detail" data-msg="Before">
+            <li data-msg="Cycle Time">100</li>
+            <li data-msg="Man Power">100</li>
+            <li>抽檢:20.2%</li>
+            <li>過版數: 100 pcs</li>
+            <li>Efficiency: 98 %</li>
+            <li>UPD：1234567890</li>
+          </ul>
+          <ul class="alert_clone_detail" data-msg="After">
+            <li data-msg="Cycle Time">200</li>
+            <li data-msg="Man Power">300</li>
+            <li>抽檢:20.2%</li>
+            <li>過版數: 100 pcs</li>
+            <li>Efficiency: 98 %</li>
+            <li>UPD：1234567890</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="alert_btnBox">
+      <button class="normal_btn _secondry" (click)="alert_close('cloneAlert')">取消</button>
+      <button class="normal_btn _primary">確定</button>
+    </div>
+  </div>
 </div>

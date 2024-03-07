@@ -1,10 +1,31 @@
-<div class="option_select" (click)="option_sel('permissions')" [class.on]="selectContent.on"
-    [class.show]="selectContent.show" [ngStyle]="{width:selectContent.width}">
-    <div class="title">{{selectContent.now}}</div>
-    <div class="txt">{{selectContent.txt}}</div>
-    <ul id="option_sel_ul" class="option_select_ul">
-        <li class="option_select_li" *ngFor="let item of selectContent.lists; index as i"
-            (click)="option_item(selectContent.title, i)">{{item.name}}
-        </li>
-    </ul>
+<div
+  [class]="[
+    'option_select',
+    selectContent.class !== '' ? selectContent.class : '',
+    selectContent.isOn ? 'on' : '',
+    selectContent.isShow ? 'show' : ''
+  ]"
+  [ngStyle]="{ 'min-width': selectContent.width }"
+  *ngIf="selectContent.type == 'sel'"
+  (click)="selHandler(selectContent.id)"
+>
+  <div class="title">{{ selectContent.title }}</div>
+  <div class="txt">{{ selectContent.txt }}</div>
+  <ul id="option_sel_ul" class="option_select_ul">
+    <li
+      class="option_select_li"
+      *ngFor="let item of selectContent.lists; index as i"
+      (click)="option_item(selectContent.id, i)"
+    >
+      {{ item.name }}
+    </li>
+  </ul>
 </div>
+
+<button
+  [class]="['option_btn', selectContent.isOn ? 'on' : '']"
+  *ngIf="selectContent.type == 'btn'"
+  (click)="option_item(selectContent.id,selectContent.name)"
+>
+  {{ selectContent.title }}
+</button>

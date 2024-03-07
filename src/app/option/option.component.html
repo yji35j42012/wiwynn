@@ -1,215 +1,205 @@
 <div class="container_title" data-tw="後台控制系統">Option</div>
 
 <div class="option_filter">
-	<app-option-select [selectContent]="permissions_sel" (selEvent)="option_page($event)"></app-option-select>
-	<app-option-select [selectContent]="epkset_sel" (selEvent)="option_page($event)"></app-option-select>
-	<app-option-select [selectContent]="maintain_sel" (selEvent)="option_page($event)"></app-option-select>
-	<button class="option_btn" [class.on]="pageBtn=='working'"
-		(click)="option_page({title:'working',page:'working'})">人力/工時註冊</button>
-	<button class="option_btn" [class.on]="pageBtn=='model'"
-		(click)="option_page({title:'model',page:'model'})">產品Model/良率/UPH註冊</button>
-	<app-option-select [selectContent]="kpi_sel" (selEvent)="option_page($event)"></app-option-select>
-	<button class="option_btn" [class.on]="pageBtn=='cycleTime'"
-		(click)="option_page({title:'cycletime',page:'cycletime'})">線別產品機台CycleTime</button>
+  <app-option-select
+    *ngFor="let item of option_sel"
+    [selectContent]="item"
+		(selshow)="selShowHandler($event)"
+		(selEvent)="option_page($event)"
+  ></app-option-select>
 </div>
 
 <router-outlet></router-outlet>
 
 <div class="maintain" style="display: none;">
-	<div class="maintain_head">
-		<button class="border_btn _add"><i></i>新増狀態</button>
-		<button class="border_btn _export"><i></i>匯出 Excel</button>
-		<button class="border_btn _inport"><i></i>匯入 Excel</button>
-		<button class="border_btn _refresh"><i></i>Refresh</button>
-	</div>
-	<div class="maintain_body">
-		<table class="normal_tb">
-			<tr>
-				<th>
-					<div class="normal_tb_box">
-						狀態代碼
-						<!-- 遞增加上 _asc 遞減加上 _desc-->
-						<button class="icon_btn _sort"></button>
-						<button class="icon_btn _filter"></button>
-						<div class="normal_tb_filterbox">
-							<label class="normal_search">
-								<input class="normal_search_inp" type="text" placeholder="搜尋">
-							</label>
-							<label class="normal_check">
-								<input type="checkbox" class="normal_check_inp">
-								<span class="normal_check_span"></span>
-								<span class="normal_check_bg"></span>
-								<span class="normal_check_txt">Select All</span>
-							</label>
-							<label class="normal_check">
-								<input type="checkbox" class="normal_check_inp">
-								<span class="normal_check_span"></span>
-								<span class="normal_check_bg"></span>
-								<span class="normal_check_txt">EQ_WAIT</span>
-							</label>
-							<label class="normal_check">
-								<input type="checkbox" class="normal_check_inp">
-								<span class="normal_check_span"></span>
-								<span class="normal_check_bg"></span>
-								<span class="normal_check_txt">PM</span>
-							</label>
-							<label class="normal_check">
-								<input type="checkbox" class="normal_check_inp">
-								<span class="normal_check_span"></span>
-								<span class="normal_check_bg"></span>
-								<span class="normal_check_txt">PD_RUN</span>
-							</label>
-							<label class="normal_check">
-								<input type="checkbox" class="normal_check_inp">
-								<span class="normal_check_span"></span>
-								<span class="normal_check_bg"></span>
-								<span class="normal_check_txt">ENG</span>
-							</label>
-							<label class="normal_check">
-								<input type="checkbox" class="normal_check_inp">
-								<span class="normal_check_span"></span>
-								<span class="normal_check_bg"></span>
-								<span class="normal_check_txt">OFF</span>
-							</label>
-						</div>
-					</div>
-				</th>
-				<th>
-					<div class="normal_tb_box">
-						狀態顏色
-						<button class="icon_btn _filter"></button>
-					</div>
-				</th>
-				<th>狀態說明</th>
-				<th>
-					<div class="normal_tb_box _jucc">
-						授權人員
-						<!-- 遞增加上 _asc 遞減加上 _desc-->
-						<button class="icon_btn _sort"></button>
-					</div>
-				</th>
-				<th>編輯刪除</th>
-			</tr>
-			<tr>
-				<td>EQ_WAIT</td>
-				<td>
-					<div class="state WAIT"></div>
-				</td>
-				<td>
-					機台設備異常當機，機台設備異常當機，機台設備異常當機，機台設備異常當機，機台設備異常當機，機台設備異常當機，
-				</td>
-				<td>10人</td>
-				<td>
-					<div class="normal_tb_box _jucc">
-						<button class="icon_btn _trash"></button>
-						<button class="icon_btn _edit"></button>
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<td>PM</td>
-				<td>
-					<div class="state PM"></div>
-				</td>
-				<td>
-					機台設備異常當機，機台設備異常當機，機台設備異常當機，機台設備異常當機，機台設備異常當機，機台設備異常當機，
-				</td>
-				<td>10人</td>
-				<td>
-					<div class="normal_tb_box _jucc">
-						<button class="icon_btn _trash"></button>
-						<button class="icon_btn _edit"></button>
-					</div>
-				</td>
-			</tr>
-		</table>
-	</div>
+  <div class="maintain_head">
+    <button class="border_btn _add"><i></i>新増狀態</button>
+    <button class="border_btn _export"><i></i>匯出 Excel</button>
+    <button class="border_btn _inport"><i></i>匯入 Excel</button>
+    <button class="border_btn _refresh"><i></i>Refresh</button>
+  </div>
+  <div class="maintain_body">
+    <table class="normal_tb">
+      <tr>
+        <th>
+          <div class="normal_tb_box">
+            狀態代碼
+            <!-- 遞增加上 _asc 遞減加上 _desc-->
+            <button class="icon_btn _sort"></button>
+            <button class="icon_btn _filter"></button>
+            <div class="normal_tb_filterbox">
+              <label class="normal_search">
+                <input
+                  class="normal_search_inp"
+                  type="text"
+                  placeholder="搜尋"
+                />
+              </label>
+              <label class="normal_check">
+                <input type="checkbox" class="normal_check_inp" />
+                <span class="normal_check_span"></span>
+                <span class="normal_check_bg"></span>
+                <span class="normal_check_txt">Select All</span>
+              </label>
+              <label class="normal_check">
+                <input type="checkbox" class="normal_check_inp" />
+                <span class="normal_check_span"></span>
+                <span class="normal_check_bg"></span>
+                <span class="normal_check_txt">EQ_WAIT</span>
+              </label>
+              <label class="normal_check">
+                <input type="checkbox" class="normal_check_inp" />
+                <span class="normal_check_span"></span>
+                <span class="normal_check_bg"></span>
+                <span class="normal_check_txt">PM</span>
+              </label>
+              <label class="normal_check">
+                <input type="checkbox" class="normal_check_inp" />
+                <span class="normal_check_span"></span>
+                <span class="normal_check_bg"></span>
+                <span class="normal_check_txt">PD_RUN</span>
+              </label>
+              <label class="normal_check">
+                <input type="checkbox" class="normal_check_inp" />
+                <span class="normal_check_span"></span>
+                <span class="normal_check_bg"></span>
+                <span class="normal_check_txt">ENG</span>
+              </label>
+              <label class="normal_check">
+                <input type="checkbox" class="normal_check_inp" />
+                <span class="normal_check_span"></span>
+                <span class="normal_check_bg"></span>
+                <span class="normal_check_txt">OFF</span>
+              </label>
+            </div>
+          </div>
+        </th>
+        <th>
+          <div class="normal_tb_box">
+            狀態顏色
+            <button class="icon_btn _filter"></button>
+          </div>
+        </th>
+        <th>狀態說明</th>
+        <th>
+          <div class="normal_tb_box _jucc">
+            授權人員
+            <!-- 遞增加上 _asc 遞減加上 _desc-->
+            <button class="icon_btn _sort"></button>
+          </div>
+        </th>
+        <th>編輯刪除</th>
+      </tr>
+      <tr>
+        <td>EQ_WAIT</td>
+        <td>
+          <div class="state WAIT"></div>
+        </td>
+        <td>
+          機台設備異常當機，機台設備異常當機，機台設備異常當機，機台設備異常當機，機台設備異常當機，機台設備異常當機，
+        </td>
+        <td>10人</td>
+        <td>
+          <div class="normal_tb_box _jucc">
+            <button class="icon_btn _trash"></button>
+            <button class="icon_btn _edit"></button>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>PM</td>
+        <td>
+          <div class="state PM"></div>
+        </td>
+        <td>
+          機台設備異常當機，機台設備異常當機，機台設備異常當機，機台設備異常當機，機台設備異常當機，機台設備異常當機，
+        </td>
+        <td>10人</td>
+        <td>
+          <div class="normal_tb_box _jucc">
+            <button class="icon_btn _trash"></button>
+            <button class="icon_btn _edit"></button>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
 </div>
-
-
-
-
-
-
-
-
 
 <!-- 編輯狀態 未完成，要調整ＳＥＬＥＣＴ-->
 <div class="alert _maintain" style="display: none;">
-	<div class="alert_box">
-		<button class="icon_btn _close" (click)="alert_close('msg')"></button>
-		<div class="alert_title">編輯狀態</div>
-		<div class="alert_info">
-			<div class="alert_info_box">
-				<div class="alert_info_inp" data-msg="狀態代碼">
-					<input type="text" placeholder="EQ_WAIT">
-				</div>
-			</div>
-			<div class="alert_info_box _hasMsg" data-msg="狀態顏色">
-				<label class="maintain_color">
-					<input type="radio" name="state_radio" id="">
-					<div class="state WAIT"></div>
-				</label>
-				<label class="maintain_color">
-					<input type="radio" name="state_radio" id="">
-					<div class="state PM"></div>
-				</label>
-				<label class="maintain_color">
-					<input type="radio" name="state_radio" id="">
-					<div class="state PD_RUN"></div>
-				</label>
-				<label class="maintain_color">
-					<input type="radio" name="state_radio" id="">
-					<div class="state ENG"></div>
-				</label>
-				<label class="maintain_color">
-					<input type="radio" name="state_radio" id="">
-					<div class="state OFF"></div>
-				</label>
-				<label class="maintain_color">
-					<input type="radio" name="state_radio" id="">
-					<div class="state PR_RUN"></div>
-				</label>
-				<label class="maintain_color">
-					<input type="radio" name="state_radio" id="">
-					<div class="state PINK"></div>
-				</label>
-				<label class="maintain_color">
-					<input type="radio" name="state_radio" id="">
-					<div class="state BLUE"></div>
-				</label>
-				<label class="maintain_color">
-					<input type="radio" name="state_radio" id="">
-					<div class="state GREEN"></div>
-				</label>
-				<label class="maintain_color">
-					<input type="radio" name="state_radio" id="">
-					<div class="state YELLOW"></div>
-				</label>
-				<label class="maintain_color">
-					<input type="radio" name="state_radio" id="">
-					<div class="state GRESS"></div>
-				</label>
-				<label class="maintain_color">
-					<input type="radio" name="state_radio" id="">
-					<div class="state ORANGE"></div>
-				</label>
-				<label class="maintain_color">
-					<input type="radio" name="state_radio" id="">
-					<div class="state GREYBLUE"></div>
-				</label>
-				<label class="maintain_color">
-					<input type="radio" name="state_radio" id="">
-					<div class="state GREY"></div>
-				</label>
-			</div>
-			<div class="alert_info_box _hasMsg" data-msg="狀態說明">
-
-			</div>
-		</div>
-		<div class="alert_btnBox">
-			<button class="normal_btn _secondry">取消</button>
-			<button class="normal_btn _primary">儲存變更</button>
-		</div>
-	</div>
+  <div class="alert_box">
+    <button class="icon_btn _close" (click)="alert_close('msg')"></button>
+    <div class="alert_title">編輯狀態</div>
+    <div class="alert_info">
+      <div class="alert_info_box">
+        <div class="alert_info_inp" data-msg="狀態代碼">
+          <input type="text" placeholder="EQ_WAIT" />
+        </div>
+      </div>
+      <div class="alert_info_box _hasMsg" data-msg="狀態顏色">
+        <label class="maintain_color">
+          <input type="radio" name="state_radio" id="" />
+          <div class="state WAIT"></div>
+        </label>
+        <label class="maintain_color">
+          <input type="radio" name="state_radio" id="" />
+          <div class="state PM"></div>
+        </label>
+        <label class="maintain_color">
+          <input type="radio" name="state_radio" id="" />
+          <div class="state PD_RUN"></div>
+        </label>
+        <label class="maintain_color">
+          <input type="radio" name="state_radio" id="" />
+          <div class="state ENG"></div>
+        </label>
+        <label class="maintain_color">
+          <input type="radio" name="state_radio" id="" />
+          <div class="state OFF"></div>
+        </label>
+        <label class="maintain_color">
+          <input type="radio" name="state_radio" id="" />
+          <div class="state PR_RUN"></div>
+        </label>
+        <label class="maintain_color">
+          <input type="radio" name="state_radio" id="" />
+          <div class="state PINK"></div>
+        </label>
+        <label class="maintain_color">
+          <input type="radio" name="state_radio" id="" />
+          <div class="state BLUE"></div>
+        </label>
+        <label class="maintain_color">
+          <input type="radio" name="state_radio" id="" />
+          <div class="state GREEN"></div>
+        </label>
+        <label class="maintain_color">
+          <input type="radio" name="state_radio" id="" />
+          <div class="state YELLOW"></div>
+        </label>
+        <label class="maintain_color">
+          <input type="radio" name="state_radio" id="" />
+          <div class="state GRESS"></div>
+        </label>
+        <label class="maintain_color">
+          <input type="radio" name="state_radio" id="" />
+          <div class="state ORANGE"></div>
+        </label>
+        <label class="maintain_color">
+          <input type="radio" name="state_radio" id="" />
+          <div class="state GREYBLUE"></div>
+        </label>
+        <label class="maintain_color">
+          <input type="radio" name="state_radio" id="" />
+          <div class="state GREY"></div>
+        </label>
+      </div>
+      <div class="alert_info_box _hasMsg" data-msg="狀態說明"></div>
+    </div>
+    <div class="alert_btnBox">
+      <button class="normal_btn _secondry">取消</button>
+      <button class="normal_btn _primary">儲存變更</button>
+    </div>
+  </div>
 </div>
