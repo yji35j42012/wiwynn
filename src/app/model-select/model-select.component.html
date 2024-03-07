@@ -1,7 +1,18 @@
-<div class="normal_sel">
-    <!-- 點擊在span class裡面加上on -->
-    <span class="normal_sel_title" [class.on]="selectShow" (click)="selHandler()">{{selectContent.title}}</span>
-    <ul class="normal_sel_group">
-        <li class="normal_sel_item" *ngFor="let item of selectContent.lists" (click)="machineSel(item)">{{item}}</li>
-    </ul>
+<div [class]="['normal_sel', selectContent.msg!==''? '_hasMsg':'']" [attr.data-msg]='selectContent.msg'>
+  <!-- 點擊在span class裡面加上on -->
+  <span
+    class="normal_sel_title"
+    [class.on]="selectContent.isShow"
+    (click)="selHandler()"
+    >{{ selectContent.title }}</span
+  >
+  <ul class="normal_sel_group">
+    <li
+      class="normal_sel_item"
+      *ngFor="let item of selectContent.lists"
+      (click)="machineSel(item)"
+    >
+      {{ item }}
+    </li>
+  </ul>
 </div>

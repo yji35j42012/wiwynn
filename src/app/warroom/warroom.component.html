@@ -25,7 +25,8 @@
 	</div>
 	<div class="warroom_info">
 		<div class="warroom_head">
-			<app-model-select [selectContent]="machineSelect"></app-model-select>
+			<app-model-select [selectContent]="machineSelect" (selShowEvent)="selShow($event)"
+			(selEvent)="selHandler($event)"></app-model-select>
 
 			<div class="warroom_head_btnBox">
 				<button class="normal_btn _primary _edit" (click)="editHandler()" *ngIf="!isEdit">編輯</button>
@@ -726,17 +727,20 @@
 		<div class="alert_title">新増生產線</div>
 		<div class="alert_info">
 			<div class="alert_info_selBox" data-msg="線別 / 別產品別">
-				<app-model-select class="selModle" [selectContent]="newLintSelect"></app-model-select>
+				<app-model-select class="selModle" [selectContent]="newLintSelect" (selShowEvent)="selShow($event)"
+				(selEvent)="selHandler($event)"></app-model-select>
 				<button class="icon_btn _add"></button>
 			</div>
 
 			<!-- 點上面的加新增以下模組 -->
 			<div class="alert_info_selBox" data-msg="線別 / 別產品別">
-				<app-model-select class="selModle" [selectContent]="newLintSelect1"></app-model-select>
+				<app-model-select class="selModle" [selectContent]="newLintSelect1" (selShowEvent)="selShow($event)"
+				(selEvent)="selHandler($event)"></app-model-select>
 				<button class="icon_btn _minus"></button>
 			</div>
 			<div class="alert_info_selBox" data-msg="線別 / 別產品別">
-				<app-model-select class="selModle" [selectContent]="newLintSelect2"></app-model-select>
+				<app-model-select class="selModle" [selectContent]="newLintSelect2" (selShowEvent)="selShow($event)"
+				(selEvent)="selHandler($event)"></app-model-select>
 				<button class="icon_btn _minus"></button>
 			</div>
 		</div>
