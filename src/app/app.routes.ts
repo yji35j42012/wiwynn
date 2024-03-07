@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { HomeDetailComponent } from './home-detail/home-detail.component';
@@ -14,6 +13,17 @@ import { OptionPagesetComponent } from './option-pageset/option-pageset.componen
 import { OptionRolesetComponent } from './option-roleset/option-roleset.component';
 import { OptionRolesetListComponent } from './option-roleset-list/option-roleset-list.component';
 import { OptionRolesetEditComponent } from './option-roleset-edit/option-roleset-edit.component';
+import { OptionMaintainComponent } from './option-maintain/option-maintain.component';
+import { OptionConditionComponent } from './option-condition/option-condition.component';
+import { OptionDeviceComponent } from './option-device/option-device.component';
+import { OptionLinefixComponent } from './option-linefix/option-linefix.component';
+import { OptionWorkingComponent } from './option-working/option-working.component';
+import { OptionModelComponent } from './option-model/option-model.component';
+import { OptionKpitargetComponent } from './option-kpitarget/option-kpitarget.component';
+import { OptionKpicreaetComponent } from './option-kpicreaet/option-kpicreaet.component';
+import { OptionCycletimeComponent } from './option-cycletime/option-cycletime.component';
+import { OptionRecipeComponent } from './option-recipe/option-recipe.component';
+import { OptionParameterComponent } from './option-parameter/option-parameter.component';
 
 export const routes: Routes = [
 	{ path: '', component: LoginComponent },
@@ -41,6 +51,17 @@ export const routes: Routes = [
 							{ path: ':id', component: OptionRolesetEditComponent },
 						]
 					},
+					{ path: 'maintain', component: OptionMaintainComponent },
+					{ path: 'condition', component: OptionConditionComponent },
+					{ path: 'device', component: OptionDeviceComponent },
+					{ path: 'linefix', component: OptionLinefixComponent },
+					{ path: 'working', component: OptionWorkingComponent },
+					{ path: 'model', component: OptionModelComponent },
+					{ path: 'kpitarget', component: OptionKpitargetComponent },
+					{ path: 'kpicreaet', component: OptionKpicreaetComponent },
+					{ path: 'cycletime', component: OptionCycletimeComponent },
+					{ path: 'recipe', component: OptionRecipeComponent },
+					{ path: 'parameter', component: OptionParameterComponent },
 				]
 			},
 		]

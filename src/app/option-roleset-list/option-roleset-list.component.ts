@@ -31,8 +31,8 @@ export class OptionRolesetListComponent {
 	delRole(e: Event) {
 		e.stopPropagation();
 		this.alertMsg.show = true
-		this.alertMsg.title = '刪除選單'
-		this.alertMsg.msg = '您確定要刪除此選單？'
+		this.alertMsg.title = '刪除角色'
+		this.alertMsg.msg = '您確定要刪除該角色？'
 		this.alertMsg.str = 'alertdel'
 
 	}

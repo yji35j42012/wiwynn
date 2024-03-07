@@ -6,7 +6,7 @@ import { AlertDelmsgComponent } from '../alert-delmsg/alert-delmsg.component';
 @Component({
 	selector: 'app-option-pageset',
 	standalone: true,
-	imports: [CommonModule, OptionCreatesecmenuComponent,AlertDelmsgComponent],
+	imports: [CommonModule, OptionCreatesecmenuComponent, AlertDelmsgComponent],
 	templateUrl: './option-pageset.component.html',
 	styleUrl: './option-pageset.component.scss'
 })
@@ -50,6 +50,9 @@ export class OptionPagesetComponent {
 	alert_del(e: Event) {
 		// 確認刪除事件
 	}
+	cancelEdit() {
+		this.isEdit = false
+	}
 	alert_close(s: string) {
 		switch (s) {
 			case 'addmenu':
@@ -58,9 +61,10 @@ export class OptionPagesetComponent {
 			case 'addsecmenu':
 				this.alertsecmenu = false
 				break;
-			case 'alertDel':
+			case 'msg':
 				this.alertMsg.show = false
 				break;
+		
 			default:
 				break;
 		}

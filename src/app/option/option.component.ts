@@ -72,46 +72,46 @@ export class OptionComponent {
 
 	option_page(obj: any) {
 		if (obj.page == 'permissions') {
-		  this.router.navigate(['/home/Option/']);
+			this.router.navigate(['/home/Option/']);
 		} else {
-		  this.router.navigate(['/home/Option/' + obj.page]);
+			this.router.navigate(['/home/Option/' + obj.page]);
 		}
-	
+
 		if (obj.title == 'epkset') {
-		  this.epkset_sel.on = true;
-		  this.permissions_sel.on = false;
-		  this.maintain_sel.on = false;
-		  this.kpi_sel.on = false;
-		  this.pageBtn = '';
+			this.epkset_sel.on = true;
+			this.permissions_sel.on = false;
+			this.maintain_sel.on = false;
+			this.kpi_sel.on = false;
+			this.pageBtn = '';
 		} else if (obj.title == 'permissions') {
-		  this.permissions_sel.on = true;
-		  this.maintain_sel.on = false;
-		  this.kpi_sel.on = false;
-		  this.epkset_sel.on = false;
-		  this.pageBtn = '';
+			this.permissions_sel.on = true;
+			this.maintain_sel.on = false;
+			this.kpi_sel.on = false;
+			this.epkset_sel.on = false;
+			this.pageBtn = '';
 		} else if (obj.title == 'maintain') {
-		  this.permissions_sel.on = false;
-		  this.maintain_sel.on = true;
-		  this.kpi_sel.on = false;
-		  this.epkset_sel.on = false;
-		  this.pageBtn = '';
+			this.permissions_sel.on = false;
+			this.maintain_sel.on = true;
+			this.kpi_sel.on = false;
+			this.epkset_sel.on = false;
+			this.pageBtn = '';
 		} else if (obj.title == 'kpi') {
-		  this.permissions_sel.on = false;
-		  this.maintain_sel.on = false;
-		  this.epkset_sel.on = false;
-		  this.kpi_sel.on = true;
-		  this.pageBtn = '';
+			this.permissions_sel.on = false;
+			this.maintain_sel.on = false;
+			this.epkset_sel.on = false;
+			this.kpi_sel.on = true;
+			this.pageBtn = '';
 		} else {
-		  this.permissions_sel.on = false;
-		  this.maintain_sel.on = false;
-		  this.kpi_sel.on = false;
-		  this.epkset_sel.on = false;
-		  this.pageBtn = obj.title;
+			this.permissions_sel.on = false;
+			this.maintain_sel.on = false;
+			this.kpi_sel.on = false;
+			this.epkset_sel.on = false;
+			this.pageBtn = obj.title;
 		}
 		// this.optionPage = s
-	  }
+	}
 
-	alert_close (s: string) {
+	alert_close(s: string) {
 
 	}
 }

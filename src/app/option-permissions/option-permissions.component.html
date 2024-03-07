@@ -143,7 +143,8 @@
 <div class="alert _option _permissionsEdit" *ngIf="editShow">
 	<div class="alert_box">
 		<button class="icon_btn _close" (click)="alert_close()"></button>
-		<div class="alert_title">Add Account</div>
+		<div class="alert_title" *ngIf="editData.isAdd">Add Account</div>
+		<div class="alert_title" *ngIf="!editData.isAdd">Edit Account</div>
 		<div class="alert_info">
 			<div class="alert_info_inp" data-msg="姓名">
 				<input type="text" [value]="editData.name">

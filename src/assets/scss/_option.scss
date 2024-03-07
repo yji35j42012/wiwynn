@@ -273,6 +273,19 @@
 			.border_btn+.border_btn {
 				margin-left: 20px;
 			}
+
+			._pageset &,
+			._roleset & {
+				justify-content: center;
+
+				.normal_btn {
+					height: 40px;
+				}
+
+				.normal_btn+.normal_btn {
+					margin-left: 220px;
+				}
+			}
 		}
 
 		// .option_body_filter
@@ -472,7 +485,8 @@
 			>*+* {
 				margin-left: 30px;
 			}
-			._parameter &{
+
+			._parameter & {
 				justify-content: center
 			}
 		}

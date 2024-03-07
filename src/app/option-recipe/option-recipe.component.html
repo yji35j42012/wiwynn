@@ -1,0 +1,62 @@
+<div class="option_content _recipe">
+    <div class="option_head _borderB">
+        <div class="normal_sel _hasMsg" data-msg="設備別">
+            <!-- 點擊在span class裡面加上on -->
+            <!-- <span class="normal_sel_title" [class.on]="selectShow" (click)="selHandler()">Dip</span>
+            <ul class="normal_sel_group">
+                <li class="normal_sel_item" *ngFor="let item of selectContent.lists"
+                    (click)="machineSel(item)">{{item}}</li>
+            </ul> -->
+        </div>
+        <div class="normal_sel _hasMsg" data-msg="Model">
+            <!-- 點擊在span class裡面加上on -->
+            <!-- <span class="normal_sel_title" [class.on]="selectShow" (click)="selHandler()">Dip</span>
+            <ul class="normal_sel_group">
+                <li class="normal_sel_item" *ngFor="let item of selectContent.lists"
+                    (click)="machineSel(item)">{{item}}</li>
+            </ul> -->
+        </div>
+        <button class="normal_btn _primary">Query</button>
+    </div>
+    <div class="option_body">
+        <div class="option_body_btnbox">
+            <button class="border_btn _add"><i></i>新増 欄位</button>
+        </div>
+        <div class="option_nodata" style="display: none;">目前尚無資料，請點選新増欄位按鈕添加項目</div>
+        <table class="normal_tb">
+            <tr>
+                <th>項目名稱</th>
+                <th>編輯刪除</th>
+            </tr>
+            <tr>
+                <td>前刮刀壓力</td>
+                <td>
+                    <div class="normal_tb_box _jucc">
+                        <button class="icon_btn _trash"></button>
+                        <button class="icon_btn _edit"></button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>後刮刀壓力</td>
+                <td>
+                    <div class="normal_tb_box _jucc">
+                        <button class="icon_btn _trash"></button>
+                        <button class="icon_btn _edit"></button>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <ul class="normal_page">
+            <li class="normal_page_item _prev"></li>
+            <li class="normal_page_item on">1</li>
+            <li class="normal_page_item">2</li>
+            <li class="normal_page_item">3</li>
+            <li class="normal_page_item">4</li>
+            <li class="normal_page_item">5</li>
+            <li class="normal_page_item _dot">...</li>
+            <li class="normal_page_item">100</li>
+            <li class="normal_page_item _next"></li>
+        </ul>
+    </div>
+</div>
