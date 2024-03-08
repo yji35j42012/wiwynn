@@ -45,13 +45,13 @@
 </div>
 
 <!-- 新増/編輯欄位 -->
-<div class="alert _option" *ngIf="editAlert.isShow">
+<div class="alert _option _recipe" *ngIf="editAlert.isShow">
 	<div class="alert_box">
 		<button class="icon_btn _close" (click)="alert_close('editAlert')"></button>
 		<div class="alert_title" *ngIf="editAlert.state == 'add'">新増欄位</div>
 		<div class="alert_title" *ngIf="editAlert.state == 'edit'">編輯欄位</div>
 		<div class="alert_info">
-			<div class="alert_info_inp" data-msg="職位">
+			<div class="normal_inp _hasMsg" data-msg="職位">
 				<input type="text" placeholder="Engineer" />
 			</div>
 		</div>

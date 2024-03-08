@@ -163,18 +163,18 @@
 </div>
 
 <!-- 新増選單 -->
-<div class="alert _option" *ngIf="alertmenu">
+<div class="alert _option _pageset" *ngIf="alertmenu">
     <div class="alert_box">
         <button class="icon_btn _close" (click)="alert_close('addmenu')"></button>
         <div class="alert_title">新増選單</div>
         <div class="alert_info">
-            <div class="alert_info_inp" data-msg="中文名稱">
+            <div class="normal_inp _hasMsg" data-msg="中文名稱">
                 <input type="text" placeholder="新選單名稱">
             </div>
-            <div class="alert_info_inp" data-msg="英文名稱">
+            <div class="normal_inp _hasMsg" data-msg="英文名稱">
                 <input type="text" placeholder="New Nav">
             </div>
-            <div class="alert_info_inp" data-msg="選單網址">
+            <div class="normal_inp _hasMsg" data-msg="選單網址">
                 <input type="text" placeholder="/home/material">
             </div>
             <div class="alert_info_box">
@@ -202,21 +202,21 @@
     </div>
 </div>
 <!-- 新増第二層選單 -->
-<div class="alert _option" *ngIf="alertsecmenu">
+<div class="alert _option _pageset" *ngIf="alertsecmenu">
     <div class="alert_box">
         <button class="icon_btn _close" (click)="alert_close('addsecmenu')"></button>
         <div class="alert_title">新増第二層選單</div>
         <div class="alert_info">
-            <div class="alert_info_inp" data-msg="上層選單">
+            <div class="normal_inp _hasMsg" data-msg="上層選單">
                 <input type="text" value="權限設定" disabled>
             </div>
-            <div class="alert_info_inp" data-msg="中文名稱">
+            <div class="normal_inp _hasMsg" data-msg="中文名稱">
                 <input type="text" placeholder="新第二層選單名稱">
             </div>
-            <div class="alert_info_inp" data-msg="英文名稱">
+            <div class="normal_inp _hasMsg" data-msg="英文名稱">
                 <input type="text" placeholder="New Sub Nav">
             </div>
-            <div class="alert_info_inp" data-msg="選單網址">
+            <div class="normal_inp _hasMsg" data-msg="選單網址">
                 <input type="text" placeholder="/home/material">
             </div>
         </div>

@@ -18,17 +18,57 @@ export class OptionPermissionsComponent {
 		mail: '',
 	}
 	department_sel = {
+    name: 'department_sel',
 		title: "MA100",
-		lists: ['MA100', 'MA101']
+		lists: ['MA100', 'MA101'],
+    msg: '部門',
+    isShow: false,
 	}
 	office_sel = {
+    name: 'office_sel',
 		title: "Engineer",
-		lists: ['Engineer1', 'Engineer2']
+		lists: ['Engineer1', 'Engineer2'],
+    msg: '職位',
+    isShow: false,
 	}
 	permissions_sel = {
+    name: 'permissions_sel',
 		title: "Admin",
-		lists: ['user1', 'user2']
+		lists: ['user1', 'user2'],
+    isShow: false,
+    msg: '權限',
 	}
+
+  selShow(s: string) {
+    if (s == 'department_sel') {
+      this.department_sel.isShow = !this.department_sel.isShow;
+      this.office_sel.isShow = false;
+      this.permissions_sel.isShow = false;
+    } else if (s == 'office_sel') {
+      this.office_sel.isShow = !this.office_sel.isShow;
+      this.department_sel.isShow = false;
+      this.permissions_sel.isShow = false;
+    } else if (s == 'permissions_sel') {
+      this.permissions_sel.isShow = !this.permissions_sel.isShow;
+      this.department_sel.isShow = false;
+      this.office_sel.isShow = false;
+    }
+  }
+  selHandler(s: any) {
+    if (s.name == 'department_sel') {
+      this.department_sel.title = s.title;
+      this.department_sel.isShow = false;
+    } else if (s.name == 'office_sel') {
+      this.office_sel.title = s.title;
+      this.office_sel.isShow = false;
+    } else if (s.name == 'permissions_sel') {
+      this.permissions_sel.title = s.title;
+      this.permissions_sel.isShow = false;
+    }
+  }
+
+
+
 
 	permissions_edit(s: string) {
 		if (s == 'edit') {

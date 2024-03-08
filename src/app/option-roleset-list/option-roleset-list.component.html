@@ -24,12 +24,12 @@
 
 
 <!-- 新增角色 -->
-<div class="alert _option" *ngIf="alert_crateRole">
+<div class="alert _option _roleset" *ngIf="alert_crateRole">
     <div class="alert_box">
         <button class="icon_btn _close" (click)="alert_close('create')"></button>
         <div class="alert_title">新増角色</div>
         <div class="alert_info">
-            <div class="alert_info_inp" data-msg="職位">
+            <div class="normal_inp _hasMsg" data-msg="職位">
                 <input type="text" placeholder="Engineer">
             </div>
             <div class="alert_btnBox">

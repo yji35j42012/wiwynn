@@ -146,24 +146,22 @@
 		<div class="alert_title" *ngIf="editData.isAdd">Add Account</div>
 		<div class="alert_title" *ngIf="!editData.isAdd">Edit Account</div>
 		<div class="alert_info">
-			<div class="alert_info_inp" data-msg="姓名">
+			<div class="normal_inp _hasMsg" data-msg="姓名">
 				<input type="text" [value]="editData.name">
 			</div>
-			<div class="alert_info_inp" data-msg="工號">
+			<div class="normal_inp _hasMsg" data-msg="工號">
 				<input type="text" [value]="editData.num">
 			</div>
-			<div class="alert_info_inp" data-msg="email">
+			<div class="normal_inp _hasMsg" data-msg="email">
 				<input type="text" [value]="editData.mail">
 			</div>
-			<div class="alert_info_selBox" data-msg="部門">
-				<app-model-select [selectContent]="department_sel"></app-model-select>
-			</div>
-			<div class="alert_info_selBox" data-msg="職位">
-				<app-model-select [selectContent]="office_sel"></app-model-select>
-			</div>
-			<div class="alert_info_selBox" data-msg="權限">
-				<app-model-select [selectContent]="permissions_sel"></app-model-select>
-			</div>
+			<app-model-select [selectContent]="department_sel" (selShowEvent)="selShow($event)"
+			(selEvent)="selHandler($event)"></app-model-select>
+			<app-model-select [selectContent]="office_sel" (selShowEvent)="selShow($event)"
+			(selEvent)="selHandler($event)"></app-model-select>
+			<app-model-select [selectContent]="permissions_sel" (selShowEvent)="selShow($event)"
+			(selEvent)="selHandler($event)"></app-model-select>
+
 			<label class="normal_switch _leftMsg" data-msg="啟用">
 				<input type="checkbox">
 				<span class="normal_switch_ball"></span>

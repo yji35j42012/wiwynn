@@ -1,11 +1,11 @@
 <div class="alert_info_mult" *ngFor="let item of menuContent" >
-    <div class="alert_info_inp" data-msg="中文名稱">
+    <div class="normal_inp _hasMsg" data-msg="中文名稱">
         <input type="text" placeholder="新選單名稱" [value]="item.chinese">
     </div>
-    <div class="alert_info_inp" data-msg="英文名稱">
+    <div class="normal_inp _hasMsg" data-msg="英文名稱">
         <input type="text" placeholder="New Nav" [value]="item.english">
     </div>
-    <div class="alert_info_inp" data-msg="選單網址">
+    <div class="normal_inp _hasMsg" data-msg="選單網址">
         <input type="text" placeholder="/home/material" [value]="item.menuweb">
     </div>
 </div>

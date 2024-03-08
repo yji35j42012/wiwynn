@@ -54,6 +54,7 @@ export class OptionPagesetComponent {
 		this.isEdit = false
 	}
 	alert_close(s: string) {
+		console.log('s',s)
 		switch (s) {
 			case 'addmenu':
 				this.alertmenu = false
@@ -61,7 +62,7 @@ export class OptionPagesetComponent {
 			case 'addsecmenu':
 				this.alertsecmenu = false
 				break;
-			case 'msg':
+			case 'delmsg':
 				this.alertMsg.show = false
 				break;
 		
