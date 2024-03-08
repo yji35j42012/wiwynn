@@ -1087,6 +1087,14 @@ h2 {
 		.normal_check_span {
 			margin-right: 10px;
 		}
+
+		.state {
+			position: relative;
+		}
+
+		.normal_check_bg {
+			border-radius: 0;
+		}
 	}
 }
 
@@ -2363,6 +2371,7 @@ h2 {
 	// .normal_check_txt
 	&_txt {
 		position: relative;
+		white-space: nowrap;
 	}
 
 

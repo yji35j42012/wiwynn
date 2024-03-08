@@ -10,6 +10,19 @@ import { ModelSelectComponent } from '../model-select/model-select.component';
 	styleUrl: './option-maintain.component.scss'
 })
 export class OptionMaintainComponent {
+	// 狀態代碼過濾
+	filter_maintain = {
+		isShow: false,
+	}
+	filterMatintain() {
+		this.filter_maintain.isShow = !this.filter_maintain.isShow
+	}
+	filter_color = {
+		isShow: false,
+	}
+	filterColor() {
+		this.filter_color.isShow = !this.filter_color.isShow
+	}
 	type_selete = {
 		name: 'type_selete',
 		title: "Loss",
@@ -83,6 +96,9 @@ export class OptionMaintainComponent {
 	}
 	multsearchHandler() {
 		this.multsearch.isShow = !this.multsearch.isShow
+	}
+	inpHandler(e:Event){
+		e.stopPropagation();
 	}
 	delHandler() {
 		this.delAlert.isShow = true

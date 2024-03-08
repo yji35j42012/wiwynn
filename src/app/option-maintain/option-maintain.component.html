@@ -13,8 +13,8 @@
                         狀態代碼
                         <!-- 遞增加上 _asc 遞減加上 _desc-->
                         <button class="icon_btn _sort"></button>
-                        <button class="icon_btn _filter"></button>
-                        <div class="normal_tb_filterbox" style="display: none;">
+                        <button class="icon_btn _filter" (click)="filterMatintain()"></button>
+                        <div class="normal_tb_filterbox" *ngIf="filter_maintain.isShow">
                             <label class="normal_search">
                                 <input class="normal_search_inp" type="text" placeholder="搜尋">
                             </label>
@@ -60,7 +60,51 @@
                 <th>
                     <div class="normal_tb_box">
                         狀態顏色
-                        <button class="icon_btn _filter"></button>
+                        <button class="icon_btn _filter" (click)="filterColor()"></button>
+                        <div class="normal_tb_filterbox" *ngIf="filter_color.isShow">
+                            <label class="normal_check">
+                                <input type="checkbox" class="normal_check_inp">
+                                <span class="normal_check_span"></span>
+                                <span class="normal_check_bg"></span>
+                                <span class="normal_check_txt">Select All</span>
+                            </label>
+                            <label class="normal_check">
+                                <input type="checkbox" class="normal_check_inp">
+                                <span class="normal_check_span"></span>
+                                <span class="normal_check_bg"></span>
+                                <div class="state WAIT"></div>
+                            </label>
+                            <label class="normal_check">
+                                <input type="checkbox" class="normal_check_inp">
+                                <span class="normal_check_span"></span>
+                                <span class="normal_check_bg"></span>
+                                <div class="state PM"></div>
+                            </label>
+                            <label class="normal_check">
+                                <input type="checkbox" class="normal_check_inp">
+                                <span class="normal_check_span"></span>
+                                <span class="normal_check_bg"></span>
+                                <div class="state PD_RUN"></div>
+                            </label>
+                            <label class="normal_check">
+                                <input type="checkbox" class="normal_check_inp">
+                                <span class="normal_check_span"></span>
+                                <span class="normal_check_bg"></span>
+                                <div class="state ENG"></div>
+                            </label>
+                            <label class="normal_check">
+                                <input type="checkbox" class="normal_check_inp">
+                                <span class="normal_check_span"></span>
+                                <span class="normal_check_bg"></span>
+                                <div class="state OFF"></div>
+                            </label>
+                            <label class="normal_check">
+                                <input type="checkbox" class="normal_check_inp">
+                                <span class="normal_check_span"></span>
+                                <span class="normal_check_bg"></span>
+                                <div class="state PR_RUN"></div>
+                            </label>
+                        </div>
                     </div>
                 </th>
                 <th>狀態說明</th>
@@ -196,19 +240,20 @@
                 <textarea class="alert_info_textarea"></textarea>
             </div>
             <!-- 打開class 加上on -->
-            <div [class]="['normal_multsearch' ,'_hasMsg', multsearch.isShow?'on':''] " data-msg="授權人員" (click)="multsearchHandler()">
+            <div [class]="['normal_multsearch' ,'_hasMsg', multsearch.isShow?'on':''] " data-msg="授權人員"
+                (click)="multsearchHandler()">
                 <div class="normal_multsearch_btnbox">
                     <button class="icon_btn _multclose"></button>
                     <button class="icon_btn _multarr"></button>
                 </div>
-                <div class="normal_multsearch_content" >
+                <div class="normal_multsearch_content">
                     <span class="normal_multsearch_item" *ngFor="let item of multsearch.showLists">
                         {{item.name}}
                         <button class="icon_btn _multclose" (click)="unChecked($event,item.id)"></button>
                     </span>
 
                 </div>
-                <div class="normal_search">
+                <div class="normal_search" (click)="inpHandler($event)">
                     <input class="normal_search_inp" type="text" placeholder="搜尋">
                 </div>
                 <div class="normal_multsearch_checkbox">
