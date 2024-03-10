@@ -1,1 +1,86 @@
-<p>option-cycletime works!</p>
+<div class="option_content _cycletime">
+	<div class="option_head">
+		<button class="border_btn _add" (click)="editHandler('add')"><i></i>新増欄位</button>
+	</div>
+	<div class="option_body">
+		<table class="normal_tb">
+			<tr>
+				<th>線別</th>
+				<th>產品</th>
+				<th>機台名</th>
+				<th>Cycle Time (s)</th>
+				<th>編輯刪除</th>
+			</tr>
+			<tr>
+				<td>S1</td>
+				<td>AMBROSE RISER</td>
+				<td>Printer</td>
+				<td>300</td>
+				<td>
+					<div class="normal_tb_box _jucc">
+						<button class="icon_btn _trash" (click)="delAlert()"></button>
+						<button class="icon_btn _edit" (click)="editHandler('edit')"></button>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>S1</td>
+				<td>AMBROSE RISER</td>
+				<td>Printer</td>
+				<td>300</td>
+				<td>
+					<div class="normal_tb_box _jucc">
+						<button class="icon_btn _trash" (click)="delAlert()"></button>
+						<button class="icon_btn _edit" (click)="editHandler('edit')"></button>
+					</div>
+				</td>
+			</tr>
+		</table>
+		<ul class="normal_page">
+			<li class="normal_page_item _prev"></li>
+			<li class="normal_page_item on">1</li>
+			<li class="normal_page_item">2</li>
+			<li class="normal_page_item">3</li>
+			<li class="normal_page_item">4</li>
+			<li class="normal_page_item">5</li>
+			<li class="normal_page_item _dot">...</li>
+			<li class="normal_page_item">100</li>
+			<li class="normal_page_item _next"></li>
+		</ul>
+	</div>
+</div>
+
+
+<!-- 新増/編輯線別產品機台CycleTime -->
+<div class="alert _kpitarget" *ngIf="edit_alert.isShow">
+	<div class="alert_box">
+		<button class="icon_btn _close" (click)="alert_close('editAlert')"></button>
+		<div class="alert_title" *ngIf="edit_alert.state=='add'">新増線別產品機台CycleTime</div>
+		<div class="alert_title" *ngIf="edit_alert.state=='edit'">編輯線別產品機台CycleTime</div>
+		<div class="alert_info">
+
+			<div class="normal_inp _hasMsg" data-msg="線別">
+				<input type="text">
+			</div>
+			<div class="normal_inp _hasMsg" data-msg="產品">
+				<input type="text">
+			</div>
+			<div class="normal_inp _hasMsg" data-msg="機台名">
+				<input type="text">
+			</div>
+			<div class="normal_inp _hasMsg" data-msg="Cycle Time (s)">
+				<input type="text">
+			</div>
+		</div>
+		<div class="alert_btnBox">
+			<button class="normal_btn _secondry" (click)="alert_close('editAlert')">取消</button>
+			<button class="normal_btn _primary" *ngIf="edit_alert.state=='add'">新增</button>
+			<button class="normal_btn _primary" *ngIf="edit_alert.state=='edit'">儲存變更</button>
+		</div>
+	</div>
+</div>
+
+
+<!-- 刪除欄位 -->
+<app-alert-delmsg *ngIf="alertMsg.show" [alertMsg]="alertMsg" (closeEvent)="alert_close($event)"
+	(alertCheck)="alert_del($event)"></app-alert-delmsg>

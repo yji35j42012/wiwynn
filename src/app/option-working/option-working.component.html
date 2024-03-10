@@ -1,505 +1,484 @@
 <div class="option_content _working">
-  <div class="option_head _borderB">
-    <div class="normal_inp _hasMsg" data-msg="UPN(成品料號)">
-      <input type="text" />
-    </div>
-    <div class="normal_inp _hasMsg" data-msg="SPN(半成品料號)">
-      <input type="text" />
-    </div>
-    <app-model-select
-      [selectContent]="line_sel"
-      (selShowEvent)="selShow($event)"
-      (selEvent)="selHandler($event)"
-    ></app-model-select>
+	<div class="option_head _borderB">
+		<div class="normal_inp _hasMsg" data-msg="UPN(成品料號)">
+			<input type="text" />
+		</div>
+		<div class="normal_inp _hasMsg" data-msg="SPN(半成品料號)">
+			<input type="text" />
+		</div>
+		<app-model-select [selectContent]="line_sel" (selShowEvent)="selShow($event)"
+			(selEvent)="selHandler($event)"></app-model-select>
 
-    <div class="normal_inp _hasMsg" data-msg="PCBN">
-      <input type="text" />
-    </div>
-    <app-model-select
-      [selectContent]="type_sel"
-      (selShowEvent)="selShow($event)"
-      (selEvent)="selHandler($event)"
-    ></app-model-select>
-    <button class="normal_btn _primary" (click)="queryHandler()">Query</button>
-  </div>
-  <div class="option_clone" *ngIf="clone_box.isShow">
-    <div class="option_clone_title">Clone</div>
-    <div class="option_clone_info">
-      <div class="normal_inp _hasMsg" data-msg="UPN(成品料號)">
-        <input type="text" />
-      </div>
-      <div class="normal_inp _hasMsg" data-msg="SPN(半成品料號)">
-        <input type="text" />
-      </div>
+		<div class="normal_inp _hasMsg" data-msg="PCBN">
+			<input type="text" />
+		</div>
+		<app-model-select [selectContent]="type_sel" (selShowEvent)="selShow($event)"
+			(selEvent)="selHandler($event)"></app-model-select>
+		<button class="normal_btn _primary" (click)="queryHandler()">Query</button>
+	</div>
+	<div class="option_clone" *ngIf="clone_box.isShow">
+		<div class="option_clone_title">Clone</div>
+		<div class="option_clone_info">
+			<div class="normal_inp _hasMsg" data-msg="UPN(成品料號)">
+				<input type="text" />
+			</div>
+			<div class="normal_inp _hasMsg" data-msg="SPN(半成品料號)">
+				<input type="text" />
+			</div>
 
-      <app-model-select
-        [selectContent]="lineclone_sel"
-        (selShowEvent)="selShow($event)"
-        (selEvent)="selHandler($event)"
-      ></app-model-select>
+			<app-model-selcheck class="normal_selcheck _hasMsg" data-msg="Line" [selectContent]="lineclone_sel"
+				(selCheckShowEvent)="selCheckShow($event)" (selCheckEvent)="selCheckHandler($event)">
+			</app-model-selcheck>
 
-      <div class="normal_inp _hasMsg" data-msg="PCBN">
-        <input type="text" />
-      </div>
-      <app-model-select
-        [selectContent]="typeclone_sel"
-        (selShowEvent)="selShow($event)"
-        (selEvent)="selHandler($event)"
-      ></app-model-select>
-    </div>
-    <div class="option_clone_btnbox">
-      <button class="normal_btn _secondry" (click)="alert_close('clone')">
-        Cancel
-      </button>
-      <button class="normal_btn _primary" (click)="submitClone()">
-        Submit
-      </button>
-    </div>
-  </div>
-  <div class="working_detail" *ngIf="isShow">
-    <ul class="working_detail_group">
-      <li class="working_detail_item">UPN(成品料號)：B91.04G10.0002</li>
-      <li class="working_detail_item">SPN(半成品料號)：B55.04S1A.M001</li>
-      <li class="working_detail_item">Line：S1</li>
-      <li class="working_detail_item">PCBN：B55.04S1A.M001</li>
-      <li class="working_detail_item">Type：DIP</li>
-    </ul>
-    <ul class="working_detail_group">
-      <li class="working_detail_item">Model：B55.04S1A.M001</li>
-      <li class="working_detail_item">UPD：1234567890</li>
-      <li class="working_detail_item">UPH：1234567890</li>
-      <li class="working_detail_item">Bottle Neck：22</li>
-    </ul>
-  </div>
-  <div class="option_body" *ngIf="isShow">
-    <div class="option_body_btnbox">
-      <button class="border_btn _clone" (click)="cloneHandler()">
-        <i></i>Clone
-      </button>
-      <button class="border_btn _add" (click)="stageHandler()">
-        <i></i>新増 Stage
-      </button>
-    </div>
+			<div class="normal_inp _hasMsg" data-msg="PCBN">
+				<input type="text" />
+			</div>
+			<app-model-select [selectContent]="typeclone_sel" (selShowEvent)="selShow($event)"
+				(selEvent)="selHandler($event)"></app-model-select>
+		</div>
+		<div class="option_clone_btnbox">
+			<button class="normal_btn _secondry" (click)="alert_close('clone')">
+				Cancel
+			</button>
+			<button class="normal_btn _primary" (click)="submitClone()">
+				Submit
+			</button>
+		</div>
+	</div>
+	<div class="working_detail" *ngIf="isShow">
+		<ul class="working_detail_group">
+			<li class="working_detail_item">UPN(成品料號)：B91.04G10.0002</li>
+			<li class="working_detail_item">SPN(半成品料號)：B55.04S1A.M001</li>
+			<li class="working_detail_item">Line：S1</li>
+			<li class="working_detail_item">PCBN：B55.04S1A.M001</li>
+			<li class="working_detail_item">Type：DIP</li>
+		</ul>
+		<ul class="working_detail_group">
+			<li class="working_detail_item">Model：B55.04S1A.M001</li>
+			<li class="working_detail_item">UPD：1234567890</li>
+			<li class="working_detail_item">UPH：1234567890</li>
+			<li class="working_detail_item">Bottle Neck：22</li>
+		</ul>
+	</div>
+	<div class="option_body" *ngIf="isShow">
+		<div class="option_body_btnbox">
+			<button class="border_btn _clone" (click)="cloneHandler()">
+				<i></i>Clone
+			</button>
+			<button class="border_btn _add" (click)="stageHandler()">
+				<i></i>新増 Stage
+			</button>
+		</div>
 
-    <ul class="working_group">
-      <li class="working_item">
-        <div class="working_item_title" data-msg="Stage">AC</div>
-        <div class="working_item_info">
-          <div class="name" data-msg="設備名稱" data-count="146">
-            NPM-01NPM-01NPM-01NPM-01NPM-01NPM-01NPM-01
-          </div>
-          <div class="txt" data-msg="Cycle Time">100</div>
-          <div class="txt" data-msg="Man Power">100</div>
-        </div>
-        <div class="working_item_info">
-          <div class="left">
-            <div class="txt">
-              <span>抽檢:20.2%</span>
-              <span>過版數: 100 pcs</span>
-            </div>
-            <div class="txt">Efficiency：98 %</div>
-            <div class="txt">UPD：1234567890</div>
-          </div>
-          <div class="right">
-            <button class="icon_btn _trash" (click)="delHandler()"></button>
-            <button class="icon_btn _edit" (click)="editAlert()"></button>
-          </div>
-        </div>
-      </li>
-      <li class="working_item">
-        <div class="working_item_title" data-msg="Stage">AC</div>
-        <div class="working_item_info">
-          <div class="name" data-msg="設備名稱" data-count="146">
-            NPM-01NPM-01NPM-01NPM-01NPM-01NPM-01NPM-01
-          </div>
-          <div class="txt" data-msg="Cycle Time">100</div>
-          <div class="txt" data-msg="Man Power">100</div>
-        </div>
-        <div class="working_item_info">
-          <div class="left">
-            <div class="txt">
-              <span>抽檢:20.2%</span>
-              <span>過版數: 100 pcs</span>
-            </div>
-            <div class="txt">Efficiency：98 %</div>
-            <div class="txt">UPD：1234567890</div>
-          </div>
-          <div class="right">
-            <button class="icon_btn _trash" (click)="delHandler()"></button>
-            <button class="icon_btn _edit" (click)="editAlert()"></button>
-          </div>
-        </div>
-      </li>
-      <li class="working_item">
-        <div class="working_item_title" data-msg="Stage">AC</div>
-        <div class="working_item_info">
-          <div class="name" data-msg="設備名稱" data-count="146">
-            NPM-01NPM-01NPM-01NPM-01NPM-01NPM-01NPM-01
-          </div>
-          <div class="txt" data-msg="Cycle Time">100</div>
-          <div class="txt" data-msg="Man Power">100</div>
-        </div>
-        <div class="working_item_info">
-          <div class="left">
-            <div class="txt">
-              <span>抽檢:20.2%</span>
-              <span>過版數: 100 pcs</span>
-            </div>
-            <div class="txt">Efficiency：98 %</div>
-            <div class="txt">UPD：1234567890</div>
-          </div>
-          <div class="right">
-            <button class="icon_btn _trash" (click)="delHandler()"></button>
-            <button class="icon_btn _edit" (click)="editAlert()"></button>
-          </div>
-        </div>
-      </li>
-      <li class="working_item">
-        <div class="working_item_title" data-msg="Stage">AC</div>
-        <div class="working_item_info">
-          <div class="name" data-msg="設備名稱" data-count="146">
-            NPM-01NPM-01NPM-01NPM-01NPM-01NPM-01NPM-01
-          </div>
-          <div class="txt" data-msg="Cycle Time">100</div>
-          <div class="txt" data-msg="Man Power">100</div>
-        </div>
-        <div class="working_item_info">
-          <div class="left">
-            <div class="txt">
-              <span>抽檢:20.2%</span>
-              <span>過版數: 100 pcs</span>
-            </div>
-            <div class="txt">Efficiency：98 %</div>
-            <div class="txt">UPD：1234567890</div>
-          </div>
-          <div class="right">
-            <button class="icon_btn _trash" (click)="delHandler()"></button>
-            <button class="icon_btn _edit" (click)="editAlert()"></button>
-          </div>
-        </div>
-      </li>
-      <li class="working_item">
-        <div class="working_item_title" data-msg="Stage">AC</div>
-        <div class="working_item_info">
-          <div class="name" data-msg="設備名稱" data-count="146">
-            NPM-01NPM-01NPM-01NPM-01NPM-01NPM-01NPM-01
-          </div>
-          <div class="txt" data-msg="Cycle Time">100</div>
-          <div class="txt" data-msg="Man Power">100</div>
-        </div>
-        <div class="working_item_info">
-          <div class="left">
-            <div class="txt">
-              <span>抽檢:20.2%</span>
-              <span>過版數: 100 pcs</span>
-            </div>
-            <div class="txt">Efficiency：98 %</div>
-            <div class="txt">UPD：1234567890</div>
-          </div>
-          <div class="right">
-            <button class="icon_btn _trash" (click)="delHandler()"></button>
-            <button class="icon_btn _edit" (click)="editAlert()"></button>
-          </div>
-        </div>
-      </li>
-      <li class="working_item">
-        <div class="working_item_title" data-msg="Stage">AC</div>
-        <div class="working_item_info">
-          <div class="name" data-msg="設備名稱" data-count="146">
-            NPM-01NPM-01NPM-01NPM-01NPM-01NPM-01NPM-01
-          </div>
-          <div class="txt" data-msg="Cycle Time">100</div>
-          <div class="txt" data-msg="Man Power">100</div>
-        </div>
-        <div class="working_item_info">
-          <div class="left">
-            <div class="txt">
-              <span>抽檢:20.2%</span>
-              <span>過版數: 100 pcs</span>
-            </div>
-            <div class="txt">Efficiency：98 %</div>
-            <div class="txt">UPD：1234567890</div>
-          </div>
-          <div class="right">
-            <button class="icon_btn _trash" (click)="delHandler()"></button>
-            <button class="icon_btn _edit" (click)="editAlert()"></button>
-          </div>
-        </div>
-      </li>
-    </ul>
-    <ul class="normal_page">
-      <li class="normal_page_item _prev"></li>
-      <li class="normal_page_item on">1</li>
-      <li class="normal_page_item">2</li>
-      <li class="normal_page_item">3</li>
-      <li class="normal_page_item">4</li>
-      <li class="normal_page_item">5</li>
-      <li class="normal_page_item _dot">...</li>
-      <li class="normal_page_item">100</li>
-      <li class="normal_page_item _next"></li>
-    </ul>
-  </div>
+		<ul class="working_group">
+			<li class="working_item">
+				<div class="working_item_title" data-msg="Stage">AC</div>
+				<div class="working_item_info">
+					<div class="name" data-msg="設備名稱" data-count="146">
+						NPM-01NPM-01NPM-01NPM-01NPM-01NPM-01NPM-01
+					</div>
+					<div class="txt" data-msg="Cycle Time">100</div>
+					<div class="txt" data-msg="Man Power">100</div>
+				</div>
+				<div class="working_item_info">
+					<div class="left">
+						<div class="txt">
+							<span>抽檢:20.2%</span>
+							<span>過版數: 100 pcs</span>
+						</div>
+						<div class="txt">Efficiency：98 %</div>
+						<div class="txt">UPD：1234567890</div>
+					</div>
+					<div class="right">
+						<button class="icon_btn _trash" (click)="delHandler()"></button>
+						<button class="icon_btn _edit" (click)="editAlert()"></button>
+					</div>
+				</div>
+			</li>
+			<li class="working_item">
+				<div class="working_item_title" data-msg="Stage">AC</div>
+				<div class="working_item_info">
+					<div class="name" data-msg="設備名稱" data-count="146">
+						NPM-01NPM-01NPM-01NPM-01NPM-01NPM-01NPM-01
+					</div>
+					<div class="txt" data-msg="Cycle Time">100</div>
+					<div class="txt" data-msg="Man Power">100</div>
+				</div>
+				<div class="working_item_info">
+					<div class="left">
+						<div class="txt">
+							<span>抽檢:20.2%</span>
+							<span>過版數: 100 pcs</span>
+						</div>
+						<div class="txt">Efficiency：98 %</div>
+						<div class="txt">UPD：1234567890</div>
+					</div>
+					<div class="right">
+						<button class="icon_btn _trash" (click)="delHandler()"></button>
+						<button class="icon_btn _edit" (click)="editAlert()"></button>
+					</div>
+				</div>
+			</li>
+			<li class="working_item">
+				<div class="working_item_title" data-msg="Stage">AC</div>
+				<div class="working_item_info">
+					<div class="name" data-msg="設備名稱" data-count="146">
+						NPM-01NPM-01NPM-01NPM-01NPM-01NPM-01NPM-01
+					</div>
+					<div class="txt" data-msg="Cycle Time">100</div>
+					<div class="txt" data-msg="Man Power">100</div>
+				</div>
+				<div class="working_item_info">
+					<div class="left">
+						<div class="txt">
+							<span>抽檢:20.2%</span>
+							<span>過版數: 100 pcs</span>
+						</div>
+						<div class="txt">Efficiency：98 %</div>
+						<div class="txt">UPD：1234567890</div>
+					</div>
+					<div class="right">
+						<button class="icon_btn _trash" (click)="delHandler()"></button>
+						<button class="icon_btn _edit" (click)="editAlert()"></button>
+					</div>
+				</div>
+			</li>
+			<li class="working_item">
+				<div class="working_item_title" data-msg="Stage">AC</div>
+				<div class="working_item_info">
+					<div class="name" data-msg="設備名稱" data-count="146">
+						NPM-01NPM-01NPM-01NPM-01NPM-01NPM-01NPM-01
+					</div>
+					<div class="txt" data-msg="Cycle Time">100</div>
+					<div class="txt" data-msg="Man Power">100</div>
+				</div>
+				<div class="working_item_info">
+					<div class="left">
+						<div class="txt">
+							<span>抽檢:20.2%</span>
+							<span>過版數: 100 pcs</span>
+						</div>
+						<div class="txt">Efficiency：98 %</div>
+						<div class="txt">UPD：1234567890</div>
+					</div>
+					<div class="right">
+						<button class="icon_btn _trash" (click)="delHandler()"></button>
+						<button class="icon_btn _edit" (click)="editAlert()"></button>
+					</div>
+				</div>
+			</li>
+			<li class="working_item">
+				<div class="working_item_title" data-msg="Stage">AC</div>
+				<div class="working_item_info">
+					<div class="name" data-msg="設備名稱" data-count="146">
+						NPM-01NPM-01NPM-01NPM-01NPM-01NPM-01NPM-01
+					</div>
+					<div class="txt" data-msg="Cycle Time">100</div>
+					<div class="txt" data-msg="Man Power">100</div>
+				</div>
+				<div class="working_item_info">
+					<div class="left">
+						<div class="txt">
+							<span>抽檢:20.2%</span>
+							<span>過版數: 100 pcs</span>
+						</div>
+						<div class="txt">Efficiency：98 %</div>
+						<div class="txt">UPD：1234567890</div>
+					</div>
+					<div class="right">
+						<button class="icon_btn _trash" (click)="delHandler()"></button>
+						<button class="icon_btn _edit" (click)="editAlert()"></button>
+					</div>
+				</div>
+			</li>
+			<li class="working_item">
+				<div class="working_item_title" data-msg="Stage">AC</div>
+				<div class="working_item_info">
+					<div class="name" data-msg="設備名稱" data-count="146">
+						NPM-01NPM-01NPM-01NPM-01NPM-01NPM-01NPM-01
+					</div>
+					<div class="txt" data-msg="Cycle Time">100</div>
+					<div class="txt" data-msg="Man Power">100</div>
+				</div>
+				<div class="working_item_info">
+					<div class="left">
+						<div class="txt">
+							<span>抽檢:20.2%</span>
+							<span>過版數: 100 pcs</span>
+						</div>
+						<div class="txt">Efficiency：98 %</div>
+						<div class="txt">UPD：1234567890</div>
+					</div>
+					<div class="right">
+						<button class="icon_btn _trash" (click)="delHandler()"></button>
+						<button class="icon_btn _edit" (click)="editAlert()"></button>
+					</div>
+				</div>
+			</li>
+		</ul>
+		<ul class="normal_page">
+			<li class="normal_page_item _prev"></li>
+			<li class="normal_page_item on">1</li>
+			<li class="normal_page_item">2</li>
+			<li class="normal_page_item">3</li>
+			<li class="normal_page_item">4</li>
+			<li class="normal_page_item">5</li>
+			<li class="normal_page_item _dot">...</li>
+			<li class="normal_page_item">100</li>
+			<li class="normal_page_item _next"></li>
+		</ul>
+	</div>
 </div>
 
 <!-- 新増 Stage -->
 <div class="alert _working" *ngIf="stage.isShow">
-  <div class="alert_box">
-    <button class="icon_btn _close" (click)="alert_close('stage')"></button>
-    <div class="alert_title">新増 Stage</div>
-    <div class="alert_linefix">
-      <div class="alert_linefix_body">
-        <div class="alert_linefix_content _left">
-          <div class="func">
-            <label class="normal_radioCheckbox">
-              <input type="checkbox" checked />
-              <span></span>
-              Disable Stage
-            </label>
-            <div class="normal_search">
-              <input class="normal_search_inp" type="text" placeholder="搜尋" />
-            </div>
-          </div>
-          <div class="alert_linefix_info">
-            <ul class="alert_linefix_num">
-              <li>1</li>
-              <li>2</li>
-              <li>3</li>
-              <li>4</li>
-              <li>5</li>
-              <li>6</li>
-              <li>7</li>
-              <li>8</li>
-              <li>9</li>
-              <li>10</li>
-            </ul>
-            <ul class="alert_linefix_group">
-              <li class="alert_linefix_item">NPM-NS-0008</li>
-              <li class="alert_linefix_item">NPM-NS-0008</li>
-              <li class="alert_linefix_item">NPM-NS-0008</li>
-              <li class="alert_linefix_item">NPM-NS-0008</li>
-              <li class="alert_linefix_item">NPM-NS-0008</li>
-              <li class="alert_linefix_item">NPM-NS-0008</li>
-              <li class="alert_linefix_item">NPM-NS-0008</li>
-              <li class="alert_linefix_item">NPM-NS-0008</li>
-              <li class="alert_linefix_item">NPM-NS-0008</li>
-              <li class="alert_linefix_item">NPM-NS-0008</li>
-            </ul>
-          </div>
-        </div>
-        <div class="alert_linefix_content _right">
-          <div class="func">
-            <label class="normal_radioCheckbox">
-              <input type="checkbox" checked />
-              <span></span>
-              EnableStage
-            </label>
-          </div>
-          <div class="alert_linefix_info">
-            <ul class="alert_linefix_num">
-              <li>1</li>
-              <li>2</li>
-              <li>3</li>
-              <li>4</li>
-              <li>5</li>
-              <li>6</li>
-              <li>7</li>
-              <li>8</li>
-              <li>9</li>
-              <li>10</li>
-            </ul>
-            <ul class="alert_linefix_group">
-              <li class="alert_linefix_item">NPM-NS-0008</li>
-              <li class="alert_linefix_item">NPM-NS-0008</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="alert_btnBox">
-      <button class="normal_btn _secondry" (click)="alert_close('stage')">
-        取消
-      </button>
-      <button class="normal_btn _primary">新増</button>
-    </div>
-  </div>
+	<div class="alert_box">
+		<button class="icon_btn _close" (click)="alert_close('stage')"></button>
+		<div class="alert_title">新増 Stage</div>
+		<div class="alert_linefix">
+			<div class="alert_linefix_body">
+				<div class="alert_linefix_content _left">
+					<div class="func">
+						<label class="normal_radioCheckbox">
+							<input type="checkbox" checked />
+							<span></span>
+							Disable Stage
+						</label>
+						<div class="normal_search">
+							<input class="normal_search_inp" type="text" placeholder="搜尋" />
+						</div>
+					</div>
+					<div class="alert_linefix_info">
+						<ul class="alert_linefix_num">
+							<li>1</li>
+							<li>2</li>
+							<li>3</li>
+							<li>4</li>
+							<li>5</li>
+							<li>6</li>
+							<li>7</li>
+							<li>8</li>
+							<li>9</li>
+							<li>10</li>
+						</ul>
+						<ul class="alert_linefix_group">
+							<li class="alert_linefix_item">NPM-NS-0008</li>
+							<li class="alert_linefix_item">NPM-NS-0008</li>
+							<li class="alert_linefix_item">NPM-NS-0008</li>
+							<li class="alert_linefix_item">NPM-NS-0008</li>
+							<li class="alert_linefix_item">NPM-NS-0008</li>
+							<li class="alert_linefix_item">NPM-NS-0008</li>
+							<li class="alert_linefix_item">NPM-NS-0008</li>
+							<li class="alert_linefix_item">NPM-NS-0008</li>
+							<li class="alert_linefix_item">NPM-NS-0008</li>
+							<li class="alert_linefix_item">NPM-NS-0008</li>
+						</ul>
+					</div>
+				</div>
+				<div class="alert_linefix_content _right">
+					<div class="func">
+						<label class="normal_radioCheckbox">
+							<input type="checkbox" checked />
+							<span></span>
+							EnableStage
+						</label>
+					</div>
+					<div class="alert_linefix_info">
+						<ul class="alert_linefix_num">
+							<li>1</li>
+							<li>2</li>
+							<li>3</li>
+							<li>4</li>
+							<li>5</li>
+							<li>6</li>
+							<li>7</li>
+							<li>8</li>
+							<li>9</li>
+							<li>10</li>
+						</ul>
+						<ul class="alert_linefix_group">
+							<li class="alert_linefix_item">NPM-NS-0008</li>
+							<li class="alert_linefix_item">NPM-NS-0008</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="alert_btnBox">
+			<button class="normal_btn _secondry" (click)="alert_close('stage')">
+				取消
+			</button>
+			<button class="normal_btn _primary">新増</button>
+		</div>
+	</div>
 </div>
 
 <!-- 刪除 Stage -->
-<app-alert-delmsg
-  *ngIf="alertMsg.show"
-  [alertMsg]="alertMsg"
-  (closeEvent)="alert_close($event)"
-  (alertCheck)="alert_del($event)"
-></app-alert-delmsg>
+<app-alert-delmsg *ngIf="alertMsg.show" [alertMsg]="alertMsg" (closeEvent)="alert_close($event)"
+	(alertCheck)="alert_del($event)"></app-alert-delmsg>
 
 <!-- 人力/工時註冊編輯 -->
 <div class="alert _workingEdit" *ngIf="editStage.isShow">
-  <div class="alert_box">
-    <button class="icon_btn _close" (click)="alert_close('editStage')"></button>
-    <div class="alert_title">Stage: AC</div>
-    <div class="alert_info">
-      <div class="working_edit _total" data-msg="總數：">
-        <ul class="working_edit_group">
-          <li class="working_edit_item _name" data-msg="設備名稱">NPM-01</li>
-          <li class="working_edit_item" data-msg="Cycle Time">
-            <div class="normal_inp">
-              <input type="text" />
-            </div>
-          </li>
-          <li class="working_edit_item" data-msg="Man Power">
-            <div class="normal_inp">
-              <input type="text" />
-            </div>
-          </li>
-        </ul>
-        <ul class="working_edit_group">
-          <li class="working_edit_item" data-msg="抽檢(%)">
-            <div class="normal_inp">
-              <input type="text" />
-            </div>
-          </li>
-          <li class="working_edit_item" data-msg="過版數(pcs)">
-            <div class="normal_inp">
-              <input type="text" />
-            </div>
-          </li>
-          <li class="working_edit_item" data-msg="Efficiency(%)">
-            <div class="normal_inp">
-              <input type="text" />
-            </div>
-          </li>
-        </ul>
-      </div>
-      <div class="working_edit _all" data-msg="全部設備：">
-        <ul class="working_edit_group">
-          <li class="working_edit_item _name" data-msg="設備名稱">NPM-01</li>
-          <li class="working_edit_item" data-msg="Cycle Time">
-            <div class="normal_inp">
-              <input type="text" />
-            </div>
-          </li>
-          <li class="working_edit_item" data-msg="Man Power">
-            <div class="normal_inp">
-              <input type="text" />
-            </div>
-          </li>
-        </ul>
-        <ul class="working_edit_group">
-          <li class="working_edit_item _name" data-msg="設備名稱">NPM-01</li>
-          <li class="working_edit_item" data-msg="Cycle Time">
-            <div class="normal_inp">
-              <input type="text" />
-            </div>
-          </li>
-          <li class="working_edit_item" data-msg="Man Power">
-            <div class="normal_inp">
-              <input type="text" />
-            </div>
-          </li>
-        </ul>
-        <ul class="working_edit_group">
-          <li class="working_edit_item _name" data-msg="設備名稱">NPM-01</li>
-          <li class="working_edit_item" data-msg="Cycle Time">
-            <div class="normal_inp">
-              <input type="text" />
-            </div>
-          </li>
-          <li class="working_edit_item" data-msg="Man Power">
-            <div class="normal_inp">
-              <input type="text" />
-            </div>
-          </li>
-        </ul>
-        <ul class="working_edit_group">
-          <li class="working_edit_item _name" data-msg="設備名稱">NPM-01</li>
-          <li class="working_edit_item" data-msg="Cycle Time">
-            <div class="normal_inp">
-              <input type="text" />
-            </div>
-          </li>
-          <li class="working_edit_item" data-msg="Man Power">
-            <div class="normal_inp">
-              <input type="text" />
-            </div>
-          </li>
-        </ul>
-        <ul class="working_edit_group">
-          <li class="working_edit_item _name" data-msg="設備名稱">NPM-01</li>
-          <li class="working_edit_item" data-msg="Cycle Time">
-            <div class="normal_inp">
-              <input type="text" />
-            </div>
-          </li>
-          <li class="working_edit_item" data-msg="Man Power">
-            <div class="normal_inp">
-              <input type="text" />
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div class="alert_btnBox">
-      <button class="normal_btn _secondry" (click)="alert_close('editStage')">
-        取消
-      </button>
-      <button class="normal_btn _primary">儲存變更</button>
-    </div>
-  </div>
+	<div class="alert_box">
+		<button class="icon_btn _close" (click)="alert_close('editStage')"></button>
+		<div class="alert_title">Stage: AC</div>
+		<div class="alert_info">
+			<div class="working_edit _total" data-msg="總數：">
+				<ul class="working_edit_group">
+					<li class="working_edit_item _name" data-msg="設備名稱">NPM-01</li>
+					<li class="working_edit_item" data-msg="Cycle Time">
+						<div class="normal_inp">
+							<input type="text" />
+						</div>
+					</li>
+					<li class="working_edit_item" data-msg="Man Power">
+						<div class="normal_inp">
+							<input type="text" />
+						</div>
+					</li>
+				</ul>
+				<ul class="working_edit_group">
+					<li class="working_edit_item" data-msg="抽檢(%)">
+						<div class="normal_inp">
+							<input type="text" />
+						</div>
+					</li>
+					<li class="working_edit_item" data-msg="過版數(pcs)">
+						<div class="normal_inp">
+							<input type="text" />
+						</div>
+					</li>
+					<li class="working_edit_item" data-msg="Efficiency(%)">
+						<div class="normal_inp">
+							<input type="text" />
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="working_edit _all" data-msg="全部設備：">
+				<ul class="working_edit_group">
+					<li class="working_edit_item _name" data-msg="設備名稱">NPM-01</li>
+					<li class="working_edit_item" data-msg="Cycle Time">
+						<div class="normal_inp">
+							<input type="text" />
+						</div>
+					</li>
+					<li class="working_edit_item" data-msg="Man Power">
+						<div class="normal_inp">
+							<input type="text" />
+						</div>
+					</li>
+				</ul>
+				<ul class="working_edit_group">
+					<li class="working_edit_item _name" data-msg="設備名稱">NPM-01</li>
+					<li class="working_edit_item" data-msg="Cycle Time">
+						<div class="normal_inp">
+							<input type="text" />
+						</div>
+					</li>
+					<li class="working_edit_item" data-msg="Man Power">
+						<div class="normal_inp">
+							<input type="text" />
+						</div>
+					</li>
+				</ul>
+				<ul class="working_edit_group">
+					<li class="working_edit_item _name" data-msg="設備名稱">NPM-01</li>
+					<li class="working_edit_item" data-msg="Cycle Time">
+						<div class="normal_inp">
+							<input type="text" />
+						</div>
+					</li>
+					<li class="working_edit_item" data-msg="Man Power">
+						<div class="normal_inp">
+							<input type="text" />
+						</div>
+					</li>
+				</ul>
+				<ul class="working_edit_group">
+					<li class="working_edit_item _name" data-msg="設備名稱">NPM-01</li>
+					<li class="working_edit_item" data-msg="Cycle Time">
+						<div class="normal_inp">
+							<input type="text" />
+						</div>
+					</li>
+					<li class="working_edit_item" data-msg="Man Power">
+						<div class="normal_inp">
+							<input type="text" />
+						</div>
+					</li>
+				</ul>
+				<ul class="working_edit_group">
+					<li class="working_edit_item _name" data-msg="設備名稱">NPM-01</li>
+					<li class="working_edit_item" data-msg="Cycle Time">
+						<div class="normal_inp">
+							<input type="text" />
+						</div>
+					</li>
+					<li class="working_edit_item" data-msg="Man Power">
+						<div class="normal_inp">
+							<input type="text" />
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="alert_btnBox">
+			<button class="normal_btn _secondry" (click)="alert_close('editStage')">
+				取消
+			</button>
+			<button class="normal_btn _primary">儲存變更</button>
+		</div>
+	</div>
 </div>
 
 <!-- CloneAlert -->
 <div class="alert _clone" *ngIf="clone_alert.isShow">
-  <div class="alert_box">
-    <button
-      class="icon_btn _close"
-      (click)="alert_close('cloneAlert')"
-    ></button>
-    <div class="alert_title">Clone</div>
-    <div class="alert_info">
-      <ul class="alert_clone">
-        <li data-msg="UPN:">B91.04G10.0001</li>
-        <li data-msg="SPN:">B91.04G10.0001</li>
-        <li data-msg="Line:">S1</li>
-        <li data-msg="Type:">DIP</li>
-      </ul>
-      <div class="alert_clone_stage" data-msg="受影響的 Stage：">
-        <!-- 展開在class加上  _show-->
-        <div
-          [class]="['alert_clone_item', item.isShow ? '_show' : '']"
-          *ngFor="let item of clone_alert.lists"
-          (click)="cloneItem(item.id)"
-        >
-          <div class="title">
-            <label class="normal_check">
-              <input type="checkbox" class="normal_check_inp" [checked]="" />
-              <span class="normal_check_span"></span>
-            </label>
-            {{ item.title }}
-          </div>
-          <ul class="alert_clone_detail" data-msg="Before">
-            <li data-msg="Cycle Time">100</li>
-            <li data-msg="Man Power">100</li>
-            <li>抽檢:20.2%</li>
-            <li>過版數: 100 pcs</li>
-            <li>Efficiency: 98 %</li>
-            <li>UPD：1234567890</li>
-          </ul>
-          <ul class="alert_clone_detail" data-msg="After">
-            <li data-msg="Cycle Time">200</li>
-            <li data-msg="Man Power">300</li>
-            <li>抽檢:20.2%</li>
-            <li>過版數: 100 pcs</li>
-            <li>Efficiency: 98 %</li>
-            <li>UPD：1234567890</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="alert_btnBox">
-      <button class="normal_btn _secondry" (click)="alert_close('cloneAlert')">
-        取消
-      </button>
-      <button class="normal_btn _primary">確定</button>
-    </div>
-  </div>
+	<div class="alert_box">
+		<button class="icon_btn _close" (click)="alert_close('cloneAlert')"></button>
+		<div class="alert_title">Clone</div>
+		<div class="alert_info">
+			<ul class="alert_clone">
+				<li data-msg="UPN:">B91.04G10.0001</li>
+				<li data-msg="SPN:">B91.04G10.0001</li>
+				<li data-msg="Line:">S1</li>
+				<li data-msg="Type:">DIP</li>
+			</ul>
+			<div class="alert_clone_stage" data-msg="受影響的 Stage：">
+				<!-- 展開在class加上  _show-->
+				<div [class]="['alert_clone_item', item.isShow ? '_show' : '']" *ngFor="let item of clone_alert.lists"
+					(click)="cloneItem(item.id)">
+					<div class="title">
+						<label class="normal_check">
+							<input type="checkbox" class="normal_check_inp" [checked]="" />
+							<span class="normal_check_span"></span>
+						</label>
+						{{ item.title }}
+					</div>
+					<ul class="alert_clone_detail" data-msg="Before">
+						<li data-msg="Cycle Time">100</li>
+						<li data-msg="Man Power">100</li>
+						<li>抽檢:20.2%</li>
+						<li>過版數: 100 pcs</li>
+						<li>Efficiency: 98 %</li>
+						<li>UPD：1234567890</li>
+					</ul>
+					<ul class="alert_clone_detail" data-msg="After">
+						<li data-msg="Cycle Time">200</li>
+						<li data-msg="Man Power">300</li>
+						<li>抽檢:20.2%</li>
+						<li>過版數: 100 pcs</li>
+						<li>Efficiency: 98 %</li>
+						<li>UPD：1234567890</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="alert_btnBox">
+			<button class="normal_btn _secondry" (click)="alert_close('cloneAlert')">
+				取消
+			</button>
+			<button class="normal_btn _primary">確定</button>
+		</div>
+	</div>
 </div>

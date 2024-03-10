@@ -20,7 +20,7 @@ import { OptionLinefixComponent } from './option-linefix/option-linefix.componen
 import { OptionWorkingComponent } from './option-working/option-working.component';
 import { OptionModelComponent } from './option-model/option-model.component';
 import { OptionKpitargetComponent } from './option-kpitarget/option-kpitarget.component';
-import { OptionKpicreaetComponent } from './option-kpicreaet/option-kpicreaet.component';
+import { OptionKpicreateComponent } from './option-kpicreate/option-kpicreate.component';
 import { OptionCycletimeComponent } from './option-cycletime/option-cycletime.component';
 import { OptionRecipeComponent } from './option-recipe/option-recipe.component';
 import { OptionParameterComponent } from './option-parameter/option-parameter.component';
@@ -58,7 +58,7 @@ export const routes: Routes = [
 					{ path: 'working', component: OptionWorkingComponent },
 					{ path: 'model', component: OptionModelComponent },
 					{ path: 'kpitarget', component: OptionKpitargetComponent },
-					{ path: 'kpicreaet', component: OptionKpicreaetComponent },
+					{ path: 'kpicreate', component: OptionKpicreateComponent },
 					{ path: 'cycletime', component: OptionCycletimeComponent },
 					{ path: 'recipe', component: OptionRecipeComponent },
 					{ path: 'parameter', component: OptionParameterComponent },

@@ -1,24 +1,23 @@
 <div class="option_content _kpitarget">
     <div class="option_head ">
-        <button class="border_btn _add"><i></i>新増算法 Target</button>
+        <button class="border_btn _add" (click)="editAlert('add',-1)"><i></i>新増算法 Target</button>
     </div>
     <div class="option_body">
         <ul class="kpitarget_group">
-            <li class="kpitarget_item">
+            <li class="kpitarget_item" *ngFor="let item of kpitarget.data; index as i">
                 <div class="kpitarget_item_content">
-                    <div class="kpitarget_item_txt" data-msg="算法項目">FPYR</div>
-                    <div class="kpitarget_item_txt" data-msg="時間">2023/12月</div>
+                    <div class="kpitarget_item_txt" data-msg="算法項目">{{item.term}}</div>
+                    <div class="kpitarget_item_txt" data-msg="時間">{{item.date}}</div>
                     <div class="kpitarget_box">
-                        <!-- 0-25  25-50 50-75 75-100 -->
                         <!-- 
                             _quarter1：0-25   
                             _quarter2：26-50
                             _quarter3：50-75
                             _quarter4：75-100
                         -->
-                        <!-- 趴數*3.6  ex num=25  --rot=25*.36 -->
-                        <div class="normal_cicle _quarter4" data-num="26">
-                            <span class="normal_cicle_s1" style="--rot:280deg;"></span>
+                        <!-- 趴數*3.6  ex num=25  --rot=25*3.6 -->
+                        <div [class]="['normal_cicle', item.range]" [attr.data-num]='item.number'>
+                            <span class="normal_cicle_s1" [style]="'--rot:'+item.rotate"></span>
                             <span class="normal_cicle_fake"></span>
                         </div>
                         <div class="kpitarget_box_txt">Target</div>
@@ -26,116 +25,8 @@
                 </div>
 
                 <div class="kpitarget_item_btnbox">
-                    <button class="icon_btn _trash"></button>
-                    <button class="icon_btn _edit"></button>
-                </div>
-            </li>
-            <li class="kpitarget_item">
-                <div class="kpitarget_item_content">
-                    <div class="kpitarget_item_txt" data-msg="算法項目">FPYR</div>
-                    <div class="kpitarget_item_txt" data-msg="時間">2023/12月</div>
-                    <div class="kpitarget_box">
-                        <div class="normal_cicle _quarter4" data-num="26">
-                            <span class="normal_cicle_s1" style="--rot:360deg;"></span>
-                            <span class="normal_cicle_fake"></span>
-                        </div>
-                        <div class="kpitarget_box_txt">Target</div>
-                    </div>
-                </div>
-
-                <div class="kpitarget_item_btnbox">
-                    <button class="icon_btn _trash"></button>
-                    <button class="icon_btn _edit"></button>
-                </div>
-            </li>
-            <li class="kpitarget_item">
-                <div class="kpitarget_item_content">
-                    <div class="kpitarget_item_txt" data-msg="算法項目">FPYR</div>
-                    <div class="kpitarget_item_txt" data-msg="時間">2023/12月</div>
-                    <div class="kpitarget_box">
-                        <div class="normal_cicle _quarter4" data-num="26">
-                            <span class="normal_cicle_s1" style="--rot:360deg;"></span>
-                            <span class="normal_cicle_fake"></span>
-                        </div>
-                        <div class="kpitarget_box_txt">Target</div>
-                    </div>
-                </div>
-
-                <div class="kpitarget_item_btnbox">
-                    <button class="icon_btn _trash"></button>
-                    <button class="icon_btn _edit"></button>
-                </div>
-            </li>
-            <li class="kpitarget_item">
-                <div class="kpitarget_item_content">
-                    <div class="kpitarget_item_txt" data-msg="算法項目">FPYR</div>
-                    <div class="kpitarget_item_txt" data-msg="時間">2023/12月</div>
-                    <div class="kpitarget_box">
-                        <div class="normal_cicle _quarter4" data-num="26">
-                            <span class="normal_cicle_s1" style="--rot:360deg;"></span>
-                            <span class="normal_cicle_fake"></span>
-                        </div>
-                        <div class="kpitarget_box_txt">Target</div>
-                    </div>
-                </div>
-
-                <div class="kpitarget_item_btnbox">
-                    <button class="icon_btn _trash"></button>
-                    <button class="icon_btn _edit"></button>
-                </div>
-            </li>
-            <li class="kpitarget_item">
-                <div class="kpitarget_item_content">
-                    <div class="kpitarget_item_txt" data-msg="算法項目">FPYR</div>
-                    <div class="kpitarget_item_txt" data-msg="時間">2023/12月</div>
-                    <div class="kpitarget_box">
-                        <div class="normal_cicle _quarter4" data-num="26">
-                            <span class="normal_cicle_s1" style="--rot:360deg;"></span>
-                            <span class="normal_cicle_fake"></span>
-                        </div>
-                        <div class="kpitarget_box_txt">Target</div>
-                    </div>
-                </div>
-
-                <div class="kpitarget_item_btnbox">
-                    <button class="icon_btn _trash"></button>
-                    <button class="icon_btn _edit"></button>
-                </div>
-            </li>
-            <li class="kpitarget_item">
-                <div class="kpitarget_item_content">
-                    <div class="kpitarget_item_txt" data-msg="算法項目">FPYR</div>
-                    <div class="kpitarget_item_txt" data-msg="時間">2023/12月</div>
-                    <div class="kpitarget_box">
-                        <div class="normal_cicle _quarter4" data-num="26">
-                            <span class="normal_cicle_s1" style="--rot:360deg;"></span>
-                            <span class="normal_cicle_fake"></span>
-                        </div>
-                        <div class="kpitarget_box_txt">Target</div>
-                    </div>
-                </div>
-
-                <div class="kpitarget_item_btnbox">
-                    <button class="icon_btn _trash"></button>
-                    <button class="icon_btn _edit"></button>
-                </div>
-            </li>
-            <li class="kpitarget_item">
-                <div class="kpitarget_item_content">
-                    <div class="kpitarget_item_txt" data-msg="算法項目">FPYR</div>
-                    <div class="kpitarget_item_txt" data-msg="時間">2023/12月</div>
-                    <div class="kpitarget_box">
-                        <div class="normal_cicle _quarter4" data-num="26">
-                            <span class="normal_cicle_s1" style="--rot:360deg;"></span>
-                            <span class="normal_cicle_fake"></span>
-                        </div>
-                        <div class="kpitarget_box_txt">Target</div>
-                    </div>
-                </div>
-
-                <div class="kpitarget_item_btnbox">
-                    <button class="icon_btn _trash"></button>
-                    <button class="icon_btn _edit"></button>
+                    <button class="icon_btn _trash" (click)="delHandler()"></button>
+                    <button class="icon_btn _edit" (click)="editAlert('edit',i)"></button>
                 </div>
             </li>
         </ul>
@@ -151,4 +42,54 @@
             <li class="normal_page_item _next"></li>
         </ul>
     </div>
+</div>
+
+
+<!-- 新増/編輯算法 Target -->
+<div class="alert _kpitarget" *ngIf="edit_alert.isShow">
+    <div class="alert_box">
+        <button class="icon_btn _close" (click)="alert_close('editAlert')"></button>
+        <div class="alert_title" *ngIf="edit_alert.state=='add'">新増算法 Target</div>
+        <div class="alert_title" *ngIf="edit_alert.state=='edit'">編輯算法 Target</div>
+        <div class="alert_info">
+            <app-model-select [selectContent]="algorithm_sel" (selShowEvent)="selShow($event)"
+                (selEvent)="selHandler($event)"></app-model-select>
+            <div class="normal_inp _hasMsg" data-msg="Target">
+                <input type="text" value="99.5">
+            </div>
+            <div class="normal_inp _hasMsg" data-msg="時間" (click)="getDate()">
+                <input type="text" [value]="edit_alert.date_y+'/'+edit_alert.date_m" readonly>
+            </div>
+        </div>
+        <div class="alert_btnBox">
+            <button class="normal_btn _secondry" (click)="alert_close('editAlert')">取消</button>
+            <button class="normal_btn _primary" *ngIf="edit_alert.state=='add'">新增</button>
+            <button class="normal_btn _primary" *ngIf="edit_alert.state=='edit'">儲存變更</button>
+        </div>
+    </div>
+</div>
+
+<!-- 刪除 刪除KPI算法Target -->
+<app-alert-delmsg *ngIf="alertMsg.show" [alertMsg]="alertMsg" (closeEvent)="alert_close($event)"
+    (alertCheck)="alert_del($event)"></app-alert-delmsg>
+
+
+
+<div class="kpitarget_calendar" *ngIf="kpitarget_calendar.isShow">
+    <div class="kpitarget_calendar_head">
+        <div class="calendar_head_info">
+            <div class="month">{{edit_alert.date_m}}</div>
+            <div class="year">{{edit_alert.date_y}}</div>
+        </div>
+    </div>
+    <ul class="kpitarget_calendar_group" *ngIf="edit_alert.isYear">
+        <li [class]="['kpitarget_calendar_item',item.isOn ? '_on':'' ]" *ngFor="let item of kpitarget_calendar.year"
+            (click)="yearHanler(item.y)">
+            {{item.y}}</li>
+    </ul>
+    <ul class="kpitarget_calendar_group" *ngIf="!edit_alert.isYear">
+        <li [class]="['kpitarget_calendar_item',item==edit_alert.date_m ? '_on':'']"
+            *ngFor="let item of kpitarget_calendar.month" (click)="monthHanler(item)">
+            {{item}}</li>
+    </ul>
 </div>

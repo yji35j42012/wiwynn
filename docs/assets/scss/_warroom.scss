@@ -147,6 +147,7 @@
         position: relative;
         padding-right: 5px;
         @extend %transition;
+
         &+& {
             margin-top: 10px;
         }
@@ -161,6 +162,7 @@
         }
 
         @include hv {
+
             .warroom_machine_head::before,
             .warroom_machine_outside::before {
                 opacity: 1;
@@ -208,7 +210,7 @@
             }
 
             .on &::before {
-              opacity: 1;
+                opacity: 1;
 
             }
         }
@@ -378,8 +380,8 @@
 
             .on &::before {
                 opacity: 1;
-  
-              }
+
+            }
 
             ::-webkit-scrollbar {
                 width: 6px;
@@ -815,8 +817,6 @@
                     &.blue {
                         color: #0E9CFF;
                     }
-
-
                 }
 
                 li+li {
@@ -912,7 +912,6 @@
                     &.blue {
                         color: #0E9CFF;
                     }
-
 
                 }
 

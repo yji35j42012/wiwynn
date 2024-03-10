@@ -1,251 +1,210 @@
 <div class="option_content _parameter">
 	<div class="option_head _borderB">
-	  <app-model-select
-		[selectContent]="equipment_sel"
-		(selShowEvent)="selShow($event)"
-		(selEvent)="selHandler($event)"
-	  ></app-model-select>
-	  <app-model-select
-		[selectContent]="model_sel"
-		(selShowEvent)="selShow($event)"
-		(selEvent)="selHandler($event)"
-	  ></app-model-select>
-	  <button class="normal_btn _primary" (click)="queryHandler()">Query</button>
+		<app-model-select [selectContent]="equipment_sel" (selShowEvent)="selShow($event)"
+			(selEvent)="selHandler($event)"></app-model-select>
+		<app-model-select [selectContent]="model_sel" (selShowEvent)="selShow($event)"
+			(selEvent)="selHandler($event)"></app-model-select>
+		<button class="normal_btn _primary" (click)="queryHandler()">Query</button>
 	</div>
 	<div class="option_clone" *ngIf="clone.isShow">
-	  <div class="option_clone_title">Clone</div>
-	  <div class="option_clone_info">
-		<div class="normal_inp _hasMsg" data-msg="UPN(成品料號)">
-		  <input type="text" />
+		<div class="option_clone_title">Clone</div>
+		<div class="option_clone_info">
+			<div class="normal_inp _hasMsg" data-msg="UPN(成品料號)">
+				<input type="text" />
+			</div>
+			<div class="normal_inp _hasMsg" data-msg="SPN(半成品料號)">
+				<input type="text" />
+			</div>
+			<app-model-select [selectContent]="line_sel" (selShowEvent)="selShow($event)"
+				(selEvent)="selHandler($event)"></app-model-select>
+			<div class="normal_selcheck _hasMsg" data-msg="Line" style="display: none;">
+				<!-- 點擊在span class裡面加上on -->
+				<span class="normal_selcheck_title on">s1</span>
+				<div class="normal_selcheck_group">
+					<label class="normal_check">
+						<input type="checkbox" class="normal_check_inp" />
+						<span class="normal_check_span"></span>
+						<span class="normal_check_bg"></span>
+						<span class="normal_check_txt">s1</span>
+					</label>
+					<label class="normal_check">
+						<input type="checkbox" class="normal_check_inp" />
+						<span class="normal_check_span"></span>
+						<span class="normal_check_bg"></span>
+						<span class="normal_check_txt">s2</span>
+					</label>
+				</div>
+			</div>
 		</div>
-		<div class="normal_inp _hasMsg" data-msg="SPN(半成品料號)">
-		  <input type="text" />
+		<div class="option_clone_btnbox">
+			<button class="normal_btn _secondry" (click)="cancelClone()">
+				Cancel
+			</button>
+			<button class="normal_btn _primary" (click)="submitClone()">
+				Submit
+			</button>
 		</div>
-		<app-model-select
-		  [selectContent]="line_sel"
-		  (selShowEvent)="selShow($event)"
-		  (selEvent)="selHandler($event)"
-		></app-model-select>
-		<div
-		  class="normal_selcheck _hasMsg"
-		  data-msg="Line"
-		  style="display: none;"
-		>
-		  <!-- 點擊在span class裡面加上on -->
-		  <span class="normal_selcheck_title on">s1</span>
-		  <div class="normal_selcheck_group">
-			<label class="normal_check">
-			  <input type="checkbox" class="normal_check_inp" />
-			  <span class="normal_check_span"></span>
-			  <span class="normal_check_bg"></span>
-			  <span class="normal_check_txt">s1</span>
-			</label>
-			<label class="normal_check">
-			  <input type="checkbox" class="normal_check_inp" />
-			  <span class="normal_check_span"></span>
-			  <span class="normal_check_bg"></span>
-			  <span class="normal_check_txt">s2</span>
-			</label>
-		  </div>
-		</div>
-	  </div>
-	  <div class="option_clone_btnbox">
-		<button class="normal_btn _secondry" (click)="cancelClone()">
-		  Cancel
-		</button>
-		<button class="normal_btn _primary" (click)="submitClone()">
-		  Submit
-		</button>
-	  </div>
 	</div>
 	<div class="option_body" *ngIf="parameter.isShow">
-	  <div class="option_body_btnbox">
-		<button class="border_btn _clone" (click)="cloneHandler()">
-		  <i></i>Clone
-		</button>
-	  </div>
-	  <div class="option_body_filter">
-		<app-option-select
-		  *ngFor="let item of option_sel"
-		  [selectContent]="item"
-		  (selshow)="selShowHandler($event)"
-		  (selEvent)="option_page($event)"
-		></app-option-select>
-	  </div>
-	  <table class="normal_tb">
-		<tr>
-		  <th>項目名稱</th>
-		  <th>範圍涵數</th>
-		  <th>標準數值</th>
-		  <th>單位</th>
-		  <th>編輯</th>
-		</tr>
-		<tr>
-		  <td>前刮刀壓力</td>
-		  <td>(>=,<=)< /td></td>
-		  <td>12,15</td>
-		  <td>kg</td>
-		  <td>
-			<div class="normal_tb_box _jucc">
-			  <button class="icon_btn _edit" (click)="editAlert('edit')"></button>
-			</div>
-		  </td>
-		</tr>
-		<tr>
-		  <td>前刮刀壓力</td>
-		  <td>(>=,<=)< /td></td>
-		  <td>12,15</td>
-		  <td>kg</td>
-		  <td>
-			<div class="normal_tb_box _jucc">
-			  <button class="icon_btn _edit" (click)="editAlert('edit')"></button>
-			</div>
-		  </td>
-		</tr>
-	  </table>
-	  <ul class="normal_page">
-		<li class="normal_page_item _prev"></li>
-		<li class="normal_page_item on">1</li>
-		<li class="normal_page_item">2</li>
-		<li class="normal_page_item">3</li>
-		<li class="normal_page_item">4</li>
-		<li class="normal_page_item">5</li>
-		<li class="normal_page_item _dot">...</li>
-		<li class="normal_page_item">100</li>
-		<li class="normal_page_item _next"></li>
-	  </ul>
-	</div>
-  </div>
-  
-  <!-- Clone -->
-  <div class="alert _clone" *ngIf="cloneAlert.isShow">
-	<div class="alert_box">
-	  <button
-		class="icon_btn _close"
-		(click)="alert_close('cloneAlert')"
-	  ></button>
-	  <div class="alert_title">Clone</div>
-	  <div class="alert_info">
-		<ul class="alert_clone">
-		  <li data-msg="UPN:">B91.04G10.0001</li>
-		  <li data-msg="SPN:">B91.04G10.0001</li>
-		  <li data-msg="Line:">S1</li>
-		  <li data-msg="Type:">DIP</li>
+		<div class="option_body_btnbox">
+			<button class="border_btn _clone" (click)="cloneHandler()">
+				<i></i>Clone
+			</button>
+		</div>
+		<div class="option_body_filter">
+			<app-option-select *ngFor="let item of option_sel" [selectContent]="item" (selshow)="selShowHandler($event)"
+				(selEvent)="option_page($event)"></app-option-select>
+		</div>
+		<table class="normal_tb">
+			<tr>
+				<th>項目名稱</th>
+				<th>範圍涵數</th>
+				<th>標準數值</th>
+				<th>單位</th>
+				<th>編輯</th>
+			</tr>
+			<tr *ngFor="let item of parameter.data">
+				<td>{{item.name}}</td>
+				<td>{{item.range}}</td>
+				<td>{{item.value}}</td>
+				<td>{{item.nuit}}</td>
+				<td>
+					<div class="normal_tb_box _jucc">
+						<button class="icon_btn _edit" (click)="editAlert('edit')"></button>
+					</div>
+				</td>
+			</tr>
+		</table>
+		<ul class="normal_page">
+			<li class="normal_page_item _prev"></li>
+			<li class="normal_page_item on">1</li>
+			<li class="normal_page_item">2</li>
+			<li class="normal_page_item">3</li>
+			<li class="normal_page_item">4</li>
+			<li class="normal_page_item">5</li>
+			<li class="normal_page_item _dot">...</li>
+			<li class="normal_page_item">100</li>
+			<li class="normal_page_item _next"></li>
 		</ul>
-		<div class="alert_clone_parameter" data-msg="受影響的設備別：">
-		  <label class="normal_check">
-			<input type="checkbox" class="normal_check_inp" checked />
-			<span class="normal_check_span"></span>
-			<span class="normal_check_bg"></span>
-			<span class="normal_check_txt">Printer</span>
-		  </label>
-		  <label class="normal_check">
-			<input type="checkbox" class="normal_check_inp" />
-			<span class="normal_check_span"></span>
-			<span class="normal_check_bg"></span>
-			<span class="normal_check_txt">Mounter</span>
-		  </label>
-		  <label class="normal_check">
-			<input type="checkbox" class="normal_check_inp" />
-			<span class="normal_check_span"></span>
-			<span class="normal_check_bg"></span>
-			<span class="normal_check_txt">SPI</span>
-		  </label>
-		  <label class="normal_check">
-			<input type="checkbox" class="normal_check_inp" />
-			<span class="normal_check_span"></span>
-			<span class="normal_check_bg"></span>
-			<span class="normal_check_txt">Printer</span>
-		  </label>
-		  <label class="normal_check">
-			<input type="checkbox" class="normal_check_inp" />
-			<span class="normal_check_span"></span>
-			<span class="normal_check_bg"></span>
-			<span class="normal_check_txt">Mounter</span>
-		  </label>
-		  <label class="normal_check">
-			<input type="checkbox" class="normal_check_inp" />
-			<span class="normal_check_span"></span>
-			<span class="normal_check_bg"></span>
-			<span class="normal_check_txt">SPI</span> </label
-		  ><label class="normal_check">
-			<input type="checkbox" class="normal_check_inp" />
-			<span class="normal_check_span"></span>
-			<span class="normal_check_bg"></span>
-			<span class="normal_check_txt">Printer</span>
-		  </label>
-		  <label class="normal_check">
-			<input type="checkbox" class="normal_check_inp" />
-			<span class="normal_check_span"></span>
-			<span class="normal_check_bg"></span>
-			<span class="normal_check_txt">Mounter</span>
-		  </label>
-		  <label class="normal_check">
-			<input type="checkbox" class="normal_check_inp" />
-			<span class="normal_check_span"></span>
-			<span class="normal_check_bg"></span>
-			<span class="normal_check_txt">SPI</span>
-		  </label>
-		  <label class="normal_check">
-			<input type="checkbox" class="normal_check_inp" />
-			<span class="normal_check_span"></span>
-			<span class="normal_check_bg"></span>
-			<span class="normal_check_txt">Printer</span>
-		  </label>
-		  <label class="normal_check">
-			<input type="checkbox" class="normal_check_inp" />
-			<span class="normal_check_span"></span>
-			<span class="normal_check_bg"></span>
-			<span class="normal_check_txt">Mounter</span>
-		  </label>
-		  <label class="normal_check">
-			<input type="checkbox" class="normal_check_inp" />
-			<span class="normal_check_span"></span>
-			<span class="normal_check_bg"></span>
-			<span class="normal_check_txt">SPI</span>
-		  </label>
-		</div>
-	  </div>
-	  <div class="alert_btnBox">
-		<button class="normal_btn _secondry" (click)="alert_close('cloneAlert')">
-		  取消
-		</button>
-		<button class="normal_btn _primary">確定</button>
-	  </div>
 	</div>
-  </div>
-  
-  <!-- 參數設定新增/編輯欄位 -->
-  <div class="alert _parameter" *ngIf="edit_alert.isShow">
+</div>
+
+<!-- Clone -->
+<div class="alert _clone" *ngIf="cloneAlert.isShow">
 	<div class="alert_box">
-	  <button class="icon_btn _close" (click)="alert_close('editAlert')"></button>
-	  <div class="alert_title">編輯欄位</div>
-	  <div class="alert_info">
-		<div class="normal_inp _hasMsg" data-msg="項目名稱">
-		  <input type="text" />
+		<button class="icon_btn _close" (click)="alert_close('cloneAlert')"></button>
+		<div class="alert_title">Clone</div>
+		<div class="alert_info">
+			<ul class="alert_clone">
+				<li data-msg="UPN:">B91.04G10.0001</li>
+				<li data-msg="SPN:">B91.04G10.0001</li>
+				<li data-msg="Line:">S1</li>
+				<li data-msg="Type:">DIP</li>
+			</ul>
+			<div class="alert_clone_parameter" data-msg="受影響的設備別：">
+				<label class="normal_check">
+					<input type="checkbox" class="normal_check_inp" checked />
+					<span class="normal_check_span"></span>
+					<span class="normal_check_bg"></span>
+					<span class="normal_check_txt">Printer</span>
+				</label>
+				<label class="normal_check">
+					<input type="checkbox" class="normal_check_inp" />
+					<span class="normal_check_span"></span>
+					<span class="normal_check_bg"></span>
+					<span class="normal_check_txt">Mounter</span>
+				</label>
+				<label class="normal_check">
+					<input type="checkbox" class="normal_check_inp" />
+					<span class="normal_check_span"></span>
+					<span class="normal_check_bg"></span>
+					<span class="normal_check_txt">SPI</span>
+				</label>
+				<label class="normal_check">
+					<input type="checkbox" class="normal_check_inp" />
+					<span class="normal_check_span"></span>
+					<span class="normal_check_bg"></span>
+					<span class="normal_check_txt">Printer</span>
+				</label>
+				<label class="normal_check">
+					<input type="checkbox" class="normal_check_inp" />
+					<span class="normal_check_span"></span>
+					<span class="normal_check_bg"></span>
+					<span class="normal_check_txt">Mounter</span>
+				</label>
+				<label class="normal_check">
+					<input type="checkbox" class="normal_check_inp" />
+					<span class="normal_check_span"></span>
+					<span class="normal_check_bg"></span>
+					<span class="normal_check_txt">SPI</span> </label><label class="normal_check">
+					<input type="checkbox" class="normal_check_inp" />
+					<span class="normal_check_span"></span>
+					<span class="normal_check_bg"></span>
+					<span class="normal_check_txt">Printer</span>
+				</label>
+				<label class="normal_check">
+					<input type="checkbox" class="normal_check_inp" />
+					<span class="normal_check_span"></span>
+					<span class="normal_check_bg"></span>
+					<span class="normal_check_txt">Mounter</span>
+				</label>
+				<label class="normal_check">
+					<input type="checkbox" class="normal_check_inp" />
+					<span class="normal_check_span"></span>
+					<span class="normal_check_bg"></span>
+					<span class="normal_check_txt">SPI</span>
+				</label>
+				<label class="normal_check">
+					<input type="checkbox" class="normal_check_inp" />
+					<span class="normal_check_span"></span>
+					<span class="normal_check_bg"></span>
+					<span class="normal_check_txt">Printer</span>
+				</label>
+				<label class="normal_check">
+					<input type="checkbox" class="normal_check_inp" />
+					<span class="normal_check_span"></span>
+					<span class="normal_check_bg"></span>
+					<span class="normal_check_txt">Mounter</span>
+				</label>
+				<label class="normal_check">
+					<input type="checkbox" class="normal_check_inp" />
+					<span class="normal_check_span"></span>
+					<span class="normal_check_bg"></span>
+					<span class="normal_check_txt">SPI</span>
+				</label>
+			</div>
 		</div>
-			  <app-model-select
-			  class="selbox"
-		[selectContent]="range_sel"
-		(selShowEvent)="selShow($event)"
-		(selEvent)="selHandler($event)"
-	  ></app-model-select>
-  
-		<div
-		  class="normal_inp _hasMsg _hasMsgB"
-		  data-msg="標準數值"
-		  data-msgB="請將數值由 , 分開如：12,15"
-		>
-		  <input type="text" />
+		<div class="alert_btnBox">
+			<button class="normal_btn _secondry" (click)="alert_close('cloneAlert')">
+				取消
+			</button>
+			<button class="normal_btn _primary">確定</button>
 		</div>
-		<div class="normal_inp _hasMsg" data-msg="單位">
-		  <input type="text" />
-		</div>
-	  </div>
-	  <div class="alert_btnBox">
-		<button class="normal_btn _secondry" (click)="alert_close('editAlert')">取消</button>
-		<button class="normal_btn _primary">確定</button>
-	  </div>
 	</div>
-  </div>
-  
+</div>
+
+<!-- 參數設定新增/編輯欄位 -->
+<div class="alert _parameter" *ngIf="edit_alert.isShow">
+	<div class="alert_box">
+		<button class="icon_btn _close" (click)="alert_close('editAlert')"></button>
+		<div class="alert_title">編輯欄位</div>
+		<div class="alert_info">
+			<div class="normal_inp _hasMsg" data-msg="項目名稱">
+				<input type="text" />
+			</div>
+			<app-model-select class="selbox" [selectContent]="range_sel" (selShowEvent)="selShow($event)"
+				(selEvent)="selHandler($event)"></app-model-select>
+
+			<div class="normal_inp _hasMsg _hasMsgB" data-msg="標準數值" data-msgB="請將數值由 , 分開如：12,15">
+				<input type="text" />
+			</div>
+			<div class="normal_inp _hasMsg" data-msg="單位">
+				<input type="text" />
+			</div>
+		</div>
+		<div class="alert_btnBox">
+			<button class="normal_btn _secondry" (click)="alert_close('editAlert')">取消</button>
+			<button class="normal_btn _primary">確定</button>
+		</div>
+	</div>
+</div>

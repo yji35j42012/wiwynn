@@ -11,7 +11,7 @@
       type="checkbox"
       class="normal_check_inp"
       [checked]="item.isChecked"
-      (change)="itemCheck(item.id)"
+      (change)="itemCheck(selectContent.name, item.id)"
     />
     <span class="normal_check_span"></span>
     <span class="normal_check_bg"></span>

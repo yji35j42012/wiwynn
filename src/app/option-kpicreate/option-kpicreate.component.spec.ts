@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OptionKpicreaetComponent } from './option-kpicreaet.component';
+import { OptionKpicreateComponent } from './option-kpicreate.component';
 
-describe('OptionKpicreaetComponent', () => {
-  let component: OptionKpicreaetComponent;
-  let fixture: ComponentFixture<OptionKpicreaetComponent>;
+describe('OptionKpicreateComponent', () => {
+  let component: OptionKpicreateComponent;
+  let fixture: ComponentFixture<OptionKpicreateComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [OptionKpicreaetComponent]
+      imports: [OptionKpicreateComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(OptionKpicreaetComponent);
+    fixture = TestBed.createComponent(OptionKpicreateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

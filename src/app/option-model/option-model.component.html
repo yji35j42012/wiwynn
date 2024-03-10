@@ -1,43 +1,85 @@
 <div class="option_content _model">
-    <div class="option_head">
-        <button class="border_btn _add"><i></i>新増</button>
-    </div>
-    <div class="option_body">
-        <table class="normal_tb">
-            <tr>
-                <th>專案類型</th>
-                <th>專案</th>
-                <th>版號</th>
-                <th>專案產品名稱</th>
-                <th>UPH(每小時產出)</th>
-                <th>YR(良率):小數點一位</th>
-                <th>編輯刪除</th>
-            </tr>
-            <tr>
-                <td>PCB/FA</td>
-                <td>AMBROSE</td>
-                <td>20X056</td>
-                <td>AMBROSE RISER</td>
-                <td>251</td>
-                <td>99.5</td>
-                <td>
-                    <div class="normal_tb_box _jucc">
-                        <button class="icon_btn _trash"></button>
-                        <button class="icon_btn _edit"></button>
-                    </div>
-                </td>
-            </tr>
-        </table>
-        <ul class="normal_page">
-            <li class="normal_page_item _prev"></li>
-            <li class="normal_page_item on">1</li>
-            <li class="normal_page_item">2</li>
-            <li class="normal_page_item">3</li>
-            <li class="normal_page_item">4</li>
-            <li class="normal_page_item">5</li>
-            <li class="normal_page_item _dot">...</li>
-            <li class="normal_page_item">100</li>
-            <li class="normal_page_item _next"></li>
-        </ul>
-    </div>
+	<div class="option_head">
+		<button class="border_btn _add" (click)="editAlert('add')"><i></i>新増</button>
+	</div>
+	<div class="option_body">
+		<table class="normal_tb">
+			<tr>
+				<th>專案類型</th>
+				<th>專案</th>
+				<th>版號</th>
+				<th>專案產品名稱</th>
+				<th>UPH(每小時產出)</th>
+				<th>YR(良率):小數點一位</th>
+				<th>編輯刪除</th>
+			</tr>
+			<tr>
+				<td>PCB/FA</td>
+				<td>AMBROSE</td>
+				<td>20X056</td>
+				<td>AMBROSE RISER</td>
+				<td>251</td>
+				<td>99.5</td>
+				<td>
+					<div class="normal_tb_box _jucc">
+						<button class="icon_btn _trash" (click)="delHandler()"></button>
+						<button class="icon_btn _edit" (click)="editAlert('edit')"></button>
+					</div>
+				</td>
+			</tr>
+		</table>
+		<ul class="normal_page">
+			<li class="normal_page_item _prev"></li>
+			<li class="normal_page_item on">1</li>
+			<li class="normal_page_item">2</li>
+			<li class="normal_page_item">3</li>
+			<li class="normal_page_item">4</li>
+			<li class="normal_page_item">5</li>
+			<li class="normal_page_item _dot">...</li>
+			<li class="normal_page_item">100</li>
+			<li class="normal_page_item _next"></li>
+		</ul>
+	</div>
 </div>
+
+
+
+<!-- 新増/編輯欄位 -->
+<div class="alert _option _model" *ngIf="edit_alert.isShow">
+	<div class="alert_box">
+		<button class="icon_btn _close" (click)="alert_close('editAlert')"></button>
+		<div class="alert_title" *ngIf="edit_alert.state == 'add'">新増產品Model/良率/UPH註冊</div>
+		<div class="alert_title" *ngIf="edit_alert.state == 'edit'">編輯產品Model/良率/UPH註冊</div>
+		<div class="alert_info">
+			<div class="normal_inp _hasMsg" data-msg="專案類型">
+				<input type="text" />
+			</div>
+			<div class="normal_inp _hasMsg" data-msg="專案">
+				<input type="text" />
+			</div>
+			<div class="normal_inp _hasMsg" data-msg="版號">
+				<input type="text" />
+			</div>
+			<div class="normal_inp _hasMsg" data-msg="專案產品名稱">
+				<input type="text" />
+			</div>
+			<div class="normal_inp _hasMsg" data-msg="UPH(每小時產出)">
+				<input type="text" />
+			</div>
+			<div class="normal_inp _hasMsg" data-msg="YR(良率):小數點一位">
+				<input type="text" />
+			</div>
+		</div>
+		<div class="alert_btnBox">
+			<button class="normal_btn _secondry" (click)="alert_close('editAlert')">取消</button>
+			<button class="normal_btn _primary" *ngIf="edit_alert.state == 'add'">新增</button>
+			<button class="normal_btn _primary" *ngIf="edit_alert.state == 'edit'">儲存變更</button>
+		</div>
+	</div>
+</div>
+
+
+
+<!-- 刪除產品Model/良率/UPH註冊 -->
+<app-alert-delmsg *ngIf="alertMsg.show" [alertMsg]="alertMsg" (closeEvent)="alert_close($event)"
+	(alertCheck)="alert_del($event)"></app-alert-delmsg>
