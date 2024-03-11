@@ -12,7 +12,7 @@ import { ModelCalendarComponent } from '../model-calendar/model-calendar.compone
 export class EKpiComponent {
   kpi_filter = {
     start: {
-      isShow: true,
+      isShow: false,
       year: 2024,
       month: 2,
       day: 11,
@@ -29,6 +29,7 @@ export class EKpiComponent {
     },
   };
   calendar = {
+    state: '',
     isShow: false,
     year: 2024,
     month: 2,
@@ -48,10 +49,27 @@ export class EKpiComponent {
       this.kpi_filter.end.isShow = !this.kpi_filter.end.isShow;
       item = this.kpi_filter.end;
     }
+    this.calendar.state = s;
     this.calendar.year = item.year;
     this.calendar.month = item.month;
     this.calendar.day = item.day;
     this.calendar.hour = item.hour;
     this.calendar.min = item.min;
+  }
+
+  calerdarReturnHandler(obj: any) {
+    console.log('calerdarReturnHandler', obj.year);
+    var item: any;
+    if (this.calendar.state == 'start') {
+      item = this.kpi_filter.start;
+    } else if (this.calendar.state == 'end') {
+      item = this.kpi_filter.end;
+    }
+    // console.log('item', this.calendar.state);
+    item.isShow = false;
+    item.month = obj.month;
+    item.day = obj.day;
+    item.hour = obj.hour;
+    item.min = obj.min;
   }
 }

@@ -18,10 +18,27 @@
 		<th>週六</th>
 	  </tr>
 	  <tr *ngFor="let week of dates">
-		<td *ngFor="let date of week">
-		  <ng-container *ngIf="date">{{ date }}</ng-container>
+		<td *ngFor="let date of week" [class.on]="date === day">
+		  <ng-container *ngIf="date !== null">
+			<span (click)="returnHandler(date)">{{ date }}</span>
+		  </ng-container>
 		</td>
 	  </tr>
 	</table>
+  
+	<div class="calendar_time">
+	  <app-model-select
+		class="selbox"
+		[selectContent]="hour_sel"
+		(selShowEvent)="selShow($event)"
+		(selEvent)="selHandler($event)"
+	  ></app-model-select>
+	  <app-model-select
+		class="selbox"
+		[selectContent]="time_sel"
+		(selShowEvent)="selShow($event)"
+		(selEvent)="selHandler($event)"
+	  ></app-model-select>
+	</div>
   </div>
   
