@@ -182,6 +182,5 @@ export class OptionWorkingComponent {
 			this.clone_alert.lists[i].isShow = false;
 		}
 		this.clone_alert.lists[n].isShow = true;
-		console.log('n', n);
 	}
 }

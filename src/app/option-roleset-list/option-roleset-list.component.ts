@@ -37,8 +37,6 @@ export class OptionRolesetListComponent {
     // 確認刪除事件
   }
   alert_close(s: string) {
-    console.log('s', s);
-
     switch (s) {
       case 'create':
         this.alert_crateRole = false;

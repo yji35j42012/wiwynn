@@ -174,10 +174,8 @@ export class WarroomComponent {
 		}
 	}
 	getEvent (event: String) {
-		console.log('event', event);
 	}
 	alertCheck (event: String) {
 		this.alert_close('msg')
-		console.log(event + '按了確定');
 	}
 }

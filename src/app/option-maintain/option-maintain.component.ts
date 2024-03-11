@@ -76,7 +76,6 @@ export class OptionMaintainComponent {
 	checkedHandler(e: Event, n: number) {
 		e.stopPropagation();
 		let s = this.multsearch.lists.findIndex(item => item.id === n);
-		console.log('???', this.multsearch.lists[s].isChecked);
 		if (this.multsearch.lists[s].isChecked) {
 			this.multsearch.lists[s].isChecked = false
 			this.unChecked(e, n)

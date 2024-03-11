@@ -87,7 +87,6 @@ export class OptionDeviceComponent {
 	}
 
 	alert_close(s: string) {
-		console.log('s', s);
 		switch (s) {
 			case 'editAlert':
 				this.editAlert.isShow = false;

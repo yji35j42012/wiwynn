@@ -177,8 +177,6 @@ export class OptionComponent {
 	}
 
 	option_page(obj: any) {
-		console.log('obj', obj.id);
-		console.log('obj.list.page', obj.list.page);
 		for (let i = 0; i < this.option_sel.length; i++) {
 			this.option_sel[i].isOn = false;
 		}

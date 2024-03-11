@@ -126,12 +126,10 @@ export class OptionKpitargetComponent {
 		var my_month = this.edit_alert.state == 'add' ? my_date.getMonth() : '3月';
 		this.kpitarget_calendar.year = []
 		for (let i = 0; i < 9; i++) {
-			console.log('my_year', my_year - 4 + i == my_year);
 			this.kpitarget_calendar.year.push({
 				y: my_year - 4 + i,
 				isOn: my_year - 4 + i == my_year
 			})
-			console.log('my_year',);
 		}
 		// this.year_data = my_year
 	}

@@ -54,7 +54,6 @@ export class OptionPagesetComponent {
 		this.isEdit = false
 	}
 	alert_close(s: string) {
-		console.log('s',s)
 		switch (s) {
 			case 'addmenu':
 				this.alertmenu = false
