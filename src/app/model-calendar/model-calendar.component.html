@@ -1,28 +1,27 @@
-<div class="calendar" v-if="calendar.show">
-	<div class="calendar_head">
-		<span class="calendar_head_prev" (click)="prevMonth()"></span>
-		<div class="calendar_head_info">
-			<div id="month" class="month">{{ month }}月</div>
-			<div id="year" class="year">{{ year }}</div>
-		</div>
-		<span i class="calendar_head_next" (click)="nextMonth()"></span>
+<div class="calendar_head">
+	<span class="calendar_head_prev" (click)="prevMonth()"></span>
+	<div class="calendar_head_info">
+	  <div id="month" class="month">{{ month }}月</div>
+	  <div id="year" class="year">{{ year }}</div>
 	</div>
-	<div class="calendar_body">
-		<table>
-			<tr>
-				<th>週日</th>
-				<th>週一</th>
-				<th>週二</th>
-				<th>週三</th>
-				<th>週四</th>
-				<th>週五</th>
-				<th>週六</th>
-			</tr>
-			<tr *ngFor="let week of dates">
-				<td *ngFor="let date of week">
-					<ng-container *ngIf="date">{{ date }}</ng-container>
-				</td>
-			</tr>
-		</table>
-	</div>
-</div>
+	<span i class="calendar_head_next" (click)="nextMonth()"></span>
+  </div>
+  <div class="calendar_body">
+	<table>
+	  <tr>
+		<th>週日</th>
+		<th>週一</th>
+		<th>週二</th>
+		<th>週三</th>
+		<th>週四</th>
+		<th>週五</th>
+		<th>週六</th>
+	  </tr>
+	  <tr *ngFor="let week of dates">
+		<td *ngFor="let date of week">
+		  <ng-container *ngIf="date">{{ date }}</ng-container>
+		</td>
+	  </tr>
+	</table>
+  </div>
+  

@@ -1,12 +1,8 @@
 <div class="container_title" data-tw="後台控制系統">Option</div>
 
 <div class="option_filter">
-  <app-option-select
-    *ngFor="let item of option_sel"
-    [selectContent]="item"
-		(selshow)="selShowHandler($event)"
-		(selEvent)="option_page($event)"
-  ></app-option-select>
+  <app-option-select *ngFor="let item of option_sel" [selectContent]="item" (selshow)="selShowHandler($event)"
+    (selEvent)="option_page($event)"></app-option-select>
 </div>
 
 <router-outlet></router-outlet>
@@ -29,11 +25,7 @@
             <button class="icon_btn _filter"></button>
             <div class="normal_tb_filterbox">
               <label class="normal_search">
-                <input
-                  class="normal_search_inp"
-                  type="text"
-                  placeholder="搜尋"
-                />
+                <input class="normal_search_inp" type="text" placeholder="搜尋" />
               </label>
               <label class="normal_check">
                 <input type="checkbox" class="normal_check_inp" />

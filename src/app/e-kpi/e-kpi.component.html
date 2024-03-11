@@ -1,1 +1,46 @@
-<p>e-kpi works!</p>
+<div class="container_title" data-tw="KPI 指標">E-KPI</div>
+
+<div class="kpi_filter">
+  <div
+    class="normal_dateRange _hasMsg"
+    data-msg="Date Range"
+    (click)="dateHanler('start')"
+  >
+    <div class="normal_dateRange_title">
+      <div class="date">
+        <span>{{ this.kpi_filter.start.year }}</span>
+        <span>{{ this.kpi_filter.start.month }}</span>
+        <span>{{ this.kpi_filter.start.day }}</span>
+      </div>
+      <div class="time">
+        <span>{{ this.kpi_filter.start.hour }}</span>
+        <span>{{ this.kpi_filter.start.min }}</span>
+      </div>
+    </div>
+    <app-model-calendar
+      class="calendar"
+      *ngIf="kpi_filter.start.isShow"
+      [calendar_content]="calendar"
+    ></app-model-calendar>
+  </div>
+  <div class="normal_dateRange" (click)="dateHanler('end')">
+    <div class="normal_dateRange_title">
+      <div class="date">
+        <span>{{ this.kpi_filter.end.year }}</span>
+        <span>{{ this.kpi_filter.end.month }}</span>
+        <span>{{ this.kpi_filter.end.day }}</span>
+      </div>
+      <div class="time">
+        <span>{{ this.kpi_filter.end.hour }}</span>
+        <span>{{ this.kpi_filter.end.min }}</span>
+      </div>
+    </div>
+    <app-model-calendar
+      class="calendar"
+      *ngIf="kpi_filter.end.isShow"
+      [calendar_content]="calendar"
+    ></app-model-calendar>
+  </div>
+  <button class="normal_btn _primary">Query</button>
+  <button class="normal_btn _primary _kpi">設定 My KPI</button>
+</div>
