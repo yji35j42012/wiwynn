@@ -87,7 +87,10 @@ export class ModelCalendarComponent {
     isShow: false,
     msg: '',
   };
-
+  isAM = false
+  ampm(s:boolean){
+    this.isAM=s
+  }
   selShow(s: string) {
     if (s == 'hour_sel') {
       this.hour_sel.isShow = !this.hour_sel.isShow;
@@ -165,6 +168,7 @@ export class ModelCalendarComponent {
   ngOnInit(): void {
     this.year = this.calendar_content.year;
     this.month = this.calendar_content.month;
+    this.day = this.calendar_content.day;
     this.hour_sel.title = this.calendar_content.hour
     this.time_sel.title = this.calendar_content.min
     this.generateRandomDates(this.year, this.month);

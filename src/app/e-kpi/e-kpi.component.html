@@ -1,38 +1,68 @@
 <div class="container_title" data-tw="KPI 指標">E-KPI</div>
 
 <div class="kpi_filter">
-    <div class="normal_dateRange _hasMsg" data-msg="Date Range">
-        <div class="normal_dateRange_title" (click)="dateHanler('start')">
-            <div class="date">
-                <span>{{ this.kpi_filter.start.year }}</span>
-                <span>{{ this.kpi_filter.start.month }}</span>
-                <span>{{ this.kpi_filter.start.day }}</span>
-            </div>
-            <div class="time">
-                <span>{{ this.kpi_filter.start.hour }}</span>
-                <span>{{ this.kpi_filter.start.min }}</span>
-            </div>
-        </div>
-        <app-model-calendar class="calendar" *ngIf="kpi_filter.start.isShow" [calendar_content]="calendar"
-            (calendar_return)="calerdarReturnHandler($event)">
-        </app-model-calendar>
-    </div>
-    <div class="normal_dateRange">
-        <div class="normal_dateRange_title" (click)="dateHanler('end')">
-            <div class="date">
-                <span>{{ this.kpi_filter.end.year }}</span>
-                <span>{{ this.kpi_filter.end.month }}</span>
-                <span>{{ this.kpi_filter.end.day }}</span>
-            </div>
-            <div class="time">
-                <span>{{ this.kpi_filter.end.hour }}</span>
-                <span>{{ this.kpi_filter.end.min }}</span>
-            </div>
-        </div>
-        <app-model-calendar class="calendar" *ngIf="kpi_filter.end.isShow" [calendar_content]="calendar"
-            (calendar_return)="calerdarReturnHandler($event)">
-        </app-model-calendar>
-    </div>
-    <button class="normal_btn _primary">Query</button>
-    <button class="normal_btn _primary _kpi">設定 My KPI</button>
+	<div class="normal_dateRange _hasMsg" data-msg="Date Range">
+		<div class="normal_dateRange_title" (click)="dateHanler('start')">
+			<div class="date">
+				<span>{{ this.kpi_filter.start.year }}</span>
+				<span>{{ this.kpi_filter.start.month }}</span>
+				<span>{{ this.kpi_filter.start.day }}</span>
+			</div>
+			<div class="time">
+				<span>{{ this.kpi_filter.start.hour }}</span>
+				<span>{{ this.kpi_filter.start.min }}</span>
+			</div>
+		</div>
+		<app-model-calendar class="calendar" *ngIf="kpi_filter.start.isShow" [calendar_content]="calendar"
+			(calendar_return)="calerdarReturnHandler($event)">
+		</app-model-calendar>
+	</div>
+	<div class="normal_dateRange">
+		<div class="normal_dateRange_title" (click)="dateHanler('end')">
+			<div class="date">
+				<span>{{ this.kpi_filter.end.year }}</span>
+				<span>{{ this.kpi_filter.end.month }}</span>
+				<span>{{ this.kpi_filter.end.day }}</span>
+			</div>
+			<div class="time">
+				<span>{{ this.kpi_filter.end.hour }}</span>
+				<span>{{ this.kpi_filter.end.min }}</span>
+			</div>
+		</div>
+		<app-model-calendar class="calendar" *ngIf="kpi_filter.end.isShow" [calendar_content]="calendar"
+			(calendar_return)="calerdarReturnHandler($event)">
+		</app-model-calendar>
+	</div>
+	<button class="normal_btn _primary">Query</button>
+	<button class="normal_btn _primary _kpi">設定 My KPI</button>
+</div>
+
+<div class="kpi_content">
+	<div class="kpi_head">
+		<label class="normal_check">
+			<input type="checkbox" class="normal_check_inp" />
+			<span class="normal_check_bg"></span>
+			<span class="normal_check_txt">All</span>
+		</label>
+		<label class="normal_check">
+			<input type="checkbox" class="normal_check_inp" />
+			<span class="normal_check_bg"></span>
+			<span class="normal_check_txt">UPPH</span>
+		</label>
+		<label class="normal_check">
+			<input type="checkbox" class="normal_check_inp" />
+			<span class="normal_check_bg"></span>
+			<span class="normal_check_txt">PCBA FPYR DIP</span>
+		</label>
+		<label class="normal_check">
+			<input type="checkbox" class="normal_check_inp" />
+			<span class="normal_check_bg"></span>
+			<span class="normal_check_txt">OEE</span>
+		</label>
+		<label class="normal_check _star">
+			<input type="checkbox" class="normal_check_inp" />
+			<span class="normal_check_bg"></span>
+			<span class="normal_check_txt">My KPI</span>
+		</label>
+	</div>
 </div>

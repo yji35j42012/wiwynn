@@ -1,44 +1,40 @@
 <div class="calendar_head">
 	<span class="calendar_head_prev" (click)="prevMonth()"></span>
 	<div class="calendar_head_info">
-	  <div id="month" class="month">{{ month }}月</div>
-	  <div id="year" class="year">{{ year }}</div>
+		<div id="month" class="month">{{ month }}月</div>
+		<div id="year" class="year">{{ year }}</div>
 	</div>
 	<span i class="calendar_head_next" (click)="nextMonth()"></span>
-  </div>
-  <div class="calendar_body">
+</div>
+<div class="calendar_body">
 	<table>
-	  <tr>
-		<th>週日</th>
-		<th>週一</th>
-		<th>週二</th>
-		<th>週三</th>
-		<th>週四</th>
-		<th>週五</th>
-		<th>週六</th>
-	  </tr>
-	  <tr *ngFor="let week of dates">
-		<td *ngFor="let date of week" [class.on]="date === day">
-		  <ng-container *ngIf="date !== null">
-			<span (click)="returnHandler(date)">{{ date }}</span>
-		  </ng-container>
-		</td>
-	  </tr>
+		<tr>
+			<th>週日</th>
+			<th>週一</th>
+			<th>週二</th>
+			<th>週三</th>
+			<th>週四</th>
+			<th>週五</th>
+			<th>週六</th>
+		</tr>
+		<tr *ngFor="let week of dates">
+			<td *ngFor="let date of week" [class.on]="date === day">
+				<ng-container *ngIf="date !== null">
+					<span (click)="returnHandler(date)">{{ date }}</span>
+				</ng-container>
+			</td>
+		</tr>
 	</table>
-  
+
 	<div class="calendar_time">
-	  <app-model-select
-		class="selbox"
-		[selectContent]="hour_sel"
-		(selShowEvent)="selShow($event)"
-		(selEvent)="selHandler($event)"
-	  ></app-model-select>
-	  <app-model-select
-		class="selbox"
-		[selectContent]="time_sel"
-		(selShowEvent)="selShow($event)"
-		(selEvent)="selHandler($event)"
-	  ></app-model-select>
+		<app-model-select class="selbox" [selectContent]="hour_sel" (selShowEvent)="selShow($event)"
+			(selEvent)="selHandler($event)"></app-model-select>
+		<app-model-select class="selbox" [selectContent]="time_sel" (selShowEvent)="selShow($event)"
+			(selEvent)="selHandler($event)"></app-model-select>
+
+		<ul class="calendar_time_tab">
+			<li [class]="['calendar_time_item',isAM?'on':'']" (click)="ampm(true)">AM</li>
+			<li [class]="['calendar_time_item',isAM?'':'on']" (click)="ampm(false)">PM</li>
+		</ul>
 	</div>
-  </div>
-  
+</div>

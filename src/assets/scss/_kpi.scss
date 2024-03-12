@@ -1,97 +1,27 @@
 .kpi {
+
 	// .kpi_filter
 	&_filter {
-	  @include d_f(flex, none, flex-end);
-	  height: 80px;
-	  margin-top: 15px;
-	  padding-bottom: 11px;
-	  padding-right: 30px;
+		@include d_f(flex, none, flex-end);
+		height: 80px;
+		margin-top: 15px;
+		padding-bottom: 11px;
+		padding-right: 30px;
+		padding: 15px 20px;
 	}
-  }
-  .normal_dateRange {
-	position: relative;
-	@include d_f(inline-flex);
-	flex-wrap: wrap;
-	width: 180px;
-	border-radius: 8px;
-	@extend %transition;
-  
-	& + & {
-	  margin-left: 35px;
-	  &::before {
-		content: '';
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		right: calc(100% + 10px);
-		display: block;
-		width: 15px;
-		height: 1px;
-		margin: auto 0;
-		background-color: #bcbec0;
-	  }
+
+	// .kpi_content
+	&_content {
+		width: 100%;
+		height: calc(100% - 26px - 80px);
+		background-color: #B1B9C8;
 	}
-  
-	// .normal_dateRange_title
-	&_title {
-	  position: relative;
-	  @include d_f(flex, none, center);
-	  width: 100%;
-	  height: 40px;
-	  padding: 10px 39px 10px 12px;
-	  border: 1px solid #bcbcbc;
-	  background-color: #fff;
-	  border-radius: 8px;
-	  font-size: 16px;
-	  font-weight: 400;
-	  @extend %hand;
-	  @extend %transition;
-	  &:after {
-		pointer-events: none;
-		content: '';
-		position: absolute;
-		right: 10px;
-		top: 0;
-		bottom: 0;
-		flex: none;
-		display: block;
-		width: 24px;
-		height: 24px;
-		margin: auto;
-		background-size: contain;
-		background-position: center/center;
-		background-repeat: no-repeat;
-		background-image: url('../images/icon_arrDown_sel.svg');
-		@extend %transition;
-		//
-	  }
-	  .date {
-		span + span::before {
-		  content: '/';
-		}
-	  }
-	  .time {
-		margin-left: 3px;
-		span + span::before {
-		  content: ':';
-		}
-	  }
+
+	// .kpi_head
+	&_head {
+		@include d_f(flex, none, center);
+		width: 100%;
+		height: 48px;
+		padding: 0 20px;
 	}
-	&._hasMsg {
-	  &::before {
-		content: attr(data-msg);
-		display: block;
-		margin-bottom: 3px;
-		font-size: 12px;
-		font-weight: 400;
-		line-height: 18px;
-		color: #565656;
-	  }
-	}
-  
-	// .normal_dateRange_box
-	&_box {
-	  @include d_f(inline-flex, none, flex-end);
-	}
-  }
-  
+}
