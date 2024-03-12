@@ -656,6 +656,16 @@ h2 {
 			background-image: url('../images/icon_invalid.svg');
 			margin: auto;
 		}
+
+		&._star {
+			display: block;
+			width: 16px;
+			height: 16px;
+			background: url('../images/icon_star_fav.svg')no-repeat center/contain;
+		}
+		&._hide{
+			visibility: hidden;
+		}
 	}
 }
 
@@ -2392,7 +2402,17 @@ h2 {
 	color: #565656;
 	@extend %hand;
 
-
+	&._star {
+		&::before {
+			content: '';
+			position: relative;
+			display: block;
+			width: 16px;
+			height: 16px;
+			margin-right: 6px;
+			background: url('../images/icon_star.svg') no-repeat center/contain;
+		}
+	}
 
 	._clone & {
 		display: inline-flex;
@@ -2415,7 +2435,7 @@ h2 {
 
 		&_bg {
 			display: block;
-			border: 1px solid #D9DFE9;
+			border: 1px solid #d9dfe9;
 			background-color: transparent;
 			border-radius: 85px;
 		}
@@ -2460,8 +2480,8 @@ h2 {
 			display: block;
 
 			.kpi_head & {
-				background-color: #2E7FDF;
-				border-color: #2E7FDF;
+				background-color: #2e7fdf;
+				border-color: #2e7fdf;
 			}
 		}
 
@@ -2912,6 +2932,7 @@ h2 {
 }
 
 .normal_cicle {
+	flex: none;
 	position: relative;
 	width: 80px;
 	height: 80px;
@@ -2937,10 +2958,14 @@ h2 {
 		line-height: 20px;
 		color: #08c204;
 		transform: rotate(45deg);
+	}
 
-		._red & {
-			color: #fa2e2e;
-		}
+	&._red::after {
+		color: #fa2e2e;
+	}
+
+	&._nodata:after {
+		color: #565656;
 	}
 
 	&_fake,
