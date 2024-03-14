@@ -64,7 +64,7 @@ export class WarroomComponent {
 		num: -1,
 	}
 
-	selShow (s: string) {
+	selShow(s: string) {
 		if (s == 'machineSelect') {
 			this.machineSelect.isShow = !this.machineSelect.isShow;
 			this.newLintSelect.isShow = false;
@@ -75,55 +75,55 @@ export class WarroomComponent {
 			this.machineSelect.isShow = false;
 			this.newLintSelect1.isShow = false;
 			this.newLintSelect2.isShow = false;
-		}else if (s == 'newLintSelect1') {
+		} else if (s == 'newLintSelect1') {
 			this.newLintSelect1.isShow = !this.newLintSelect1.isShow;
 			this.machineSelect.isShow = false;
 			this.newLintSelect.isShow = false;
 			this.newLintSelect2.isShow = false;
-		}else if (s == 'newLintSelect2') {
+		} else if (s == 'newLintSelect2') {
 			this.newLintSelect2.isShow = !this.newLintSelect2.isShow;
 			this.machineSelect.isShow = false;
 			this.newLintSelect.isShow = false;
 			this.newLintSelect1.isShow = false;
 		}
 	}
-	selHandler (s: any) {
+	selHandler(s: any) {
 		if (s.name == 'machineSelect') {
 			this.machineSelect.title = s.title;
 			this.machineSelect.isShow = false;
 		} else if (s.name == 'newLintSelect') {
 			this.newLintSelect.title = s.title;
 			this.newLintSelect.isShow = false;
-		}else if (s.name == 'newLintSelect1') {
+		} else if (s.name == 'newLintSelect1') {
 			this.newLintSelect1.title = s.title;
 			this.newLintSelect1.isShow = false;
-		}else if (s.name == 'newLintSelect2') {
+		} else if (s.name == 'newLintSelect2') {
 			this.newLintSelect2.title = s.title;
 			this.newLintSelect2.isShow = false;
 		}
 	}
 
-	editHandler () {
+	editHandler() {
 		this.isEdit = true
 	}
-	cancleHandler () {
+	cancleHandler() {
 		this.isEdit = false
 	}
-	addMachine (event: Event) {
+	addMachine(event: Event) {
 		event.stopPropagation();
 		this.newMachine = true
 	}
-	addLine () {
+	addLine() {
 		this.newLine = true
 	}
-	saveLine () {
+	saveLine() {
 		this.newLine = false
 		this.alertMsg.show = true
 		this.alertMsg.title = "儲存生產線編輯"
 		this.alertMsg.msg = "您確定要儲存變更？"
 		this.alertMsg.str = "line"
 	}
-	machine (event: Event) {
+	machine(event: Event) {
 		event.stopPropagation();
 		if (this.isEdit) { return }
 		this.machineEvent.show = true
@@ -131,7 +131,7 @@ export class WarroomComponent {
 			this.machineEvent.class = true
 		}, 10);
 	}
-	line (num: number) {
+	line(num: number) {
 		if (this.isEdit) { return }
 		this.lineEvent.num = num
 		let itemBox = this.el.nativeElement.querySelector('.warroom_body');
@@ -144,7 +144,7 @@ export class WarroomComponent {
 			this.lineEvent.class = true
 		}, 10);
 	}
-	alert_close (value: string) {
+	alert_close(value: string) {
 		switch (value) {
 			case "newMachine":
 				this.newMachine = false
@@ -173,9 +173,9 @@ export class WarroomComponent {
 				break;
 		}
 	}
-	getEvent (event: String) {
+	getEvent(event: String) {
 	}
-	alertCheck (event: String) {
+	alertCheck(event: String) {
 		this.alert_close('msg')
 	}
 }

@@ -41,37 +41,42 @@ h2 {
 		height: 70px;
 	}
 
+	.kpi_filter & {
+		height: 40px;
+		margin-left: 30px;
+	}
+
 	&._primary {
-		background-color: #2E7FDF;
+		background-color: #2e7fdf;
 		color: #fff;
 		border-radius: 6px;
 
 		@include hv {
-			background-color: #2E55DF;
+			background-color: #2e55df;
 		}
 
 		@include ac {
-			background-color: #1D3EB3;
+			background-color: #1d3eb3;
 		}
 	}
 
 	&._secondry {
-		background-color: #A4B2C2;
+		background-color: #a4b2c2;
 		color: #fff;
 		border-radius: 6px;
 
 		@include hv {
-			background-color: #88A1BD;
+			background-color: #88a1bd;
 		}
 
 		@include ac {
-			background-color: #69829F;
+			background-color: #69829f;
 		}
 	}
 
 	&._danger {
-		background-color: #E11717;
-		color: #FFFFFF;
+		background-color: #e11717;
+		color: #ffffff;
 		border-radius: 6px;
 
 		@include hv {
@@ -90,12 +95,31 @@ h2 {
 		font-size: 14px;
 
 		&::before {
-			content: "";
+			content: '';
 			display: block;
 			width: 16px;
 			height: 16px;
 			margin-right: 6px;
-			background: url('../images/icon_edit_w.svg')no-repeat center/contain;
+			background: url('../images/icon_edit_w.svg') no-repeat center/contain;
+		}
+	}
+
+	&._kpi {
+		@include d_f(flex, center, center);
+		border-radius: 85px;
+
+		&::before {
+			content: '';
+			display: block;
+			width: 16px;
+			height: 16px;
+			margin-right: 6px;
+			background: url('../images/icon_setting_kpi.svg') no-repeat center/contain;
+		}
+
+		.kpi_filter & {
+			height: 33px;
+			margin-left: auto;
 		}
 	}
 
@@ -111,7 +135,7 @@ h2 {
 	@include d_f(flex, center, center);
 	min-width: 118px;
 	height: 33px;
-	border: 1px solid #2E7FDF;
+	border: 1px solid #2e7fdf;
 	border-radius: 85px;
 	font-size: 14px;
 	font-weight: 400;
@@ -121,7 +145,7 @@ h2 {
 
 	&._add {
 		padding: 0 20px;
-		color: #2E7FDF;
+		color: #2e7fdf;
 		@extend %transition;
 
 		i {
@@ -130,18 +154,18 @@ h2 {
 			width: 13px;
 			height: 13px;
 			margin-right: 6px;
-			border: 1px solid #2E7FDF;
+			border: 1px solid #2e7fdf;
 			border-radius: 100%;
 			@extend %transition;
 
 			&::before,
 			&:after {
-				content: "";
+				content: '';
 				display: block;
 				width: 7px;
 				height: 1px;
 				border-radius: 100%;
-				background-color: #2E7FDF;
+				background-color: #2e7fdf;
 				@extend %transition;
 			}
 
@@ -153,7 +177,7 @@ h2 {
 
 		@include hv {
 			color: #fff;
-			background-color: #2E7FDF;
+			background-color: #2e7fdf;
 
 			i {
 				border-color: #fff;
@@ -167,7 +191,7 @@ h2 {
 
 		@include ac {
 			color: #fff;
-			background-color: #1D3EB3;
+			background-color: #1d3eb3;
 
 			i {
 				border-color: #fff;
@@ -199,21 +223,21 @@ h2 {
 	}
 
 	&._edit {
-		color: #2E7FDF;
+		color: #2e7fdf;
 
 		&:before {
-			content: "";
+			content: '';
 			display: block;
 			width: 16px;
 			height: 16px;
 			margin-right: 6px;
-			background: url('../images/icon_border_edit.svg')no-repeat center/contain;
+			background: url('../images/icon_border_edit.svg') no-repeat center/contain;
 			@extend %transition;
 		}
 
 		@include hv {
 			color: #fff;
-			background-color: #2E7FDF;
+			background-color: #2e7fdf;
 
 			&:before {
 				filter: brightness(100);
@@ -222,7 +246,7 @@ h2 {
 
 		@include ac {
 			color: #fff;
-			background-color: #1D3EB3;
+			background-color: #1d3eb3;
 
 			&:before {
 				filter: brightness(100);
@@ -231,7 +255,7 @@ h2 {
 
 		&.on {
 			color: #fff;
-			background-color: #2E7FDF;
+			background-color: #2e7fdf;
 
 			&:before {
 				filter: brightness(100);
@@ -240,21 +264,21 @@ h2 {
 	}
 
 	&._export {
-		color: #2E7FDF;
+		color: #2e7fdf;
 
 		&:before {
-			content: "";
+			content: '';
 			display: block;
 			width: 16px;
 			height: 16px;
 			margin-right: 6px;
-			background: url('../images/icon_export.svg')no-repeat center/contain;
+			background: url('../images/icon_export.svg') no-repeat center/contain;
 			@extend %transition;
 		}
 
 		@include hv {
 			color: #fff;
-			background-color: #2E7FDF;
+			background-color: #2e7fdf;
 
 			&:before {
 				filter: brightness(100);
@@ -263,7 +287,7 @@ h2 {
 
 		@include ac {
 			color: #fff;
-			background-color: #1D3EB3;
+			background-color: #1d3eb3;
 
 			&:before {
 				filter: brightness(100);
@@ -272,21 +296,21 @@ h2 {
 	}
 
 	&._inport {
-		color: #2E7FDF;
+		color: #2e7fdf;
 
 		&:before {
-			content: "";
+			content: '';
 			display: block;
 			width: 16px;
 			height: 16px;
 			margin-right: 6px;
-			background: url('../images/icon_inport.svg')no-repeat center/contain;
+			background: url('../images/icon_inport.svg') no-repeat center/contain;
 			@extend %transition;
 		}
 
 		@include hv {
 			color: #fff;
-			background-color: #2E7FDF;
+			background-color: #2e7fdf;
 
 			&:before {
 				filter: brightness(100);
@@ -295,7 +319,7 @@ h2 {
 
 		@include ac {
 			color: #fff;
-			background-color: #1D3EB3;
+			background-color: #1d3eb3;
 
 			&:before {
 				filter: brightness(100);
@@ -304,21 +328,21 @@ h2 {
 	}
 
 	&._refresh {
-		color: #2E7FDF;
+		color: #2e7fdf;
 
 		&:before {
-			content: "";
+			content: '';
 			display: block;
 			width: 16px;
 			height: 16px;
 			margin-right: 6px;
-			background: url('../images/icon_refresh.svg')no-repeat center/contain;
+			background: url('../images/icon_refresh.svg') no-repeat center/contain;
 			@extend %transition;
 		}
 
 		@include hv {
 			color: #fff;
-			background-color: #2E7FDF;
+			background-color: #2e7fdf;
 
 			&:before {
 				filter: brightness(100);
@@ -327,7 +351,7 @@ h2 {
 
 		@include ac {
 			color: #fff;
-			background-color: #1D3EB3;
+			background-color: #1d3eb3;
 
 			&:before {
 				filter: brightness(100);
@@ -336,21 +360,21 @@ h2 {
 	}
 
 	&._clone {
-		color: #2E7FDF;
+		color: #2e7fdf;
 
 		&:before {
-			content: "";
+			content: '';
 			display: block;
 			width: 16px;
 			height: 16px;
 			margin-right: 6px;
-			background: url('../images/icon_clone.svg')no-repeat center/contain;
+			background: url('../images/icon_clone.svg') no-repeat center/contain;
 			@extend %transition;
 		}
 
 		@include hv {
 			color: #fff;
-			background-color: #2E7FDF;
+			background-color: #2e7fdf;
 
 			&:before {
 				filter: brightness(100);
@@ -359,7 +383,7 @@ h2 {
 
 		@include ac {
 			color: #fff;
-			background-color: #1D3EB3;
+			background-color: #1d3eb3;
 
 			&:before {
 				filter: brightness(100);
@@ -400,16 +424,18 @@ h2 {
 			margin-left: auto;
 			margin-right: 50px;
 			border-radius: 100%;
-			background: url('../images/icon_home.svg')no-repeat center/22px 20px, rgba(238, 240, 243, 1);
+			background: url('../images/icon_home.svg') no-repeat center/22px 20px,
+				rgba(238, 240, 243, 1);
 			@extend %transition;
 
 			@include hv {
-				background: url('../images/icon_home.svg')no-repeat center/22px 20px, rgba(235, 235, 235, 1);
+				background: url('../images/icon_home.svg') no-repeat center/22px 20px,
+					rgba(235, 235, 235, 1);
 			}
 
 			@include ac {
-				background: url('../images/icon_home.svg')no-repeat center/22px 20px, rgba(203, 203, 203, 1);
-				;
+				background: url('../images/icon_home.svg') no-repeat center/22px 20px,
+					rgba(203, 203, 203, 1);
 			}
 		}
 
@@ -419,13 +445,13 @@ h2 {
 			top: 0;
 			width: 24px;
 			height: 24px;
-			background-color: #FA2E2E;
+			background-color: #fa2e2e;
 			transform: translate(30%, -30%);
 			border-radius: 100%;
 			@extend %transition;
 
 			&:after {
-				content: "";
+				content: '';
 				display: block;
 				width: 100%;
 				height: 100%;
@@ -433,23 +459,23 @@ h2 {
 			}
 
 			@include hv {
-				background-color: #DD1010;
+				background-color: #dd1010;
 			}
 
 			@include ac {
-				background-color: #A90000;
+				background-color: #a90000;
 			}
 		}
 
 		&._trash {
 			width: 28px;
 			height: 28px;
-			background-color: #FA2E2E;
+			background-color: #fa2e2e;
 			border-radius: 100%;
 			@extend %transition;
 
 			&:after {
-				content: "";
+				content: '';
 				display: block;
 				width: 100%;
 				height: 100%;
@@ -460,22 +486,22 @@ h2 {
 			}
 
 			@include hv {
-				background-color: #DD1010;
+				background-color: #dd1010;
 			}
 
 			@include ac {
-				background-color: #A90000;
+				background-color: #a90000;
 			}
 		}
 
 		&._close {
-			background-color: #E6E6E6;
+			background-color: #e6e6e6;
 			background-image: url('../images/icon_close.svg');
 			border-radius: 100%;
 			@extend %transition;
 
 			@include hv {
-				background-color: #B8B8B8;
+				background-color: #b8b8b8;
 			}
 
 			@include ac {
@@ -541,17 +567,17 @@ h2 {
 		&._next {
 			width: 44px;
 			height: 44px;
-			background-color: #F6F6F6;
+			background-color: #f6f6f6;
 			box-shadow: 4px 4px 4px 0px #00000040;
 			border-radius: 100%;
 			@extend %transition;
 
 			@include hv {
-				background-color: #EBEBEB;
+				background-color: #ebebeb;
 			}
 
 			@include ac {
-				background-color: #CBCBCB;
+				background-color: #cbcbcb;
 			}
 		}
 
@@ -566,16 +592,16 @@ h2 {
 		&._edit {
 			width: 28px;
 			height: 28px;
-			background: url('../images/icon_edit.svg')no-repeat center/16px #2E7FDF;
+			background: url('../images/icon_edit.svg') no-repeat center/16px #2e7fdf;
 			border-radius: 100%;
 			@extend %transition;
 
 			@include hv {
-				background-color: #2E55DF;
+				background-color: #2e55df;
 			}
 
 			@include ac {
-				background-color: #1D3EB3;
+				background-color: #1d3eb3;
 			}
 		}
 
@@ -630,6 +656,17 @@ h2 {
 			background-image: url('../images/icon_invalid.svg');
 			margin: auto;
 		}
+
+		&._star {
+			display: block;
+			width: 16px;
+			height: 16px;
+			background: url('../images/icon_star_fav.svg')no-repeat center/contain;
+		}
+
+		&._hide {
+			visibility: hidden;
+		}
 	}
 }
 
@@ -640,7 +677,6 @@ h2 {
 	min-width: 180px;
 	border-radius: 8px;
 	@extend %transition;
-
 
 	._newLine & {
 		width: 454px;
@@ -662,7 +698,16 @@ h2 {
 		margin-bottom: 20px;
 	}
 
+	.calendar_time & {
+		min-width: 70px;
 
+		&_group {
+			overflow-y: auto;
+			top: auto;
+			bottom: calc(100% + 5px);
+			max-height: 180px;
+		}
+	}
 
 	&.user {
 		flex-wrap: nowrap;
@@ -683,7 +728,7 @@ h2 {
 		width: 100%;
 		height: 40px;
 		padding: 10px 44px 10px 12px;
-		border: 1px solid #BCBCBC;
+		border: 1px solid #bcbcbc;
 		background-color: #fff;
 		// color: #464646;
 		border-radius: 8px;
@@ -705,12 +750,12 @@ h2 {
 		}
 
 		@include hoverHandler {
-			background-color: #E7F0FF;
+			background-color: #e7f0ff;
 		}
 
 		&:after {
 			pointer-events: none;
-			content: "";
+			content: '';
 			position: absolute;
 			right: 10px;
 			top: 0;
@@ -725,7 +770,7 @@ h2 {
 			background-repeat: no-repeat;
 			background-image: url('../images/icon_arrDown_sel.svg');
 			@extend %transition;
-			// 
+			//
 		}
 
 		&.on:after {
@@ -752,7 +797,7 @@ h2 {
 		}
 
 		&.on {
-			background-color: #E7F0FF;
+			background-color: #e7f0ff;
 		}
 
 		.user &.on {
@@ -770,8 +815,8 @@ h2 {
 		width: 100%;
 		min-width: 180px;
 		padding: 10px 0;
-		background-color: #FFFFFF;
-		border: 1px solid #BCBCBC;
+		background-color: #ffffff;
+		border: 1px solid #bcbcbc;
 		border-radius: 8px;
 
 		.on+& {
@@ -782,7 +827,7 @@ h2 {
 	// .normal_sel_item
 	&_item {
 		padding: 8px 15px;
-		background-color: #FFFFFF;
+		background-color: #ffffff;
 		color: #565656;
 		font-size: 16px;
 		font-weight: 400;
@@ -791,7 +836,7 @@ h2 {
 		@extend %transition;
 
 		@include hoverHandler {
-			background-color: #D9DFE9;
+			background-color: #d9dfe9;
 		}
 	}
 
@@ -816,13 +861,13 @@ h2 {
 	padding: 0 15px;
 
 	&::before {
-		content: "";
+		content: '';
 		position: absolute;
 		left: 27px;
 		display: block;
 		width: 24px;
 		height: 24px;
-		background: url('../images/icon_search.svg')no-repeat center/contain;
+		background: url('../images/icon_search.svg') no-repeat center/contain;
 	}
 
 	// .normal_search_inp
@@ -833,7 +878,7 @@ h2 {
 		padding-left: 42px;
 		padding-right: 10px;
 		border-radius: 8px;
-		border: 1px solid #BCBEC0;
+		border: 1px solid #bcbec0;
 	}
 }
 
@@ -860,8 +905,8 @@ h2 {
 	}
 
 	th {
-		background-color: #8C95A6;
-		color: #D6E0F1;
+		background-color: #8c95a6;
+		color: #d6e0f1;
 
 		&:first-child {
 			padding-left: 20px;
@@ -893,7 +938,7 @@ h2 {
 			height: 41px;
 			padding: 0 10px;
 			line-height: 20px;
-			border: 1px solid #D8D8D8;
+			border: 1px solid #d8d8d8;
 		}
 	}
 
@@ -910,20 +955,19 @@ h2 {
 			height: 45px;
 			padding: 14px 10px;
 			line-height: 20px;
-			border: 1px solid #D8D8D8;
+			border: 1px solid #d8d8d8;
 		}
 	}
 
 	tr:nth-child(odd) {
 		td {
-			background-color: #D9DFE9;
+			background-color: #d9dfe9;
 
 			.option_content & {
 				background-color: #fff;
 			}
 		}
 	}
-
 
 	// .normal_tb_box
 	&_box {
@@ -948,7 +992,7 @@ h2 {
 		padding: 10px 0;
 		background-color: #fff;
 		border-radius: 8px;
-		border: 1px solid #BCBCBC;
+		border: 1px solid #bcbcbc;
 
 		>*+* {
 			margin-top: 10px;
@@ -986,8 +1030,8 @@ h2 {
 		font-size: 14px;
 		font-weight: 400;
 		letter-spacing: -0.015em;
-		color: #8C95A6;
-		border: 1px solid #D9DFE9;
+		color: #8c95a6;
+		border: 1px solid #d9dfe9;
 		border-radius: 999px;
 
 		@extend %transition;
@@ -1003,7 +1047,7 @@ h2 {
 		}
 
 		&.on {
-			background-color: #2E7FDF;
+			background-color: #2e7fdf;
 			color: #fff;
 		}
 
@@ -1012,12 +1056,12 @@ h2 {
 		}
 
 		@include hv {
-			background-color: #2E7FDF;
+			background-color: #2e7fdf;
 			color: #fff;
 		}
 
 		@include ac {
-			background-color: #1D3EB3;
+			background-color: #1d3eb3;
 			color: #fff;
 		}
 	}
@@ -1050,7 +1094,6 @@ h2 {
 		}
 	}
 
-
 	// .normal_switch_ball
 	&_ball {
 		position: relative;
@@ -1058,13 +1101,13 @@ h2 {
 		width: 36px;
 		height: 20px;
 		padding: 1px;
-		background-color: #D3D8EE;
+		background-color: #d3d8ee;
 		border-radius: 360px;
 		box-shadow: 0px 0px 1px 0px #00000026;
 		@extend %transition;
 
 		&::before {
-			content: "";
+			content: '';
 			position: absolute;
 			left: 1px;
 			display: block;
@@ -1084,7 +1127,7 @@ h2 {
 	}
 
 	input:checked~&_ball {
-		background-color: #2E7FDF;
+		background-color: #2e7fdf;
 
 		&::before {
 			transform: translateX(calc(100% - 2px));
@@ -1093,19 +1136,19 @@ h2 {
 }
 
 .WAIT {
-	background-color: #FA2E2E;
+	background-color: #fa2e2e;
 }
 
 .PM {
-	background-color: #2E90FA;
+	background-color: #2e90fa;
 }
 
 .PD_RUN {
-	background-color: #29D20D;
+	background-color: #29d20d;
 }
 
 .ENG {
-	background-color: #FB9823;
+	background-color: #fb9823;
 }
 
 .OFF {
@@ -1113,51 +1156,51 @@ h2 {
 }
 
 .PR_RUN {
-	background-color: #8210B8;
+	background-color: #8210b8;
 }
 
 .PINK {
-	background-color: #E64ACD;
+	background-color: #e64acd;
 }
 
 .BLUE {
-	background-color: #1A2EE5;
+	background-color: #1a2ee5;
 }
 
 .GREEN {
-	background-color: #0BC397;
+	background-color: #0bc397;
 }
 
 .YELLOW {
-	background-color: #F8D100;
+	background-color: #f8d100;
 }
 
 .GRESS {
-	background-color: #6BAC2A;
+	background-color: #6bac2a;
 }
 
 .ORANGE {
-	background-color: #FF6B56;
+	background-color: #ff6b56;
 }
 
 .GREYBLUE {
-	background-color: #1D67AB;
+	background-color: #1d67ab;
 }
 
 .GREY {
-	background-color: #BCBEC0;
+	background-color: #bcbec0;
 }
 
 .wrap {
 	overflow: hidden;
 	width: 100%;
-	min-width: 1440px;
+	min-width: 1280px;
 	height: 100%;
 	padding-top: 60px;
 	background-color: #f6f6f6;
 
 	&.home {
-		background: url('../images/home_bg.jpg')no-repeat center/cover;
+		background: url('../images/home_bg.jpg') no-repeat center/cover;
 	}
 }
 
@@ -1171,7 +1214,7 @@ h2 {
 	height: 60px;
 	padding: 0 20px;
 	background-color: #fff;
-	box-shadow: 0px 4px 15px 0px #0000001A;
+	box-shadow: 0px 4px 15px 0px #0000001a;
 
 	.home & {
 		background-color: transparent;
@@ -1190,6 +1233,13 @@ h2 {
 	.home & {
 		padding-top: 60px;
 		background-color: transparent;
+		@include mw(XL){
+			padding-top: 30px;
+		}
+	}
+
+	.E-KPI & {
+		padding: 20px 0 0;
 	}
 
 	// .container_title
@@ -1198,6 +1248,10 @@ h2 {
 		font-size: 20px;
 		font-weight: 700;
 		line-height: 24px;
+
+		.E-KPI & {
+			padding-left: 20px;
+		}
 
 		&::after {
 			content: attr(data-tw);
@@ -1209,16 +1263,13 @@ h2 {
 	}
 }
 
-
-
 .user {
 	position: relative;
 	@include d_f(flex, none, center);
 
-
 	&::before,
 	&:after {
-		content: "";
+		content: '';
 		flex: none;
 		display: block;
 		width: 24px;
@@ -1240,7 +1291,6 @@ h2 {
 			background-image: url('../images/icon_user_w.svg');
 		}
 	}
-
 }
 
 .system_txt {
@@ -1259,12 +1309,9 @@ h2 {
 		flex-wrap: wrap;
 		width: 1060px;
 		margin: 10px auto 0;
-
-
-
 	}
 
-	// .home_item	
+	// .home_item
 	&_item {
 		position: relative;
 		width: 100%;
@@ -1273,14 +1320,18 @@ h2 {
 		margin-top: 50px;
 		padding: 30px 40px;
 		border-radius: 36px;
-		background: linear-gradient(137.22deg, #7DF66B 1.74%, #1ABCD7 98.16%);
-		box-shadow: 46px 56px 70px 0px #7D7DAF66;
+		background: linear-gradient(137.22deg, #7df66b 1.74%, #1abcd7 98.16%);
+		box-shadow: 46px 56px 70px 0px #7d7daf66;
 
+
+		@include mw(XL){
+			margin-top: 20px;
+		}
 		@extend %hand;
 		@extend %transition;
 
 		&::before {
-			content: "";
+			content: '';
 			position: absolute;
 			top: 0;
 			left: 0;
@@ -1324,7 +1375,6 @@ h2 {
 	}
 }
 
-
 .alert {
 	z-index: 20;
 	position: fixed;
@@ -1334,7 +1384,7 @@ h2 {
 	width: 100%;
 	height: 100%;
 	padding: 20px;
-	background-color: rgba(0, 0, 0, .7);
+	background-color: rgba(0, 0, 0, 0.7);
 
 	// .alert_box
 	&_box {
@@ -1435,7 +1485,6 @@ h2 {
 		line-height: 30px;
 		text-align: center;
 		color: rgba(86, 86, 86, 1);
-
 	}
 
 	// .alert_btnBox
@@ -1763,9 +1812,8 @@ h2 {
 				font-size: 12px;
 				font-weight: 400;
 				line-height: 18px;
-				color: #AFAFAF;
+				color: #afafaf;
 			}
-
 		}
 
 		// .alert_info_textarea
@@ -1773,7 +1821,7 @@ h2 {
 			width: 100%;
 			height: 80px;
 			padding: 10px 12px;
-			border: 1px solid #BCBEC0;
+			border: 1px solid #bcbec0;
 			box-shadow: 0px 2px 12px 0px #00000008;
 			border-radius: 8px;
 			resize: none;
@@ -1807,11 +1855,11 @@ h2 {
 			}
 		}
 
-		// .alert_info_mult 
+		// .alert_info_mult
 		&_mult {
 			position: relative;
 			padding-top: 20px;
-			border-top: 1px solid #DCDCDC;
+			border-top: 1px solid #dcdcdc;
 
 			&+& {
 				margin-top: 20px;
@@ -1833,7 +1881,7 @@ h2 {
 					font-size: 16px;
 					font-weight: 400;
 					line-height: 20px;
-					color: #8C95A6;
+					color: #8c95a6;
 					white-space: nowrap;
 				}
 
@@ -1898,7 +1946,7 @@ h2 {
 			width: 100%;
 			padding: 10px;
 			border-radius: 10px;
-			border: 1px solid #D3D8EE;
+			border: 1px solid #d3d8ee;
 
 			&+& {
 				margin-left: 10px;
@@ -1928,7 +1976,6 @@ h2 {
 
 		// .alert_linefix_txt
 		&_txt {
-
 			white-space: nowrap;
 		}
 
@@ -1939,8 +1986,6 @@ h2 {
 			height: calc(100% - 40px - 15px);
 			@include d_f(flex, none, flex-start);
 			margin-top: 15px;
-
-
 		}
 
 		// .alert_linefix_num
@@ -1968,7 +2013,7 @@ h2 {
 			min-height: 430px;
 			padding: 10px;
 			border-radius: 10px;
-			background-color: #ECECEC;
+			background-color: #ececec;
 		}
 
 		// .alert_linefix_item
@@ -1990,7 +2035,7 @@ h2 {
 
 			@include ac {
 				cursor: grabbing;
-				box-shadow: 0px 10px 20px 0px #0000004D;
+				box-shadow: 0px 10px 20px 0px #0000004d;
 			}
 		}
 	}
@@ -2000,7 +2045,7 @@ h2 {
 		@include d_f(flex, center, center);
 		width: 100%;
 		padding-bottom: 10px;
-		border-bottom: 1px solid #DCDCDC;
+		border-bottom: 1px solid #dcdcdc;
 
 		li {
 			@include d_f(flex, none, center);
@@ -2011,7 +2056,7 @@ h2 {
 			&::before {
 				content: attr(data-msg);
 				margin-right: 6px;
-				color: #8C95A6;
+				color: #8c95a6;
 				font-family: Noto Sans CJK TC;
 				line-height: 20px;
 			}
@@ -2052,7 +2097,7 @@ h2 {
 			max-width: 700px;
 			margin: 0 auto 10px;
 			border-radius: 10px;
-			border: 1px solid #D3D8EE;
+			border: 1px solid #d3d8ee;
 			@extend %hand;
 
 			.title {
@@ -2060,7 +2105,7 @@ h2 {
 				width: 100%;
 				height: 36px;
 				padding: 0 10px;
-				background-color: #D9DFE9;
+				background-color: #d9dfe9;
 				border-top-right-radius: 10px;
 				border-top-left-radius: 10px;
 
@@ -2069,12 +2114,12 @@ h2 {
 				}
 
 				&::after {
-					content: "";
+					content: '';
 					display: block;
 					width: 24px;
 					height: 24px;
 					margin-left: auto;
-					background: url('../images/icon_arr_clone.svg')no-repeat center/contain;
+					background: url('../images/icon_arr_clone.svg') no-repeat center/contain;
 					transform: rotate(180deg);
 				}
 			}
@@ -2101,22 +2146,22 @@ h2 {
 				width: calc(100% + 30px);
 				height: 21px;
 				margin-bottom: 20px;
-				color: #FFFFFF;
+				color: #ffffff;
 				font-size: 14px;
 				font-weight: 400;
 				// transform: translateX(-15px);
 			}
 
 			&+& {
-				border-left: 1px solid #D3D8EE;
+				border-left: 1px solid #d3d8ee;
 			}
 
 			&:nth-child(2)::before {
-				background-color: #6F7986;
+				background-color: #6f7986;
 			}
 
 			&:nth-child(3)::before {
-				background-color: #2E7FDF;
+				background-color: #2e7fdf;
 			}
 
 			li {
@@ -2148,7 +2193,6 @@ h2 {
 		line-height: 20px;
 		text-align: center;
 		color: rgba(86, 86, 86, 1);
-
 	}
 
 	.txt {
@@ -2181,9 +2225,7 @@ h2 {
 .normal_machine {
 	width: 80px;
 	height: 60px;
-	background: url('../images/machine.svg')no-repeat center/contain;
-
-
+	background: url('../images/machine.svg') no-repeat center/contain;
 
 	.edit & {
 		background-image: url('../images/machine_edit.svg');
@@ -2211,10 +2253,30 @@ h2 {
 		max-width: 310px;
 		margin-right: 30px;
 	}
-.working &{
-	width: 100%;
-	max-width: 180px;
-}
+
+	.working & {
+		width: 100%;
+		max-width: 180px;
+	}
+
+	._lv2 & {
+		@include d_f(flex, none, center);
+		margin-left: 26px;
+
+		&_title {
+			@include d_f(flex, none, center);
+			width: 180px;
+			min-height: 32px;
+			margin-left: 8px;
+			padding: 0 44px 0 12px;
+		}
+
+		&_group {
+			width: 180px;
+		}
+
+	}
+
 	// .normal_selcheck_title
 	&_title {
 		overflow: hidden;
@@ -2224,7 +2286,7 @@ h2 {
 		height: 100%;
 		min-height: 40px;
 		padding: 10px 44px 10px 12px;
-		border: 1px solid #BCBCBC;
+		border: 1px solid #bcbcbc;
 		background-color: #fff;
 		border-radius: 8px;
 		font-size: 16px;
@@ -2235,7 +2297,7 @@ h2 {
 		text-overflow: ellipsis;
 
 		span+span::before {
-			content: ","
+			content: ',';
 		}
 
 		.user & {
@@ -2251,12 +2313,12 @@ h2 {
 		}
 
 		@include hoverHandler {
-			background-color: #E7F0FF;
+			background-color: #e7f0ff;
 		}
 
 		&:after {
 			pointer-events: none;
-			content: "";
+			content: '';
 			position: absolute;
 			right: 10px;
 			top: 0;
@@ -2271,7 +2333,7 @@ h2 {
 			background-repeat: no-repeat;
 			background-image: url('../images/icon_arrDown_sel.svg');
 			@extend %transition;
-			// 
+			//
 		}
 
 		&.on:after {
@@ -2298,7 +2360,7 @@ h2 {
 		}
 
 		&.on {
-			background-color: #E7F0FF;
+			background-color: #e7f0ff;
 		}
 
 		.user &.on {
@@ -2330,8 +2392,8 @@ h2 {
 		width: 100%;
 		min-width: 180px;
 		padding: 10px 0;
-		background-color: #FFFFFF;
-		border: 1px solid #BCBCBC;
+		background-color: #ffffff;
+		border: 1px solid #bcbcbc;
 		border-radius: 8px;
 
 		.on+& {
@@ -2342,7 +2404,7 @@ h2 {
 	// .normal_selcheck_item
 	&_item {
 		padding: 8px 15px;
-		background-color: #FFFFFF;
+		background-color: #ffffff;
 		color: #565656;
 		font-size: 16px;
 		font-weight: 400;
@@ -2351,7 +2413,7 @@ h2 {
 		@extend %transition;
 
 		@include hoverHandler {
-			background-color: #D9DFE9;
+			background-color: #d9dfe9;
 		}
 	}
 }
@@ -2362,10 +2424,48 @@ h2 {
 	color: #565656;
 	@extend %hand;
 
+	&._star {
+		&::before {
+			content: '';
+			z-index: 1;
+			position: relative;
+			display: block;
+			width: 16px;
+			height: 16px;
+			margin-right: 6px;
+			background: url('../images/icon_star.svg') no-repeat center/contain;
+		}
+	}
+
 	._clone & {
 		display: inline-flex;
 		height: 36px;
 		border-radius: 6px;
+	}
+
+	.kpi_head & {
+		justify-content: center;
+		min-width: 57px;
+		height: 28px;
+		padding: 0 20px;
+		border-radius: 85px;
+
+		&_txt {
+			color: #fff;
+			font-size: 14px;
+			font-weight: 400;
+		}
+
+		&_bg {
+			display: block;
+			border: 1px solid #d9dfe9;
+			background-color: transparent;
+			border-radius: 85px;
+		}
+
+		&+.normal_check {
+			margin-left: 10px;
+		}
 	}
 
 	.normal_selcheck &,
@@ -2389,7 +2489,6 @@ h2 {
 		background-color: #fff;
 	}
 
-
 	// .normal_check_inp
 	&_inp {
 		position: absolute;
@@ -2397,11 +2496,16 @@ h2 {
 		opacity: 0;
 
 		&:checked~.normal_check_span {
-			background-color: #2E7FDF;
+			background-color: #2e7fdf;
 		}
 
 		&:checked~.normal_check_bg {
 			display: block;
+
+			.kpi_head & {
+				background-color: #2e7fdf;
+				border-color: #2e7fdf;
+			}
 		}
 
 		&:checked+.normal_check_span:after {
@@ -2416,7 +2520,7 @@ h2 {
 		@include d_f(flex, center, center);
 		width: 16px;
 		height: 16px;
-		border: 1px solid #2E7FDF;
+		border: 1px solid #2e7fdf;
 		background-color: #fff;
 		border-radius: 3px;
 
@@ -2429,7 +2533,7 @@ h2 {
 			position: absolute;
 			bottom: 4px;
 			display: none;
-			content: "";
+			content: '';
 			width: 3px;
 			height: 7px;
 			border: 1px solid #fff;
@@ -2451,7 +2555,7 @@ h2 {
 		width: 100%;
 		height: 100%;
 		border-radius: 6px;
-		background-color: #D9DFE9;
+		background-color: #d9dfe9;
 	}
 
 	// .normal_check_txt
@@ -2459,7 +2563,6 @@ h2 {
 		position: relative;
 		white-space: nowrap;
 	}
-
 
 	._parameter & {
 		height: 40px;
@@ -2501,10 +2604,9 @@ h2 {
 	&._on {
 		padding-left: 10px;
 		padding-right: 10px;
-		background-color: #35BE13;
-		box-shadow: 0px 10px 20px 0px #0000004D;
+		background-color: #35be13;
+		box-shadow: 0px 10px 20px 0px #0000004d;
 		border-radius: 10px;
-
 	}
 
 	// .collapse_item
@@ -2514,7 +2616,7 @@ h2 {
 		border: 2px dotted transparent;
 
 		&._dotted {
-			border-color: #35BE13;
+			border-color: #35be13;
 		}
 
 		// .collapse_item_inp
@@ -2523,7 +2625,7 @@ h2 {
 			width: 652px;
 			height: 44px;
 			background-color: #fff;
-			color: #8C95A6;
+			color: #8c95a6;
 			border-radius: 10px;
 			text-align: center;
 		}
@@ -2532,7 +2634,7 @@ h2 {
 			.collapse_item_inp {
 				width: 664px;
 				padding-left: 12px;
-				background-color: #E8EDF6;
+				background-color: #e8edf6;
 			}
 
 			.collapse_item_lineY {
@@ -2561,7 +2663,7 @@ h2 {
 			}
 		}
 
-		// .collapse_item_lineY 
+		// .collapse_item_lineY
 		&_lineY {
 			position: absolute;
 			right: calc(100% + 24px);
@@ -2569,13 +2671,12 @@ h2 {
 			display: block;
 			width: 1px;
 			height: 100%;
-			background-color: #8C95A6;
+			background-color: #8c95a6;
 
 			._on & {
 				background-color: #fff;
 			}
 		}
-
 
 		&:not(:first-child) {
 			.collapse_item_lineX {
@@ -2587,7 +2688,7 @@ h2 {
 				width: 21px;
 				height: 1px;
 				margin: auto;
-				background-color: #8C95A6;
+				background-color: #8c95a6;
 
 				._on & {
 					background-color: #fff;
@@ -2603,14 +2704,14 @@ h2 {
 
 		&:not(:first-child):not(:last-child) {
 			.collapse_item_lineY::before {
-				content: "";
+				content: '';
 				position: absolute;
 				right: 0;
 				bottom: 0;
 				display: block;
 				width: 1px;
 				height: 100%;
-				background-color: #8C95A6;
+				background-color: #8c95a6;
 				transform: translateY(60%);
 
 				._on & {
@@ -2645,10 +2746,10 @@ h2 {
 	width: 100%;
 	height: 40px;
 	padding: 10px;
-	background-color: #FFFFFF;
+	background-color: #ffffff;
 	border-radius: 8px;
 	box-shadow: 0px 2px 12px 0px #00000008;
-	border: 1px solid #BCBEC0;
+	border: 1px solid #bcbec0;
 	@extend %hand;
 
 	&._hasMsg {
@@ -2689,7 +2790,7 @@ h2 {
 		padding-right: 6px;
 
 		&::after {
-			content: "";
+			content: '';
 			position: absolute;
 			left: 0;
 			right: 0;
@@ -2699,13 +2800,12 @@ h2 {
 			width: 1px;
 			height: 100%;
 			margin: auto;
-			background-color: #BCBEC0;
+			background-color: #bcbec0;
 		}
 
 		._multclose+._multarr {
 			margin-left: 17px;
 		}
-
 	}
 
 	// .normal_multsearch_content
@@ -2733,17 +2833,16 @@ h2 {
 			margin-right: 10px;
 			margin-bottom: 10px;
 			padding: 6px 4px;
-			background-color: #E8EDF6;
+			background-color: #e8edf6;
 			border-radius: 4px;
 
 			._multclose {
 				display: block;
 			}
-
 		}
 
 		&+&::before {
-			content: ", ";
+			content: ', ';
 
 			.on & {
 				display: none;
@@ -2803,17 +2902,17 @@ h2 {
 		@extend %hand;
 
 		&.on {
-			background-color: #2E7FDF;
+			background-color: #2e7fdf;
 			color: #fff;
 			font-weight: 700;
 		}
 
 		&._prev {
-			background: url('../images/icon_prev.svg')no-repeat center/18px;
+			background: url('../images/icon_prev.svg') no-repeat center/18px;
 		}
 
 		&._next {
-			background: url('../images/icon_next.svg')no-repeat center/18px;
+			background: url('../images/icon_next.svg') no-repeat center/18px;
 		}
 	}
 }
@@ -2835,7 +2934,7 @@ h2 {
 		width: 100%;
 		height: 80px;
 		padding: 10px 12px;
-		border: 1px solid #BCBEC0;
+		border: 1px solid #bcbec0;
 		box-shadow: 0px 2px 12px 0px #00000008;
 		border-radius: 8px;
 		resize: none;
@@ -2856,6 +2955,7 @@ h2 {
 }
 
 .normal_cicle {
+	flex: none;
 	position: relative;
 	width: 80px;
 	height: 80px;
@@ -2879,12 +2979,16 @@ h2 {
 		font-size: 20px;
 		font-weight: 400;
 		line-height: 20px;
-		color: #08C204;
+		color: #08c204;
 		transform: rotate(45deg);
+	}
 
-		._red & {
-			color: #FA2E2E;
-		}
+	&._red::after {
+		color: #fa2e2e;
+	}
+
+	&._nodata:after {
+		color: #565656;
 	}
 
 	&_fake,
@@ -2912,37 +3016,37 @@ h2 {
 		}
 
 		._quarter2 & {
-			border-color: transparent transparent transparent #08C204;
+			border-color: transparent transparent transparent #08c204;
 		}
 
 		._quarter3 & {
-			border-color: #08C204 transparent transparent #08C204;
+			border-color: #08c204 transparent transparent #08c204;
 		}
 
 		._quarter4 & {
-			border-color: #08C204 #08C204 transparent #08C204;
+			border-color: #08c204 #08c204 transparent #08c204;
 		}
 
 		._quarter2._red & {
-			border-color: transparent transparent transparent #FA2E2E;
+			border-color: transparent transparent transparent #fa2e2e;
 		}
 
 		._quarter3._red & {
-			border-color: #FA2E2E transparent transparent #FA2E2E;
+			border-color: #fa2e2e transparent transparent #fa2e2e;
 		}
 
 		._quarter4._red & {
-			border-color: #FA2E2E #FA2E2E transparent #FA2E2E;
+			border-color: #fa2e2e #fa2e2e transparent #fa2e2e;
 		}
 	}
 
 	// .normal_cicle_s1
 	&_s1 {
-		border-color: transparent transparent #08C204 transparent;
+		border-color: transparent transparent #08c204 transparent;
 		transform: rotate(var(--rot));
 
 		._red & {
-			border-color: transparent transparent #FA2E2E transparent;
+			border-color: transparent transparent #fa2e2e transparent;
 		}
 	}
 }
@@ -2967,7 +3071,7 @@ h2 {
 		font-size: 12px;
 		font-weight: 400;
 		line-height: 18px;
-		color: #8C95A6;
+		color: #8c95a6;
 	}
 
 	.detail {
@@ -2977,7 +3081,7 @@ h2 {
 		font-size: 12px;
 		font-weight: 400;
 		line-height: 18px;
-		color: #AFAFAF;
+		color: #afafaf;
 	}
 
 	._permissionsEdit & {
@@ -2986,7 +3090,6 @@ h2 {
 		margin-right: auto;
 		margin-bottom: 20px;
 	}
-
 
 	._model &,
 	._roleset &,
@@ -3011,7 +3114,7 @@ h2 {
 		background-color: #fff;
 		border-radius: 8px;
 		box-shadow: 0px 2px 12px 0px #00000008;
-		border: 1px solid #BCBEC0;
+		border: 1px solid #bcbec0;
 
 		&:disabled {
 			padding: 0;
@@ -3070,10 +3173,10 @@ h2 {
 		margin-right: 8px;
 		border-radius: 100%;
 		background-color: #fff;
-		border: 1px solid #2E7FDF;
+		border: 1px solid #2e7fdf;
 
 		&:after {
-			content: "";
+			content: '';
 			position: absolute;
 			top: 0;
 			right: 0;
@@ -3083,13 +3186,105 @@ h2 {
 			width: 10px;
 			height: 10px;
 			margin: auto;
-			background-color: #2E7FDF;
+			background-color: #2e7fdf;
 			border-radius: 100%;
 		}
-
 	}
 
 	&+.normal_search {
 		margin-left: 10px;
+	}
+}
+
+.normal_dateRange {
+	position: relative;
+	@include d_f(inline-flex);
+	flex-wrap: wrap;
+	width: 180px;
+	border-radius: 8px;
+	@extend %transition;
+
+	&+& {
+		margin-left: 35px;
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			right: calc(100% + 10px);
+			display: block;
+			width: 15px;
+			height: 1px;
+			margin: auto 0;
+			background-color: #bcbec0;
+		}
+	}
+
+	// .normal_dateRange_title
+	&_title {
+		position: relative;
+		@include d_f(flex, none, center);
+		width: 100%;
+		height: 40px;
+		padding: 10px 39px 10px 12px;
+		border: 1px solid #bcbcbc;
+		background-color: #fff;
+		border-radius: 8px;
+		font-size: 16px;
+		font-weight: 400;
+		@extend %hand;
+		@extend %transition;
+
+		&:after {
+			pointer-events: none;
+			content: '';
+			position: absolute;
+			right: 10px;
+			top: 0;
+			bottom: 0;
+			flex: none;
+			display: block;
+			width: 24px;
+			height: 24px;
+			margin: auto;
+			background-size: contain;
+			background-position: center/center;
+			background-repeat: no-repeat;
+			background-image: url('../images/icon_arrDown_sel.svg');
+			@extend %transition;
+			//
+		}
+
+		.date {
+			span+span::before {
+				content: '/';
+			}
+		}
+
+		.time {
+			margin-left: 3px;
+
+			span+span::before {
+				content: ':';
+			}
+		}
+	}
+
+	&._hasMsg {
+		&::before {
+			content: attr(data-msg);
+			display: block;
+			margin-bottom: 3px;
+			font-size: 12px;
+			font-weight: 400;
+			line-height: 18px;
+			color: #565656;
+		}
+	}
+
+	// .normal_dateRange_box
+	&_box {
+		@include d_f(inline-flex, none, flex-end);
 	}
 }

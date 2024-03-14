@@ -24,6 +24,9 @@ import { OptionKpicreateComponent } from './option-kpicreate/option-kpicreate.co
 import { OptionCycletimeComponent } from './option-cycletime/option-cycletime.component';
 import { OptionRecipeComponent } from './option-recipe/option-recipe.component';
 import { OptionParameterComponent } from './option-parameter/option-parameter.component';
+import { EKpiSearchComponent } from './e-kpi-search/e-kpi-search.component';
+import { EKpiFavoriteComponent } from './e-kpi-favorite/e-kpi-favorite.component';
+import { EKpiDetailComponent } from './e-kpi-detail/e-kpi-detail.component';
 
 export const routes: Routes = [
 	{ path: '', component: LoginComponent },
@@ -33,7 +36,14 @@ export const routes: Routes = [
 		children: [
 			{ path: '', component: HomeDetailComponent },
 			{ path: 'Warroom', component: WarroomComponent },
-			{ path: 'E-KPI', component: EKpiComponent },
+			{
+				path: 'E-KPI', component: EKpiComponent,
+				children: [
+					{ path: '', component: EKpiSearchComponent },
+					{ path: 'favorite/:id', component: EKpiFavoriteComponent },
+					{ path: 'detail/:id', component: EKpiDetailComponent },
+				]
+			},
 			{ path: 'E-Process', component: EProcessComponent },
 			{ path: 'Alarm-Center', component: AlarmCenterComponent },
 			{ path: 'Equipment-Center', component: EquipmentCenterComponent },

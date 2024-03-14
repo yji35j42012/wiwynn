@@ -1,119 +1,119 @@
 <div class="container_title" data-tw="後台控制系統">Option</div>
 
 <div class="option_filter">
-  <app-option-select *ngFor="let item of option_sel" [selectContent]="item" (selshow)="selShowHandler($event)"
-    (selEvent)="option_page($event)"></app-option-select>
+	<app-option-select *ngFor="let item of option_sel" [selectContent]="item" (selshow)="selShowHandler($event)"
+		(selEvent)="option_page($event)"></app-option-select>
 </div>
 
 <router-outlet></router-outlet>
 
 <div class="maintain" style="display: none;">
-  <div class="maintain_head">
-    <button class="border_btn _add"><i></i>新増狀態</button>
-    <button class="border_btn _export"><i></i>匯出 Excel</button>
-    <button class="border_btn _inport"><i></i>匯入 Excel</button>
-    <button class="border_btn _refresh"><i></i>Refresh</button>
-  </div>
-  <div class="maintain_body">
-    <table class="normal_tb">
-      <tr>
-        <th>
-          <div class="normal_tb_box">
-            狀態代碼
-            <!-- 遞增加上 _asc 遞減加上 _desc-->
-            <button class="icon_btn _sort"></button>
-            <button class="icon_btn _filter"></button>
-            <div class="normal_tb_filterbox">
-              <label class="normal_search">
-                <input class="normal_search_inp" type="text" placeholder="搜尋" />
-              </label>
-              <label class="normal_check">
-                <input type="checkbox" class="normal_check_inp" />
-                <span class="normal_check_span"></span>
-                <span class="normal_check_bg"></span>
-                <span class="normal_check_txt">Select All</span>
-              </label>
-              <label class="normal_check">
-                <input type="checkbox" class="normal_check_inp" />
-                <span class="normal_check_span"></span>
-                <span class="normal_check_bg"></span>
-                <span class="normal_check_txt">EQ_WAIT</span>
-              </label>
-              <label class="normal_check">
-                <input type="checkbox" class="normal_check_inp" />
-                <span class="normal_check_span"></span>
-                <span class="normal_check_bg"></span>
-                <span class="normal_check_txt">PM</span>
-              </label>
-              <label class="normal_check">
-                <input type="checkbox" class="normal_check_inp" />
-                <span class="normal_check_span"></span>
-                <span class="normal_check_bg"></span>
-                <span class="normal_check_txt">PD_RUN</span>
-              </label>
-              <label class="normal_check">
-                <input type="checkbox" class="normal_check_inp" />
-                <span class="normal_check_span"></span>
-                <span class="normal_check_bg"></span>
-                <span class="normal_check_txt">ENG</span>
-              </label>
-              <label class="normal_check">
-                <input type="checkbox" class="normal_check_inp" />
-                <span class="normal_check_span"></span>
-                <span class="normal_check_bg"></span>
-                <span class="normal_check_txt">OFF</span>
-              </label>
-            </div>
-          </div>
-        </th>
-        <th>
-          <div class="normal_tb_box">
-            狀態顏色
-            <button class="icon_btn _filter"></button>
-          </div>
-        </th>
-        <th>狀態說明</th>
-        <th>
-          <div class="normal_tb_box _jucc">
-            授權人員
-            <!-- 遞增加上 _asc 遞減加上 _desc-->
-            <button class="icon_btn _sort"></button>
-          </div>
-        </th>
-        <th>編輯刪除</th>
-      </tr>
-      <tr>
-        <td>EQ_WAIT</td>
-        <td>
-          <div class="state WAIT"></div>
-        </td>
-        <td>
-          機台設備異常當機，機台設備異常當機，機台設備異常當機，機台設備異常當機，機台設備異常當機，機台設備異常當機，
-        </td>
-        <td>10人</td>
-        <td>
-          <div class="normal_tb_box _jucc">
-            <button class="icon_btn _trash"></button>
-            <button class="icon_btn _edit"></button>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td>PM</td>
-        <td>
-          <div class="state PM"></div>
-        </td>
-        <td>
-          機台設備異常當機，機台設備異常當機，機台設備異常當機，機台設備異常當機，機台設備異常當機，機台設備異常當機，
-        </td>
-        <td>10人</td>
-        <td>
-          <div class="normal_tb_box _jucc">
-            <button class="icon_btn _trash"></button>
-            <button class="icon_btn _edit"></button>
-          </div>
-        </td>
-      </tr>
-    </table>
-  </div>
+	<div class="maintain_head">
+		<button class="border_btn _add"><i></i>新増狀態</button>
+		<button class="border_btn _export"><i></i>匯出 Excel</button>
+		<button class="border_btn _inport"><i></i>匯入 Excel</button>
+		<button class="border_btn _refresh"><i></i>Refresh</button>
+	</div>
+	<div class="maintain_body">
+		<table class="normal_tb">
+			<tr>
+				<th>
+					<div class="normal_tb_box">
+						狀態代碼
+						<!-- 遞增加上 _asc 遞減加上 _desc-->
+						<button class="icon_btn _sort"></button>
+						<button class="icon_btn _filter"></button>
+						<div class="normal_tb_filterbox">
+							<label class="normal_search">
+								<input class="normal_search_inp" type="text" placeholder="搜尋" />
+							</label>
+							<label class="normal_check">
+								<input type="checkbox" class="normal_check_inp" />
+								<span class="normal_check_span"></span>
+								<span class="normal_check_bg"></span>
+								<span class="normal_check_txt">Select All</span>
+							</label>
+							<label class="normal_check">
+								<input type="checkbox" class="normal_check_inp" />
+								<span class="normal_check_span"></span>
+								<span class="normal_check_bg"></span>
+								<span class="normal_check_txt">EQ_WAIT</span>
+							</label>
+							<label class="normal_check">
+								<input type="checkbox" class="normal_check_inp" />
+								<span class="normal_check_span"></span>
+								<span class="normal_check_bg"></span>
+								<span class="normal_check_txt">PM</span>
+							</label>
+							<label class="normal_check">
+								<input type="checkbox" class="normal_check_inp" />
+								<span class="normal_check_span"></span>
+								<span class="normal_check_bg"></span>
+								<span class="normal_check_txt">PD_RUN</span>
+							</label>
+							<label class="normal_check">
+								<input type="checkbox" class="normal_check_inp" />
+								<span class="normal_check_span"></span>
+								<span class="normal_check_bg"></span>
+								<span class="normal_check_txt">ENG</span>
+							</label>
+							<label class="normal_check">
+								<input type="checkbox" class="normal_check_inp" />
+								<span class="normal_check_span"></span>
+								<span class="normal_check_bg"></span>
+								<span class="normal_check_txt">OFF</span>
+							</label>
+						</div>
+					</div>
+				</th>
+				<th>
+					<div class="normal_tb_box">
+						狀態顏色
+						<button class="icon_btn _filter"></button>
+					</div>
+				</th>
+				<th>狀態說明</th>
+				<th>
+					<div class="normal_tb_box _jucc">
+						授權人員
+						<!-- 遞增加上 _asc 遞減加上 _desc-->
+						<button class="icon_btn _sort"></button>
+					</div>
+				</th>
+				<th>編輯刪除</th>
+			</tr>
+			<tr>
+				<td>EQ_WAIT</td>
+				<td>
+					<div class="state WAIT"></div>
+				</td>
+				<td>
+					機台設備異常當機，機台設備異常當機，機台設備異常當機，機台設備異常當機，機台設備異常當機，機台設備異常當機，
+				</td>
+				<td>10人</td>
+				<td>
+					<div class="normal_tb_box _jucc">
+						<button class="icon_btn _trash"></button>
+						<button class="icon_btn _edit"></button>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>PM</td>
+				<td>
+					<div class="state PM"></div>
+				</td>
+				<td>
+					機台設備異常當機，機台設備異常當機，機台設備異常當機，機台設備異常當機，機台設備異常當機，機台設備異常當機，
+				</td>
+				<td>10人</td>
+				<td>
+					<div class="normal_tb_box _jucc">
+						<button class="icon_btn _trash"></button>
+						<button class="icon_btn _edit"></button>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
 </div>

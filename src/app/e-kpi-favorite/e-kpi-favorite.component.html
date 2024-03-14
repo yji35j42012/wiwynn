@@ -1,0 +1,93 @@
+<div class="favorite_head">
+    My KPI
+    <button class="border_btn _add" (click)="editHandler('add')"><i></i>Add Account</button>
+</div>
+<div class="favorite_body">
+    <ul class="kpi_group">
+        <li [class]="['kpi_item',item.isOn?'_on':'']" *ngFor="let item of favorite.data; index as i">
+            <div [class]="['normal_cicle','_min',item.range,item.isRed ? '_red' : '',item.isNodata ? '_nodata' : ''	]"
+                [attr.data-num]="item.number">
+                <span class="normal_cicle_s1" [style]="'--rot:' + item.rotate"></span>
+                <span class="normal_cicle_fake"></span>
+            </div>
+            <div class="kpi_item_txt" [attr.data-title]="item.term">
+                Target:{{ item.target }}
+            </div>
+            <button [class]="['icon_btn', '_star', item.isFav ? '' : '_hide']"></button>
+            <ul class="kpi_item_detail">
+                <li>
+                    {{ item.detail }}
+                    <button class="kpicreaet_more" (click)="moreHandler($event, i)">
+                        more
+                    </button>
+                </li>
+                <li>Line:D1,D2,D3,D4,D6,D7</li>
+                <li>Stages:BD,CT,HB,IA,TA,TD</li>
+            </ul>
+            <div class="kpi_item_btnbox">
+                <button class="icon_btn _trash" (click)="delAlert()"></button>
+                <button class="icon_btn _edit" (click)="editHandler('edit')"></button>
+            </div>
+        </li>
+    </ul>
+    <ul class="normal_page">
+        <li class="normal_page_item _prev"></li>
+        <li class="normal_page_item on">1</li>
+        <li class="normal_page_item">2</li>
+        <li class="normal_page_item">3</li>
+        <li class="normal_page_item">4</li>
+        <li class="normal_page_item">5</li>
+        <li class="normal_page_item _dot">...</li>
+        <li class="normal_page_item">100</li>
+        <li class="normal_page_item _next"></li>
+    </ul>
+</div>
+
+
+
+<div class="kpicreaet_more_detail" [style]="'left:' + favorite.detailboxX + 'px; top:' + favorite.detailboxY + 'px;'"
+    *ngIf="favorite.detailTxt !== ''">
+    {{ favorite.detailTxt }}
+</div>
+
+<!-- KPI指標建立/編輯 -->
+<div class="alert _kpicreaet" *ngIf="edit_alert.isShow">
+    <div class="alert_box">
+        <button class="icon_btn _close" (click)="alert_close('editAlert')"></button>
+        <div class="alert_title" *ngIf="edit_alert.state=='add'">KPI指標建立</div>
+        <div class="alert_title" *ngIf="edit_alert.state=='edit'">KPI指標編輯</div>
+        <div class="alert_info">
+            <div class="normal_inp _hasMsg" data-msg="Chart Title">
+                <input type="text" value="">
+                <span class="detail">0/30</span>
+            </div>
+            <app-model-select class="selbox" [selectContent]="kpi_sel" (selShowEvent)="selShow($event)"
+                (selEvent)="selHandler($event)"></app-model-select>
+
+            <app-model-selcheck class="selbox normal_selcheck _hasMsg" data-msg="Lines" [selectContent]="line_sel"
+                (selCheckShowEvent)="selCheckShow($event)" (selCheckEvent)="selCheckHandler($event)">
+            </app-model-selcheck>
+
+            <app-model-selcheck class="selbox normal_selcheck _hasMsg" data-msg="Stages" [selectContent]="stage_sel"
+                (selCheckShowEvent)="selCheckShow($event)" (selCheckEvent)="selCheckHandler($event)">
+            </app-model-selcheck>
+
+            <app-model-select class="selbox" [selectContent]="category_sel" (selShowEvent)="selShow($event)"
+                (selEvent)="selHandler($event)"></app-model-select>
+            <div class="alert_info_box _hasMsg" data-msg="Description">
+                <textarea class="alert_info_textarea"></textarea>
+                <span class="textarea_mag">0/200</span>
+            </div>
+        </div>
+        <div class="alert_btnBox">
+            <button class="normal_btn _secondry" (click)="alert_close('editAlert')">取消</button>
+            <button class="normal_btn _primary" *ngIf="edit_alert.state=='add'">新增</button>
+            <button class="normal_btn _primary" *ngIf="edit_alert.state=='edit'">儲存變更</button>
+        </div>
+    </div>
+</div>
+
+
+<!-- 刪除欄位 -->
+<app-alert-delmsg *ngIf="alertMsg.show" [alertMsg]="alertMsg" (closeEvent)="alert_close($event)"
+    (alertCheck)="alert_del($event)"></app-alert-delmsg>

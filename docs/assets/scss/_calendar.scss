@@ -1,49 +1,154 @@
 .calendar {
+	z-index: 10;
 	position: absolute;
-	top: 0;
-	right: 0;
+	top: calc(100% + 5px);
 	left: 0;
-	bottom: 0;
 	width: 360px;
-	height: 350px;
+	min-height: 350px;
 	margin: auto;
 	background-color: #ffffff;
 	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
-}
 
-.calendar_head {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 12px 25px;
-	border-bottom: 1px solid #e6e6e6;
-}
+	// .calendar_head
+	&_head {
+		@include d_f(flex, space-between, center);
+		padding: 12px 25px;
+		border-bottom: 1px solid #e6e6e6;
 
-.calendar_head_info {
-	@include d_f(flex, center, center);
-	margin: auto;
+		// .calendar_head_info
+		&_info {
+			@include d_f(flex, center, center);
+			margin: auto;
 
-}
+			.year {
+				color: #2e7fdf;
+				text-align: center;
+				line-height: 1;
+				font-size: 20px;
+				font-weight: 700;
+			}
 
-.calendar_head_info .month {
-	color: #2E7FDF;
-	text-align: center;
-	line-height: 1;
-	font-size: 20px;
-	font-weight: 700;
-	line-height: 30px;
-	text-align: center;
-	margin-right: 8px;
-}
+			.month {
+				margin-right: 8px;
+				color: #2e7fdf;
+				font-size: 20px;
+				font-weight: 700;
+				line-height: 30px;
+				text-align: center;
+			}
+		}
+	}
 
-.calendar_head_info .year {
-	color: #2E7FDF;
-	text-align: center;
-	line-height: 1;
-	font-size: 20px;
-	font-weight: 700;
-	line-height: 30px;
-	text-align: center;
+	// .calendar_body
+	&_body {
+		width: 100%;
+		padding: 0 10px 16px;
+		box-sizing: border-box;
+
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			border-spacing: 0;
+			text-align: center;
+			table-layout: fixed;
+		}
+
+		th {
+			width: 40px;
+			padding: 8px 0;
+			font-size: 12px;
+			font-weight: 500;
+			line-height: 12px;
+			border: 5px solid transparent;
+			box-sizing: content-box;
+		}
+
+		td {
+			width: 40px;
+			height: 40px;
+			border: 5px solid transparent;
+			box-sizing: content-box;
+
+			span {
+				@include d_f(flex, center, center);
+				width: 40px;
+				height: 40px;
+				border-radius: 100%;
+				@extend %hand;
+			}
+
+			// padding: 6px 0;
+			&.on span {
+				background-color: #2e7fdf;
+				color: #fff;
+			}
+		}
+	}
+
+	// .calendar_time
+	&_time {
+		@include d_f(flex, none, center);
+		margin-top: 8px;
+		padding-top: 18px;
+		border-top: 1px solid #dcdcdc;
+
+		.selbox {
+			max-width: 70px;
+		}
+
+		.selbox+.selbox {
+			position: relative;
+			@include d_f(flex, none, center);
+			margin-left: 25px;
+
+			&::before {
+				content: ':';
+				position: absolute;
+				left: -23px;
+				margin: 0 10px;
+			}
+		}
+
+		//   .calendar_time_tab
+		&_tab {
+			@include d_f(flex);
+			height: 40px;
+			margin-left: 30px;
+		}
+
+		// .calendar_time_item
+		&_item {
+			@include d_f(flex, center, center);
+			width: 40px;
+			box-shadow: 0px 2px 12px 0px #00000008;
+			border: 1px solid #BCBEC0;
+			font-size: 16px;
+			font-weight: 400;
+			line-height: 24px;
+
+
+			&:not(.on) {
+				@extend %hand;
+			}
+
+			&.on {
+				background-color: #2E7FDF;
+				color: #fff;
+				border-color: #2E7FDF;
+			}
+
+			&:nth-child(1) {
+				border-top-left-radius: 8px;
+				border-bottom-left-radius: 8px;
+				border-right: none;
+			}
+
+			&:nth-child(2) {
+				border-top-right-radius: 8px;
+				border-bottom-right-radius: 8px;
+			}
+		}
+	}
 }
 
 .calendar_head_prev,
@@ -51,42 +156,12 @@
 	display: block;
 	width: 24px;
 	height: 24px;
-	background: url('../images/icon_arr_calendar.svg')no-repeat center/contain;
+	background: url('../images/icon_arr_calendar.svg') no-repeat center/contain;
 	@extend %hand;
 }
 
 .calendar_head_next {
 	transform: rotate(180deg);
-}
-
-.calendar_body {
-	width: 100%;
-	padding: 0 15px;
-	box-sizing: border-box;
-	/* height: 100%; */
-}
-
-.calendar_body table {
-	width: 100%;
-	border-collapse: collapse;
-	border-spacing: 0;
-	text-align: center;
-	/* height: 100%; */
-}
-
-.calendar_body th {
-	width: calc(100% / 7);
-	padding: 8px 0;
-	font-size: 12px;
-	font-weight: 500;
-	line-height: 12px;
-
-}
-
-.calendar_body td {
-	width: 45px;
-	height: 42px;
-	padding: 6px 0;
 }
 
 .lightgrey {

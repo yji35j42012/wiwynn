@@ -663,7 +663,8 @@ h2 {
 			height: 16px;
 			background: url('../images/icon_star_fav.svg')no-repeat center/contain;
 		}
-		&._hide{
+
+		&._hide {
 			visibility: hidden;
 		}
 	}
@@ -1193,17 +1194,13 @@ h2 {
 .wrap {
 	overflow: hidden;
 	width: 100%;
-	min-width: 1440px;
+	min-width: 1280px;
 	height: 100%;
 	padding-top: 60px;
 	background-color: #f6f6f6;
 
 	&.home {
 		background: url('../images/home_bg.jpg') no-repeat center/cover;
-	}
-
-	&.Warroom {
-		min-width: 1280px;
 	}
 }
 
@@ -1236,6 +1233,9 @@ h2 {
 	.home & {
 		padding-top: 60px;
 		background-color: transparent;
+		@include mw(XL){
+			padding-top: 30px;
+		}
 	}
 
 	.E-KPI & {
@@ -1323,6 +1323,10 @@ h2 {
 		background: linear-gradient(137.22deg, #7df66b 1.74%, #1abcd7 98.16%);
 		box-shadow: 46px 56px 70px 0px #7d7daf66;
 
+
+		@include mw(XL){
+			margin-top: 20px;
+		}
 		@extend %hand;
 		@extend %transition;
 
@@ -2255,6 +2259,24 @@ h2 {
 		max-width: 180px;
 	}
 
+	._lv2 & {
+		@include d_f(flex, none, center);
+		margin-left: 26px;
+
+		&_title {
+			@include d_f(flex, none, center);
+			width: 180px;
+			min-height: 32px;
+			margin-left: 8px;
+			padding: 0 44px 0 12px;
+		}
+
+		&_group {
+			width: 180px;
+		}
+
+	}
+
 	// .normal_selcheck_title
 	&_title {
 		overflow: hidden;
@@ -2405,6 +2427,7 @@ h2 {
 	&._star {
 		&::before {
 			content: '';
+			z-index: 1;
 			position: relative;
 			display: block;
 			width: 16px;

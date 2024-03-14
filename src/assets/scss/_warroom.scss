@@ -2,8 +2,8 @@
 
 	// .warroom_content
 	&_content {
-		overflow: hidden;
-		@include d_f(flex, none, flex-start);
+		overflow-x: hidden;
+		overflow-y: auto;
 		width: 100%;
 		height: 100%;
 		padding: 20px 0;
@@ -12,14 +12,16 @@
 	// .warroom_all
 	&_all {
 		flex: none;
-		width: 120px;
+		@include d_f(inline-flex, none, center);
 		padding: 14px 10px 12px;
 		background-color: #0295f7;
 		border-radius: 10px;
 
 		// .warroom_all_title
 		&_title {
-			padding-left: 13px;
+			@include d_f(inline-flex, center, center);
+			width: 100px;
+			height: 100px;
 			font-size: 16px;
 			font-weight: 700;
 			line-height: 24px;
@@ -31,7 +33,7 @@
 			position: relative;
 			width: 100px;
 			height: 100px;
-			margin-top: 10px;
+			margin-right: 10px;
 			padding: 10px;
 			background-color: #0281d5;
 			border-radius: 10px;
@@ -92,11 +94,11 @@
 
 	// .warroom_info
 	&_info {
-		overflow: hidden;
 		@include d_f(flex);
 		flex-direction: column;
-		width: calc(100% - 120px);
+		width: 100%;
 		height: 100%;
+		padding-top: 10px;
 		padding-left: 10px;
 	}
 
@@ -133,7 +135,7 @@
 
 	// .warroom_body
 	&_body {
-		overflow-y: auto;
+		// overflow-y: auto;
 		position: relative;
 		height: 100%;
 		padding-top: 13px;
@@ -144,6 +146,7 @@
 		// overflow: hidden;
 		position: relative;
 		padding-right: 5px;
+		padding-bottom: 20px;
 		@extend %transition;
 
 		&+& {
@@ -242,16 +245,49 @@
 			}
 
 			&:not(._title) {
-				padding-left: 16px;
-				padding-right: 20px;
+				padding-left: 15px;
+				padding-right: 15px;
 			}
 
-			&._payment {
+			.item {
 				align-items: center;
 				flex-direction: row;
+				@include d_f(flex, none, center);
+				height: 20px;
 				padding-left: 10px;
 				padding-right: 10px;
 
+				&:after {
+					content: attr(data-unit);
+					margin-left: 4px;
+				}
+
+				&::before {
+					content: '';
+					display: block;
+					width: 16px;
+					height: 16px;
+					margin-right: 10px;
+				}
+
+				&._payment::before {
+					background: url('../images/icon_payment.svg') no-repeat center/contain;
+				}
+
+				&._water::before {
+					background: url('../images/icon_water.svg') no-repeat center/contain;
+				}
+
+				&._glyph {
+					margin-top: 4px;
+				}
+
+				&._glyph::before {
+					background: url('../images/icon_glyph.svg') no-repeat center/contain;
+				}
+			}
+
+			&._payment {
 				&::before {
 					content: '';
 					display: block;
@@ -260,53 +296,6 @@
 					margin-right: 10px;
 					background: url('../images/icon_payment.svg') no-repeat center/contain;
 				}
-
-				&:after {
-					content: attr(data-unit);
-					margin-left: 4px;
-				}
-			}
-
-			&._water {
-				align-items: center;
-				flex-direction: row;
-				padding-left: 10px;
-				padding-right: 10px;
-
-				&::before {
-					content: '';
-					display: block;
-					width: 16px;
-					height: 16px;
-					margin-right: 10px;
-					background: url('../images/icon_water.svg') no-repeat center/contain;
-				}
-
-				&:after {
-					content: attr(data-unit);
-					margin-left: 4px;
-				}
-			}
-
-			&._glyph {
-				align-items: center;
-				flex-direction: row;
-				padding-left: 10px;
-				padding-right: 10px;
-
-				&::before {
-					content: '';
-					display: block;
-					width: 16px;
-					height: 16px;
-					margin-right: 10px;
-					background: url('../images/icon_glyph.svg') no-repeat center/contain;
-				}
-
-				&:after {
-					content: attr(data-unit);
-					margin-left: 4px;
-				}
 			}
 
 			&._total {
@@ -314,9 +303,11 @@
 				flex-direction: row;
 				height: auto;
 				margin-left: auto;
+				padding-right: 0;
 				border: none;
 				font-size: 20px;
 				line-height: 18px;
+				white-space: nowrap;
 
 				&::before {
 					content: attr(data-l);
@@ -766,6 +757,7 @@
 	width: 100%;
 	height: calc(100% - 182px);
 	padding: 20px;
+	padding-right: 5px;
 	background-color: #fff;
 	border-top-right-radius: 10px;
 	border-top-left-radius: 10px;
@@ -796,6 +788,7 @@
 	// .line_info
 	&_info {
 		overflow-y: auto;
+		height: 100%;
 		padding-top: 20px;
 
 		.normal_tab {
@@ -806,7 +799,7 @@
 		&_chart {
 			width: 100%;
 			height: 500px;
-			padding-top: 30px;
+			padding-top: 15px;
 
 			.title {
 				@include d_f(flex);
@@ -829,12 +822,19 @@
 					margin-left: 20px;
 				}
 			}
+
+			@include minmw(XL) {
+				#myChart {
+					width: 100% !important;
+				}
+			}
 		}
 	}
 
 	// .line_staff
 	&_staff {
 		padding-top: 20px;
+		padding-right: 15px;
 
 		// .line_staff_group
 		&_group {
@@ -895,12 +895,14 @@
 		// .line_energy_chart
 		&_chart {
 			width: 100%;
-			height: 500px;
-			padding-top: 30px;
+			padding-top: 20px;
 
-			.chart {
-				width: 100% !important;
-				height: 100% !important;
+
+			@include minmw(XL) {
+				.chart {
+					width: 100% !important;
+					// height: calc(100% - 150px) !important;
+				}
 			}
 
 			.title {
