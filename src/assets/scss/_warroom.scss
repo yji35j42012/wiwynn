@@ -7,36 +7,60 @@
 		width: 100%;
 		height: 100%;
 		padding: 20px 0;
+
+		@include minmw(XXL) {
+			@include d_f(flex, none, flex-start);
+		}
 	}
 
 	// .warroom_all
 	&_all {
 		flex: none;
 		@include d_f(inline-flex, none, center);
+		width: 100%;
 		padding: 14px 10px 12px;
 		background-color: #0295f7;
 		border-radius: 10px;
 
+		@include minmw(XXL) {
+			display: block;
+			width: 120px;
+		}
+
 		// .warroom_all_title
 		&_title {
+			flex: none;
 			@include d_f(inline-flex, center, center);
-			width: 100px;
+			width: 70px;
 			height: 100px;
+			margin-right: 10px;
 			font-size: 16px;
 			font-weight: 700;
 			line-height: 24px;
 			color: #8dd1ff;
+
+			@include minmw(XXL) {
+				height: auto;
+				margin-right: 0;
+				margin-bottom: 10px;
+			}
 		}
 
 		// .warroom_all_item
 		&_item {
 			position: relative;
-			width: 100px;
+			width: 100%;
+			// width: 100px;
 			height: 100px;
 			margin-right: 10px;
 			padding: 10px;
 			background-color: #0281d5;
 			border-radius: 10px;
+
+			@include minmw(XXL) {
+				margin-bottom: 10px;
+				margin-right: 0;
+			}
 
 			.num {
 				color: #ffffff;
@@ -249,11 +273,12 @@
 				padding-right: 15px;
 			}
 
-			.item {
+			&._payment,
+			&._glyph,
+			&._water {
 				align-items: center;
 				flex-direction: row;
 				@include d_f(flex, none, center);
-				height: 20px;
 				padding-left: 10px;
 				padding-right: 10px;
 
@@ -269,23 +294,20 @@
 					height: 16px;
 					margin-right: 10px;
 				}
-
-				&._payment::before {
-					background: url('../images/icon_payment.svg') no-repeat center/contain;
-				}
-
-				&._water::before {
-					background: url('../images/icon_water.svg') no-repeat center/contain;
-				}
-
-				&._glyph {
-					margin-top: 4px;
-				}
-
-				&._glyph::before {
-					background: url('../images/icon_glyph.svg') no-repeat center/contain;
-				}
 			}
+
+			&._payment::before {
+				background: url('../images/icon_payment.svg') no-repeat center/contain;
+			}
+
+			&._water::before {
+				background: url('../images/icon_water.svg') no-repeat center/contain;
+			}
+
+			&._glyph::before {
+				background: url('../images/icon_glyph.svg') no-repeat center/contain;
+			}
+
 
 			&._payment {
 				&::before {
@@ -755,7 +777,7 @@
 	@include d_f(flex);
 	flex-direction: column;
 	width: 100%;
-	height: calc(100% - 182px);
+	height: calc(100% - 70px);
 	padding: 20px;
 	padding-right: 5px;
 	background-color: #fff;
@@ -764,6 +786,10 @@
 	box-shadow: 0px -10px 17px 0px #00000080;
 	transform: translateY(105%);
 	@extend %transition;
+
+	@include minmw(XXL) {
+		height: calc(100% - 160px);
+	}
 
 	&.on {
 		transform: translateY(0%);
@@ -798,8 +824,9 @@
 		// .line_info_chart
 		&_chart {
 			width: 100%;
-			height: 500px;
-			padding-top: 15px;
+			@include minmw(XXL) {
+				padding-top: 15px;
+			}
 
 			.title {
 				@include d_f(flex);
@@ -901,6 +928,7 @@
 			@include minmw(XL) {
 				.chart {
 					width: 100% !important;
+					// height: 100% !important;
 					// height: calc(100% - 150px) !important;
 				}
 			}

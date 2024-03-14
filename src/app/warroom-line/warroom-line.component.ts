@@ -198,7 +198,13 @@ export class WarroomLineComponent {
 	}
 	chart_energy() {
 		if (this.chartEnergy) { this.chartEnergy.destroy(); }
-
+		if (window.innerWidth > 1300) {
+			this.el.nativeElement.querySelector('#energy_Chart').width = 1440
+			this.el.nativeElement.querySelector('#energy_Chart').height = 320
+		} else {
+			this.el.nativeElement.querySelector('#energy_Chart').width = 1440
+			this.el.nativeElement.querySelector('#energy_Chart').height = 280
+		}
 		this.chartEnergy = new Chart(this.el.nativeElement.querySelector('#energy_Chart'), {
 			type: 'line',
 			data: {

@@ -43,7 +43,7 @@ export class OptionParameterComponent {
 		title: 's1',
 		lists: ['s1', 's2', 's3', 's4', 's5', 's6'],
 		isShow: false,
-		msg: 'line',
+		msg: 'Line',
 	};
 	range_sel = {
 		name: 'range_sel',

@@ -18,7 +18,7 @@
             <ul class="title" *ngIf="tabSec.now==1">
                 <li class="blue">產品達成率</li>
             </ul>
-            <canvas id="myChart" class="chart" width="1440" height="500"></canvas>
+            <canvas id="myChart" class="chart" width="1440" height="390"></canvas>
         </div>
     </div>
     <div class="line_staff" [class.on]="tabEvent.now==1">
@@ -66,7 +66,7 @@
                 (click)="tabEngergyHandler(i)">{{item}}</li>
         </ul>
         <div class="line_energy_chart">
-            <canvas id="energy_Chart" class="chart" width="1440" height="500"></canvas>
+            <canvas id="energy_Chart" class="chart" width="1440" height="280"></canvas>
         </div>
     </div>
 </div>
