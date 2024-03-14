@@ -39,7 +39,11 @@
 
 		&._lv1 {
 			flex: none;
-			width: 300px;
+			width: 280px;
+
+			@include mw(XXL) {
+				width: 300px;
+			}
 
 			.icon_btn {
 				margin-left: auto;
@@ -53,8 +57,12 @@
 
 		&._lv3 {
 			flex: none;
-			width: 300px;
+			width: 280px;
 			background-color: #647189;
+
+			@include minmw(XXL) {
+				width: 300px;
+			}
 		}
 
 		// .kpi_level_title
