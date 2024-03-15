@@ -667,6 +667,23 @@ h2 {
 		&._hide {
 			visibility: hidden;
 		}
+
+		&._back {
+			@include d_f(flex,center,center);
+			width: auto;
+			color: #2E7FDF;
+			font-size: 20px;
+			font-weight: 700;
+			line-height: 24px;
+			&::before{
+				content:"";
+				display: block;
+				width: 18px;
+				height: 18px;
+				margin-right: 10px;
+				background: url('../images/icon_arr_calendar.svg')no-repeat center/contain;
+			}
+		}
 	}
 }
 
@@ -1233,7 +1250,8 @@ h2 {
 	.home & {
 		padding-top: 60px;
 		background-color: transparent;
-		@include mw(XL){
+
+		@include mw(XL) {
 			padding-top: 30px;
 		}
 	}
@@ -1324,9 +1342,10 @@ h2 {
 		box-shadow: 46px 56px 70px 0px #7d7daf66;
 
 
-		@include mw(XL){
+		@include mw(XL) {
 			margin-top: 20px;
 		}
+
 		@extend %hand;
 		@extend %transition;
 

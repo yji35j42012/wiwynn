@@ -1,1 +1,68 @@
-<p>e-kpi-detail works!</p>
+<div class="kpi_detail">
+    <div class="kpi_detail_head">
+        <button class="icon_btn _back">Back</button>
+        <div class="kpi_detail_title">Levle 4 PCBA FPYR - PCBA FPYR - E- TRON UBB - Line:D3</div>
+    </div>
+    <div class="kpi_detail_filter">
+        <div class="radiobox">
+            搜尋方式：
+            <label class="normal_radioCheckbox">
+                <input type="radio" name="kpiFilter" [checked]="isTime" (click)="changeMode('t')" />
+                <span></span>
+                時間區間
+            </label>
+            <label class="normal_radioCheckbox">
+                <input type="radio" name="kpiFilter" [checked]="!isTime" (click)="changeMode('i')" />
+                <span></span>
+                UPN, MO
+            </label>
+        </div>
+        <div class="searchbox">
+            <div class="normal_dateRange _hasMsg" data-msg="Date Range" *ngIf="isTime">
+                <div class="normal_dateRange_title" (click)="dateHanler('start')">
+                    <div class="date">
+                        <span>{{ this.kpi_filter.start.year }}</span>
+                        <span>{{ this.kpi_filter.start.month }}</span>
+                        <span>{{ this.kpi_filter.start.day }}</span>
+                    </div>
+                    <div class="time">
+                        <span>{{ this.kpi_filter.start.hour }}</span>
+                        <span>{{ this.kpi_filter.start.min }}</span>
+                    </div>
+                </div>
+                <app-model-calendar class="calendar" *ngIf="kpi_filter.start.isShow" [calendar_content]="calendar"
+                    (calendar_return)="calerdarReturnHandler($event)">
+                </app-model-calendar>
+            </div>
+            <div class="normal_dateRange" *ngIf="isTime">
+                <div class="normal_dateRange_title" (click)="dateHanler('end')">
+                    <div class="date">
+                        <span>{{ this.kpi_filter.end.year }}</span>
+                        <span>{{ this.kpi_filter.end.month }}</span>
+                        <span>{{ this.kpi_filter.end.day }}</span>
+                    </div>
+                    <div class="time">
+                        <span>{{ this.kpi_filter.end.hour }}</span>
+                        <span>{{ this.kpi_filter.end.min }}</span>
+                    </div>
+                </div>
+                <app-model-calendar class="calendar" *ngIf="kpi_filter.end.isShow" [calendar_content]="calendar"
+                    (calendar_return)="calerdarReturnHandler($event)">
+                </app-model-calendar>
+            </div>
+            <div class="normal_inp _hasMsg" data-msg="UPN(成品料號)" *ngIf="!isTime">
+                <input type="text">
+            </div>
+            <div class="normal_inp _hasMsg" data-msg="SPN(半成品料號)" *ngIf="!isTime">
+                <input type="text">
+            </div>
+            <app-model-selcheck class="normal_selcheck _hasMsg" data-msg="Line" [selectContent]="line_sel"
+                (selCheckShowEvent)="selCheckShow($event)" (selCheckEvent)="selCheckHandler($event)">
+            </app-model-selcheck>
+            <app-model-selcheck class="normal_selcheck _hasMsg" data-msg="Stations" [selectContent]="stage_sel"
+                (selCheckShowEvent)="selCheckShow($event)" (selCheckEvent)="selCheckHandler($event)">
+            </app-model-selcheck>
+            <button class="normal_btn _primary">Query</button>
+        </div>
+    </div>
+</div>

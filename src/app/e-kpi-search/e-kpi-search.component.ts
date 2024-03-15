@@ -1,12 +1,13 @@
 import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 import { ModelCalendarComponent } from '../model-calendar/model-calendar.component';
 import { ModelSelcheckComponent } from '../model-selcheck/model-selcheck.component';
-import { Router } from '@angular/router';
+import { EKpiDetailComponent } from '../e-kpi-detail/e-kpi-detail.component';
 @Component({
 	selector: 'app-e-kpi-search',
 	standalone: true,
-	imports: [CommonModule, ModelCalendarComponent, ModelSelcheckComponent],
+	imports: [CommonModule, ModelCalendarComponent, ModelSelcheckComponent,EKpiDetailComponent],
 	templateUrl: './e-kpi-search.component.html',
 	styleUrl: './e-kpi-search.component.scss'
 })
@@ -350,6 +351,7 @@ export class EKpiSearchComponent {
 			element.isOn = false
 		}
 		this.kpi.data_lv3[i].isOn = true
+		this.router.navigate(['/home/E-KPI/detail/' + i]);
 
 	}
 	moreHandler(event: MouseEvent, i: number) {
