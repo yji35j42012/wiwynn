@@ -296,9 +296,9 @@
 		}
 	}
 
-
 	// .kpi_detail
 	&_detail {
+		overflow-y: auto;
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -318,7 +318,6 @@
 			font-size: 20px;
 			font-weight: 700;
 			line-height: 24px;
-
 		}
 
 		// .kpi_detail_filter
@@ -340,7 +339,7 @@
 
 			.searchbox {
 				@include d_f(flex, none, flex-end);
-				margin-top: 8px;
+				margin-top: 10px;
 			}
 
 			.normal_selcheck {
@@ -363,6 +362,222 @@
 				margin-left: 30px;
 			}
 		}
+
+
+		// .kpi_detail_content
+		&_content {
+			padding: 20px;
+
+			._export {
+				margin-left: auto;
+			}
+		}
+
+		// .kpi_detail_chart
+		&_chart {
+			@include d_f(flex, center, flex-end);
+			width: 100%;
+			// height: 325px;
+			margin-top: 20px;
+
+
+			.chartbox {
+				position: relative;
+				@include d_f(flex, center);
+				flex-wrap: wrap;
+				width: 1400px;
+
+				// .chartbox_title
+				&_title {
+					@include d_f(flex, space-between, flex-start);
+					width: 98%;
+					margin-bottom: 15px;
+
+					span {
+						font-size: 12px;
+						font-weight: 400;
+						line-height: 18px;
+
+						&:nth-child(2) {
+							font-size: 16px;
+							line-height: 24px;
+						}
+					}
+				}
+
+				// .chartbox_group
+				&_group {
+					position: absolute;
+					left: 0;
+					right: 0;
+					bottom: 20px;
+					@include d_f(flex, space-around, center);
+					width: 1285px;
+					height: 258px;
+					margin-left: auto;
+					margin-right: auto;
+				}
+
+				// .chartbox_item
+				&_item {
+					position: relative;
+					@include d_f(flex, flex-end);
+					flex-direction: column;
+					height: 100%;
+					// &::before{
+					// 	content:'';
+					// 	width: 50%;
+					// 	height: 100%;
+					// 	border: 1px dashed rgba(204, 204, 204, 1);
+
+					// }
+					span {
+						position: relative;
+						display: block;
+						width: 40px;
+					}
+
+					.green {
+						height: 40px;
+						background-color: #35BE13;
+
+						@include hv {
+							background-color: #ABFF00;
+						}
+					}
+
+					.orange {
+						// height: 40px;
+						background-color: #FB9823;
+					}
+
+					.red {
+						background-color: #FA2E2E;
+					}
+				}
+
+				// .chartbox_x
+				&_x {
+					@include d_f(flex, space-around, center);
+					width: calc(100% - 100px);
+					height: 15px;
+					margin-left: auto;
+					margin-right: auto;
+					margin-top: 5px;
+					font-size: 12px;
+					font-weight: 400;
+					line-height: 14px;
+
+					li {
+						width: 40px;
+						text-align: center;
+					}
+				}
+
+				// .chartbox_canvas
+				&_canvas {
+					width: calc(100% - 100px);
+				}
+
+				// .chartbox_y
+				&_y {
+					position: absolute;
+					top: 23px;
+					left: 0;
+					bottom: 0;
+					@include d_f(flex, space-between);
+					flex-direction: column;
+					width: 30px;
+					height: 335px;
+					margin: auto 0;
+					text-align: right;
+
+					&._rigth {
+						left: auto;
+						right: 0;
+						text-align: left;
+					}
+
+					&._issue {
+						top: -15px;
+						height: 248px;
+					}
+				}
+
+
+			}
+		}
+
+
+	}
+
+	// .kpi_tabbox
+	&_tabbox {
+		@include d_f(flex, none, center);
+		width: 100%;
+		height: 48px;
+		margin-top: 10px;
+		padding: 0 20px;
+		background-color: #B1B9C8;
+
+		.border_btn:nth-child(3) {
+			margin-left: auto;
+		}
+
+		.border_btn+.border_btn:not(:nth-child(3)) {
+			margin-left: 10px;
+		}
+	}
+
+
+	// .kpi_detailTb
+	&_detailTb {
+		padding-top: 35px;
+		padding-bottom: 40px;
+
+		// .kpi_detailTb_filter
+		&_filter {
+			@include d_f(flex, none, center);
+
+			.txt {
+				font-size: 16px;
+				font-weight: 700;
+				line-height: 24px;
+			}
+
+			.txt+.normal_btn,
+			.normal_btn+.normal_selcheck {
+				margin-left: 15px;
+			}
+
+		}
+
+		// .kpi_detailTb_tb
+		&_tb {
+			width: 100%;
+			margin-top: 20px;
+
+			th {
+				height: 34px;
+				background-color: rgba(140, 149, 166, 1);
+				color: rgba(214, 224, 241, 1);
+				border: 1px solid rgba(216, 216, 216, 1);
+			}
+
+			tr {
+				@include hv {
+					td {
+						background-color: rgba(171, 255, 0, 1);
+					}
+				}
+			}
+
+			td {
+				height: 42px;
+				border: 1px solid rgba(216, 216, 216, 1);
+				text-align: center;
+			}
+		}
 	}
 }
 
@@ -380,4 +595,37 @@
 	&_body {
 		padding-top: 24px;
 	}
+}
+
+
+// .chartDetail
+.chartDetail {
+	position: absolute;
+	display: block;
+	width: 334px;
+	padding: 10px;
+	box-shadow: 0px 4px 20px 0px #0000004D;
+	background-color: #FFFFFF;
+
+	// .chartDetail_tb
+	&_tb {
+		width: 100%;
+	}
+
+	th {
+		width: 50%;
+		height: 34px;
+		background-color: #ABFF00;
+		font-size: 14px;
+		font-weight: 400;
+		line-height: 17px;
+		border: 1px solid #D8D8D8;
+	}
+
+	td {
+		height: 40px;
+		text-align: center;
+		border: 1px solid #D8D8D8;
+	}
+
 }

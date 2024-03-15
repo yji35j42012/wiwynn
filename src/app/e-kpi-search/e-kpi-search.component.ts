@@ -7,7 +7,7 @@ import { EKpiDetailComponent } from '../e-kpi-detail/e-kpi-detail.component';
 @Component({
 	selector: 'app-e-kpi-search',
 	standalone: true,
-	imports: [CommonModule, ModelCalendarComponent, ModelSelcheckComponent,EKpiDetailComponent],
+	imports: [CommonModule, ModelCalendarComponent, ModelSelcheckComponent, EKpiDetailComponent],
 	templateUrl: './e-kpi-search.component.html',
 	styleUrl: './e-kpi-search.component.scss'
 })

@@ -65,4 +65,267 @@
             <button class="normal_btn _primary">Query</button>
         </div>
     </div>
+    <div class="kpi_tabbox">
+        <button [class]="['border_btn' ,'_kpi' ,isIssue?'':'on']" (click)="issueHanler(false)">Time Chart</button>
+        <button [class]="['border_btn' ,'_kpi' ,isIssue?'on':'']" (click)="issueHanler(true)">Issue</button>
+
+        <button class="border_btn _kpi">Houarly</button>
+        <button class="border_btn _kpi on">Bi-Hourly</button>
+        <button class="border_btn _kpi">Daily</button>
+        <button class="border_btn _kpi">Weekly</button>
+        <button class="border_btn _kpi">Monthly</button>
+    </div>
+    <div class="kpi_detail_content">
+        <div class="btnbox">
+            <button class="border_btn _export"><i _ngcontent-ng-c2185158378=""></i>匯出 Excel</button>
+        </div>
+        <div class="kpi_detail_chart" *ngIf="!isIssue">
+            <div class="chartbox">
+                <div class="chartbox_title">
+                    <span>Rete(%)</span>
+                    <span>E-TRON UBB</span>
+                    <span>Qty</span>
+                </div>
+                <ul class="chartbox_y">
+                    <li *ngFor="let item of chart_time.y1">{{item}}</li>
+                </ul>
+                <canvas #gridCanvas id="gridCanvas" width="1285" height="255"></canvas>
+                <ul id="chartbox_group" class="chartbox_group">
+                    <li class="chartbox_item" *ngFor="let item of chart_time.info;index as i">
+                        <span [id]="'green'+i" class="green" [style]="'height:'+item.g+'px;'"
+                            (mousemove)="chartmouseMove($event ,i)" (mouseleave)="chartmouseLeave()"
+                            (click)="chartHandler(item.state)"></span>
+                        <span class="orange" [style]="'height:'+item.o+'px;'"></span>
+                        <span class="red" [style]="'height:'+item.r+'px;'"></span>
+                    </li>
+                </ul>
+                <ul class="chartbox_y _rigth">
+                    <li *ngFor="let item of chart_time.y2">{{item}}</li>
+                </ul>
+                <ul class="chartbox_x">
+                    <li *ngFor="let item of chart_time.x">{{item}}</li>
+                </ul>
+            </div>
+        </div>
+        <div class="kpi_detail_chart _issue" *ngIf="isIssue">
+            <div class="chartbox">
+                <ul class="chartbox_y _issue">
+                    <li *ngFor="let item of chart_issue.y1">{{item}}</li>
+                </ul>
+                <canvas #lineCanvas id="issueCanvas"  width="1285" height="255"></canvas>
+                <ul id="chartbox_group" class="chartbox_group">
+                    <li class="chartbox_item" *ngFor="let item of chart_issue.info;index as i">
+                        <span [id]="'green'+i" class="green" [style]="'height:'+item.g+'px;'"
+                            (mousemove)="chartmouseMove($event ,i)" (mouseleave)="chartmouseLeave()"
+                            (click)="chartHandler(item.state)"></span>
+                        <span class="orange" [style]="'height:'+item.o+'px;'"></span>
+                        <span class="red" [style]="'height:'+item.r+'px;'"></span>
+                    </li>
+                </ul>
+                <ul class="chartbox_x">
+                    <li *ngFor="let item of chart_issue.x">{{item}}</li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="kpi_detailTb" *ngIf="!isIssue">
+            <div class="kpi_detailTb_filter">
+                <span class="txt">kpi_detailTb_filter</span>
+                <button class="normal_btn _kpiviewall">View All</button>
+                <app-model-selcheck class="normal_selcheck _hasMsg" data-msg="Mo Filter" [selectContent]="mofilter_sel"
+                    (selCheckShowEvent)="selCheckShow($event)" (selCheckEvent)="selCheckHandler($event)">
+                </app-model-selcheck>
+            </div>
+            <table class="kpi_detailTb_tb" *ngIf="chart_tb.state=='FPYR'">
+                <tr>
+                    <th rowspan="2">Time</th>
+                    <th rowspan="2">Target</th>
+                    <th rowspan="2">Actual</th>
+                    <th colspan="5">Detail</th>
+                </tr>
+                <tr>
+                    <th>MAX PASS</th>
+                    <th>Line</th>
+                    <th>Output</th>
+                    <th>Input</th>
+                    <th>Stage</th>
+                </tr>
+                <tr>
+                    <td>2023/11/21 08:00</td>
+                    <td>99.5%</td>
+                    <td>90.0%</td>
+                    <td>Max Pass 178(pcs)</td>
+                    <td>S3</td>
+                    <td>176</td>
+                    <td>176</td>
+                    <td>TK</td>
+                </tr>
+                <tr>
+                    <td>2023/11/21 08:00</td>
+                    <td>99.5%</td>
+                    <td>90.0%</td>
+                    <td>Max Pass 178(pcs)</td>
+                    <td>S3</td>
+                    <td>176</td>
+                    <td>176</td>
+                    <td>TK</td>
+                </tr>
+                <tr>
+                    <td>2023/11/21 08:00</td>
+                    <td>99.5%</td>
+                    <td>90.0%</td>
+                    <td>Max Pass 178(pcs)</td>
+                    <td>S3</td>
+                    <td>176</td>
+                    <td>176</td>
+                    <td>TK</td>
+                </tr>
+                <tr>
+                    <td>2023/11/21 08:00</td>
+                    <td>99.5%</td>
+                    <td>90.0%</td>
+                    <td>Max Pass 178(pcs)</td>
+                    <td>S3</td>
+                    <td>176</td>
+                    <td>176</td>
+                    <td>TK</td>
+                </tr>
+                <tr>
+                    <td>2023/11/21 08:00</td>
+                    <td>99.5%</td>
+                    <td>90.0%</td>
+                    <td>Max Pass 178(pcs)</td>
+                    <td>S3</td>
+                    <td>176</td>
+                    <td>176</td>
+                    <td>TK</td>
+                </tr>
+                <tr>
+                    <td>2023/11/21 08:00</td>
+                    <td>99.5%</td>
+                    <td>90.0%</td>
+                    <td>Max Pass 178(pcs)</td>
+                    <td>S3</td>
+                    <td>176</td>
+                    <td>176</td>
+                    <td>TK</td>
+                </tr>
+            </table>
+            <table class="kpi_detailTb_tb" *ngIf="chart_tb.state=='UPPH'">
+                <tr>
+                    <th rowspan="2">Time</th>
+                    <th rowspan="2">Target</th>
+                    <th rowspan="2">Actual</th>
+                    <th colspan="2">Detail</th>
+                </tr>
+                <tr>
+                    <th>Produce(Output)</th>
+                    <th>Hour(人力總工時)</th>
+                </tr>
+                <tr>
+                    <td>2023/11/21 08:00</td>
+                    <td>150</td>
+                    <td>200</td>
+                    <td>100</td>
+                    <td>50</td>
+                </tr>
+                <tr>
+                    <td>2023/11/21 08:00</td>
+                    <td>150</td>
+                    <td>200</td>
+                    <td>100</td>
+                    <td>50</td>
+                </tr>
+                <tr>
+                    <td>2023/11/21 08:00</td>
+                    <td>150</td>
+                    <td>200</td>
+                    <td>100</td>
+                    <td>50</td>
+                </tr>
+            </table>
+            <table class="kpi_detailTb_tb" *ngIf="chart_tb.state=='OEE'">
+                <tr>
+                    <th rowspan="2">Time</th>
+                    <th rowspan="2">Target</th>
+                    <th rowspan="2">Actual</th>
+                    <th colspan="3">Detail</th>
+                </tr>
+                <tr>
+                    <th>Line</th>
+                    <th>Duration</th>
+                    <th>PD_RUN</th>
+                </tr>
+                <tr>
+                    <td>2023/11/21 08:00</td>
+                    <td>85</td>
+                    <td>50</td>
+                    <td>S1</td>
+                    <td>60(Min)</td>
+                    <td>30(Min)</td>
+                </tr>
+                <tr>
+                    <td>2023/11/21 08:00</td>
+                    <td>85</td>
+                    <td>50</td>
+                    <td>S1</td>
+                    <td>60(Min)</td>
+                    <td>30(Min)</td>
+                </tr>
+                <tr>
+                    <td>2023/11/21 08:00</td>
+                    <td>85</td>
+                    <td>50</td>
+                    <td>S1</td>
+                    <td>60(Min)</td>
+                    <td>30(Min)</td>
+                </tr>
+            </table>
+            <ul class="normal_page">
+                <li class="normal_page_item _prev"></li>
+                <li class="normal_page_item on">1</li>
+                <li class="normal_page_item">2</li>
+                <li class="normal_page_item">3</li>
+                <li class="normal_page_item">4</li>
+                <li class="normal_page_item">5</li>
+                <li class="normal_page_item _dot">...</li>
+                <li class="normal_page_item">100</li>
+                <li class="normal_page_item _next"></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<div class="chartDetail" *ngIf="chart_time.isChartdetail"
+    [style]="'left:'+chart_time.chartdetail_x+'px; top:'+chart_time.chartdetail_y+'px;'">
+    <table class="chartDetail_tb">
+        <tr>
+            <th>Item Name</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>Time</td>
+            <td>09/01 20:00</td>
+        </tr>
+        <tr>
+            <td>Target</td>
+            <td>0.73</td>
+        </tr>
+        <tr>
+            <td>Rate</td>
+            <td>0.99</td>
+        </tr>
+        <tr>
+            <th colspan="2">Max Step Info</th>
+        </tr>
+        <tr>
+            <td>Produce</td>
+            <td>92</td>
+        </tr>
+        <tr>
+            <td>Hour</td>
+            <td>93</td>
+        </tr>
+    </table>
 </div>

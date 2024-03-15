@@ -1,20 +1,13 @@
 <!-- 點擊在span class裡面加上on -->
-<span
-  [class]="['normal_selcheck_title', selectContent.isShow ? 'on' : '']"
-  (click)="selCheckHandler()"
->
-  <span *ngFor="let item of selectContent.showLists">{{ item.name }}</span>
+<span [class]="['normal_selcheck_title', selectContent.isShow ? 'on' : '']" (click)="selCheckHandler()">
+	<span *ngFor="let item of selectContent.showLists">{{ item.name }}</span>
 </span>
 <div class="normal_selcheck_group">
-  <label class="normal_check" *ngFor="let item of selectContent.lists">
-    <input
-      type="checkbox"
-      class="normal_check_inp"
-      [checked]="item.isChecked"
-      (change)="itemCheck(selectContent.name, item.id)"
-    />
-    <span class="normal_check_span"></span>
-    <span class="normal_check_bg"></span>
-    <span class="normal_check_txt">{{ item.name }}</span>
-  </label>
+	<label class="normal_check" *ngFor="let item of selectContent.lists">
+		<input type="checkbox" class="normal_check_inp" [checked]="item.isChecked"
+			(change)="itemCheck(selectContent.name, item.id)" />
+		<span class="normal_check_span"></span>
+		<span class="normal_check_bg"></span>
+		<span class="normal_check_txt">{{ item.name }}</span>
+	</label>
 </div>
