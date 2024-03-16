@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef, } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { ModelCalendarComponent } from '../model-calendar/model-calendar.component';
 import { ModelSelcheckComponent } from '../model-selcheck/model-selcheck.component';
 
@@ -12,16 +12,16 @@ import { ModelSelcheckComponent } from '../model-selcheck/model-selcheck.compone
 })
 export class EKpiDetailComponent {
 
-	constructor(private el: ElementRef) { }
+	constructor(private el: ElementRef, private location: Location) { }
+
+	goBack() {
+		this.location.back();
+	}
+
 	isTime = true
 	isIssue = false
 	issueHanler(s: boolean) {
 		this.isIssue = s
-		if (s) {
-			// this.drawIssue()
-		} else {
-			this.drawGrid()
-		}
 	}
 	changeMode(s: string) {
 		s == 't' ? this.isTime = true : this.isTime = false
@@ -142,7 +142,7 @@ export class EKpiDetailComponent {
 		} else if (s == 'stage_sel') {
 			this.stage_sel.isShow = !this.stage_sel.isShow;
 			this.line_sel.isShow = false;
-			this.stage_sel.isShow = false;
+			this.mofilter_sel.isShow = false;
 		} else if (s == 'mofilter_sel') {
 			this.mofilter_sel.isShow = !this.mofilter_sel.isShow;
 			this.line_sel.isShow = false;
@@ -195,94 +195,6 @@ export class EKpiDetailComponent {
 	@ViewChild('gridCanvas') gridCanvas!: ElementRef<HTMLCanvasElement>;
 	@ViewChild('lineCanvas') lineCanvas!: ElementRef<HTMLCanvasElement>;
 	@ViewChild('gridGroup') gridGroup!: ElementRef<HTMLCanvasElement>;
-	drawGrid() {
-		setTimeout(() => { // 使用 setTimeout 等待下一次调用
-			if (window.innerWidth > 1300) {
-				let w = 1290
-				let h = 320
-				this.el.nativeElement.querySelector('#gridCanvas').width = w
-				this.el.nativeElement.querySelector('#gridCanvas').height = h
-				this.el.nativeElement.querySelector('#chartx').style.width = w + 'px';
-				// this.el.nativeElement.querySelector('#chartx').style.height = h + 'px';
-				this.el.nativeElement.querySelector('#chartbox_group').style.width = w + 'px';
-				this.el.nativeElement.querySelector('#chartbox_group').style.height = h + 'px';
-			} else {
-				this.el.nativeElement.querySelector('#gridCanvas').width = 1140
-				// this.el.nativeElement.querySelector('#gridCanvas').height = 280
-			}
-			const canvas = this.gridCanvas?.nativeElement; // 使用可选链操作符安全地获取画布元素
-			if (!canvas) {
-				console.error('Canvas element not found');
-				return;
-			}
-			const ctx = canvas.getContext('2d');
-			if (!ctx) {
-				console.error('Canvas context not supported');
-				return;
-			}
-			const width = canvas.width;
-			const height = canvas.height;
-
-			// 清除画布
-			ctx.clearRect(0, 0, width, height);
-
-			// 绘制竖线
-			ctx.strokeStyle = '#CCCCCC';
-			ctx.setLineDash([5, 5]); // 设置虚线样式
-			// for (let i = 0; i < 28; i++) {
-			// 	const x = i * width / 27;
-			// 	ctx.beginPath();
-			// 	ctx.moveTo(x, 0);
-			// 	ctx.lineTo(x, height);
-			// 	ctx.stroke();
-			// }
-
-			// 绘制横线
-			ctx.setLineDash([5, 5]); // 设置虚线样式
-			for (let i = 0; i < 8; i++) {
-				const y = i * height / 7;
-				ctx.beginPath();
-				ctx.moveTo(0, y);
-				ctx.lineTo(width, y);
-				ctx.stroke();
-			}
-		});
-	}
-	drawIssue() {
-		setTimeout(() => { // 使用 setTimeout 等待下一次调用
-
-
-			const canvas = this.lineCanvas?.nativeElement; // 使用可选链操作符安全地获取画布元素
-			if (!canvas) {
-				console.error('Canvas element not found');
-				return;
-			}
-			const ctx = canvas.getContext('2d');
-			if (!ctx) {
-				console.error('Canvas context not supported');
-				return;
-			}
-			const width = canvas.width;
-			const height = canvas.height;
-
-			// 清除画布
-			ctx.clearRect(0, 0, width, height);
-
-			// 绘制竖线
-			ctx.strokeStyle = '#CCCCCC';
-
-			// 绘制横线
-			ctx.setLineDash([5, 5]); // 设置虚线样式
-			for (let i = 0; i < 6; i++) {
-				const y = i * height / 5;
-				ctx.beginPath();
-				ctx.moveTo(0, y);
-				ctx.lineTo(width, y);
-				ctx.stroke();
-			}
-		});
-	}
-
 
 	chartmouseMove(e: MouseEvent, i: number) {
 		const button = e.target as HTMLButtonElement;
@@ -332,15 +244,15 @@ export class EKpiDetailComponent {
 		x: ['D2-AC', 'D2-AC', 'D2-BD', 'D2-FG', 'D2-IA', 'D2-PF', 'D2-T1', 'D2-TA', 'D2-TD',],
 		y1: [1500, 1200, 900, 600, 300, 0],
 		info: [
-			{ g: 40, o: 0, r: 0, state: "FPYR" },
-			{ g: 70, o: 0, r: 0, state: "UPPH" },
-			{ g: 40, o: 0, r: 0, state: "OEE" },
-			{ g: 70, o: 0, r: 0, state: "FPYR" },
-			{ g: 40, o: 0, r: 0, state: "UPPH" },
-			{ g: 70, o: 0, r: 0, state: "OEE" },
-			{ g: 40, o: 0, r: 0, state: "FPYR" },
-			{ g: 70, o: 0, r: 0, state: "FPYR" },
-			{ g: 40, o: 0, r: 0, state: "FPYR" },
+			{ g: 40, o: 20, r: 10, state: "FPYR" },
+			{ g: 70, o: 50, r: 40, state: "UPPH" },
+			{ g: 40, o: 20, r: 10, state: "OEE" },
+			{ g: 70, o: 40, r: 30, state: "FPYR2" },
+			{ g: 40, o: 50, r: 50, state: "UPPH" },
+			{ g: 70, o: 20, r: 10, state: "OEE" },
+			{ g: 40, o: 40, r: 10, state: "FPYR" },
+			{ g: 70, o: 60, r: 20, state: "FPYR" },
+			{ g: 40, o: 10, r: 60, state: "FPYR" },
 		],
 		isChartdetail: false,
 		chartdetail_x: 0,
@@ -348,7 +260,7 @@ export class EKpiDetailComponent {
 	}
 	chart_tb = {
 		// FPYR,UPPH,OEE	
-		state: "OEE"
+		state: "FPYR2"
 	}
 
 
@@ -356,13 +268,80 @@ export class EKpiDetailComponent {
 		this.chart_tb.state = s
 	}
 
-	ngAfterViewInit() {
 
 
-		if (this.isIssue) {
-			// this.drawIssue()
-		} else {
-			// this.drawGrid()
+
+	fpyr2_table = [
+		{
+			title: "TD.DIP_FUNTION_A ",
+			total: 10,
+			data: [
+				{
+					stage: "TD.DIP_FUNTION_A",
+					errorcode: "BFT_0012",
+					defectsymptom: "其他 NG",
+					qty: 7,
+					fr: 63.64,
+					reasoncode: "M_07",
+					reasondescription: "零件功能不良/Component Function NG",
+					location: "C1248",
+					qty2: 1,
+					fr2: 9.09,
+				},
+				{
+					stage: "",
+					errorcode: "",
+					defectsymptom: "",
+					qty: '',
+					fr: '',
+					reasoncode: "",
+					reasondescription: "",
+					location: "C1248",
+					qty2: 1,
+					fr2: 9.09,
+				},
+			],
+			ismore: true,
+		},
+		{
+			title: "TD.DIP_FUNTION_B",
+			total: 5,
+			data: [
+				{
+					stage: "TD.DIP_FUNTION_A",
+					errorcode: "BFT_0012",
+					defectsymptom: "其他 NG",
+					qty: 7,
+					fr: 63.64,
+					reasoncode: "M_07",
+					reasondescription: "零件功能不良/Component Function NG",
+					location: "C1248",
+					qty2: 1,
+					fr2: 9.09,
+				},
+				{
+					stage: "",
+					errorcode: "",
+					defectsymptom: "",
+					qty: '',
+					fr: '',
+					reasoncode: "",
+					reasondescription: "",
+					location: "C1248",
+					qty2: 1,
+					fr2: 9.09,
+				},
+			],
+			ismore: false,
 		}
+	]
+
+	kpiMoreBtn(i: number) {
+		for (let x = 0; x < this.fpyr2_table.length; x++) {
+			const element = this.fpyr2_table[x];
+			element.ismore = false
+		}
+		this.fpyr2_table[i].ismore = true
+
 	}
 }

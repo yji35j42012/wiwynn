@@ -60,7 +60,6 @@ export class EKpiSearchComponent {
 		this.calendar.min = item.min;
 	}
 	calerdarReturnHandler(obj: any) {
-		console.log('calerdarReturnHandler', obj.year);
 		var item: any;
 		if (this.calendar.state == 'start') {
 			item = this.kpi_filter.start;
@@ -163,7 +162,7 @@ export class EKpiSearchComponent {
 				isFav: false,
 				detail:
 					'PCBA FPYR-11 測試站點 測試站PCBA FPYR-11 測試站點 測試站PCBA FPYR-11 測試站點 測試站PCBA FPYR-11 測試站點 測試站',
-				isOn: true,
+				isOn: false,
 			},
 			{
 				term: 'PCBA FPYR13233r sDIPPCBAFPYRP PCBA FPYR13233r sDIPPCBAFPYRP',

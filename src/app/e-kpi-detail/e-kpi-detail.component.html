@@ -1,6 +1,6 @@
 <div class="kpi_detail">
 	<div class="kpi_detail_head">
-		<button class="icon_btn _back">Back</button>
+		<button class="icon_btn _back" (click)="goBack()">Back</button>
 		<div class="kpi_detail_title">Levle 4 PCBA FPYR - PCBA FPYR - E- TRON UBB - Line:D3</div>
 	</div>
 	<div class="kpi_detail_filter">
@@ -53,13 +53,13 @@
 			<div class="normal_inp _hasMsg" data-msg="UPN(成品料號)" *ngIf="!isTime">
 				<input type="text">
 			</div>
-			<div class="normal_inp _hasMsg" data-msg="SPN(半成品料號)" *ngIf="!isTime">
+			<div class="normal_inp _hasMsg" data-msg="Mo" *ngIf="!isTime">
 				<input type="text">
 			</div>
 			<app-model-selcheck class="normal_selcheck _hasMsg" data-msg="Line" [selectContent]="line_sel"
 				(selCheckShowEvent)="selCheckShow($event)" (selCheckEvent)="selCheckHandler($event)">
 			</app-model-selcheck>
-			<app-model-selcheck class="normal_selcheck _hasMsg" data-msg="Stations" [selectContent]="stage_sel"
+			<app-model-selcheck class="normal_selcheck _hasMsg" data-msg="Stage" [selectContent]="stage_sel"
 				(selCheckShowEvent)="selCheckShow($event)" (selCheckEvent)="selCheckHandler($event)">
 			</app-model-selcheck>
 			<button class="normal_btn _primary">Query</button>
@@ -79,75 +79,25 @@
 		<div class="btnbox">
 			<button class="border_btn _export"><i _ngcontent-ng-c2185158378=""></i>匯出 Excel</button>
 		</div>
-		<div class="kpi_detail_chart" *ngIf="!isIssue">
-			<ul class="chartbox_y">
-				<li *ngFor="let item of chart_time.y1">{{item}}</li>
+		<div class="kpi_chart" *ngIf="!isIssue">
+			<div class="kpi_chart_title">E-TRON UBB</div>
+			<ul class="kpi_chart_y" data-msg="Rete(%)">
+				<li *ngFor="let item of chart_time.y1" [attr.data-msg]="item"></li>
 			</ul>
-			<div class="chartBody">
-				<ul class="chartbox_yline">
-					<li *ngFor="let item of chart_time.y1"></li>
-				</ul>
-				<ul  id="chartbox_group" class="chartbox_group">
-					<li class="chartbox_item" *ngFor="let item of chart_time.info;index as i">
-						<span [id]="'green'+i" class="green" [style]="'height:'+item.g+'px;'"
-							(mousemove)="chartmouseMove($event ,i)" (mouseleave)="chartmouseLeave()"
-							(click)="chartHandler(item.state)"></span>
-						<span class="orange" [style]="'height:'+item.o+'px;'"></span>
-						<span class="red" [style]="'height:'+item.r+'px;'"></span>
-					</li>
-				</ul>
-				<ul class="chartbox_x" id="chartx">
-					<li *ngFor="let item of chart_time.x">{{item}}</li>
-				</ul>
-			</div>
-			<ul class="chartbox_y _rigth">
-				<li *ngFor="let item of chart_time.y2">{{item}}</li>
+			<ul class="kpi_chart_y _right" data-msg="Qty">
+				<li *ngFor="let item of chart_time.y2" [attr.data-msg]="item"></li>
 			</ul>
-			<!-- <div class="chartbox">
-                <div class="chartbox_title">
-                    <span>Rete(%)</span>
-                    <span>E-TRON UBB</span>
-                    <span>Qty</span>
-                </div>
-                <ul class="chartbox_y">
-                    <li *ngFor="let item of chart_time.y1">{{item}}</li>
-                </ul>
-                <canvas #gridCanvas id="gridCanvas" width="1285" height="255"></canvas>
-                <ul #gridGroup id="chartbox_group" class="chartbox_group">
-                    <li class="chartbox_item" *ngFor="let item of chart_time.info;index as i">
-                        <span [id]="'green'+i" class="green" [style]="'height:'+item.g+'px;'"
-                            (mousemove)="chartmouseMove($event ,i)" (mouseleave)="chartmouseLeave()"
-                            (click)="chartHandler(item.state)"></span>
-                        <span class="orange" [style]="'height:'+item.o+'px;'"></span>
-                        <span class="red" [style]="'height:'+item.r+'px;'"></span>
-                    </li>
-                </ul>
-               
-                <ul class="chartbox_x" id="chartx">
-                    <li *ngFor="let item of chart_time.x">{{item}}</li>
-                </ul>
-            </div> -->
-		</div>
-		<div class="kpi_detail_chart _issue" *ngIf="isIssue">
-			<div class="chartbox">
-				<ul class="chartbox_y _issue">
-					<li *ngFor="let item of chart_issue.y1">{{item}}</li>
-				</ul>
-				<canvas #lineCanvas id="issueCanvas" width="1285" height="255"></canvas>
-				<ul id="chartbox_group" class="chartbox_group">
-					<li class="chartbox_item" *ngFor="let item of chart_issue.info;index as i">
-						<span [id]="'green'+i" class="green" [style]="'height:'+item.g+'px;'"
-							(mousemove)="chartmouseMove($event ,i)" (mouseleave)="chartmouseLeave()"
-							(click)="chartHandler(item.state)"></span>
-						<span class="orange" [style]="'height:'+item.o+'px;'"></span>
-						<span class="red" [style]="'height:'+item.r+'px;'"></span>
-					</li>
-				</ul>
-				<ul class="chartbox_x">
-					<li *ngFor="let item of chart_issue.x">{{item}}</li>
-				</ul>
-			</div>
-
+			<ul id="chartbox_group" class="kpi_chart_content">
+				<li *ngFor="let item of chart_time.info;index as i">
+					<div class="kpi_chart_line"></div>
+					<span [id]="'green'+i" class="green" [style]="'height:'+item.g+'px;'"
+						(mousemove)="chartmouseMove($event ,i)" (mouseleave)="chartmouseLeave()"
+						(click)="chartHandler(item.state)"></span>
+				</li>
+			</ul>
+			<ul class="kpi_chart_x">
+				<li *ngFor="let item of chart_time.x">{{item}}</li>
+			</ul>
 		</div>
 		<div class="kpi_detailTb" *ngIf="!isIssue">
 			<div class="kpi_detailTb_filter">
@@ -313,6 +263,174 @@
 				<li class="normal_page_item">100</li>
 				<li class="normal_page_item _next"></li>
 			</ul>
+		</div>
+		<div class="kpi_chart _issue" *ngIf="isIssue">
+			<div class="kpi_chart_title"></div>
+			<ul class="kpi_chart_y">
+				<li *ngFor="let item of chart_issue.y1" [attr.data-msg]="item"></li>
+			</ul>
+			<ul id="chartbox_group" class="kpi_chart_content">
+				<li *ngFor="let item of chart_issue.info;index as i">
+					<div class="kpi_chart_line"></div>
+					<span [id]="'green'+i" class="green" [style]="'height:'+item.g+'px;'"
+						(mousemove)="chartmouseMove($event ,i)" (mouseleave)="chartmouseLeave()"
+						(click)="chartHandler(item.state)"></span>
+					<span class="orange" [style]="'height:'+item.o+'px;'"></span>
+					<span class="red" [style]="'height:'+item.r+'px;'"></span>
+				</li>
+			</ul>
+			<ul class="kpi_chart_x">
+				<li *ngFor="let item of chart_issue.x">{{item}}</li>
+			</ul>
+		</div>
+		<div class="kpi_detailTb _issue" *ngIf="isIssue">
+			<table class="kpi_detailTb_tb" *ngIf="chart_tb.state=='FPYR'">
+				<tr>
+					<th rowspan="2" class="txtl">Unit P/N</th>
+					<th rowspan="2" class="txtl">MO</th>
+					<th rowspan="2" class="txtl">Line</th>
+					<th rowspan="2" class="txtl">Product Name</th>
+					<th rowspan="2">Overall FPYR(%)</th>
+					<th rowspan="2">Overall YR(%)</th>
+					<th colspan="3">BD.DIP_B-BOX TEST</th>
+					<th colspan="3">AS.ASSEMBLY</th>
+					<th colspan="3">TD.DIP_FUNCTION_A</th>
+				</tr>
+				<tr>
+					<th>Input Q’ty</th>
+					<th>Defect Q’ty</th>
+					<th>T/R(%)</th>
+					<th>Input Q’ty</th>
+					<th>Defect Q’ty</th>
+					<th>T/R(%)</th>
+					<th>Input Q’ty</th>
+					<th>Defect Q’ty</th>
+					<th>T/R(%)</th>
+				</tr>
+				<tr>
+					<td class="txtl">B91.04G10.0003</td>
+					<td class="txtl">000010090972</td>
+					<td class="txtl">D4</td>
+					<td class="txtl nowrap">MB YV3.5 MPCL-A INF HSC MODULE MAXIM</td>
+					<td>100.00</td>
+					<td>100.00</td>
+					<td>1</td>
+					<td>0</td>
+					<td>100</td>
+					<td>0</td>
+					<td>0</td>
+					<td>100</td>
+					<td>3</td>
+					<td>0</td>
+					<td>100</td>
+
+			</table>
+			<table class="kpi_detailTb_tb" *ngIf="chart_tb.state=='UPPH'">
+				<tr>
+					<th class="txtl">Line</th>
+					<th class="txtl">Stage</th>
+					<th>Start Time</th>
+					<th>End Time</th>
+					<th>Duration</th>
+					<th>Machine</th>
+					<th>Status</th>
+					<th>Remark</th>
+				</tr>
+				<tr>
+					<td class="txtl">D1</td>
+					<td class="txtl">TA</td>
+					<td>2023/11/21 08:00</td>
+					<td>2023/11/21 08:00</td>
+					<td>02:00:00</td>
+					<td>2080BFT-ND-0015 (C2080_15)</td>
+					<td>EQ_WAIT</td>
+					<td>設備當機</td>
+				</tr>
+				<tr>
+					<td class="txtl">D1</td>
+					<td class="txtl">TA</td>
+					<td>2023/11/21 08:00</td>
+					<td>2023/11/21 08:00</td>
+					<td>01:00:00</td>
+					<td>2080BFT-ND-0015 (C2080_15)</td>
+					<td>EQ_WAIT</td>
+					<td>助工借機複測</td>
+				</tr>
+			</table>
+			<table class="kpi_detailTb_tb" *ngIf="chart_tb.state=='OEE'">
+				<tr>
+					<th class="txtl">Line</th>
+					<th class="txtl">Stage</th>
+					<th>Start Time</th>
+					<th>End Time</th>
+					<th>Duration</th>
+					<th>Machine</th>
+					<th>Status</th>
+					<th>Remark</th>
+				</tr>
+				<tr>
+					<td class="txtl">D1</td>
+					<td class="txtl">TA</td>
+					<td>2023/11/21 08:00</td>
+					<td>2023/11/21 08:00</td>
+					<td>02:00:00</td>
+					<td>2080BFT-ND-0015 (C2080_15)</td>
+					<td>EQ_WAIT</td>
+					<td>設備當機</td>
+				</tr>
+				<tr>
+					<td class="txtl">D1</td>
+					<td class="txtl">TA</td>
+					<td>2023/11/21 08:00</td>
+					<td>2023/11/21 08:00</td>
+					<td>01:00:00</td>
+					<td>2080BFT-ND-0015 (C2080_15)</td>
+					<td>EQ_WAIT</td>
+					<td>助工借機複測</td>
+				</tr>
+			</table>
+
+			<div *ngIf="chart_tb.state=='FPYR2'">
+				<table [class]="['kpi_detailTb_tb',item.ismore?'':'_hide']"
+					*ngFor="let item of fpyr2_table; index as i">
+					<caption class="kpi_detailTb_title">
+						<span>{{item.title}} </span>
+						<span>Total Defect Qty: {{item.total}}</span>
+					</caption>
+					<tr>
+						<th class="txtl">Stage</th>
+						<th class="txtl">Error Code</th>
+						<th class="txtl">Defect Symptom</th>
+						<th>Qty</th>
+						<th>F/R(%)</th>
+						<th>Reason Code</th>
+						<th>Reason Description</th>
+						<th>Location</th>
+						<th>Qty</th>
+						<th>F/R(%)</th>
+					</tr>
+					<tr *ngFor="let itemInside of item.data">
+						<td class="txtl">{{itemInside.stage}}</td>
+						<td class="txtl">{{itemInside.errorcode}}</td>
+						<td class="txtl">{{itemInside.defectsymptom}}</td>
+						<td>{{itemInside.qty}}</td>
+						<td>{{itemInside.fr}}</td>
+						<td>{{itemInside.reasoncode}}</td>
+						<td>{{itemInside.reasondescription}}</td>
+						<td>{{itemInside.location}}</td>
+						<td>{{itemInside.qty2}}</td>
+						<td>{{itemInside.fr2}}</td>
+					</tr>
+					<tr class="kpi_detailTb_more">
+						<td colspan="10">
+							<button class="kpi_detailTb_morebtn" (click)="kpiMoreBtn(i)"></button>
+						</td>
+					</tr>
+				</table>
+			</div>
+
+
+
 		</div>
 	</div>
 </div>

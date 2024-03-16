@@ -373,244 +373,6 @@
 			}
 		}
 
-		.chartBody {
-			position: relative;
-
-			&::before,
-			&::after {
-				content: "";
-				position: absolute;
-				left: 0;
-				display: block;
-				width: 100%;
-				height: 1px;
-				background: url('../images/line_x.svg');
-			}
-
-			&::before {
-				top: 0;
-			}
-
-			&::after {
-				top: calc(100%);
-			}
-		}
-
-		// .kpi_detail_chart
-		&_chart {
-			@include d_f(flex, center);
-			width: 100%;
-			// height: 325px;
-			margin-top: 20px;
-
-
-			.chartbox {
-				position: relative;
-				@include d_f(flex, center);
-				flex-wrap: wrap;
-				width: 1400px;
-
-				// .chartbox_title
-				&_title {
-					@include d_f(flex, space-between, flex-start);
-					width: 98%;
-					margin-bottom: 15px;
-
-					span {
-						font-size: 12px;
-						font-weight: 400;
-						line-height: 18px;
-
-						&:nth-child(2) {
-							font-size: 16px;
-							line-height: 24px;
-						}
-					}
-				}
-
-				// .chartbox_group
-				&_group {
-					position: relative;
-					// left: 0;
-					// right: 0;
-					// bottom: 20px;
-					@include d_f(flex, space-around, flex-end);
-					width: 1245px;
-					height: 100%;
-					// height: 258px;
-					margin-left: auto;
-					margin-right: auto;
-
-					&::before,
-					&::after {
-						content: "";
-						position: absolute;
-						top: 0;
-
-						display: block;
-						width: 1px;
-						height: 100%;
-						background: url('../images/line_y.svg');
-					}
-
-					&::before {
-						left: 0;
-					}
-
-					&::after {
-						right: 0;
-					}
-				}
-
-				// .chartbox_item
-				&_item {
-					position: relative;
-					@include d_f(flex, flex-end);
-					flex-direction: column;
-					padding: 0 28px;
-					height: 100%;
-
-					&::before {
-						content: "";
-						position: absolute;
-						top: 0;
-						left: 0;
-						right: 0;
-						width: 1px;
-						height: 100%;
-						margin: auto;
-						background: url('../images/line_y.svg');
-					}
-
-					&:not(:last-child):after {
-						content: "";
-						position: absolute;
-						right: 0;
-						top: 0;
-						width: 1px;
-						height: 100%;
-						background: url('../images/line_y.svg');
-					}
-
-					// margin: 0 28px;
-					span {
-						position: relative;
-						display: block;
-						width: 40px;
-
-						// &::before {
-						// 	content: '';
-						// 	position: absolute;
-						// 	width: 1px;
-						// 	height: 100%;
-						// 	left: 0;
-						// 	right: 0;
-						// 	bottom: 0;
-						// 	margin: auto;
-						// 	background: url('../images/line_y.svg');
-						// 	background-size: cover;
-						// }
-					}
-
-					.green {
-						height: 40px;
-						background-color: #35BE13;
-
-						@include hv {
-							background-color: #ABFF00;
-						}
-					}
-
-					.orange {
-						// height: 40px;
-						background-color: #FB9823;
-					}
-
-					.red {
-						background-color: #FA2E2E;
-					}
-				}
-
-				// .chartbox_x
-				&_x {
-					@include d_f(flex, space-around, center);
-					// width: calc(100% - 100px);
-					height: 15px;
-					// margin-left: auto;
-					// margin-right: auto;
-					margin-top: 5px;
-					font-size: 12px;
-					font-weight: 400;
-					line-height: 14px;
-
-					li {
-						width: 40px;
-						text-align: center;
-					}
-				}
-
-				// .chartbox_canvas
-				&_canvas {
-					width: calc(100% - 100px);
-				}
-
-				// .chartbox_y
-				&_y {
-					@include d_f(flex, space-between);
-					flex-direction: column;
-					width: 30px;
-					height: 335px;
-					margin: auto 0;
-					margin-right: 15px;
-					text-align: right;
-
-					&._rigth {
-						margin-right: 0;
-						margin-left: 15px;
-						text-align: left;
-					}
-
-					&._issue {
-						top: -15px;
-						height: 248px;
-					}
-				}
-
-				// .chartbox_yline
-				&_yline {
-					position: absolute;
-					@include d_f(flex, space-between);
-					flex-direction: column;
-					width: 100%;
-					height: 100%;
-
-					li {
-						position: relative;
-						width: 100%;
-						height: 16px;
-&:first-child::after,
-&:last-child::after{
-	display: none;
-}
-						&:after {
-							content: "";
-							position: absolute;
-							left: 0;
-							top: 0;
-							bottom: 0;
-							display: block;
-							width: 100%;
-							height: 1px;
-							margin: auto;
-							background: url('../images/line_x.svg');
-						}
-					}
-				}
-
-			}
-		}
-
-
 	}
 
 	// .kpi_tabbox
@@ -634,9 +396,13 @@
 
 	// .kpi_detailTb
 	&_detailTb {
+		overflow-x: auto;
 		padding-top: 35px;
 		padding-bottom: 40px;
-
+&._issue{
+	padding-top: 0;
+	padding-bottom: 0;
+}
 		// .kpi_detailTb_filter
 		&_filter {
 			@include d_f(flex, none, center);
@@ -659,14 +425,7 @@
 			width: 100%;
 			margin-top: 20px;
 
-			th {
-				height: 34px;
-				background-color: rgba(140, 149, 166, 1);
-				color: rgba(214, 224, 241, 1);
-				border: 1px solid rgba(216, 216, 216, 1);
-			}
-
-			tr {
+			tr:not(.kpi_detailTb_more) {
 				@include hv {
 					td {
 						background-color: rgba(171, 255, 0, 1);
@@ -674,10 +433,332 @@
 				}
 			}
 
+			th {
+				height: 34px;
+				padding: 10px;
+				background-color: rgba(140, 149, 166, 1);
+				color: rgba(214, 224, 241, 1);
+				border: 1px solid rgba(216, 216, 216, 1);
+				font-size: 14px;
+				font-weight: 400;
+				line-height: 17px;
+
+				&.txtl {
+					text-align: left;
+				}
+
+				._issue & {
+					white-space: nowrap;
+				}
+			}
+
 			td {
 				height: 42px;
+				padding: 10px;
 				border: 1px solid rgba(216, 216, 216, 1);
 				text-align: center;
+				font-size: 14px;
+				font-weight: 400;
+				line-height: 21px;
+
+				&.txtl {
+					text-align: left;
+				}
+
+				&.nowrap {
+					white-space: nowrap;
+				}
+
+			}
+
+			&._hide {
+				tr:not(:nth-child(2)):not(:nth-child(3)):not(:last-child) {
+					display: none;
+				}
+			}
+
+		}
+
+		// .kpi_detailTb_title
+		&_title {
+			height: 42px;
+			padding: 10px;
+			background-color: #2E7FDF;
+			border: 1px solid #D8D8D8;
+			color: #FFFFFF;
+			text-align: left;
+			border-bottom: none;
+
+			span {
+				font-size: 14px;
+				font-weight: 700;
+				line-height: 21px;
+			}
+
+			span+span {
+				margin-left: 20px;
+			}
+		}
+
+		// .kpi_detailTb_more
+		&_more {
+			position: relative;
+
+			td {
+				position: relative;
+				border: none;
+
+				&::before {
+					content: "";
+					position: absolute;
+					top: 0;
+					left: 0;
+					bottom: 0;
+					width: 100%;
+					height: 1px;
+					margin: auto;
+					background-color: #DCDCDC;
+				}
+			}
+		}
+
+		// .kpi_detailTb_morebtn
+		&_morebtn {
+			@include d_f(flex, center, center);
+			width: 26px;
+			height: 26px;
+			margin: auto;
+			background-color: #DCDCDC;
+			border-radius: 100%;
+			@extend %hand;
+
+			&::before {
+				content: "";
+				display: block;
+				width: 16px;
+				height: 16px;
+				background: url('../images/icon_arr_calendar.svg')no-repeat center/contain;
+				transform: rotate(90deg);
+
+				._hide & {
+					transform: rotate(270deg);
+				}
+			}
+		}
+	}
+
+
+	// .kpi_chart
+	&_chart {
+		position: relative;
+		height: 325px;
+		margin: auto;
+		margin-top: 20px;
+		// border: 1px solid #000;
+
+		// .kpi_chart_title
+		&_title {
+			display: block;
+			width: 100%;
+			margin-bottom: 15px;
+			text-align: center;
+			font-size: 16px;
+			font-weight: 400;
+			line-height: 24px;
+
+			._issue & {
+				display: none;
+			}
+		}
+
+		// .kpi_chart_x
+		&_x {
+			@include d_f(flex, space-between);
+			width: 1285px;
+			margin: auto;
+			margin-top: 5px;
+			font-size: 12px;
+			font-weight: 400;
+			line-height: 14px;
+
+			li {
+				width: 100px;
+				text-align: center;
+			}
+
+			@include mw(special) {
+				width: 1140px;
+			}
+		}
+
+		// .kpi_chart_y
+		&_y {
+			position: absolute;
+			left: 0;
+			right: 0;
+			@include d_f(flex, space-between);
+			flex-direction: column;
+			width: 1285px;
+			height: 255px;
+			margin: auto;
+
+			@include mw(special) {
+				width: 1140px;
+			}
+
+			&::before {
+				content: attr(data-msg);
+				position: absolute;
+				top: -30px;
+				font-size: 12px;
+				font-weight: 400;
+				line-height: 18px;
+			}
+
+			&:not(._right):before {
+				right: 99%;
+			}
+
+			&._right::before {
+				left: calc(100% + 10px);
+			}
+
+			li {
+				position: relative;
+				width: 100%;
+				height: 1px;
+
+				&::before {
+					content: attr(data-msg);
+					position: absolute;
+					display: inline-block;
+					width: 30px;
+					transform: translateY(-50%);
+					font-size: 12px;
+					font-weight: 400;
+					color: #333333;
+				}
+			}
+
+			&:not(._right) li {
+				background: url('../images/line_x.svg');
+
+				&::before {
+					right: calc(100% + 20px);
+					text-align: right;
+				}
+			}
+
+			&._right li {
+				&::before {
+					left: calc(100% + 20px);
+					text-align: left;
+				}
+			}
+		}
+
+		// .kpi_chart_content
+		&_content {
+			@include d_f(flex, space-between);
+			width: 1285px;
+			height: 255px;
+			margin: auto;
+
+			@include mw(special) {
+				width: 1140px;
+			}
+
+			li {
+				position: relative;
+				@include d_f(flex, center, flex-end);
+				width: 100px;
+				padding: 0 20px;
+
+				._issue & {
+					flex-direction: column;
+					justify-content: flex-end;
+					align-items: center;
+				}
+
+				&::before {
+					content: "";
+					position: absolute;
+					left: 0;
+					display: block;
+					width: 1px;
+					height: 100%;
+					background: url('../images/line_y.svg');
+
+					._issue & {
+						display: none;
+					}
+				}
+
+				._issue &:first-child::before {
+					position: absolute;
+					left: 0;
+					display: block;
+					width: 1px;
+					height: 100%;
+					background: url('../images/line_y.svg');
+				}
+
+				&:last-child::after {
+					content: "";
+					position: absolute;
+					right: 0;
+					display: block;
+					width: 1px;
+					height: 100%;
+					background: url('../images/line_y.svg');
+				}
+
+				span {
+					position: relative;
+					display: block;
+					width: 40px;
+
+					&::before {
+						content: "";
+						position: absolute;
+						top: 0;
+						left: 0;
+						right: 0;
+					}
+				}
+
+				.green {
+					background-color: #35BE13;
+
+					@include hoverHandler {
+						background-color: #ABFF00;
+					}
+				}
+
+				.orange {
+					background-color: #FB9823;
+				}
+
+				.red {
+					background-color: #FA2E2E;
+				}
+			}
+		}
+
+		// .kpi_chart_line
+		&_line {
+			position: absolute;
+			display: inline-block;
+			top: 0;
+			left: 0;
+			right: 0;
+			width: 1px;
+			height: 100%;
+			margin: 0 auto;
+			background: url('../images/line_y.svg');
+
+			._issue & {
+				display: none;
 			}
 		}
 	}

@@ -138,7 +138,6 @@ export class ModelCalendarComponent {
 		}
 	}
 	returnHandler(date: number) {
-		console.log('returnHandler');
 		this.day = date;
 		this.calendar_return.emit({
 			year: this.year,
