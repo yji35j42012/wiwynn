@@ -11,8 +11,6 @@ import { ModelSelcheckComponent } from '../model-selcheck/model-selcheck.compone
 	styleUrl: './e-kpi-detail.component.scss'
 })
 export class EKpiDetailComponent {
-	@ViewChild('gridCanvas') gridCanvas!: ElementRef<HTMLCanvasElement>;
-	@ViewChild('lineCanvas') lineCanvas!: ElementRef<HTMLCanvasElement>;
 
 	constructor(private el: ElementRef) { }
 	isTime = true
@@ -20,7 +18,7 @@ export class EKpiDetailComponent {
 	issueHanler(s: boolean) {
 		this.isIssue = s
 		if (s) {
-			this.drawIssue()
+			// this.drawIssue()
 		} else {
 			this.drawGrid()
 		}
@@ -194,11 +192,20 @@ export class EKpiDetailComponent {
 		});
 	}
 
+	@ViewChild('gridCanvas') gridCanvas!: ElementRef<HTMLCanvasElement>;
+	@ViewChild('lineCanvas') lineCanvas!: ElementRef<HTMLCanvasElement>;
+	@ViewChild('gridGroup') gridGroup!: ElementRef<HTMLCanvasElement>;
 	drawGrid() {
 		setTimeout(() => { // 使用 setTimeout 等待下一次调用
-			if (window.innerWidth > 1400) {
-				this.el.nativeElement.querySelector('#gridCanvas').width = 1285
-				this.el.nativeElement.querySelector('#gridCanvas').height = 320
+			if (window.innerWidth > 1300) {
+				let w = 1290
+				let h = 320
+				this.el.nativeElement.querySelector('#gridCanvas').width = w
+				this.el.nativeElement.querySelector('#gridCanvas').height = h
+				this.el.nativeElement.querySelector('#chartx').style.width = w + 'px';
+				// this.el.nativeElement.querySelector('#chartx').style.height = h + 'px';
+				this.el.nativeElement.querySelector('#chartbox_group').style.width = w + 'px';
+				this.el.nativeElement.querySelector('#chartbox_group').style.height = h + 'px';
 			} else {
 				this.el.nativeElement.querySelector('#gridCanvas').width = 1140
 				// this.el.nativeElement.querySelector('#gridCanvas').height = 280
@@ -222,13 +229,13 @@ export class EKpiDetailComponent {
 			// 绘制竖线
 			ctx.strokeStyle = '#CCCCCC';
 			ctx.setLineDash([5, 5]); // 设置虚线样式
-			for (let i = 0; i < 28; i++) {
-				const x = i * width / 27;
-				ctx.beginPath();
-				ctx.moveTo(x, 0);
-				ctx.lineTo(x, height);
-				ctx.stroke();
-			}
+			// for (let i = 0; i < 28; i++) {
+			// 	const x = i * width / 27;
+			// 	ctx.beginPath();
+			// 	ctx.moveTo(x, 0);
+			// 	ctx.lineTo(x, height);
+			// 	ctx.stroke();
+			// }
 
 			// 绘制横线
 			ctx.setLineDash([5, 5]); // 设置虚线样式
@@ -353,9 +360,9 @@ export class EKpiDetailComponent {
 
 
 		if (this.isIssue) {
-			this.drawIssue()
+			// this.drawIssue()
 		} else {
-			this.drawGrid()
+			// this.drawGrid()
 		}
 	}
 }

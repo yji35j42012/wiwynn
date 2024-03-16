@@ -373,9 +373,32 @@
 			}
 		}
 
+		.chartBody {
+			position: relative;
+
+			&::before,
+			&::after {
+				content: "";
+				position: absolute;
+				left: 0;
+				display: block;
+				width: 100%;
+				height: 1px;
+				background: url('../images/line_x.svg');
+			}
+
+			&::before {
+				top: 0;
+			}
+
+			&::after {
+				top: calc(100%);
+			}
+		}
+
 		// .kpi_detail_chart
 		&_chart {
-			@include d_f(flex, center, flex-end);
+			@include d_f(flex, center);
 			width: 100%;
 			// height: 325px;
 			margin-top: 20px;
@@ -407,15 +430,36 @@
 
 				// .chartbox_group
 				&_group {
-					position: absolute;
-					left: 0;
-					right: 0;
-					bottom: 20px;
-					@include d_f(flex, space-around, center);
-					width: 1285px;
-					height: 258px;
+					position: relative;
+					// left: 0;
+					// right: 0;
+					// bottom: 20px;
+					@include d_f(flex, space-around, flex-end);
+					width: 1245px;
+					height: 100%;
+					// height: 258px;
 					margin-left: auto;
 					margin-right: auto;
+
+					&::before,
+					&::after {
+						content: "";
+						position: absolute;
+						top: 0;
+
+						display: block;
+						width: 1px;
+						height: 100%;
+						background: url('../images/line_y.svg');
+					}
+
+					&::before {
+						left: 0;
+					}
+
+					&::after {
+						right: 0;
+					}
 				}
 
 				// .chartbox_item
@@ -423,18 +467,49 @@
 					position: relative;
 					@include d_f(flex, flex-end);
 					flex-direction: column;
+					padding: 0 28px;
 					height: 100%;
-					// &::before{
-					// 	content:'';
-					// 	width: 50%;
-					// 	height: 100%;
-					// 	border: 1px dashed rgba(204, 204, 204, 1);
 
-					// }
+					&::before {
+						content: "";
+						position: absolute;
+						top: 0;
+						left: 0;
+						right: 0;
+						width: 1px;
+						height: 100%;
+						margin: auto;
+						background: url('../images/line_y.svg');
+					}
+
+					&:not(:last-child):after {
+						content: "";
+						position: absolute;
+						right: 0;
+						top: 0;
+						width: 1px;
+						height: 100%;
+						background: url('../images/line_y.svg');
+					}
+
+					// margin: 0 28px;
 					span {
 						position: relative;
 						display: block;
 						width: 40px;
+
+						// &::before {
+						// 	content: '';
+						// 	position: absolute;
+						// 	width: 1px;
+						// 	height: 100%;
+						// 	left: 0;
+						// 	right: 0;
+						// 	bottom: 0;
+						// 	margin: auto;
+						// 	background: url('../images/line_y.svg');
+						// 	background-size: cover;
+						// }
 					}
 
 					.green {
@@ -459,10 +534,10 @@
 				// .chartbox_x
 				&_x {
 					@include d_f(flex, space-around, center);
-					width: calc(100% - 100px);
+					// width: calc(100% - 100px);
 					height: 15px;
-					margin-left: auto;
-					margin-right: auto;
+					// margin-left: auto;
+					// margin-right: auto;
 					margin-top: 5px;
 					font-size: 12px;
 					font-weight: 400;
@@ -481,20 +556,17 @@
 
 				// .chartbox_y
 				&_y {
-					position: absolute;
-					top: 23px;
-					left: 0;
-					bottom: 0;
 					@include d_f(flex, space-between);
 					flex-direction: column;
 					width: 30px;
 					height: 335px;
 					margin: auto 0;
+					margin-right: 15px;
 					text-align: right;
 
 					&._rigth {
-						left: auto;
-						right: 0;
+						margin-right: 0;
+						margin-left: 15px;
 						text-align: left;
 					}
 
@@ -504,6 +576,36 @@
 					}
 				}
 
+				// .chartbox_yline
+				&_yline {
+					position: absolute;
+					@include d_f(flex, space-between);
+					flex-direction: column;
+					width: 100%;
+					height: 100%;
+
+					li {
+						position: relative;
+						width: 100%;
+						height: 16px;
+&:first-child::after,
+&:last-child::after{
+	display: none;
+}
+						&:after {
+							content: "";
+							position: absolute;
+							left: 0;
+							top: 0;
+							bottom: 0;
+							display: block;
+							width: 100%;
+							height: 1px;
+							margin: auto;
+							background: url('../images/line_x.svg');
+						}
+					}
+				}
 
 			}
 		}
