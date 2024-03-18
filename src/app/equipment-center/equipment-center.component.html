@@ -39,27 +39,61 @@
 </div>
 
 <div class="equipment_content">
+	<ul class="equipment_group_head">
+		<li data-msg="08:00"></li>
+		<li></li>
+		<li data-msg="10:00"></li>
+		<li></li>
+		<li data-msg="12:00"></li>
+		<li></li>
+		<li data-msg="14:00"></li>
+		<li></li>
+		<li data-msg="16:00"></li>
+		<li></li>
+		<li data-msg="18:00"></li>
+		<li></li>
+		<li data-msg="20:00"></li>
+		<li></li>
+		<li data-msg="22:00"></li>
+		<li></li>
+		<li data-msg="00:00"></li>
+		<li></li>
+		<li data-msg="02:00"></li>
+		<li></li>
+		<li data-msg="04:00"></li>
+		<li></li>
+		<li data-msg="06:00"></li>
+		<li></li>
+		<li data-msg="08:00"></li>
+	</ul>
 	<ul class="equipment_group">
-		<li class="equipment_item">
+		<li class="equipment_item" *ngFor="let item of equipment_data" (click)="equipmentHandler()">
 			<div class="equipment_item_title">
-				<div>S1</div>
-				<div>Printer-NS-0001(DEK-1)</div>
+				<div>{{item.line}}</div>
+				<div>{{item.machine}}</div>
 			</div>
 			<div class="equipment_item_list">
 				<div class="equipment_item_plan">
 					<div class="txt">Plan</div>
 					<ul class="equipment_item_bar">
-						<li class="equipment_item_barItem"></li>
+						<li [class]="['equipment_item_barItem',item.color]" [style]="'width:'+item.value+'%;'"
+							*ngFor="let item of item.plan">
+							<div class="kpicreaet_more_detail">{{item.msg}}</div>
+						</li>
 					</ul>
 				</div>
 				<div class="equipment_item_result">
-					<div class="txt _warning">Results</div>
+					<div [class]="['txt',item.isWarning?'_warning':''] ">Results</div>
 					<ul class="equipment_item_bar">
-
+						<li [class]="['equipment_item_barItem',item.color]" [style]="'width:'+item.value+'%;'"
+							*ngFor="let item of item.result">
+							<div class="kpicreaet_more_detail">{{item.msg}}</div>
+						</li>
 					</ul>
 				</div>
 			</div>
 		</li>
+
 	</ul>
 	<ul class="normal_page">
 		<li class="normal_page_item _prev"></li>
@@ -72,4 +106,94 @@
 		<li class="normal_page_item">100</li>
 		<li class="normal_page_item _next"></li>
 	</ul>
+</div>
+
+
+<div class="alert _equipment" *ngIf="equipment_detail.isShow">
+	<div class="alert_box">
+		<button class="icon_btn _close" (click)="alert_close()"></button>
+		<div class="alert_title">詳細記錄</div>
+		<div class="alert_info">
+			<ul class="equipment_detailInfo">
+				<li class="equipment_detailInfo_item _g">統計總時間：1200 min</li>
+				<li class="equipment_detailInfo_item _r">統計總時間：540 min</li>
+				<li class="equipment_detailInfo_item _o">統計總時間：0min</li>
+			</ul>
+			<ul class="equipment_detailGroup">
+				<li class="equipment_detailGroup_item _title">
+					<div class="equipment_number">序號</div>
+					<div class="equipment_line">Line</div>
+					<div class="equipment_stime">記錄時間</div>
+					<div class="equipment_etime">結束時間</div>
+					<div class="equipment_ctime">持續時間</div>
+					<div class="equipment_device">設備</div>
+					<div class="equipment_state">狀態</div>
+					<div class="equipment_personnel">人員</div>
+					<div class="equipment_weight">權重</div>
+					<div class="equipment_affect">影響設備</div>
+					<div class="equipment_note">備註</div>
+				</li>
+				<li class="equipment_detailGroup_item">
+					<div class="equipment_number">1</div>
+					<div class="equipment_line">S1</div>
+					<div class="equipment_stime">11/01 08:00</div>
+					<div class="equipment_etime">11/01 22:00</div>
+					<div class="equipment_ctime">540min.</div>
+					<div class="equipment_device">NPM-NS-00001(NPM-1)</div>
+					<div class="equipment_state">
+						<div class="state WAIT">EQ_WAIT</div>
+					</div>
+					<div class="equipment_personnel">Cameron Williamson</div>
+					<div class="equipment_weight">100%</div>
+					<div class="equipment_affect">S1 Print-NS0001</div>
+					<div class="equipment_note">
+						<button class="icon_btn _more"></button>
+						<div class="equipment_note_inside">
+							備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容
+						</div>
+					</div>
+				</li>
+				<li class="equipment_detailGroup_item">
+					<div class="equipment_number">1</div>
+					<div class="equipment_line">S1</div>
+					<div class="equipment_stime">11/01 08:00</div>
+					<div class="equipment_etime">11/01 22:00</div>
+					<div class="equipment_ctime">540min.</div>
+					<div class="equipment_device">NPM-NS-00001(NPM-1)</div>
+					<div class="equipment_state">
+						<div class="state PD_RUN">PD_RUN</div>
+					</div>
+					<div class="equipment_personnel">Cameron Williamson</div>
+					<div class="equipment_weight">100%</div>
+					<div class="equipment_affect">S1 Print-NS0001</div>
+					<div class="equipment_note">
+						<button class="icon_btn _more"></button>
+						<div class="equipment_note_inside">
+							備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容
+						</div>
+					</div>
+				</li>
+				<li class="equipment_detailGroup_item">
+					<div class="equipment_number">1</div>
+					<div class="equipment_line">S1</div>
+					<div class="equipment_stime">11/01 08:00</div>
+					<div class="equipment_etime">11/01 22:00</div>
+					<div class="equipment_ctime">540min.</div>
+					<div class="equipment_device">NPM-NS-00001(NPM-1)</div>
+					<div class="equipment_state">
+						<div class="state ENG">ENG</div>
+					</div>
+					<div class="equipment_personnel">Cameron Williamson</div>
+					<div class="equipment_weight">100%</div>
+					<div class="equipment_affect">S1 Print-NS0001</div>
+					<div class="equipment_note">
+						<button class="icon_btn _more"></button>
+						<div class="equipment_note_inside">
+							備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容備註內容
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
 </div>

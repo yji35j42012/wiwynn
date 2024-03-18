@@ -1,0 +1,51 @@
+.ac {
+
+    // .ac_head
+    &_head {
+        min-height: 142px;
+        margin-top: 30px;
+        padding-right: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #DCDCDC;
+
+        // .ac_head_date
+        &_date {
+            @include d_f(flex, flex-end, flex-end);
+            width: 436px;
+            padding-top: 10px;
+            padding-right: 20px;
+            border-right: 1px solid #DCDCDC;
+        }
+
+        // .ac_head_day
+        &_day {
+            @include d_f(flex, center, center);
+            width: 84px;
+            height: 84px;
+            margin-right: 14px;
+            background-color: #8ED300;
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 84px;
+            color: #fff;
+            border-radius: 20px;
+        }
+
+        // .ac_head_txt
+        &_txt {
+            padding-bottom: 15px;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 24px;
+&+&{
+    margin-left: 20px;
+}
+            &::before {
+                content: attr(data-msg);
+                display: block;
+                margin-bottom: 5px;
+                color: #AFAFAF;
+            }
+        }
+    }
+}

@@ -46,7 +46,9 @@ export const routes: Routes = [
 			},
 			{ path: 'E-Process', component: EProcessComponent },
 			{ path: 'Alarm-Center', component: AlarmCenterComponent },
-			{ path: 'Equipment-Center', component: EquipmentCenterComponent },
+			{
+				path: 'Equipment-Center', component: EquipmentCenterComponent,	
+			},
 			{
 				path: 'Option',
 				component: OptionComponent,

@@ -87,4 +87,213 @@ export class EquipmentCenterComponent {
 		item.hour = obj.hour;
 		item.min = obj.min;
 	}
+
+	equipment_data = [
+		{
+			line: 's1',
+			machine: "Printer-NS-0001(DEK-1)",
+			isWarning: true,
+			plan: [
+				{
+					value: 10,
+					color: 'red',
+					msg: 'EQ_WAIT'
+				},
+				{
+					value: 20,
+					color: 'green',
+					msg: "PD_RUN"
+				},
+				{
+					value: 30,
+					color: 'orange',
+					msg: "ENG"
+				},
+			],
+			result: [
+				{
+					value: 20,
+					color: 'green',
+					msg: 'EQ_WAIT'
+				},
+				{
+					value: 35,
+					color: 'red',
+					msg: "PD_RUN"
+				},
+				{
+					value: 45,
+					color: 'orange',
+					msg: "ENG"
+				},
+			]
+		},
+		{
+			line: 's2',
+			machine: "Printer-NS-0001(DEK-2)",
+			isWarning: false,
+			plan: [
+				{
+					value: 10,
+					color: 'red',
+					msg: 'EQ_WAIT'
+				},
+				{
+					value: 20,
+					color: 'green',
+					msg: "PD_RUN"
+				},
+				{
+					value: 30,
+					color: 'orange',
+					msg: "ENG"
+				},
+			],
+			result: [
+				{
+					value: 10,
+					color: 'red',
+					msg: 'EQ_WAIT'
+				},
+				{
+					value: 20,
+					color: 'green',
+					msg: "PD_RUN"
+				},
+				{
+					value: 30,
+					color: 'orange',
+					msg: "ENG"
+				},
+			]
+		},
+		{
+			line: 's2',
+			machine: "Printer-NS-0001(DEK-2)",
+			isWarning: false,
+			plan: [
+				{
+					value: 10,
+					color: 'red',
+					msg: 'EQ_WAIT'
+				},
+				{
+					value: 20,
+					color: 'green',
+					msg: "PD_RUN"
+				},
+				{
+					value: 30,
+					color: 'orange',
+					msg: "ENG"
+				},
+			],
+			result: [
+				{
+					value: 10,
+					color: 'red',
+					msg: 'EQ_WAIT'
+				},
+				{
+					value: 20,
+					color: 'green',
+					msg: "PD_RUN"
+				},
+				{
+					value: 30,
+					color: 'orange',
+					msg: "ENG"
+				},
+			]
+		},
+		{
+			line: 's3',
+			machine: "Printer-NS-0001(DEK-2)",
+			isWarning: false,
+			plan: [
+				{
+					value: 10,
+					color: 'red',
+					msg: 'EQ_WAIT'
+				},
+				{
+					value: 20,
+					color: 'green',
+					msg: "PD_RUN"
+				},
+				{
+					value: 30,
+					color: 'orange',
+					msg: "ENG"
+				},
+			],
+			result: [
+				{
+					value: 10,
+					color: 'red',
+					msg: 'EQ_WAIT'
+				},
+				{
+					value: 20,
+					color: 'green',
+					msg: "PD_RUN"
+				},
+				{
+					value: 30,
+					color: 'orange',
+					msg: "ENG"
+				},
+			]
+		},
+		{
+			line: 's4',
+			machine: "Printer-NS-0001(DEK-2)",
+			isWarning: false,
+			plan: [
+				{
+					value: 10,
+					color: 'red',
+					msg: 'EQ_WAIT'
+				},
+				{
+					value: 20,
+					color: 'green',
+					msg: "PD_RUN"
+				},
+				{
+					value: 30,
+					color: 'orange',
+					msg: "ENG"
+				},
+			],
+			result: [
+				{
+					value: 10,
+					color: 'red',
+					msg: 'EQ_WAIT'
+				},
+				{
+					value: 20,
+					color: 'green',
+					msg: "PD_RUN"
+				},
+				{
+					value: 30,
+					color: 'orange',
+					msg: "ENG"
+				},
+			]
+		},
+	]
+
+
+	equipment_detail={
+		isShow:false
+	}
+	equipmentHandler(){
+		this.equipment_detail.isShow=true
+	}
+	alert_close(){
+		this.equipment_detail.isShow=false
+	}
 }
