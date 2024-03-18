@@ -1,1 +1,75 @@
-<p>equipment-center works!</p>
+<div class="container_title" data-tw="機台狀況系統">Equipment Center</div>
+
+<div class="equipment_filter">
+	<app-model-select class="selbox" [selectContent]="line_sel" (selShowEvent)="selShow($event)"
+		(selEvent)="selHandler($event)"></app-model-select>
+	<div class="normal_dateRange _hasMsg" data-msg="Date Range">
+		<div class="normal_dateRange_title" (click)="dateHanler('start')">
+			<div class="date">
+				<span>{{ this.equipment_filter.start.year }}</span>
+				<span>{{ this.equipment_filter.start.month }}</span>
+				<span>{{ this.equipment_filter.start.day }}</span>
+			</div>
+			<div class="time">
+				<span>{{ this.equipment_filter.start.hour }}</span>
+				<span>{{ this.equipment_filter.start.min }}</span>
+			</div>
+		</div>
+		<app-model-calendar class="calendar" *ngIf="equipment_filter.start.isShow" [calendar_content]="calendar"
+			(calendar_return)="calerdarReturnHandler($event)">
+		</app-model-calendar>
+	</div>
+	<div class="normal_dateRange">
+		<div class="normal_dateRange_title" (click)="dateHanler('end')">
+			<div class="date">
+				<span>{{ this.equipment_filter.end.year }}</span>
+				<span>{{ this.equipment_filter.end.month }}</span>
+				<span>{{ this.equipment_filter.end.day }}</span>
+			</div>
+			<div class="time">
+				<span>{{ this.equipment_filter.end.hour }}</span>
+				<span>{{ this.equipment_filter.end.min }}</span>
+			</div>
+		</div>
+		<app-model-calendar class="calendar" *ngIf="equipment_filter.end.isShow" [calendar_content]="calendar"
+			(calendar_return)="calerdarReturnHandler($event)">
+		</app-model-calendar>
+	</div>
+	<button class="normal_btn _primary">Search</button>
+</div>
+
+<div class="equipment_content">
+	<ul class="equipment_group">
+		<li class="equipment_item">
+			<div class="equipment_item_title">
+				<div>S1</div>
+				<div>Printer-NS-0001(DEK-1)</div>
+			</div>
+			<div class="equipment_item_list">
+				<div class="equipment_item_plan">
+					<div class="txt">Plan</div>
+					<ul class="equipment_item_bar">
+						<li class="equipment_item_barItem"></li>
+					</ul>
+				</div>
+				<div class="equipment_item_result">
+					<div class="txt _warning">Results</div>
+					<ul class="equipment_item_bar">
+
+					</ul>
+				</div>
+			</div>
+		</li>
+	</ul>
+	<ul class="normal_page">
+		<li class="normal_page_item _prev"></li>
+		<li class="normal_page_item on">1</li>
+		<li class="normal_page_item">2</li>
+		<li class="normal_page_item">3</li>
+		<li class="normal_page_item">4</li>
+		<li class="normal_page_item">5</li>
+		<li class="normal_page_item _dot">...</li>
+		<li class="normal_page_item">100</li>
+		<li class="normal_page_item _next"></li>
+	</ul>
+</div>

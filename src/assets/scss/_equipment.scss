@@ -1,0 +1,119 @@
+.equipment {
+
+	// .equipment_filter
+	&_filter {
+		@include d_f(flex, none, flex-end);
+		margin-top: 16px;
+		padding: 12px 0;
+
+		.selbox {
+			display: block;
+			max-width: 180px;
+		}
+
+		.normal_btn {
+			height: 40px;
+		}
+
+		.selbox+.normal_dateRange,
+		.normal_dateRange+.normal_btn {
+			margin-left: 30px;
+		}
+	}
+
+	// .equipment_content
+	&_content {
+		margin-top: 10px;
+	}
+
+	// .equipment_group
+	&_group {}
+
+	// .equipment_item
+	&_item {
+		@include d_f(flex);
+		border-radius: 10px;
+		border: 1px solid #CFD9EA;
+		@extend %hand;
+
+		// .equipment_item_title
+		&_title {
+			flex: none;
+			width: 330px;
+
+			div {
+				@include d_f(flex, none, center);
+				height: 50px;
+				padding: 10px;
+				color: #fff;
+			}
+
+			div:nth-child(1) {
+				background-color: #135DB5;
+				border-top-left-radius: 10px;
+			}
+
+			div:nth-child(2) {
+				background-color: #2E7FDF;
+				border-bottom-left-radius: 10px;
+			}
+		}
+
+		// .equipment_item_list
+		&_list {
+			width: 100%;
+			padding-right: 10px;
+			background-color: #fff;
+			border-top-right-radius: 10px;
+			border-bottom-right-radius: 10px;
+			@extend %transition;
+
+			@include hoverHandler {
+				background-color: #E0EEFF;
+			}
+
+			.txt {
+				flex: none;
+				width: 102px;
+				font-size: 14px;
+				font-weight: 400;
+				line-height: 21px;
+			}
+		}
+
+		// .equipment_item_plan
+		&_plan {
+			@include d_f(flex, none, center);
+			height: 50px;
+			padding-left: 10px;
+			border-bottom: 1px solid #CFD9EA;
+		}
+
+		// .equipment_item_result
+		&_result {
+			@include d_f(flex, none, center);
+			height: 50px;
+			padding-left: 10px;
+
+			.txt._warning {
+				@include d_f(flex, none, center);
+
+				&:after {
+					content: "";
+					display: block;
+					width: 20px;
+					height: 20px;
+					margin-left: 10px;
+					background: url('../images/icon_warning.svg')no-repeat center/contain;
+				}
+			}
+		}
+
+		// .equipment_item_bar
+		&_bar{
+			width: 100%;
+			height: 30px;
+			background-color: #D9D9D9;
+		}
+	}
+}
