@@ -123,6 +123,23 @@ h2 {
 		}
 	}
 
+	&._kpiviewall {
+		padding: 0 20px;
+		height: 28px;
+		background-color: rgba(46, 127, 223, .4);
+		border-radius: 85px;
+		color: #fff;
+		@extend %transition;
+
+		&.on {
+			background-color: rgba(46, 127, 223, 1);
+		}
+
+		@include hoverHandler {
+			background-color: rgba(46, 127, 223, 1);
+		}
+	}
+
 	._working &,
 	._recipe &,
 	._parameter & {
@@ -388,6 +405,30 @@ h2 {
 			&:before {
 				filter: brightness(100);
 			}
+		}
+	}
+
+	&._kpi {
+		width: auto;
+		min-width: auto;
+		height: 28px;
+		padding: 0 20px;
+		color: #fff;
+		border-color: #fff;
+
+		&.on {
+			border-color: #2E7FDF;
+			background-color: #2E7FDF;
+		}
+
+		@include hv {
+			border-color: #2E7FDF;
+			background-color: #2E7FDF;
+		}
+
+		@include ac {
+			border-color: #1D3EB3;
+			background-color: #1D3EB3;
 		}
 	}
 
@@ -666,6 +707,24 @@ h2 {
 
 		&._hide {
 			visibility: hidden;
+		}
+
+		&._back {
+			@include d_f(flex, center, center);
+			width: auto;
+			color: #2E7FDF;
+			font-size: 20px;
+			font-weight: 700;
+			line-height: 24px;
+
+			&::before {
+				content: "";
+				display: block;
+				width: 18px;
+				height: 18px;
+				margin-right: 10px;
+				background: url('../images/icon_arr_calendar.svg')no-repeat center/contain;
+			}
 		}
 	}
 }
@@ -1233,7 +1292,8 @@ h2 {
 	.home & {
 		padding-top: 60px;
 		background-color: transparent;
-		@include mw(XL){
+
+		@include mw(XL) {
 			padding-top: 30px;
 		}
 	}
@@ -1324,9 +1384,10 @@ h2 {
 		box-shadow: 46px 56px 70px 0px #7d7daf66;
 
 
-		@include mw(XL){
+		@include mw(XL) {
 			margin-top: 20px;
 		}
+
 		@extend %hand;
 		@extend %transition;
 
@@ -2277,6 +2338,16 @@ h2 {
 
 	}
 
+	.kpi_detailTb_filter &{
+		@include d_f(flex,none,center);
+		&::before{
+			margin-right: 8px;
+			white-space: nowrap;
+		}
+		&_title {
+			width: 190px;
+		}
+	}
 	// .normal_selcheck_title
 	&_title {
 		overflow: hidden;
@@ -2467,6 +2538,8 @@ h2 {
 			margin-left: 10px;
 		}
 	}
+
+
 
 	.normal_selcheck &,
 	.normal_selcheck & {

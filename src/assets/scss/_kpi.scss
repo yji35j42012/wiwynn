@@ -399,10 +399,12 @@
 		overflow-x: auto;
 		padding-top: 35px;
 		padding-bottom: 40px;
-&._issue{
-	padding-top: 0;
-	padding-bottom: 0;
-}
+
+		&._issue {
+			padding-top: 0;
+			padding-bottom: 0;
+		}
+
 		// .kpi_detailTb_filter
 		&_filter {
 			@include d_f(flex, none, center);
@@ -673,11 +675,18 @@
 				@include d_f(flex, center, flex-end);
 				width: 100px;
 				padding: 0 20px;
+				@extend %hand;
 
 				._issue & {
 					flex-direction: column;
 					justify-content: flex-end;
 					align-items: center;
+
+					.green {
+						@include hoverHandler {
+							background-color: #35BE13;
+						}
+					}
 				}
 
 				&::before {

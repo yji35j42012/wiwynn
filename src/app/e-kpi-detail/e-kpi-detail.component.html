@@ -273,7 +273,6 @@
 				<li *ngFor="let item of chart_issue.info;index as i">
 					<div class="kpi_chart_line"></div>
 					<span [id]="'green'+i" class="green" [style]="'height:'+item.g+'px;'"
-						(mousemove)="chartmouseMove($event ,i)" (mouseleave)="chartmouseLeave()"
 						(click)="chartHandler(item.state)"></span>
 					<span class="orange" [style]="'height:'+item.o+'px;'"></span>
 					<span class="red" [style]="'height:'+item.r+'px;'"></span>
