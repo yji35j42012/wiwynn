@@ -160,6 +160,31 @@ h2 {
 	@extend %hand;
 	@extend %transition;
 
+	.ac_table & {
+		width: 58px;
+		min-width: auto;
+		margin: 7px auto 0;
+		height: 20px;
+		font-size: 12px;
+		color: #2E7FDF;
+
+		@include hv {
+			background-color: #2E7FDF;
+			color: #fff;
+		}
+
+		@include ac {
+			background-color: #1D3EB3;
+			border-color: #1D3EB3;
+			color: #fff;
+		}
+
+		&.on {
+			background-color: #2E7FDF;
+			color: #fff;
+		}
+	}
+
 	&._add {
 		padding: 0 20px;
 		color: #2e7fdf;
@@ -1467,6 +1492,10 @@ h2 {
 		background-color: rgba(246, 246, 246, 1);
 		border-radius: 20px;
 
+		._ac &{
+			width: 100%;
+			max-width: 1200px;
+		}
 		._equipment & {
 			width: 100%;
 			height: 100%;
@@ -2845,6 +2874,10 @@ h2 {
 	box-shadow: 0px 2px 12px 0px #00000008;
 	border: 1px solid #bcbec0;
 	@extend %hand;
+
+	.ac_filter & {
+		max-width: 427px;
+	}
 
 	&._hasMsg {
 		margin-top: 38px;

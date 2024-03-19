@@ -160,6 +160,31 @@ h2 {
 	@extend %hand;
 	@extend %transition;
 
+	.ac_table & {
+		width: 58px;
+		min-width: auto;
+		margin: 7px auto 0;
+		height: 20px;
+		font-size: 12px;
+		color: #2E7FDF;
+
+		@include hv {
+			background-color: #2E7FDF;
+			color: #fff;
+		}
+
+		@include ac {
+			background-color: #1D3EB3;
+			border-color: #1D3EB3;
+			color: #fff;
+		}
+
+		&.on {
+			background-color: #2E7FDF;
+			color: #fff;
+		}
+	}
+
 	&._add {
 		padding: 0 20px;
 		color: #2e7fdf;
@@ -724,6 +749,17 @@ h2 {
 				height: 18px;
 				margin-right: 10px;
 				background: url('../images/icon_arr_calendar.svg')no-repeat center/contain;
+			}
+		}
+
+		&._more {
+			flex: none;
+			width: 24px;
+			height: 24px;
+			background: url('../images/icon_more.svg')no-repeat center/contain;
+
+			&:focus~.equipment_note_inside {
+				display: block;
 			}
 		}
 	}
@@ -1455,6 +1491,17 @@ h2 {
 		padding: 20px 55px 60px;
 		background-color: rgba(246, 246, 246, 1);
 		border-radius: 20px;
+
+		._ac &{
+			width: 100%;
+			max-width: 1200px;
+		}
+		._equipment & {
+			width: 100%;
+			height: 100%;
+			padding-left: 20px;
+			padding-right: 20px;
+		}
 
 		._newMachine & {
 			width: 800px;
@@ -2338,16 +2385,19 @@ h2 {
 
 	}
 
-	.kpi_detailTb_filter &{
-		@include d_f(flex,none,center);
-		&::before{
+	.kpi_detailTb_filter & {
+		@include d_f(flex, none, center);
+
+		&::before {
 			margin-right: 8px;
 			white-space: nowrap;
 		}
+
 		&_title {
 			width: 190px;
 		}
 	}
+
 	// .normal_selcheck_title
 	&_title {
 		overflow: hidden;
@@ -2824,6 +2874,10 @@ h2 {
 	box-shadow: 0px 2px 12px 0px #00000008;
 	border: 1px solid #bcbec0;
 	@extend %hand;
+
+	.ac_filter & {
+		max-width: 427px;
+	}
 
 	&._hasMsg {
 		margin-top: 38px;

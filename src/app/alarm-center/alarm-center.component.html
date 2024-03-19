@@ -1,10 +1,315 @@
 <div class="container_title" data-tw="警報中心">Alarm Center</div>
-<div class="ac_head">
-    <div class="ac_head_date">
-        <div class="ac_head_day">20</div>
-        <div class="ac_head_txt" data-msg="Today">Wednesday</div>
-        <div class="ac_head_txt" data-msg="">December</div>
-        <div class="ac_head_txt" data-msg="">2023</div>
-    </div>
-    <div class="ac_head_alert"></div>
+<div class="ac_box">
+	<div class="ac_head">
+		<div class="ac_head_date">
+			<div class="ac_head_day">20</div>
+			<div class="ac_head_txt" data-msg="Today">Wednesday</div>
+			<div class="ac_head_txt" data-msg="">December</div>
+			<div class="ac_head_txt" data-msg="">2023</div>
+		</div>
+		<div class="ac_head_alert">
+			<div class="txt" data-msg="Alerts: ">4</div>
+			<ul class="ac_head_group">
+				<li class="ac_head_item">
+					<span class="lv">LV.1</span>
+					<span class="info" data-l="MA100000" data-r="BFT_0146666666">/</span>
+					<div class="num">2</div>
+				</li>
+				<li class="ac_head_item">
+					<span class="lv">LV.1</span>
+					<span class="info" data-l="MA100000" data-r="BFT_0146666666">/</span>
+					<div class="num">2</div>
+				</li>
+				<li class="ac_head_item">
+					<span class="lv">LV.1</span>
+					<span class="info" data-l="MA100000" data-r="BFT_0146666666">/</span>
+					<div class="num">2</div>
+				</li>
+				<li class="ac_head_item">
+					<span class="lv">LV.1</span>
+					<span class="info" data-l="MA100000" data-r="BFT_0146666666">/</span>
+					<div class="num">2</div>
+				</li>
+				<li class="ac_head_item">
+					<span class="lv">LV.1</span>
+					<span class="info" data-l="MA100000" data-r="BFT_0146666666">/</span>
+					<div class="num">2</div>
+				</li>
+				<li class="ac_head_item">
+					<span class="lv">LV.1</span>
+					<span class="info" data-l="MA100000" data-r="BFT_0146666666">/</span>
+					<div class="num">2</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="ac_filter">
+		<!-- 打開class 加上on -->
+		<div [class]="['normal_multsearch' ,'_hasMsg', multsearch.isShow?'on':''] " data-msg="選擇部門"
+			(click)="multsearchHandler()">
+			<div class="normal_multsearch_btnbox">
+				<button class="icon_btn _multclose"></button>
+				<button class="icon_btn _multarr"></button>
+			</div>
+			<div class="normal_multsearch_content">
+				<span class="normal_multsearch_item" *ngFor="let item of multsearch.showLists">
+					{{item.name}}
+					<button class="icon_btn _multclose" (click)="unChecked($event,item.id)"></button>
+				</span>
+
+			</div>
+			<div class="normal_search" (click)="inpHandler($event)">
+				<input class="normal_search_inp" type="text" placeholder="搜尋">
+			</div>
+			<div class="normal_multsearch_checkbox">
+				<label class="normal_check" *ngFor="let item of multsearch.lists">
+					<input type="checkbox" class="normal_check_inp" [checked]="item.isChecked"
+						(change)="checkedHandler($event,item.id)">
+					<span class="normal_check_span"></span>
+					<span class="normal_check_bg"></span>
+					<span class="normal_check_txt">{{item.name}}</span>
+				</label>
+			</div>
+		</div>
+	</div>
+	<div class="ac_content">
+		<div class="ac_content_title">
+			<div class="ac_content_week">December</div>
+			<div class="ac_content_year">2023</div>
+			<div class="ac_content_day">
+				<button class="calendar_head_prev"></button>
+				<div class="txt">Today</div>
+				<button class="calendar_head_next"></button>
+			</div>
+		</div>
+		<table class="ac_table">
+			<tr>
+				<th>Sun</th>
+				<th>Mon</th>
+				<th>Tue</th>
+				<th>Wed</th>
+				<th>Thu</th>
+				<th>Fri</th>
+				<th>Sat</th>
+			</tr>
+			<tr>
+				<td>
+					<div class="day _un">26</div>
+				</td>
+				<td>
+					<div class="day _un">27</div>
+					<div class="ac_table_item" data-l="LV.3" data-r="6">MA100000</div>
+					<div class="ac_table_item" data-l="LV.3" data-r="6">MA100000</div>
+					<div class="ac_table_item" data-l="LV.3" data-r="6">MA100000</div>
+					<!-- button 加上on 開啟 ul -->
+					<button class="border_btn ">
+						more
+						<ul class="ac_table_group">
+							<div class="ac_table_item" data-l="LV.3" data-r="6">MA100000</div>
+						</ul>
+					</button>
+				</td>
+				<td>
+					<div class="day _un">28</div>
+				</td>
+				<td>
+					<div class="day _un">29</div>
+				</td>
+				<td>
+					<div class="day _un">30</div>
+					<div class="ac_table_item" data-l="LV.3" data-r="6">MA100000</div>
+					<div class="ac_table_item" data-l="LV.3" data-r="6">MA100000</div>
+				</td>
+				<td>
+					<div class="day">1</div>
+				</td>
+				<td>
+					<div class="day">2</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="day">3</div>
+				</td>
+				<td>
+					<div class="day">4</div>
+
+					<div class="ac_table_item" data-l="LV.3" data-r="6">MA100000</div>
+					<div class="ac_table_item" data-l="LV.3" data-r="6">MA100000</div>
+					<div class="ac_table_item" data-l="LV.3" data-r="6">MA100000</div>
+					<!-- button 加上on 開啟 ul -->
+					<button class="border_btn ">
+						more
+						<ul class="ac_table_group">
+							<div class="ac_table_item" data-l="LV.3" data-r="6">MA100000</div>
+						</ul>
+					</button>
+				</td>
+				<td>
+					<div class="day">5</div>
+				</td>
+				<td>
+					<div class="day">6</div>
+				</td>
+				<td>
+					<div class="day">7</div>
+				</td>
+				<td>
+					<div class="day">8</div>
+					<div class="ac_table_item" data-l="LV.3" data-r="6">MA100000</div>
+					<div class="ac_table_item" data-l="LV.3" data-r="6">MA100000</div>
+					<div class="ac_table_item" data-l="LV.3" data-r="6">MA100000</div>
+					<!-- button 加上on 開啟 ul -->
+					<button class="border_btn ">
+						more
+						<ul class="ac_table_group">
+							<div class="ac_table_item" data-l="LV.3" data-r="6">MA100000</div>
+						</ul>
+					</button>
+				</td>
+				<td>
+					<div class="day">9</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="day">10</div>
+				</td>
+				<td>
+					<div class="day">11</div>
+				</td>
+				<td>
+					<div class="day">12</div>
+					<div class="ac_table_item" data-l="LV.3" data-r="6">MA100000</div>
+					<div class="ac_table_item" data-l="LV.3" data-r="6">MA100000</div>
+					<div class="ac_table_item" data-l="LV.3" data-r="6">MA100000</div>
+					<!-- button 加上on 開啟 ul -->
+					<button class="border_btn ">
+						more
+						<ul class="ac_table_group">
+							<div class="ac_table_item" data-l="LV.3" data-r="6">MA100000</div>
+						</ul>
+					</button>
+				</td>
+				<td>
+					<div class="day">13</div>
+				</td>
+				<td>
+					<div class="day">14</div>
+				</td>
+				<td>
+					<div class="day">15</div>
+				</td>
+				<td>
+					<div class="day">16</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="day">17</div>
+				</td>
+				<td>
+					<div class="day">18</div>
+				</td>
+				<td>
+					<div class="day">19</div>
+				</td>
+				<td>
+					<div class="day">20</div>
+					<div class="ac_table_item" data-l="LV.3" data-r="6">MA100000</div>
+					<div class="ac_table_item" data-l="LV.3" data-r="6">MA100000</div>
+					<div class="ac_table_item" data-l="LV.3" data-r="6">MA100000</div>
+					<!-- button 加上on 開啟 ul -->
+					<button class="border_btn ">
+						more
+						<ul class="ac_table_group">
+							<div class="ac_table_item" data-l="LV.3" data-r="6">MA100000</div>
+						</ul>
+					</button>
+				</td>
+				<td>
+					<div class="day">21</div>
+				</td>
+				<td>
+					<div class="day">22</div>
+				</td>
+				<td>
+					<div class="day">23</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="day">24</div>
+				</td>
+				<td>
+					<div class="day">25</div>
+				</td>
+				<td>
+					<div class="day">26</div>
+				</td>
+				<td>
+					<div class="day">27</div>
+				</td>
+				<td>
+					<div class="day">29</div>
+					<div class="ac_table_item" data-l="LV.3" data-r="6">MA100000</div>
+					<div class="ac_table_item" data-l="LV.3" data-r="6">MA100000</div>
+					<div class="ac_table_item" data-l="LV.3" data-r="6">MA100000</div>
+					<!-- button 加上on 開啟 ul -->
+					<button class="border_btn ">
+						more
+						<ul class="ac_table_group">
+							<div class="ac_table_item" data-l="LV.3" data-r="6">MA100000</div>
+						</ul>
+					</button>
+				</td>
+				<td>
+					<div class="day">29</div>
+				</td>
+				<td>
+					<div class="day">30</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="day">31</div>
+				</td>
+				<td>
+					<div class="day _un">1</div>
+				</td>
+				<td>
+					<div class="day _un">2</div>
+				</td>
+				<td>
+					<div class="day">3</div>
+					<div class="ac_table_item" data-l="LV.3" data-r="6">MA100000</div>
+					<div class="ac_table_item" data-l="LV.3" data-r="6">MA100000</div>
+					<div class="ac_table_item" data-l="LV.3" data-r="6">MA100000</div>
+					<!-- button 加上on 開啟 ul -->
+					<button class="border_btn ">
+						more
+						<ul class="ac_table_group">
+							<div class="ac_table_item" data-l="LV.3" data-r="6">MA100000</div>
+						</ul>
+					</button>
+				</td>
+				<td>
+					<div class="day _un">4</div>
+				</td>
+				<td>
+					<div class="day _un">5</div>
+				</td>
+				<td>
+					<div class="day _un">6</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+<div class="alert _ac">
+	<div class="alert_box">
+		<button class="icon_btn _close" (click)="alert_close()"></button>
+        <div class="alert_title">2023 / 12 / 08 Alert</div>
+	</div>
 </div>
