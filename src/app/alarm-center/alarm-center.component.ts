@@ -56,7 +56,7 @@ export class AlarmCenterComponent {
 	}
 
 	ac_alert = {
-		isShow: false
+		isShow: true
 	}
 
 	alert_close() {
