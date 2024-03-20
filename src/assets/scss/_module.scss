@@ -1549,6 +1549,7 @@ h2 {
 
 		._device & {
 			width: 1082px;
+			max-height: 100%;
 			padding-left: 40px;
 			padding-right: 40px;
 		}
@@ -2519,6 +2520,11 @@ h2 {
 
 		.on+& {
 			display: block;
+		}
+
+		._device &{
+			overflow-y: auto;
+			max-height: 150px;
 		}
 	}
 
