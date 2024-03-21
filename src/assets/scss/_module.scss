@@ -36,6 +36,11 @@ h2 {
 	@extend %hand;
 	@extend %transition;
 
+	&:disabled {
+		pointer-events: none !important;
+		background-color: #CDCDCD !important;
+	}
+
 	.login & {
 		width: 100%;
 		height: 70px;
@@ -476,6 +481,8 @@ h2 {
 
 		@extend %hand;
 
+
+
 		&._eyeclose {
 			background-image: url('../images/icon_eye_close.svg');
 		}
@@ -749,6 +756,15 @@ h2 {
 				height: 18px;
 				margin-right: 10px;
 				background: url('../images/icon_arr_calendar.svg')no-repeat center/contain;
+			}
+
+			&._epk {
+				display: none;
+
+				.detail &{
+					display: flex;
+					margin-bottom: 20px;
+				}
 			}
 		}
 
@@ -1337,10 +1353,12 @@ h2 {
 	.E-KPI & {
 		padding: 20px 0 0;
 	}
+
 	.device &,
-		.linefix &{
-			padding-bottom: 0;
-		}
+	.linefix & {
+		padding-bottom: 0;
+	}
+
 	// .container_title
 	&_title {
 		height: 26px;
@@ -2604,7 +2622,19 @@ h2 {
 		}
 	}
 
+	.epk_sel_groupBox & {
+		height: 40px;
+		margin-bottom: 5px;
+		padding: 0 15px;
 
+		&_span {
+			margin-right: 8px;
+		}
+
+		&_bg {
+			border-radius: 0;
+		}
+	}
 
 	.normal_selcheck &,
 	.normal_selcheck & {
@@ -3299,15 +3329,35 @@ h2 {
 	@include d_f(flex, none, center);
 	white-space: nowrap;
 
+	.epk_sel_groupBox & {
+		position: relative;
+		height: 40px;
+		margin-bottom: 5px;
+		padding: 0 15px;
+		@extend %hand;
+	}
+
 	input {
 		display: none;
 	}
 
-	input:checked~span:after {
+	input:checked~span:not(.normal_radioCheckbox_txt):not(.normal_radioCheckbox_bg):after {
+		content: '';
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
 		display: block;
+		width: 10px;
+		height: 10px;
+		margin: auto;
+		background-color: #2e7fdf;
+		border-radius: 100%;
 	}
 
-	span {
+	span:not(.normal_radioCheckbox_txt):not(.normal_radioCheckbox_bg) {
+		z-index: 1;
 		position: relative;
 		display: block;
 		width: 18px;
@@ -3316,21 +3366,19 @@ h2 {
 		border-radius: 100%;
 		background-color: #fff;
 		border: 1px solid #2e7fdf;
+	}
 
-		&:after {
-			content: '';
-			position: absolute;
-			top: 0;
-			right: 0;
-			bottom: 0;
-			left: 0;
-			display: none;
-			width: 10px;
-			height: 10px;
-			margin: auto;
-			background-color: #2e7fdf;
-			border-radius: 100%;
-		}
+	input:checked~.normal_radioCheckbox_bg {
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 100%;
+		height: 100%;
+		background-color: #D9DFE9;
+	}
+
+	.normal_radioCheckbox_txt {
+		position: relative;
 	}
 
 	&+.normal_search {

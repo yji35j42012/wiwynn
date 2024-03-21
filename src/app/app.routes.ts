@@ -5,6 +5,8 @@ import { HomeDetailComponent } from './home-detail/home-detail.component';
 import { WarroomComponent } from './warroom/warroom.component';
 import { EKpiComponent } from './e-kpi/e-kpi.component';
 import { EProcessComponent } from './e-process/e-process.component';
+import { EProcessSearchComponent } from './e-process-search/e-process-search.component';
+import { EProcessDetailComponent } from './e-process-detail/e-process-detail.component';
 import { EquipmentCenterComponent } from './equipment-center/equipment-center.component';
 import { AlarmCenterComponent } from './alarm-center/alarm-center.component';
 import { OptionComponent } from './option/option.component';
@@ -44,10 +46,16 @@ export const routes: Routes = [
 					{ path: 'detail/:id', component: EKpiDetailComponent },
 				]
 			},
-			{ path: 'E-Process', component: EProcessComponent },
+			{
+				path: 'E-Process', component: EProcessComponent,
+				children: [
+					{ path: '', component: EProcessSearchComponent },
+					{ path: 'detail', component: EProcessDetailComponent },
+				]
+			},
 			{ path: 'Alarm-Center', component: AlarmCenterComponent },
 			{
-				path: 'Equipment-Center', component: EquipmentCenterComponent,	
+				path: 'Equipment-Center', component: EquipmentCenterComponent,
 			},
 			{
 				path: 'Option',

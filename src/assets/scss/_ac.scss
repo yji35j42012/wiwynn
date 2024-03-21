@@ -212,6 +212,7 @@
 			font-size: 14px;
 			font-weight: 400;
 			color: #000000;
+			@extend %hand;
 
 			&::before,
 			&::after {
@@ -375,6 +376,7 @@
 
 			.ac_alertGroup_item:nth-child(3n) & {
 				right: 0;
+
 				&::after {
 					left: auto;
 					right: 17px;

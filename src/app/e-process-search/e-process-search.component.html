@@ -1,0 +1,145 @@
+<div class="epk_filter">
+	<div class="normal_dateRange _hasMsg" data-msg="Date Range">
+		<div class="normal_dateRange_title" (click)="dateHanler('start')">
+			<div class="date">
+				<span>{{ this.epk_filter.start.year }}</span>
+				<span>{{ this.epk_filter.start.month }}</span>
+				<span>{{ this.epk_filter.start.day }}</span>
+			</div>
+			<div class="time">
+				<span>{{ this.epk_filter.start.hour }}</span>
+				<span>{{ this.epk_filter.start.min }}</span>
+			</div>
+		</div>
+		<app-model-calendar class="calendar" *ngIf="epk_filter.start.isShow" [calendar_content]="calendar"
+			(calendar_return)="calerdarReturnHandler($event)">
+		</app-model-calendar>
+	</div>
+	<div class="normal_dateRange">
+		<div class="normal_dateRange_title" (click)="dateHanler('end')">
+			<div class="date">
+				<span>{{ this.epk_filter.end.year }}</span>
+				<span>{{ this.epk_filter.end.month }}</span>
+				<span>{{ this.epk_filter.end.day }}</span>
+			</div>
+			<div class="time">
+				<span>{{ this.epk_filter.end.hour }}</span>
+				<span>{{ this.epk_filter.end.min }}</span>
+			</div>
+		</div>
+		<app-model-calendar class="calendar" *ngIf="epk_filter.end.isShow" [calendar_content]="calendar"
+			(calendar_return)="calerdarReturnHandler($event)">
+		</app-model-calendar>
+	</div>
+	<button class="normal_btn _primary" (click)="queryHandler()">Query</button>
+</div>
+<div class="epk_filter">
+	<div class="epk_sel _hasMsg" data-msg="廠別">
+		<div class="epk_sel_box _single" (click)="selHandler('factory')">{{epk_filter.factory.showSingle}}</div>
+		<div class="epk_sel_box _mult" (click)="selHandler('factory')" *ngIf="isQuery">
+			<div class="content">
+				<span class="mult_item" *ngFor="let item of epk_filter.factory.showMult">
+					{{item.name}}<button class="icon_btn _multclose"></button>
+				</span>
+			</div>
+			<div class="btnbox">
+				<button class="icon_btn _multclose"></button>
+				<button class="icon_btn _multarr"></button>
+			</div>
+		</div>
+
+		<div class="epk_sel_group" *ngIf="epk_filter.factory.isShow">
+			<div class="epk_sel_groupBox">
+				<label class="normal_radioCheckbox" *ngFor="let item of epk_filter.factory.singleLists; index as i">
+					<input type="radio" name="factory" [checked]="item.isChecked" (change)="factorySingle(i)" />
+					<span></span>
+					<span class="normal_radioCheckbox_bg"></span>
+					<span class="normal_radioCheckbox_txt">{{item.name}}</span>
+				</label>
+			</div>
+			<div class="epk_sel_groupBox">
+				<label class="normal_check" *ngFor="let item of epk_filter.factory.multLists;">
+					<input type="checkbox" class="normal_check_inp" [checked]="item.isChecked"
+						(change)="factoryMult($event,item.id)">
+					<span class="normal_check_span"></span>
+					<span class="normal_check_bg"></span>
+					<span class="normal_check_txt">{{item.name}}</span>
+				</label>
+			</div>
+
+		</div>
+	</div>
+	<div class="epk_sel _hasMsg" data-msg="線別">
+		<div class="epk_sel_box _single" (click)="selHandler('line')">{{epk_filter.line.showSingle}}</div>
+		<div class="epk_sel_box _mult" (click)="selHandler('line')" *ngIf="isQuery">
+			<div class="content">
+				<span class="mult_item" *ngFor="let item of epk_filter.line.showMult">
+					{{item.name}}<button class="icon_btn _multclose"></button>
+				</span>
+			</div>
+			<div class="btnbox">
+				<button class="icon_btn _multclose"></button>
+				<button class="icon_btn _multarr"></button>
+			</div>
+		</div>
+
+		<div class="epk_sel_group" *ngIf="epk_filter.line.isShow">
+			<div class="epk_sel_groupBox">
+				<label class="normal_radioCheckbox" *ngFor="let item of epk_filter.line.singleLists; index as i">
+					<input type="radio" name="line" [checked]="item.isChecked" (change)="lineSingle(i)" />
+					<span></span>
+					<span class="normal_radioCheckbox_bg"></span>
+					<span class="normal_radioCheckbox_txt">{{item.name}}</span>
+				</label>
+			</div>
+			<div class="epk_sel_groupBox">
+				<label class="normal_check" *ngFor="let item of epk_filter.line.multLists;">
+					<input type="checkbox" class="normal_check_inp" [checked]="item.isChecked"
+						(change)="lineMult($event,item.id)">
+					<span class="normal_check_span"></span>
+					<span class="normal_check_bg"></span>
+					<span class="normal_check_txt">{{item.name}}</span>
+				</label>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="epk_filter">
+	<div class="epk_sel _hasMsg" data-msg="機台別">
+		<div class="epk_sel_box _single" (click)="selHandler('machine')">{{epk_filter.machine.showSingle}}</div>
+		<div class="epk_sel_box _mult" (click)="selHandler('machine')" *ngIf="isQuery">
+			<div class="content">
+				<span class="mult_item" *ngFor="let item of epk_filter.machine.showMult">
+					{{item.name}}<button class="icon_btn _multclose"></button>
+				</span>
+			</div>
+			<div class="btnbox">
+				<button class="icon_btn _multclose"></button>
+				<button class="icon_btn _multarr"></button>
+			</div>
+		</div>
+
+		<div class="epk_sel_group" *ngIf="epk_filter.machine.isShow">
+			<div class="epk_sel_groupBox">
+				<label class="normal_radioCheckbox" *ngFor="let item of epk_filter.machine.singleLists; index as i">
+					<input type="radio" name="machine" [checked]="item.isChecked" (change)="machineSingle(i)" />
+					<span></span>
+					<span class="normal_radioCheckbox_bg"></span>
+					<span class="normal_radioCheckbox_txt">{{item.name}}</span>
+				</label>
+			</div>
+			<div class="epk_sel_groupBox">
+				<label class="normal_check" *ngFor="let item of epk_filter.machine.multLists;">
+					<input type="checkbox" class="normal_check_inp" [checked]="item.isChecked"
+						(change)="machineMult($event,item.id)">
+					<span class="normal_check_span"></span>
+					<span class="normal_check_bg"></span>
+					<span class="normal_check_txt">{{item.name}}</span>
+				</label>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="epk_filter">
+	<button class="normal_btn _primary" [disabled]="!isQuery" (click)="generateHandler()">Generate</button>
+</div>
