@@ -697,6 +697,10 @@ h2 {
 			&._desc {
 				background-position: bottom center;
 			}
+
+			.epk_detail_tb & {
+				margin-left: 6px;
+			}
 		}
 
 		&._filter {
@@ -717,6 +721,10 @@ h2 {
 
 			&.on {
 				background-position: bottom center;
+			}
+
+			.epk_detail_tb & {
+				margin-left: auto;
 			}
 		}
 
@@ -761,7 +769,7 @@ h2 {
 			&._epk {
 				display: none;
 
-				.detail &{
+				.detail & {
 					display: flex;
 					margin-bottom: 20px;
 				}
@@ -776,6 +784,34 @@ h2 {
 
 			&:focus~.equipment_note_inside {
 				display: block;
+			}
+		}
+
+		&._showMore {
+			position: absolute;
+			right: 0;
+			left: 0;
+			bottom: 0;
+			@include d_f(flex, center, center);
+			width: 26px;
+			height: 26px;
+			margin: auto;
+			background-color: #DCDCDC;
+			border-radius: 100%;
+			transform: translateY(50%);
+
+			&::before {
+				content: "";
+				display: block;
+				width: 16px;
+				height: 16px;
+				background: url('../images/icon_arr_calendar.svg')no-repeat center/contain;
+
+				transform: rotate(270deg);
+
+				.epk_detail_filterBox._show~& {
+					transform: rotate(90deg);
+				}
 			}
 		}
 	}
@@ -2655,6 +2691,19 @@ h2 {
 		margin-bottom: 20px;
 		padding: 6px 10px;
 		background-color: #fff;
+	}
+
+	.epk_detail_filter & {
+		margin-right: 20px;
+		margin-bottom: 20px;
+
+		&_span {
+			margin-right: 8px;
+		}
+
+		&_txt {
+			line-height: 1px;
+		}
 	}
 
 	// .normal_check_inp

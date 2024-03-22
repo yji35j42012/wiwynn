@@ -1,7 +1,340 @@
-<div class="epk_detail">
-    <div class="epk_detail_item" data-msg="時間：">2023/11/20 08:00 ~ 2023/11/29 08:00</div>
-    <div class="epk_detail_item" data-msg="廠別：">F9C1 / S1, S2, S3, S4, S5, S6</div>
-    <div class="epk_detail_item" data-msg="線別：">S1 / Printer, Mounter, Reflow</div>
-    <div class="epk_detail_item" data-msg="機台別：">Printer / Printer-NS-0001, Printer-NS-0002, Printer-NS-0003,
-        Printer-NS-0004, Printer-NS-0005, Printer-NS-0006, Printer-NS-0007, Printer-NS-0008 </div>
+<div class="epk_detail_box">
+	<div class="epk_detail">
+		<div class="epk_detail_item" data-msg="時間：">2023/11/20 08:00 ~ 2023/11/29 08:00</div>
+		<div class="epk_detail_item" data-msg="廠別：">F9C1 / S1, S2, S3, S4, S5, S6</div>
+		<div class="epk_detail_item" data-msg="線別：">S1 / Printer, Mounter, Reflow</div>
+		<div class="epk_detail_item" data-msg="機台別：">Printer / Printer-NS-0001, Printer-NS-0002, Printer-NS-0003,
+			Printer-NS-0004, Printer-NS-0005, Printer-NS-0006, Printer-NS-0007, Printer-NS-0008 </div>
+	</div>
+
+	<div class="epk_detail_filter" data-msg="產品 Model：">
+		<div [class]="['epk_detail_filterBox',model_filter.isShow?'_show':'']">
+			<label class="normal_check">
+				<input type="checkbox" class="normal_check_inp" />
+				<span class="normal_check_span"></span>
+				<span class="normal_check_txt">Select All</span>
+			</label>
+			<label class="normal_check" *ngFor="let item of model_filter.lists">
+				<input type="checkbox" class="normal_check_inp" />
+				<span class="normal_check_span"></span>
+				<span class="normal_check_txt">{{item.name}}</span>
+			</label>
+		</div>
+		<button class="icon_btn _showMore" (click)="showMore(0)"></button>
+	</div>
+	<div class="epk_detail_filter" data-msg="成品料號：">
+		<div [class]="['epk_detail_filterBox',stuff_filter.isShow?'_show':'']">
+			<label class="normal_check">
+				<input type="checkbox" class="normal_check_inp" />
+				<span class="normal_check_span"></span>
+				<span class="normal_check_txt">Select All</span>
+			</label>
+			<label class="normal_check" *ngFor="let item of stuff_filter.lists">
+				<input type="checkbox" class="normal_check_inp" />
+				<span class="normal_check_span"></span>
+				<span class="normal_check_txt">{{item.name}}</span>
+			</label>
+		</div>
+		<button class="icon_btn _showMore" (click)="showMore(1)"></button>
+	</div>
+
+	<!-- <div class="epk_detail_tbbox"> -->
+		<table class="epk_detail_tb">
+			<tr>
+				<th>
+					<div class="normal_tb_box">
+						產品Model
+						<button class="icon_btn _sort"></button>
+						<button class="icon_btn _filter" (click)="modelDevice()"></button>
+						<div class="normal_tb_filterbox" *ngIf="model_device.isShow">
+							<label class="normal_search">
+								<input class="normal_search_inp" type="text" placeholder="搜尋" />
+							</label>
+							<label class="normal_check">
+								<input type="checkbox" class="normal_check_inp" />
+								<span class="normal_check_span"></span>
+								<span class="normal_check_bg"></span>
+								<span class="normal_check_txt">Select All</span>
+							</label>
+							<label class="normal_check">
+								<input type="checkbox" class="normal_check_inp" />
+								<span class="normal_check_span"></span>
+								<span class="normal_check_bg"></span>
+								<span class="normal_check_txt">EQ_WAIT</span>
+							</label>
+							<label class="normal_check">
+								<input type="checkbox" class="normal_check_inp" />
+								<span class="normal_check_span"></span>
+								<span class="normal_check_bg"></span>
+								<span class="normal_check_txt">PM</span>
+							</label>
+							<label class="normal_check">
+								<input type="checkbox" class="normal_check_inp" />
+								<span class="normal_check_span"></span>
+								<span class="normal_check_bg"></span>
+								<span class="normal_check_txt">PD_RUN</span>
+							</label>
+							<label class="normal_check">
+								<input type="checkbox" class="normal_check_inp" />
+								<span class="normal_check_span"></span>
+								<span class="normal_check_bg"></span>
+								<span class="normal_check_txt">ENG</span>
+							</label>
+							<label class="normal_check">
+								<input type="checkbox" class="normal_check_inp" />
+								<span class="normal_check_span"></span>
+								<span class="normal_check_bg"></span>
+								<span class="normal_check_txt">OFF</span>
+							</label>
+						</div>
+					</div>
+				</th>
+				<th>
+					<div class="normal_tb_box">
+						成品料號
+						<button class="icon_btn _sort"></button>
+						<button class="icon_btn _filter" (click)="modelDevice()"></button>
+						<div class="normal_tb_filterbox" *ngIf="model_device.isShow">
+							<label class="normal_search">
+								<input class="normal_search_inp" type="text" placeholder="搜尋" />
+							</label>
+							<label class="normal_check">
+								<input type="checkbox" class="normal_check_inp" />
+								<span class="normal_check_span"></span>
+								<span class="normal_check_bg"></span>
+								<span class="normal_check_txt">Select All</span>
+							</label>
+							<label class="normal_check">
+								<input type="checkbox" class="normal_check_inp" />
+								<span class="normal_check_span"></span>
+								<span class="normal_check_bg"></span>
+								<span class="normal_check_txt">EQ_WAIT</span>
+							</label>
+							<label class="normal_check">
+								<input type="checkbox" class="normal_check_inp" />
+								<span class="normal_check_span"></span>
+								<span class="normal_check_bg"></span>
+								<span class="normal_check_txt">PM</span>
+							</label>
+							<label class="normal_check">
+								<input type="checkbox" class="normal_check_inp" />
+								<span class="normal_check_span"></span>
+								<span class="normal_check_bg"></span>
+								<span class="normal_check_txt">PD_RUN</span>
+							</label>
+							<label class="normal_check">
+								<input type="checkbox" class="normal_check_inp" />
+								<span class="normal_check_span"></span>
+								<span class="normal_check_bg"></span>
+								<span class="normal_check_txt">ENG</span>
+							</label>
+							<label class="normal_check">
+								<input type="checkbox" class="normal_check_inp" />
+								<span class="normal_check_span"></span>
+								<span class="normal_check_bg"></span>
+								<span class="normal_check_txt">OFF</span>
+							</label>
+						</div>
+					</div>
+				</th>
+				<th>
+					<div class="normal_tb_box">
+						半成品料號
+						<button class="icon_btn _sort"></button>
+						<button class="icon_btn _filter" (click)="modelDevice()"></button>
+						<div class="normal_tb_filterbox" *ngIf="model_device.isShow">
+							<label class="normal_search">
+								<input class="normal_search_inp" type="text" placeholder="搜尋" />
+							</label>
+							<label class="normal_check">
+								<input type="checkbox" class="normal_check_inp" />
+								<span class="normal_check_span"></span>
+								<span class="normal_check_bg"></span>
+								<span class="normal_check_txt">Select All</span>
+							</label>
+							<label class="normal_check">
+								<input type="checkbox" class="normal_check_inp" />
+								<span class="normal_check_span"></span>
+								<span class="normal_check_bg"></span>
+								<span class="normal_check_txt">EQ_WAIT</span>
+							</label>
+							<label class="normal_check">
+								<input type="checkbox" class="normal_check_inp" />
+								<span class="normal_check_span"></span>
+								<span class="normal_check_bg"></span>
+								<span class="normal_check_txt">PM</span>
+							</label>
+							<label class="normal_check">
+								<input type="checkbox" class="normal_check_inp" />
+								<span class="normal_check_span"></span>
+								<span class="normal_check_bg"></span>
+								<span class="normal_check_txt">PD_RUN</span>
+							</label>
+							<label class="normal_check">
+								<input type="checkbox" class="normal_check_inp" />
+								<span class="normal_check_span"></span>
+								<span class="normal_check_bg"></span>
+								<span class="normal_check_txt">ENG</span>
+							</label>
+							<label class="normal_check">
+								<input type="checkbox" class="normal_check_inp" />
+								<span class="normal_check_span"></span>
+								<span class="normal_check_bg"></span>
+								<span class="normal_check_txt">OFF</span>
+							</label>
+						</div>
+					</div>
+				</th>
+				<th>
+					<div class="normal_tb_box">
+						MO
+						<button class="icon_btn _sort"></button>
+						<button class="icon_btn _filter" (click)="modelDevice()"></button>
+						<div class="normal_tb_filterbox" *ngIf="model_device.isShow">
+							<label class="normal_search">
+								<input class="normal_search_inp" type="text" placeholder="搜尋" />
+							</label>
+							<label class="normal_check">
+								<input type="checkbox" class="normal_check_inp" />
+								<span class="normal_check_span"></span>
+								<span class="normal_check_bg"></span>
+								<span class="normal_check_txt">Select All</span>
+							</label>
+							<label class="normal_check">
+								<input type="checkbox" class="normal_check_inp" />
+								<span class="normal_check_span"></span>
+								<span class="normal_check_bg"></span>
+								<span class="normal_check_txt">EQ_WAIT</span>
+							</label>
+							<label class="normal_check">
+								<input type="checkbox" class="normal_check_inp" />
+								<span class="normal_check_span"></span>
+								<span class="normal_check_bg"></span>
+								<span class="normal_check_txt">PM</span>
+							</label>
+							<label class="normal_check">
+								<input type="checkbox" class="normal_check_inp" />
+								<span class="normal_check_span"></span>
+								<span class="normal_check_bg"></span>
+								<span class="normal_check_txt">PD_RUN</span>
+							</label>
+							<label class="normal_check">
+								<input type="checkbox" class="normal_check_inp" />
+								<span class="normal_check_span"></span>
+								<span class="normal_check_bg"></span>
+								<span class="normal_check_txt">ENG</span>
+							</label>
+							<label class="normal_check">
+								<input type="checkbox" class="normal_check_inp" />
+								<span class="normal_check_span"></span>
+								<span class="normal_check_bg"></span>
+								<span class="normal_check_txt">OFF</span>
+							</label>
+						</div>
+					</div>	
+				</th>
+				<th>
+					<div class="normal_tb_box">
+						SN
+						<button class="icon_btn _sort"></button>
+						<button class="icon_btn _filter" (click)="modelDevice()"></button>
+						<div class="normal_tb_filterbox" *ngIf="model_device.isShow">
+							<label class="normal_search">
+								<input class="normal_search_inp" type="text" placeholder="搜尋" />
+							</label>
+							<label class="normal_check">
+								<input type="checkbox" class="normal_check_inp" />
+								<span class="normal_check_span"></span>
+								<span class="normal_check_bg"></span>
+								<span class="normal_check_txt">Select All</span>
+							</label>
+							<label class="normal_check">
+								<input type="checkbox" class="normal_check_inp" />
+								<span class="normal_check_span"></span>
+								<span class="normal_check_bg"></span>
+								<span class="normal_check_txt">EQ_WAIT</span>
+							</label>
+							<label class="normal_check">
+								<input type="checkbox" class="normal_check_inp" />
+								<span class="normal_check_span"></span>
+								<span class="normal_check_bg"></span>
+								<span class="normal_check_txt">PM</span>
+							</label>
+							<label class="normal_check">
+								<input type="checkbox" class="normal_check_inp" />
+								<span class="normal_check_span"></span>
+								<span class="normal_check_bg"></span>
+								<span class="normal_check_txt">PD_RUN</span>
+							</label>
+							<label class="normal_check">
+								<input type="checkbox" class="normal_check_inp" />
+								<span class="normal_check_span"></span>
+								<span class="normal_check_bg"></span>
+								<span class="normal_check_txt">ENG</span>
+							</label>
+							<label class="normal_check">
+								<input type="checkbox" class="normal_check_inp" />
+								<span class="normal_check_span"></span>
+								<span class="normal_check_bg"></span>
+								<span class="normal_check_txt">OFF</span>
+							</label>
+						</div>
+					</div>	
+				</th>
+				<th>
+					<div class="normal_tb_box">
+						前刮刀壓力
+						<button class="icon_btn _sort"></button>
+					</div>	
+				</th>
+				<th>
+					<div class="normal_tb_box">
+						後刮刀壓力
+						<button class="icon_btn _sort"></button>
+					</div>	
+				</th>
+				<th>
+					<div class="normal_tb_box">
+						向前印刷速度
+						<button class="icon_btn _sort"></button>
+					</div>	
+				</th>
+				<th>
+					<div class="normal_tb_box">
+						向後印刷速度
+						<button class="icon_btn _sort"></button>
+					</div>	
+				</th>
+				<th>
+					<div class="normal_tb_box">
+						脫模速度
+						<button class="icon_btn _sort"></button>
+					</div>	
+				</th>
+			</tr>
+			<tr>
+				<td>MB YV3.5 MPCL-A INF HSC MODULE MAXIM</td>
+				<td>B91.04G10.0002</td>
+				<td>B55.04S1A.M0011</td>
+				<td>B55.04S1A.M001</td>
+				<td>B55.04S1A.M001</td>
+				<td>8(kg)</td>
+				<td>8(kg)</td>
+				<td>40(mm/s)</td>
+				<td>40(mm/s)</td>
+				<td>0.2(mm/s)</td>
+			</tr>
+		</table>
+		<ul class="normal_page">
+			<li class="normal_page_item _prev"></li>
+			<li class="normal_page_item on">1</li>
+			<li class="normal_page_item">2</li>
+			<li class="normal_page_item">3</li>
+			<li class="normal_page_item">4</li>
+			<li class="normal_page_item">5</li>
+			<li class="normal_page_item _dot">...</li>
+			<li class="normal_page_item">100</li>
+			<li class="normal_page_item _next"></li>
+		</ul>
+	<!-- </div> -->
 </div>
