@@ -269,14 +269,11 @@
 		}
 
 
-		// .epk_detail_tbbox
-		&_tbbox {
-			margin-top: 30px;
-		}
 
 		// .epk_detail_tb
 		&_tb {
 			width: 100%;
+			margin-top: 30px;
 			table-layout: fixed;
 
 
@@ -328,6 +325,7 @@
 				line-height: 16.94px;
 				text-align: center;
 				color: #000;
+				border: 1px solid #D8D8D8;
 			}
 		}
 	}

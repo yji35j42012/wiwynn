@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
 	styleUrl: './e-process-detail.component.scss'
 })
 export class EProcessDetailComponent {
-	model_filter = {
+	model_checkbox = {
 		isShow: true,
 		lists: [
 			{ id: 0, isChecked: false, name: 'YV3.5 MP VF2.0 HSC MAXIM EFUSE T1' },
@@ -28,7 +28,7 @@ export class EProcessDetailComponent {
 		]
 	}
 
-	stuff_filter = {
+	stuff_checkbox = {
 		isShow: false,
 		lists: [
 			{ id: 0, isChecked: false, name: 'YV3.5 MP VF2.0 HSC MAXIM EFUSE T1' },
@@ -50,17 +50,41 @@ export class EProcessDetailComponent {
 
 	showMore(n: number) {
 		if (n == 0) {
-			this.model_filter.isShow = !this.model_filter.isShow
+			this.model_checkbox.isShow = !this.model_checkbox.isShow
 		} else if (n == 1) {
-			this.stuff_filter.isShow = !this.stuff_filter.isShow
+			this.stuff_checkbox.isShow = !this.stuff_checkbox.isShow
 		}
 	}
 
 
-	model_device = {
+	model_filter = {
 		isShow: false,
 	};
-	modelDevice() {
-		this.model_device.isShow = true
+	modelFilter() {
+		this.model_filter.isShow = !this.model_filter.isShow
+	}
+	stuff_fitler = {
+		isShow: false,
+	};
+	stuffFilter() {
+		this.stuff_fitler.isShow = !this.stuff_fitler.isShow
+	}
+	stuffh_fitler = {
+		isShow: false,
+	};
+	stuffhFilter() {
+		this.stuffh_fitler.isShow = !this.stuffh_fitler.isShow
+	}
+	mo_fitler = {
+		isShow: false,
+	};
+	moFilter() {
+		this.mo_fitler.isShow = !this.mo_fitler.isShow
+	}
+	sn_fitler = {
+		isShow: false,
+	};
+	snFilter() {
+		this.sn_fitler.isShow = !this.sn_fitler.isShow
 	}
 }

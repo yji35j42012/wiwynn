@@ -8,13 +8,13 @@
 	</div>
 
 	<div class="epk_detail_filter" data-msg="產品 Model：">
-		<div [class]="['epk_detail_filterBox',model_filter.isShow?'_show':'']">
+		<div [class]="['epk_detail_filterBox',model_checkbox.isShow?'_show':'']">
 			<label class="normal_check">
 				<input type="checkbox" class="normal_check_inp" />
 				<span class="normal_check_span"></span>
 				<span class="normal_check_txt">Select All</span>
 			</label>
-			<label class="normal_check" *ngFor="let item of model_filter.lists">
+			<label class="normal_check" *ngFor="let item of model_checkbox.lists">
 				<input type="checkbox" class="normal_check_inp" />
 				<span class="normal_check_span"></span>
 				<span class="normal_check_txt">{{item.name}}</span>
@@ -23,13 +23,13 @@
 		<button class="icon_btn _showMore" (click)="showMore(0)"></button>
 	</div>
 	<div class="epk_detail_filter" data-msg="成品料號：">
-		<div [class]="['epk_detail_filterBox',stuff_filter.isShow?'_show':'']">
+		<div [class]="['epk_detail_filterBox',stuff_checkbox.isShow?'_show':'']">
 			<label class="normal_check">
 				<input type="checkbox" class="normal_check_inp" />
 				<span class="normal_check_span"></span>
 				<span class="normal_check_txt">Select All</span>
 			</label>
-			<label class="normal_check" *ngFor="let item of stuff_filter.lists">
+			<label class="normal_check" *ngFor="let item of stuff_checkbox.lists">
 				<input type="checkbox" class="normal_check_inp" />
 				<span class="normal_check_span"></span>
 				<span class="normal_check_txt">{{item.name}}</span>
@@ -45,8 +45,8 @@
 					<div class="normal_tb_box">
 						產品Model
 						<button class="icon_btn _sort"></button>
-						<button class="icon_btn _filter" (click)="modelDevice()"></button>
-						<div class="normal_tb_filterbox" *ngIf="model_device.isShow">
+						<button class="icon_btn _filter" (click)="modelFilter()"></button>
+						<div class="normal_tb_filterbox" *ngIf="model_filter.isShow">
 							<label class="normal_search">
 								<input class="normal_search_inp" type="text" placeholder="搜尋" />
 							</label>
@@ -93,8 +93,8 @@
 					<div class="normal_tb_box">
 						成品料號
 						<button class="icon_btn _sort"></button>
-						<button class="icon_btn _filter" (click)="modelDevice()"></button>
-						<div class="normal_tb_filterbox" *ngIf="model_device.isShow">
+						<button class="icon_btn _filter" (click)="stuffFilter()"></button>
+						<div class="normal_tb_filterbox" *ngIf="stuff_fitler.isShow">
 							<label class="normal_search">
 								<input class="normal_search_inp" type="text" placeholder="搜尋" />
 							</label>
@@ -141,8 +141,8 @@
 					<div class="normal_tb_box">
 						半成品料號
 						<button class="icon_btn _sort"></button>
-						<button class="icon_btn _filter" (click)="modelDevice()"></button>
-						<div class="normal_tb_filterbox" *ngIf="model_device.isShow">
+						<button class="icon_btn _filter" (click)="stuffhFilter()"></button>
+						<div class="normal_tb_filterbox" *ngIf="stuffh_fitler.isShow">
 							<label class="normal_search">
 								<input class="normal_search_inp" type="text" placeholder="搜尋" />
 							</label>
@@ -189,8 +189,8 @@
 					<div class="normal_tb_box">
 						MO
 						<button class="icon_btn _sort"></button>
-						<button class="icon_btn _filter" (click)="modelDevice()"></button>
-						<div class="normal_tb_filterbox" *ngIf="model_device.isShow">
+						<button class="icon_btn _filter" (click)="moFilter()"></button>
+						<div class="normal_tb_filterbox" *ngIf="mo_fitler.isShow">
 							<label class="normal_search">
 								<input class="normal_search_inp" type="text" placeholder="搜尋" />
 							</label>
@@ -237,8 +237,8 @@
 					<div class="normal_tb_box">
 						SN
 						<button class="icon_btn _sort"></button>
-						<button class="icon_btn _filter" (click)="modelDevice()"></button>
-						<div class="normal_tb_filterbox" *ngIf="model_device.isShow">
+						<button class="icon_btn _filter" (click)="snFilter()"></button>
+						<div class="normal_tb_filterbox" *ngIf="sn_fitler.isShow">
 							<label class="normal_search">
 								<input class="normal_search_inp" type="text" placeholder="搜尋" />
 							</label>
