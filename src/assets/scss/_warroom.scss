@@ -555,6 +555,59 @@
 			}
 		}
 	}
+
+
+	&_tab {
+		@include d_f(inline-flex);
+		margin-left: 20px;
+		border: 1px solid #2E7FDF;
+		order: 2;
+		border-radius: 85px;
+
+		// .warroom_tab_item
+		&_item {
+			padding: 6px 20px;
+			background-color: #fff;
+			color: #2E7FDF;
+			font-size: 14px;
+			font-weight: 400;
+			line-height: 20.72px;
+			letter-spacing: -0.015em;
+			@extend %hand;
+			@extend %transition;
+
+			@include hv {
+				background-color: #2E7FDF;
+				color: #ffffff;
+			}
+
+			@include ac {
+				background-color: #1D3EB3;
+				color: #ffffff;
+			}
+
+			&:first-child {
+				border-top-left-radius: 85px;
+				border-bottom-left-radius: 85px;
+			}
+
+			&:last-child {
+				border-top-right-radius: 85px;
+				border-bottom-right-radius: 85px;
+			}
+
+			&+& {
+				border-left: 1px solid #2E7FDF;
+			}
+
+			&._on {
+				background-color: #2E7FDF;
+				color: #fff;
+				pointer-events: none;
+			}
+		}
+
+	}
 }
 
 .machine {
@@ -824,6 +877,7 @@
 		// .line_info_chart
 		&_chart {
 			width: 100%;
+
 			@include minmw(XXL) {
 				padding-top: 15px;
 			}
@@ -1021,6 +1075,189 @@
 					}
 				}
 			}
+		}
+	}
+}
+
+.over {
+	overflow: auto;
+	@include d_f(flex);
+	flex-direction: column;
+	width: 100%;
+	height: calc(100% - 15px);
+	padding-top: 20px;
+	padding-bottom: 20px;
+	padding-right: 15px;
+
+	// .over_content
+	&_content {
+		@include d_f(inline-flex, none, flex-start);
+
+		&+& {
+			margin-top: 10px;
+		}
+
+		.over_line+.over_line {
+			margin-left: 10px;
+		}
+	}
+
+	// .over_line
+	&_line {
+		flex: none;
+		display: block;
+		padding: 5px 10px 10px;
+		background-color: #fff;
+		border: 1px solid #CCD0EE;
+		border-radius: 10px;
+		@extend %transition;
+		@extend %hand;
+
+		@include hoverHandler {
+			background-color: #8C95A6;
+		}
+
+		&::before {
+			content: attr(data-msg);
+			display: block;
+			margin-bottom: 13px;
+			font-size: 14px;
+			font-weight: 700;
+			line-height: 15px;
+			text-align: left;
+		}
+	}
+
+	// .over_item
+	&_item {
+		position: relative;
+		display: inline-block;
+		width: 90px;
+		height: 50px;
+		margin-top: 3px;
+		padding: 10px;
+		background-color: #E5E7FC;
+		border-radius: 10px;
+
+		@include hv {
+			.over_item_detail {
+				display: block;
+			}
+		}
+
+		&+& {
+			margin-left: 10px;
+		}
+
+		&+.over_col,
+		&+.over_rowGroup {
+			margin-left: 7px;
+		}
+
+		.state {
+			width: 100%;
+			height: 6px;
+			margin: 0;
+			border-radius: 999px;
+		}
+
+		// .over_item_name
+		&_name {
+			overflow: hidden;
+			width: 100%;
+			margin-bottom: 10px;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+		}
+
+		// .over_item_detail
+		&_detail {
+			z-index: 1;
+			position: absolute;
+			top: 63%;
+			left: 0;
+			display: none;
+			padding: 14px 10px;
+			background-color: #fff;
+			border-radius: 10px;
+
+			&::after {
+				content: "";
+				position: absolute;
+				top: 2px;
+				left: 40px;
+				display: block;
+				width: 8px;
+				height: 6px;
+				background: url('../images/icon_trangle.svg') no-repeat center / contain;
+				transform: translateY(-100%);
+			}
+
+			.name,
+			.state {
+				font-size: 14px;
+				font-weight: 400;
+				line-height: 15px;
+				text-align: left;
+			}
+
+			.name {
+				margin-bottom: 10px;
+			}
+
+		}
+	}
+
+	// .over_box
+	&_box {
+		@include d_f(flex, none, flex-start);
+	}
+
+	// .over_col
+	&_col {
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+		height: 113px;
+		// display: grid;
+		// grid-template-columns: 90px 90px;
+		// grid-template-rows: 50px 50px;
+		padding: 3px;
+		padding-top: 0;
+
+		border-radius: 13px;
+		// grid-column-gap: 10px;
+		grid-row-gap: 4px;
+
+		&._group {
+			background-color: #CCD0EE;
+		}
+
+		.over_item:not(:last-child):not(:nth-last-child(2)) {
+			margin-right: 10px;
+		}
+
+		.over_item+.over_item {
+			margin-left: 0;
+		}
+
+		&+& {
+			margin-left: 4px;
+		}
+
+		&+.over_rowGroup {
+			margin-left: 7px;
+		}
+	}
+
+	// .over_row
+	&_row {
+		@include d_f(flex);
+		padding: 0 3px 3px;
+		border-radius: 10px;
+
+		&._group {
+			background-color: #CCD0EE;
 		}
 	}
 }

@@ -1,0 +1,19 @@
+<div class="over">
+	<div class="over_content" *ngFor="let row of over_data">
+		<div class="over_line" *ngFor="let line of row" [attr.data-msg]="line.title" (click)="lineHandler()">
+			<div class="over_box">
+				<div [class]="[list.isCol?'over_col':'over_row' ,list.isGroup?'_group':'' ]"
+					*ngFor="let list of line.lists">
+					<div class="over_item" *ngFor="let item of list.item">
+						<div class="over_item_name">{{item.name}}</div>
+						<div [class]="['state',item.state]"></div>
+						<div class="over_item_detail">
+							<div class="name">{{item.name}}</div>
+							<div class="state">{{item.stateName}}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -3,6 +3,8 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { HomeDetailComponent } from './home-detail/home-detail.component';
 import { WarroomComponent } from './warroom/warroom.component';
+import { WarroomNormalComponent } from './warroom-normal/warroom-normal.component';
+import { WarroomOverviewComponent } from './warroom-overview/warroom-overview.component';
 import { EKpiComponent } from './e-kpi/e-kpi.component';
 import { EProcessComponent } from './e-process/e-process.component';
 import { EProcessSearchComponent } from './e-process-search/e-process-search.component';
@@ -37,7 +39,13 @@ export const routes: Routes = [
 		component: HomeComponent,
 		children: [
 			{ path: '', component: HomeDetailComponent },
-			{ path: 'Warroom', component: WarroomComponent },
+			{
+				path: 'Warroom', component: WarroomComponent,
+				children: [
+					{ path: '', component: WarroomNormalComponent },
+					{ path: 'overview', component: WarroomOverviewComponent },
+				]
+			},
 			{
 				path: 'E-KPI', component: EKpiComponent,
 				children: [
