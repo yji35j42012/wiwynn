@@ -1404,6 +1404,11 @@ h2 {
 		font-weight: 700;
 		line-height: 24px;
 
+		&._warroom {
+			@include d_f(flex, none, center);
+			height: 35px;
+		}
+
 		.E-KPI & {
 			padding-left: 20px;
 		}
