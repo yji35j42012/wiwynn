@@ -134,11 +134,19 @@ export class WarroomNormalComponent {
 	}
 	line(num: number) {
 		if (this.isEdit) { return }
+		console.log(window.innerWidth)
 		this.lineEvent.num = num
-		let itemBox = this.el.nativeElement.querySelector('.warroom_body');
-		let itemFirst = this.el.nativeElement.querySelectorAll('.warroom_machine')[0];
+		let itemBox = this.el.nativeElement.querySelector('.warroom_content');
 		let item = this.el.nativeElement.querySelectorAll('.warroom_machine')[num];
-		item.style.transform = `translateY(-${item.offsetTop - itemFirst.offsetTop - itemBox.scrollTop}px)`;
+		var move: string
+		if (window.innerWidth < 1441) {
+			itemBox.style=`overflow: unset;`;
+			move = (itemBox.offsetTop + 236 * num - itemBox.scrollTop + 206) * -1 + 'px'
+		} else {
+			move = (itemBox.offsetTop + 236 * num - itemBox.scrollTop) * -1 + 'px'
+		}
+		// 206
+		item.style = `--moveY:${move}`;
 		this.alert_close('machine');
 		this.lineEvent.show = true
 		setTimeout(() => {
@@ -166,6 +174,10 @@ export class WarroomNormalComponent {
 				this.lineEvent.class = false
 				let item = this.el.nativeElement.querySelectorAll('.warroom_machine')[this.lineEvent.num]
 				item.style.transform = `translateY(0px)`
+				if (window.innerWidth < 1441) {
+					this.el.nativeElement.querySelector('.warroom_content').style=`overflow: ;`;
+				
+				} 
 				setTimeout(() => {
 					this.lineEvent.show = false
 				}, 500);

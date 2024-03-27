@@ -121,7 +121,7 @@
 		@include d_f(flex);
 		flex-direction: column;
 		width: 100%;
-		height: 100%;
+		// height: 100%;
 		padding-top: 10px;
 		padding-left: 10px;
 	}
@@ -167,11 +167,11 @@
 
 	// .warroom_machine
 	&_machine {
-		// overflow: hidden;
 		position: relative;
 		padding-right: 5px;
 		padding-bottom: 20px;
-		@extend %transition;
+		// @extend %transition;
+		transform: translateY(var(--moveY));
 
 		&+& {
 			margin-top: 10px;
@@ -187,18 +187,10 @@
 		}
 
 		@include hv {
-
 			.warroom_machine_head::before,
 			.warroom_machine_outside::before {
 				opacity: 1;
 			}
-
-			// .warroom_machine_outside {
-			//     position: relative;
-			//     border-color: rgba(59, 149, 255, 1);
-			//     border-width: 3px;
-			//     box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.3);
-			// }
 		}
 
 		// .warroom_machine_head
@@ -457,7 +449,6 @@
 			width: 100px;
 			padding: 6px 9px 7px;
 			text-align: center;
-
 			transform: translateX(0px);
 
 			&::before {
