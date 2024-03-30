@@ -1,7 +1,8 @@
 .option {
-._condition .selbox{
-	margin-right: auto;
-}
+	._condition .selbox {
+		margin-right: auto;
+	}
+
 	// .option_filter
 	&_filter {
 		z-index: 1;
@@ -283,6 +284,18 @@
 	&_head {
 		@include d_f(flex, flex-end, center);
 		margin-bottom: 20px;
+
+
+		._permissions &  {
+			>*+*{
+				margin-left: 20px;
+			}
+			.selbox {
+				margin-right: auto;
+			}
+		
+
+		}
 
 		&._border {
 			padding-top: 16px;
