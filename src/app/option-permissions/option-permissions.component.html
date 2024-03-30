@@ -1,5 +1,12 @@
 <div class="option_content _permissions">
 	<div class="option_head">
+		<app-model-select class="" [selectContent]="number_sel" (selShowEvent)="selShow($event)"
+			(selEvent)="selHandler($event)"></app-model-select>
+		<app-model-select class="" [selectContent]="permissions_sel" (selShowEvent)="selShow($event)"
+			(selEvent)="selHandler($event)"></app-model-select>
+		<app-model-select class="selbox" [selectContent]="position_sel" (selShowEvent)="selShow($event)"
+			(selEvent)="selHandler($event)"></app-model-select>
+
 		<button class="border_btn _add " (click)="permissions_edit('add')"><i></i>Add Account</button>
 	</div>
 	<div class="option_body">
@@ -156,11 +163,11 @@
 				<input type="text" [value]="editData.mail">
 			</div>
 			<app-model-select [selectContent]="department_sel" (selShowEvent)="selShow($event)"
-			(selEvent)="selHandler($event)"></app-model-select>
+				(selEvent)="selHandler($event)"></app-model-select>
 			<app-model-select [selectContent]="office_sel" (selShowEvent)="selShow($event)"
-			(selEvent)="selHandler($event)"></app-model-select>
+				(selEvent)="selHandler($event)"></app-model-select>
 			<app-model-select [selectContent]="permissions_sel" (selShowEvent)="selShow($event)"
-			(selEvent)="selHandler($event)"></app-model-select>
+				(selEvent)="selHandler($event)"></app-model-select>
 
 			<label class="normal_switch _leftMsg" data-msg="啟用">
 				<input type="checkbox">
