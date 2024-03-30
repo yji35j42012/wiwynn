@@ -1,781 +1,843 @@
 <div class="warroom_content">
-    <div class="warroom_all">
-        <div class="warroom_all_title">全廠指標</div>
-        <div class="warroom_all_item _people">
-            <div class="num" data-unit="人">106</div>
-            <div class="txt">作業人數</div>
-        </div>
-        <div class="warroom_all_item _attendance">
-            <div class="num" data-unit="%">100</div>
-            <div class="txt">人員出勤率</div>
-        </div>
-        <div class="warroom_all_item _input">
-            <div class="num">100</div>
-            <div class="txt">Input</div>
-        </div>
-        <div class="warroom_all_item _output">
-            <div class="num">100</div>
-            <div class="txt">Ouput</div>
-        </div>
-        <div class="warroom_all_item _achievement">
-            <div class="num" data-unit="%">99</div>
-            <div class="txt">達成率</div>
-        </div>
-    </div>
-    <div class="warroom_info">
-        <div class="warroom_head">
-            <app-model-select [selectContent]="machineSelect" (selShowEvent)="selShow($event)"
-                (selEvent)="selHandler($event)"></app-model-select>
+	<div class="warroom_all">
+		<div class="warroom_all_title">全廠指標</div>
+		<div class="warroom_all_item _people">
+			<div class="num" data-unit="人">106</div>
+			<div class="txt">作業人數</div>
+		</div>
+		<div class="warroom_all_item _attendance">
+			<div class="num" data-unit="%">100</div>
+			<div class="txt">人員出勤率</div>
+		</div>
+		<div class="warroom_all_item _input">
+			<div class="num">100</div>
+			<div class="txt">Input</div>
+		</div>
+		<div class="warroom_all_item _output">
+			<div class="num">100</div>
+			<div class="txt">Ouput</div>
+		</div>
+		<div class="warroom_all_item _achievement">
+			<div class="num" data-unit="%">99</div>
+			<div class="txt">達成率</div>
+		</div>
+	</div>
+	<div class="warroom_info">
+		<div class="warroom_head">
+			<app-model-select [selectContent]="machineSelect" (selShowEvent)="selShow($event)"
+				(selEvent)="selHandler($event)"></app-model-select>
 
-            <div class="warroom_head_btnBox">
-                <button class="normal_btn _primary _edit" (click)="editHandler()" *ngIf="!isEdit">
-                    編輯
-                </button>
-                <button class="border_btn _add" (click)="addLine()" *ngIf="isEdit">
-                    <i></i>新増生產線
-                </button>
-                <button class="normal_btn _secondry" (click)="cancleHandler()" *ngIf="isEdit">
-                    取消
-                </button>
-                <button class="normal_btn _primary" *ngIf="isEdit">儲存</button>
-            </div>
-        </div>
-        <!-- 點擊編輯按鈕 在下面class加上edit -->
-        <div class="warroom_body" [class.edit]="isEdit">
-            <div class="warroom_machine"  (click)="line(0)">
-                <button class="icon_btn _del"></button>
-                <ul class="warroom_machine_head">
-                    <li class="warroom_machine_li _title">
-                        <span class="warroom_machine_span">S12345</span>
-                        <span class="warroom_machine_span">YV3.5 MP FIO BO1ARD</span>
-                    </li>
-                    <li class="warroom_machine_li">
-                        <span class="warroom_machine_span">Input</span>
-                        <span class="warroom_machine_span" data-unit="(pcs)">200</span>
-                    </li>
-                    <li class="warroom_machine_li">
-                        <span class="warroom_machine_span">Output</span>
-                        <span class="warroom_machine_span" data-unit="(pcs)">100</span>
-                    </li>
-                    <li class="warroom_machine_li">
-                        <span class="warroom_machine_span">Mo工單</span>
-                        <span class="warroom_machine_span">000010091072</span>
-                    </li>
-                    <li class="warroom_machine_li">
-                        <span class="warroom_machine_span">稼動率 OEE</span>
-                        <span class="warroom_machine_span" data-unit="%">65</span>
-                    </li>
-                    <li class="warroom_machine_li">
-                        <span class="warroom_machine_span">產品達成率</span>
-                        <span class="warroom_machine_span" data-unit="%">100</span>
-                    </li>
-                    <li class="warroom_machine_li _payment" data-unit="kwh">33653338</li>
-                    <li class="warroom_machine_li _glyph" data-unit="PA">12345556</li>
-                    <li class="warroom_machine_li _water" data-unit="L">12345556</li>
-                    <li class="warroom_machine_li _total" data-l="共" data-r="機台">
-                        999
-                    </li>
-                </ul>
-                <div class="warroom_machine_outside">
-                    <button class="border_btn _add" *ngIf="isEdit" (click)="addMachine($event)">
-                        <i></i>
-                        新增機台
-                    </button>
-                    <ul class="warroom_machine_group">
-                        <li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
-                            <div class="state WAIT"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                        <li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
-                            <div class="state PM"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                        <li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
-                            <div class="state PD_RUN"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                        <li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
-                            <div class="state ENG"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                        <li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
-                            <div class="state OFF"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                        <li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
-                            <div class="state PR_RUN"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                        <!-- 移除機器要變新增的狀態，加上.add -->
-                        <li class="warroom_machine_item add" data-txt="EQ_WAIT" *ngIf="isEdit">
-                            <div class="state PR_RUN"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                        <!-- 拖曳機器狀態加上on -->
-                        <li class="warroom_machine_item on" data-txt="EQ_WAIT" *ngIf="isEdit">
-                            <div class="state PR_RUN"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="warroom_machine" (click)="line(1)">
-                <button class="icon_btn _del"></button>
-                <ul class="warroom_machine_head">
-                    <li class="warroom_machine_li _title">
-                        <span class="warroom_machine_span">s3</span>
-                        <!-- <span class="warroom_machine_span">YV3.5 MP FIO BO1ARD</span> -->
-                    </li>
-                    <li class="warroom_machine_li _state">
-                        <div class="state WAIT"></div>
-                        <span class="warroom_machine_span">99</span>
-                    </li>
+			<div class="warroom_head_btnBox">
+				<button class="normal_btn _primary _edit" (click)="editHandler()" *ngIf="!isEdit">
+					編輯
+				</button>
+				<button class="border_btn _add" (click)="addLine()" *ngIf="isEdit">
+					<i></i>新増生產線
+				</button>
+				<button class="normal_btn _secondry" (click)="cancleHandler()" *ngIf="isEdit">
+					取消
+				</button>
+				<button class="normal_btn _primary" *ngIf="isEdit">儲存</button>
+			</div>
+		</div>
+		<!-- 點擊編輯按鈕 在下面class加上edit -->
+		<div class="warroom_body" [class.edit]="isEdit">
 
-                    <li class="warroom_machine_li _total" data-l="共" data-r="機台">
-                        999
-                    </li>
-                </ul>
-                <div class="warroom_machine_outside">
-                    <button class="border_btn _add" *ngIf="isEdit" (click)="addMachine($event)">
-                        <i></i>
-                        新增機台
-                    </button>
-                    <ul class="warroom_machine_group">
-                        <li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
-                            <div class="state WAIT"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                        <li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
-                            <div class="state PM"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                        <li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
-                            <div class="state PD_RUN"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                        <li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
-                            <div class="state ENG"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                        <li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
-                            <div class="state OFF"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                        <li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
-                            <div class="state PR_RUN"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                        <!-- 移除機器要變新增的狀態，加上.add -->
-                        <li class="warroom_machine_item add" data-txt="EQ_WAIT" *ngIf="isEdit">
-                            <div class="state PR_RUN"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                        <!-- 拖曳機器狀態加上on -->
-                        <li class="warroom_machine_item on" data-txt="EQ_WAIT" *ngIf="isEdit">
-                            <div class="state PR_RUN"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="warroom_machine" (click)="line(2)">
-                <button class="icon_btn _del"></button>
-                <ul class="warroom_machine_head">
-                    <li class="warroom_machine_li _title">
-                        <span class="warroom_machine_span">s3</span>
-                        <!-- <span class="warroom_machine_span">YV3.5 MP FIO BO1ARD</span> -->
-                    </li>
-                    <li class="warroom_machine_li _state">
-                        <div class="state WAIT"></div>
-                        <span class="warroom_machine_span">99</span>
-                    </li>
+			<div class="warroom_machine" *ngFor="let item of machine_data; index as i" [id]="'machine'+i"
+				(click)="line(i)" (mousedown)="lineDown($event,i)" (mouseup)="lineUp(i)" (mousemove)="lineMove($event,i)">
+				<button class="icon_btn _del"></button>
+				<ul class="warroom_machine_head" *ngIf="!item.isLong">
+					<li class="warroom_machine_li _title">
+						<span class="warroom_machine_span">{{item.title1}}</span>
+						<span class="warroom_machine_span">{{item.title2}}</span>
+					</li>
+					<li class="warroom_machine_li">
+						<span class="warroom_machine_span">Input</span>
+						<span class="warroom_machine_span" data-unit="(pcs)">{{item.inp}}</span>
+					</li>
+					<li class="warroom_machine_li">
+						<span class="warroom_machine_span">Output</span>
+						<span class="warroom_machine_span" data-unit="(pcs)">{{item.out}}</span>
+					</li>
+					<li class="warroom_machine_li">
+						<span class="warroom_machine_span">Mo工單</span>
+						<span class="warroom_machine_span">{{item.mo}}</span>
+					</li>
+					<li class="warroom_machine_li">
+						<span class="warroom_machine_span">稼動率 OEE</span>
+						<span class="warroom_machine_span" data-unit="%">{{item.oee}}</span>
+					</li>
+					<li class="warroom_machine_li">
+						<span class="warroom_machine_span">產品達成率</span>
+						<span class="warroom_machine_span" data-unit="%">{{item.product}}</span>
+					</li>
+					<li class="warroom_machine_li _payment" data-unit="kwh">{{item.payment}}</li>
+					<li class="warroom_machine_li _glyph" data-unit="PA">{{item.glyph}}</li>
+					<li class="warroom_machine_li _water" data-unit="L">{{item.water}}</li>
+					<li class="warroom_machine_li _total" data-l="共" data-r="機台">999</li>
+				</ul>
+				<ul class="warroom_machine_head" *ngIf="item.isLong">
+					<li class="warroom_machine_li _title">
+						<span class="warroom_machine_span">{{item.title}}</span>
+						<!-- <span class="warroom_machine_span">YV3.5 MP FIO BO1ARD</span> -->
+					</li>
+					<li class="warroom_machine_li _state">
+						<div [class]="['state',item.state]"></div>
+						<span class="warroom_machine_span">{{item.stateNum}}</span>
+					</li>
+					<li class="warroom_machine_li _total" data-l="共" data-r="機台">999</li>
+				</ul>
 
-                    <li class="warroom_machine_li _total" data-l="共" data-r="機台">
-                        999
-                    </li>
-                </ul>
-                <div class="warroom_machine_outside">
-                    <button class="border_btn _add" *ngIf="isEdit" (click)="addMachine($event)">
-                        <i></i>
-                        新增機台
-                    </button>
-                    <ul class="warroom_machine_group">
-                        <li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
-                            <div class="state WAIT"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                        <li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
-                            <div class="state PM"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                        <li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
-                            <div class="state PD_RUN"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                        <li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
-                            <div class="state ENG"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                        <li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
-                            <div class="state OFF"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                        <li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
-                            <div class="state PR_RUN"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                        <!-- 移除機器要變新增的狀態，加上.add -->
-                        <li class="warroom_machine_item add" data-txt="EQ_WAIT" *ngIf="isEdit">
-                            <div class="state PR_RUN"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                        <!-- 拖曳機器狀態加上on -->
-                        <li class="warroom_machine_item on" data-txt="EQ_WAIT" *ngIf="isEdit">
-                            <div class="state PR_RUN"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="warroom_machine" (click)="line(3)">
-                <button class="icon_btn _del"></button>
-                <ul class="warroom_machine_head">
-                    <li class="warroom_machine_li _title">
-                        <span class="warroom_machine_span">s3</span>
-                        <!-- <span class="warroom_machine_span">YV3.5 MP FIO BO1ARD</span> -->
-                    </li>
-                    <li class="warroom_machine_li _state">
-                        <div class="state WAIT"></div>
-                        <span class="warroom_machine_span">99</span>
-                    </li>
+				<div class="warroom_machine_outside">
+					<button class="border_btn _add" *ngIf="isEdit" (click)="addMachine($event)">
+						<i></i>
+						新增機台
+					</button>
+					<ul class="warroom_machine_group">
+						<li class="warroom_machine_item" *ngFor="let list of item.lists" [attr.data-txt]="list.txt">
+							<div [class]="['state', list.state]"></div>
+							<div class="normal_machine"></div>
+							<div class="name">{{list.name}}</div>
+						</li>
+					</ul>
+				</div>
 
-                    <li class="warroom_machine_li _total" data-l="共" data-r="機台">
-                        999
-                    </li>
-                </ul>
-                <div class="warroom_machine_outside">
-                    <button class="border_btn _add" *ngIf="isEdit" (click)="addMachine($event)">
-                        <i></i>
-                        新增機台
-                    </button>
-                    <ul class="warroom_machine_group">
-                        <li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
-                            <div class="state WAIT"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                        <li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
-                            <div class="state PM"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                        <li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
-                            <div class="state PD_RUN"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                        <li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
-                            <div class="state ENG"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                        <li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
-                            <div class="state OFF"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                        <li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
-                            <div class="state PR_RUN"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                        <!-- 移除機器要變新增的狀態，加上.add -->
-                        <li class="warroom_machine_item add" data-txt="EQ_WAIT" *ngIf="isEdit">
-                            <div class="state PR_RUN"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                        <!-- 拖曳機器狀態加上on -->
-                        <li class="warroom_machine_item on" data-txt="EQ_WAIT" *ngIf="isEdit">
-                            <div class="state PR_RUN"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="warroom_machine" (click)="line(4)">
-                <button class="icon_btn _del"></button>
-                <ul class="warroom_machine_head">
-                    <li class="warroom_machine_li _title">
-                        <span class="warroom_machine_span">s3</span>
-                        <!-- <span class="warroom_machine_span">YV3.5 MP FIO BO1ARD</span> -->
-                    </li>
-                    <li class="warroom_machine_li _state">
-                        <div class="state WAIT"></div>
-                        <span class="warroom_machine_span">99</span>
-                    </li>
+			</div>
 
-                    <li class="warroom_machine_li _total" data-l="共" data-r="機台">
-                        999
-                    </li>
-                </ul>
-                <div class="warroom_machine_outside">
-                    <button class="border_btn _add" *ngIf="isEdit" (click)="addMachine($event)">
-                        <i></i>
-                        新增機台
-                    </button>
-                    <ul class="warroom_machine_group">
-                        <li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
-                            <div class="state WAIT"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                        <li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
-                            <div class="state PM"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                        <li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
-                            <div class="state PD_RUN"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                        <li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
-                            <div class="state ENG"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                        <li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
-                            <div class="state OFF"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                        <li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
-                            <div class="state PR_RUN"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                        <!-- 移除機器要變新增的狀態，加上.add -->
-                        <li class="warroom_machine_item add" data-txt="EQ_WAIT" *ngIf="isEdit">
-                            <div class="state PR_RUN"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                        <!-- 拖曳機器狀態加上on -->
-                        <li class="warroom_machine_item on" data-txt="EQ_WAIT" *ngIf="isEdit">
-                            <div class="state PR_RUN"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="warroom_machine" (click)="line(5)">
-                <button class="icon_btn _del"></button>
-                <ul class="warroom_machine_head">
-                    <li class="warroom_machine_li _title">
-                        <span class="warroom_machine_span">s3</span>
-                        <!-- <span class="warroom_machine_span">YV3.5 MP FIO BO1ARD</span> -->
-                    </li>
-                    <li class="warroom_machine_li _state">
-                        <div class="state WAIT"></div>
-                        <span class="warroom_machine_span">99</span>
-                    </li>
+			<div class="warroom_machine" (click)="line(0)" style="display: none;">
+				<button class="icon_btn _del"></button>
+				<ul class="warroom_machine_head">
+					<li class="warroom_machine_li _title">
+						<span class="warroom_machine_span">S12345</span>
+						<span class="warroom_machine_span">YV3.5 MP FIO BO1ARD</span>
+					</li>
+					<li class="warroom_machine_li">
+						<span class="warroom_machine_span">Input</span>
+						<span class="warroom_machine_span" data-unit="(pcs)">200</span>
+					</li>
+					<li class="warroom_machine_li">
+						<span class="warroom_machine_span">Output</span>
+						<span class="warroom_machine_span" data-unit="(pcs)">100</span>
+					</li>
+					<li class="warroom_machine_li">
+						<span class="warroom_machine_span">Mo工單</span>
+						<span class="warroom_machine_span">000010091072</span>
+					</li>
+					<li class="warroom_machine_li">
+						<span class="warroom_machine_span">稼動率 OEE</span>
+						<span class="warroom_machine_span" data-unit="%">65</span>
+					</li>
+					<li class="warroom_machine_li">
+						<span class="warroom_machine_span">產品達成率</span>
+						<span class="warroom_machine_span" data-unit="%">100</span>
+					</li>
+					<li class="warroom_machine_li _payment" data-unit="kwh">33653338</li>
+					<li class="warroom_machine_li _glyph" data-unit="PA">12345556</li>
+					<li class="warroom_machine_li _water" data-unit="L">12345556</li>
+					<li class="warroom_machine_li _total" data-l="共" data-r="機台">
+						999
+					</li>
+				</ul>
+				<div class="warroom_machine_outside">
+					<button class="border_btn _add" *ngIf="isEdit" (click)="addMachine($event)">
+						<i></i>
+						新增機台
+					</button>
+					<ul class="warroom_machine_group">
+						<li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
+							<div class="state WAIT"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+						<li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
+							<div class="state PM"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+						<li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
+							<div class="state PD_RUN"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+						<li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
+							<div class="state ENG"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+						<li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
+							<div class="state OFF"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+						<li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
+							<div class="state PR_RUN"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+						<!-- 移除機器要變新增的狀態，加上.add -->
+						<li class="warroom_machine_item add" data-txt="EQ_WAIT" *ngIf="isEdit">
+							<div class="state PR_RUN"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+						<!-- 拖曳機器狀態加上on -->
+						<li class="warroom_machine_item on" data-txt="EQ_WAIT" *ngIf="isEdit">
+							<div class="state PR_RUN"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="warroom_machine" (click)="line(1)" style="display: none;">
+				<button class="icon_btn _del"></button>
+				<ul class="warroom_machine_head">
+					<li class="warroom_machine_li _title">
+						<span class="warroom_machine_span">s3</span>
+						<!-- <span class="warroom_machine_span">YV3.5 MP FIO BO1ARD</span> -->
+					</li>
+					<li class="warroom_machine_li _state">
+						<div class="state WAIT"></div>
+						<span class="warroom_machine_span">99</span>
+					</li>
 
-                    <li class="warroom_machine_li _total" data-l="共" data-r="機台">
-                        999
-                    </li>
-                </ul>
-                <div class="warroom_machine_outside">
-                    <button class="border_btn _add" *ngIf="isEdit" (click)="addMachine($event)">
-                        <i></i>
-                        新增機台
-                    </button>
-                    <ul class="warroom_machine_group">
-                        <li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
-                            <div class="state WAIT"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                        <li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
-                            <div class="state PM"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                        <li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
-                            <div class="state PD_RUN"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                        <li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
-                            <div class="state ENG"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                        <li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
-                            <div class="state OFF"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                        <li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
-                            <div class="state PR_RUN"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                        <!-- 移除機器要變新增的狀態，加上.add -->
-                        <li class="warroom_machine_item add" data-txt="EQ_WAIT" *ngIf="isEdit">
-                            <div class="state PR_RUN"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                        <!-- 拖曳機器狀態加上on -->
-                        <li class="warroom_machine_item on" data-txt="EQ_WAIT" *ngIf="isEdit">
-                            <div class="state PR_RUN"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="warroom_machine" (click)="line(6)">
-                <button class="icon_btn _del"></button>
-                <ul class="warroom_machine_head">
-                    <li class="warroom_machine_li _title">
-                        <span class="warroom_machine_span">s31</span>
-                        <!-- <span class="warroom_machine_span">YV3.5 MP FIO BO1ARD</span> -->
-                    </li>
-                    <li class="warroom_machine_li _state">
-                        <div class="state WAIT"></div>
-                        <span class="warroom_machine_span">99</span>
-                    </li>
+					<li class="warroom_machine_li _total" data-l="共" data-r="機台">
+						999
+					</li>
+				</ul>
+				<div class="warroom_machine_outside">
+					<button class="border_btn _add" *ngIf="isEdit" (click)="addMachine($event)">
+						<i></i>
+						新增機台
+					</button>
+					<ul class="warroom_machine_group">
+						<li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
+							<div class="state WAIT"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+						<li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
+							<div class="state PM"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+						<li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
+							<div class="state PD_RUN"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+						<li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
+							<div class="state ENG"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+						<li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
+							<div class="state OFF"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+						<li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
+							<div class="state PR_RUN"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+						<!-- 移除機器要變新增的狀態，加上.add -->
+						<li class="warroom_machine_item add" data-txt="EQ_WAIT" *ngIf="isEdit">
+							<div class="state PR_RUN"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+						<!-- 拖曳機器狀態加上on -->
+						<li class="warroom_machine_item on" data-txt="EQ_WAIT" *ngIf="isEdit">
+							<div class="state PR_RUN"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="warroom_machine" (click)="line(2)" style="display: none;">
+				<button class="icon_btn _del"></button>
+				<ul class="warroom_machine_head">
+					<li class="warroom_machine_li _title">
+						<span class="warroom_machine_span">s3</span>
+						<!-- <span class="warroom_machine_span">YV3.5 MP FIO BO1ARD</span> -->
+					</li>
+					<li class="warroom_machine_li _state">
+						<div class="state WAIT"></div>
+						<span class="warroom_machine_span">99</span>
+					</li>
 
-                    <li class="warroom_machine_li _total" data-l="共" data-r="機台">
-                        999
-                    </li>
-                </ul>
-                <div class="warroom_machine_outside">
-                    <button class="border_btn _add" *ngIf="isEdit" (click)="addMachine($event)">
-                        <i></i>
-                        新增機台
-                    </button>
-                    <ul class="warroom_machine_group">
-                        <li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
-                            <div class="state WAIT"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                        <li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
-                            <div class="state PM"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                        <li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
-                            <div class="state PD_RUN"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                        <li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
-                            <div class="state ENG"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                        <li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
-                            <div class="state OFF"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                        <li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
-                            <div class="state PR_RUN"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                        <!-- 移除機器要變新增的狀態，加上.add -->
-                        <li class="warroom_machine_item add" data-txt="EQ_WAIT" *ngIf="isEdit">
-                            <div class="state PR_RUN"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                        <!-- 拖曳機器狀態加上on -->
-                        <li class="warroom_machine_item on" data-txt="EQ_WAIT" *ngIf="isEdit">
-                            <div class="state PR_RUN"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <!-- 拖曳整條線加上on -->
-            <div class="warroom_machine on" *ngIf="isEdit">
-                <button class="icon_btn _del"></button>
-                <ul class="warroom_machine_head">
-                    <li class="warroom_machine_li _title">
-                        <span class="warroom_machine_span">S12345</span>
-                        <span class="warroom_machine_span">YV3.5 MP FIO BO1ARD</span>
-                    </li>
-                    <li class="warroom_machine_li">
-                        <span class="warroom_machine_span">Input</span>
-                        <span class="warroom_machine_span" data-unit="(pcs)">200</span>
-                    </li>
-                    <li class="warroom_machine_li">
-                        <span class="warroom_machine_span">Output</span>
-                        <span class="warroom_machine_span" data-unit="(pcs)">100</span>
-                    </li>
-                    <li class="warroom_machine_li">
-                        <span class="warroom_machine_span">Mo工單</span>
-                        <span class="warroom_machine_span">000010091072</span>
-                    </li>
-                    <li class="warroom_machine_li">
-                        <span class="warroom_machine_span">稼動率 OEE</span>
-                        <span class="warroom_machine_span" data-unit="%">65</span>
-                    </li>
-                    <li class="warroom_machine_li">
-                        <span class="warroom_machine_span">產品達成率</span>
-                        <span class="warroom_machine_span" data-unit="%">100</span>
-                    </li>
-                    <li class="warroom_machine_li">
-                        <span class="warroom_machine_span">產品達成率</span>
-                        <span class="warroom_machine_span" data-unit="%">100</span>
-                    </li>
-                    <li class="warroom_machine_li _payment" data-unit="kwh">33653338</li>
-                    <li class="warroom_machine_li _water" data-unit="L">12345556</li>
-                    <li class="warroom_machine_li _total" data-l="共" data-r="機台">
-                        999
-                    </li>
-                </ul>
-                <div class="warroom_machine_outside">
-                    <button class="border_btn _add" *ngIf="isEdit" (click)="addMachine($event)">
-                        <i></i>
-                        新增機台
-                    </button>
-                    <ul class="warroom_machine_group">
-                        <li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
-                            <div class="state WAIT"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                        <li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
-                            <div class="state PM"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                        <li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
-                            <div class="state PD_RUN"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                        <li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
-                            <div class="state ENG"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                        <li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
-                            <div class="state OFF"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                        <li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
-                            <div class="state PR_RUN"></div>
-                            <div class="normal_machine"></div>
-                            <div class="name">PrintPrintPr123</div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+					<li class="warroom_machine_li _total" data-l="共" data-r="機台">
+						999
+					</li>
+				</ul>
+				<div class="warroom_machine_outside">
+					<button class="border_btn _add" *ngIf="isEdit" (click)="addMachine($event)">
+						<i></i>
+						新增機台
+					</button>
+					<ul class="warroom_machine_group">
+						<li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
+							<div class="state WAIT"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+						<li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
+							<div class="state PM"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+						<li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
+							<div class="state PD_RUN"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+						<li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
+							<div class="state ENG"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+						<li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
+							<div class="state OFF"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+						<li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
+							<div class="state PR_RUN"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+						<!-- 移除機器要變新增的狀態，加上.add -->
+						<li class="warroom_machine_item add" data-txt="EQ_WAIT" *ngIf="isEdit">
+							<div class="state PR_RUN"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+						<!-- 拖曳機器狀態加上on -->
+						<li class="warroom_machine_item on" data-txt="EQ_WAIT" *ngIf="isEdit">
+							<div class="state PR_RUN"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="warroom_machine" (click)="line(3)" style="display: none;">
+				<button class="icon_btn _del"></button>
+				<ul class="warroom_machine_head">
+					<li class="warroom_machine_li _title">
+						<span class="warroom_machine_span">s3</span>
+						<!-- <span class="warroom_machine_span">YV3.5 MP FIO BO1ARD</span> -->
+					</li>
+					<li class="warroom_machine_li _state">
+						<div class="state WAIT"></div>
+						<span class="warroom_machine_span">99</span>
+					</li>
+
+					<li class="warroom_machine_li _total" data-l="共" data-r="機台">
+						999
+					</li>
+				</ul>
+				<div class="warroom_machine_outside">
+					<button class="border_btn _add" *ngIf="isEdit" (click)="addMachine($event)">
+						<i></i>
+						新增機台
+					</button>
+					<ul class="warroom_machine_group">
+						<li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
+							<div class="state WAIT"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+						<li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
+							<div class="state PM"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+						<li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
+							<div class="state PD_RUN"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+						<li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
+							<div class="state ENG"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+						<li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
+							<div class="state OFF"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+						<li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
+							<div class="state PR_RUN"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+						<!-- 移除機器要變新增的狀態，加上.add -->
+						<li class="warroom_machine_item add" data-txt="EQ_WAIT" *ngIf="isEdit">
+							<div class="state PR_RUN"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+						<!-- 拖曳機器狀態加上on -->
+						<li class="warroom_machine_item on" data-txt="EQ_WAIT" *ngIf="isEdit">
+							<div class="state PR_RUN"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="warroom_machine" (click)="line(4)" style="display: none;">
+				<button class="icon_btn _del"></button>
+				<ul class="warroom_machine_head">
+					<li class="warroom_machine_li _title">
+						<span class="warroom_machine_span">s3</span>
+						<!-- <span class="warroom_machine_span">YV3.5 MP FIO BO1ARD</span> -->
+					</li>
+					<li class="warroom_machine_li _state">
+						<div class="state WAIT"></div>
+						<span class="warroom_machine_span">99</span>
+					</li>
+
+					<li class="warroom_machine_li _total" data-l="共" data-r="機台">
+						999
+					</li>
+				</ul>
+				<div class="warroom_machine_outside">
+					<button class="border_btn _add" *ngIf="isEdit" (click)="addMachine($event)">
+						<i></i>
+						新增機台
+					</button>
+					<ul class="warroom_machine_group">
+						<li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
+							<div class="state WAIT"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+						<li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
+							<div class="state PM"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+						<li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
+							<div class="state PD_RUN"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+						<li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
+							<div class="state ENG"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+						<li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
+							<div class="state OFF"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+						<li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
+							<div class="state PR_RUN"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+						<!-- 移除機器要變新增的狀態，加上.add -->
+						<li class="warroom_machine_item add" data-txt="EQ_WAIT" *ngIf="isEdit">
+							<div class="state PR_RUN"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+						<!-- 拖曳機器狀態加上on -->
+						<li class="warroom_machine_item on" data-txt="EQ_WAIT" *ngIf="isEdit">
+							<div class="state PR_RUN"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="warroom_machine" (click)="line(5)" style="display: none;">
+				<button class="icon_btn _del"></button>
+				<ul class="warroom_machine_head">
+					<li class="warroom_machine_li _title">
+						<span class="warroom_machine_span">s3</span>
+						<!-- <span class="warroom_machine_span">YV3.5 MP FIO BO1ARD</span> -->
+					</li>
+					<li class="warroom_machine_li _state">
+						<div class="state WAIT"></div>
+						<span class="warroom_machine_span">99</span>
+					</li>
+
+					<li class="warroom_machine_li _total" data-l="共" data-r="機台">
+						999
+					</li>
+				</ul>
+				<div class="warroom_machine_outside">
+					<button class="border_btn _add" *ngIf="isEdit" (click)="addMachine($event)">
+						<i></i>
+						新增機台
+					</button>
+					<ul class="warroom_machine_group">
+						<li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
+							<div class="state WAIT"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+						<li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
+							<div class="state PM"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+						<li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
+							<div class="state PD_RUN"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+						<li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
+							<div class="state ENG"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+						<li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
+							<div class="state OFF"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+						<li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
+							<div class="state PR_RUN"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+						<!-- 移除機器要變新增的狀態，加上.add -->
+						<li class="warroom_machine_item add" data-txt="EQ_WAIT" *ngIf="isEdit">
+							<div class="state PR_RUN"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+						<!-- 拖曳機器狀態加上on -->
+						<li class="warroom_machine_item on" data-txt="EQ_WAIT" *ngIf="isEdit">
+							<div class="state PR_RUN"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="warroom_machine" (click)="line(6)" style="display: none;">
+				<button class="icon_btn _del"></button>
+				<ul class="warroom_machine_head">
+					<li class="warroom_machine_li _title">
+						<span class="warroom_machine_span">s31</span>
+						<!-- <span class="warroom_machine_span">YV3.5 MP FIO BO1ARD</span> -->
+					</li>
+					<li class="warroom_machine_li _state">
+						<div class="state WAIT"></div>
+						<span class="warroom_machine_span">99</span>
+					</li>
+
+					<li class="warroom_machine_li _total" data-l="共" data-r="機台">
+						999
+					</li>
+				</ul>
+				<div class="warroom_machine_outside">
+					<button class="border_btn _add" *ngIf="isEdit" (click)="addMachine($event)">
+						<i></i>
+						新增機台
+					</button>
+					<ul class="warroom_machine_group">
+						<li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
+							<div class="state WAIT"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+						<li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
+							<div class="state PM"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+						<li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
+							<div class="state PD_RUN"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+						<li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
+							<div class="state ENG"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+						<li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
+							<div class="state OFF"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+						<li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
+							<div class="state PR_RUN"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+						<!-- 移除機器要變新增的狀態，加上.add -->
+						<li class="warroom_machine_item add" data-txt="EQ_WAIT" *ngIf="isEdit">
+							<div class="state PR_RUN"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+						<!-- 拖曳機器狀態加上on -->
+						<li class="warroom_machine_item on" data-txt="EQ_WAIT" *ngIf="isEdit">
+							<div class="state PR_RUN"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="warroom_machine on" *ngIf="isEdit" style="display: none;">
+				<button class="icon_btn _del"></button>
+				<ul class="warroom_machine_head">
+					<li class="warroom_machine_li _title">
+						<span class="warroom_machine_span">S12345</span>
+						<span class="warroom_machine_span">YV3.5 MP FIO BO1ARD</span>
+					</li>
+					<li class="warroom_machine_li">
+						<span class="warroom_machine_span">Input</span>
+						<span class="warroom_machine_span" data-unit="(pcs)">200</span>
+					</li>
+					<li class="warroom_machine_li">
+						<span class="warroom_machine_span">Output</span>
+						<span class="warroom_machine_span" data-unit="(pcs)">100</span>
+					</li>
+					<li class="warroom_machine_li">
+						<span class="warroom_machine_span">Mo工單</span>
+						<span class="warroom_machine_span">000010091072</span>
+					</li>
+					<li class="warroom_machine_li">
+						<span class="warroom_machine_span">稼動率 OEE</span>
+						<span class="warroom_machine_span" data-unit="%">65</span>
+					</li>
+					<li class="warroom_machine_li">
+						<span class="warroom_machine_span">產品達成率</span>
+						<span class="warroom_machine_span" data-unit="%">100</span>
+					</li>
+					<li class="warroom_machine_li">
+						<span class="warroom_machine_span">產品達成率</span>
+						<span class="warroom_machine_span" data-unit="%">100</span>
+					</li>
+					<li class="warroom_machine_li _payment" data-unit="kwh">33653338</li>
+					<li class="warroom_machine_li _water" data-unit="L">12345556</li>
+					<li class="warroom_machine_li _total" data-l="共" data-r="機台">
+						999
+					</li>
+				</ul>
+				<div class="warroom_machine_outside">
+					<button class="border_btn _add" *ngIf="isEdit" (click)="addMachine($event)">
+						<i></i>
+						新增機台
+					</button>
+					<ul class="warroom_machine_group">
+						<li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
+							<div class="state WAIT"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+						<li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
+							<div class="state PM"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+						<li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
+							<div class="state PD_RUN"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+						<li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
+							<div class="state ENG"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+						<li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
+							<div class="state OFF"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+						<li class="warroom_machine_item" data-txt="EQ_WAIT" (click)="machine($event)">
+							<div class="state PR_RUN"></div>
+							<div class="normal_machine"></div>
+							<div class="name">PrintPrintPr123</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
 <!-- 新增機器 -->
 <div class="alert _newMachine" *ngIf="newMachine">
-    <div class="alert_box">
-        <button class="icon_btn _close" (click)="alert_close('newMachine')"></button>
-        <div class="alert_title">新增機台</div>
-        <div class="machineName">S12345</div>
-        <div class="machineDetail">YV3.5 MP FIO BOARD</div>
-        <div class="txt">請選擇要加入線別之機台</div>
-        <ul class="machine_box">
-            <!-- 打勾狀態加上check -->
-            <li class="warroom_machine_item check">
-                <div class="state WAIT"></div>
-                <div class="normal_machine"></div>
-                <div class="name">PrintPrintPr123</div>
-            </li>
-            <li class="warroom_machine_item">
-                <div class="state WAIT"></div>
-                <div class="normal_machine"></div>
-                <div class="name">PrintPrintPr123</div>
-            </li>
-            <li class="warroom_machine_item">
-                <div class="state WAIT"></div>
-                <div class="normal_machine"></div>
-                <div class="name">PrintPrintPr123</div>
-            </li>
-            <li class="warroom_machine_item">
-                <div class="state WAIT"></div>
-                <div class="normal_machine"></div>
-                <div class="name">PrintPrintPr123</div>
-            </li>
-            <li class="warroom_machine_item">
-                <div class="state WAIT"></div>
-                <div class="normal_machine"></div>
-                <div class="name">PrintPrintPr123</div>
-            </li>
-            <li class="warroom_machine_item">
-                <div class="state WAIT"></div>
-                <div class="normal_machine"></div>
-                <div class="name">PrintPrintPr123</div>
-            </li>
-            <li class="warroom_machine_item">
-                <div class="state WAIT"></div>
-                <div class="normal_machine"></div>
-                <div class="name">PrintPrintPr123</div>
-            </li>
-            <li class="warroom_machine_item">
-                <div class="state WAIT"></div>
-                <div class="normal_machine"></div>
-                <div class="name">PrintPrintPr123</div>
-            </li>
-            <li class="warroom_machine_item">
-                <div class="state WAIT"></div>
-                <div class="normal_machine"></div>
-                <div class="name">PrintPrintPr123</div>
-            </li>
-            <li class="warroom_machine_item">
-                <div class="state WAIT"></div>
-                <div class="normal_machine"></div>
-                <div class="name">PrintPrintPr123</div>
-            </li>
-            <li class="warroom_machine_item">
-                <div class="state WAIT"></div>
-                <div class="normal_machine"></div>
-                <div class="name">PrintPrintPr123</div>
-            </li>
-            <li class="warroom_machine_item">
-                <div class="state WAIT"></div>
-                <div class="normal_machine"></div>
-                <div class="name">PrintPrintPr123</div>
-            </li>
-            <li class="warroom_machine_item">
-                <div class="state WAIT"></div>
-                <div class="normal_machine"></div>
-                <div class="name">PrintPrintPr123</div>
-            </li>
-            <li class="warroom_machine_item">
-                <div class="state WAIT"></div>
-                <div class="normal_machine"></div>
-                <div class="name">PrintPrintPr123</div>
-            </li>
-            <li class="warroom_machine_item">
-                <div class="state WAIT"></div>
-                <div class="normal_machine"></div>
-                <div class="name">PrintPrintPr123</div>
-            </li>
-            <li class="warroom_machine_item">
-                <div class="state WAIT"></div>
-                <div class="normal_machine"></div>
-                <div class="name">PrintPrintPr123</div>
-            </li>
-            <li class="warroom_machine_item">
-                <div class="state WAIT"></div>
-                <div class="normal_machine"></div>
-                <div class="name">PrintPrintPr123</div>
-            </li>
-            <li class="warroom_machine_item">
-                <div class="state WAIT"></div>
-                <div class="normal_machine"></div>
-                <div class="name">PrintPrintPr123</div>
-            </li>
-            <li class="warroom_machine_item">
-                <div class="state WAIT"></div>
-                <div class="normal_machine"></div>
-                <div class="name">PrintPrintPr123</div>
-            </li>
-            <li class="warroom_machine_item">
-                <div class="state WAIT"></div>
-                <div class="normal_machine"></div>
-                <div class="name">PrintPrintPr123</div>
-            </li>
-            <li class="warroom_machine_item">
-                <div class="state WAIT"></div>
-                <div class="normal_machine"></div>
-                <div class="name">PrintPrintPr123</div>
-            </li>
-            <li class="warroom_machine_item">
-                <div class="state WAIT"></div>
-                <div class="normal_machine"></div>
-                <div class="name">PrintPrintPr123</div>
-            </li>
-        </ul>
-        <div class="alert_btnBox">
-            <button class="normal_btn _secondry" (click)="alert_close('newMachine')">
-                取消
-            </button>
-            <button class="normal_btn _primary">確定</button>
-        </div>
-    </div>
+	<div class="alert_box">
+		<button class="icon_btn _close" (click)="alert_close('newMachine')"></button>
+		<div class="alert_title">新增機台</div>
+		<div class="machineName">S12345</div>
+		<div class="machineDetail">YV3.5 MP FIO BOARD</div>
+		<div class="txt">請選擇要加入線別之機台</div>
+		<ul class="machine_box">
+			<!-- 打勾狀態加上check -->
+			<li class="warroom_machine_item check">
+				<div class="state WAIT"></div>
+				<div class="normal_machine"></div>
+				<div class="name">PrintPrintPr123</div>
+			</li>
+			<li class="warroom_machine_item">
+				<div class="state WAIT"></div>
+				<div class="normal_machine"></div>
+				<div class="name">PrintPrintPr123</div>
+			</li>
+			<li class="warroom_machine_item">
+				<div class="state WAIT"></div>
+				<div class="normal_machine"></div>
+				<div class="name">PrintPrintPr123</div>
+			</li>
+			<li class="warroom_machine_item">
+				<div class="state WAIT"></div>
+				<div class="normal_machine"></div>
+				<div class="name">PrintPrintPr123</div>
+			</li>
+			<li class="warroom_machine_item">
+				<div class="state WAIT"></div>
+				<div class="normal_machine"></div>
+				<div class="name">PrintPrintPr123</div>
+			</li>
+			<li class="warroom_machine_item">
+				<div class="state WAIT"></div>
+				<div class="normal_machine"></div>
+				<div class="name">PrintPrintPr123</div>
+			</li>
+			<li class="warroom_machine_item">
+				<div class="state WAIT"></div>
+				<div class="normal_machine"></div>
+				<div class="name">PrintPrintPr123</div>
+			</li>
+			<li class="warroom_machine_item">
+				<div class="state WAIT"></div>
+				<div class="normal_machine"></div>
+				<div class="name">PrintPrintPr123</div>
+			</li>
+			<li class="warroom_machine_item">
+				<div class="state WAIT"></div>
+				<div class="normal_machine"></div>
+				<div class="name">PrintPrintPr123</div>
+			</li>
+			<li class="warroom_machine_item">
+				<div class="state WAIT"></div>
+				<div class="normal_machine"></div>
+				<div class="name">PrintPrintPr123</div>
+			</li>
+			<li class="warroom_machine_item">
+				<div class="state WAIT"></div>
+				<div class="normal_machine"></div>
+				<div class="name">PrintPrintPr123</div>
+			</li>
+			<li class="warroom_machine_item">
+				<div class="state WAIT"></div>
+				<div class="normal_machine"></div>
+				<div class="name">PrintPrintPr123</div>
+			</li>
+			<li class="warroom_machine_item">
+				<div class="state WAIT"></div>
+				<div class="normal_machine"></div>
+				<div class="name">PrintPrintPr123</div>
+			</li>
+			<li class="warroom_machine_item">
+				<div class="state WAIT"></div>
+				<div class="normal_machine"></div>
+				<div class="name">PrintPrintPr123</div>
+			</li>
+			<li class="warroom_machine_item">
+				<div class="state WAIT"></div>
+				<div class="normal_machine"></div>
+				<div class="name">PrintPrintPr123</div>
+			</li>
+			<li class="warroom_machine_item">
+				<div class="state WAIT"></div>
+				<div class="normal_machine"></div>
+				<div class="name">PrintPrintPr123</div>
+			</li>
+			<li class="warroom_machine_item">
+				<div class="state WAIT"></div>
+				<div class="normal_machine"></div>
+				<div class="name">PrintPrintPr123</div>
+			</li>
+			<li class="warroom_machine_item">
+				<div class="state WAIT"></div>
+				<div class="normal_machine"></div>
+				<div class="name">PrintPrintPr123</div>
+			</li>
+			<li class="warroom_machine_item">
+				<div class="state WAIT"></div>
+				<div class="normal_machine"></div>
+				<div class="name">PrintPrintPr123</div>
+			</li>
+			<li class="warroom_machine_item">
+				<div class="state WAIT"></div>
+				<div class="normal_machine"></div>
+				<div class="name">PrintPrintPr123</div>
+			</li>
+			<li class="warroom_machine_item">
+				<div class="state WAIT"></div>
+				<div class="normal_machine"></div>
+				<div class="name">PrintPrintPr123</div>
+			</li>
+			<li class="warroom_machine_item">
+				<div class="state WAIT"></div>
+				<div class="normal_machine"></div>
+				<div class="name">PrintPrintPr123</div>
+			</li>
+		</ul>
+		<div class="alert_btnBox">
+			<button class="normal_btn _secondry" (click)="alert_close('newMachine')">
+				取消
+			</button>
+			<button class="normal_btn _primary">確定</button>
+		</div>
+	</div>
 </div>
 
 <!-- 新增產線 -->
 <div class="alert _newLine" *ngIf="newLine">
-    <div class="alert_box">
-        <button class="icon_btn _close" (click)="alert_close('newLine')"></button>
-        <div class="alert_title">新増生產線</div>
-        <div class="alert_info">
-            <div class="alert_info_selBox" data-msg="線別 / 別產品別">
-                <app-model-select class="selModle" [selectContent]="newLintSelect" (selShowEvent)="selShow($event)"
-                    (selEvent)="selHandler($event)"></app-model-select>
-                <button class="icon_btn _add"></button>
-            </div>
+	<div class="alert_box">
+		<button class="icon_btn _close" (click)="alert_close('newLine')"></button>
+		<div class="alert_title">新増生產線</div>
+		<div class="alert_info">
+			<div class="alert_info_selBox" data-msg="線別 / 別產品別">
+				<app-model-select class="selModle" [selectContent]="newLintSelect" (selShowEvent)="selShow($event)"
+					(selEvent)="selHandler($event)"></app-model-select>
+				<button class="icon_btn _add"></button>
+			</div>
 
-            <!-- 點上面的加新增以下模組 -->
-            <div class="alert_info_selBox" data-msg="線別 / 別產品別">
-                <app-model-select class="selModle" [selectContent]="newLintSelect1" (selShowEvent)="selShow($event)"
-                    (selEvent)="selHandler($event)"></app-model-select>
-                <button class="icon_btn _minus"></button>
-            </div>
-            <div class="alert_info_selBox" data-msg="線別 / 別產品別">
-                <app-model-select class="selModle" [selectContent]="newLintSelect2" (selShowEvent)="selShow($event)"
-                    (selEvent)="selHandler($event)"></app-model-select>
-                <button class="icon_btn _minus"></button>
-            </div>
-        </div>
-        <div class="alert_btnBox">
-            <button class="normal_btn _secondry" (click)="alert_close('newLine')">
-                取消
-            </button>
-            <button class="normal_btn _primary" (click)="saveLine()">確定</button>
-        </div>
-    </div>
+			<!-- 點上面的加新增以下模組 -->
+			<div class="alert_info_selBox" data-msg="線別 / 別產品別">
+				<app-model-select class="selModle" [selectContent]="newLintSelect1" (selShowEvent)="selShow($event)"
+					(selEvent)="selHandler($event)"></app-model-select>
+				<button class="icon_btn _minus"></button>
+			</div>
+			<div class="alert_info_selBox" data-msg="線別 / 別產品別">
+				<app-model-select class="selModle" [selectContent]="newLintSelect2" (selShowEvent)="selShow($event)"
+					(selEvent)="selHandler($event)"></app-model-select>
+				<button class="icon_btn _minus"></button>
+			</div>
+		</div>
+		<div class="alert_btnBox">
+			<button class="normal_btn _secondry" (click)="alert_close('newLine')">
+				取消
+			</button>
+			<button class="normal_btn _primary" (click)="saveLine()">確定</button>
+		</div>
+	</div>
 </div>
 
 <!-- 確認彈窗 -->
 <app-alert-mag *ngIf="alertMsg.show" [alertMsg]="alertMsg" (closeEvent)="alert_close($event)"
-    (alertCheck)="alertCheck($event)"></app-alert-mag>
+	(alertCheck)="alertCheck($event)"></app-alert-mag>
 
 <app-warroom-machine [machineEvent]="machineEvent" (closeEvent)="alert_close($event)"></app-warroom-machine>
 

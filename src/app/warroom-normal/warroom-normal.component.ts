@@ -14,6 +14,127 @@ import { ModelSelectComponent } from '../model-select/model-select.component';
 })
 export class WarroomNormalComponent {
 	constructor(private el: ElementRef) { }
+
+	// 103.03.29調整
+	machine_data = [
+		{
+			isLong: false,
+			title1: 'S12345',
+			title2: 'YV3.5 MP FIO BO1ARD',
+			inp: 200,
+			out: 201,
+			mo: '000010091072',
+			oee: 65,
+			product: 100,
+			payment: 33653338,
+			glyph: 12345556,
+			water: 12345556,
+			lists: [
+				{ txt: 'EQ_WAIT', state: "WAIT", name: 'Print1' },
+				{ txt: 'PM', state: "PM", name: 'Print2' },
+				{ txt: 'PD_RUN', state: "PD_RUN", name: 'Print3' },
+				{ txt: 'ENG', state: "ENG", name: 'Print4' },
+				{ txt: 'OFF', state: "OFF", name: 'Print5' },
+				{ txt: 'PR_RUN', state: "PR_RUN", name: 'Print6' },
+			]
+		},
+		{
+			isLong: true,
+			title: 's31',
+			state: 'WAIT',
+			stateNum: 99,
+			lists: [
+				{ txt: 'EQ_WAIT', state: "WAIT", name: 's311' },
+				{ txt: 'PM', state: "PM", name: 's312' },
+			]
+		},
+		{
+			isLong: false,
+			title1: 'S7891011',
+			title2: 'YV3.5 MP FIO BO1ARD',
+			inp: 200,
+			out: 201,
+			mo: '000010091072',
+			oee: 65,
+			product: 100,
+			payment: 33653338,
+			glyph: 12345556,
+			water: 12345556,
+			lists: [
+				{ txt: 'EQ_WAIT', state: "WAIT", name: 'sss1' },
+				{ txt: 'PM', state: "PM", name: 'sss2' },
+				{ txt: 'PD_RUN', state: "PD_RUN", name: 'sss3' },
+				{ txt: 'ENG', state: "ENG", name: 'sss4' },
+				{ txt: 'OFF', state: "OFF", name: 'sss5' },
+				{ txt: 'PR_RUN', state: "PR_RUN", name: 'sss6' },
+				{ txt: 'EQ_WAIT', state: "WAIT", name: 'sss7' },
+				{ txt: 'PM', state: "PM", name: 'sss8' },
+				{ txt: 'PD_RUN', state: "PD_RUN", name: 'sss9' },
+				{ txt: 'ENG', state: "ENG", name: 'sss10' },
+				{ txt: 'OFF', state: "OFF", name: 'sss11' },
+				{ txt: 'PR_RUN', state: "PR_RUN", name: 'sss12' },
+				{ txt: 'EQ_WAIT', state: "WAIT", name: 'sss13' },
+			]
+		},
+	]
+	line_move = {
+		move_num: -1,
+		moveStartY: 0,
+
+	}
+	lineDown(e: MouseEvent, num: number) {
+		if (!this.isEdit) return
+		let lineMove = this.line_move
+		console.log('lineDown');
+		lineMove.move_num = num
+		lineMove.moveStartY = e.clientY
+	}
+
+	lineMove(e: MouseEvent, num: number) {
+		let lineMove = this.line_move
+		if (!this.isEdit) return
+		if (lineMove.move_num !== num) return
+		console.log('lineMove');
+		const dragEndY = e.clientY;
+		const deltaY = dragEndY - lineMove.moveStartY;
+		console.log('deltaY', deltaY);
+		let item = this.el.nativeElement.querySelector("#machine" + num);
+		item.style = `transform: translateY(${deltaY}px); transition-duration: 0s; z-index:999;`;
+
+		// const nextY =
+		if (deltaY * (num + 1) > (num + 1) * 118) {
+			let numNext = num + 1
+			let itemNext = this.el.nativeElement.querySelector("#machine" + numNext);
+			console.log('itemNext', itemNext);
+
+			itemNext.style = `transform: translateY(calc(-100% - 10px));`
+			console.log('比第二個多');
+		}
+	}
+
+	lineUp(num: number) {
+		let lineMove = this.line_move
+		if (!this.isEdit) return
+		lineMove.move_num = -1
+		console.log('lineUp');
+		let item = this.el.nativeElement.querySelector("#machine" + num);
+		item.style = ``
+	}
+
+
+	// 103.03.29調整
+
+
+
+
+
+
+
+
+
+
+
+
 	machineSelect = {
 		name: 'machineSelect',
 		title: "變更機台顯示名稱",
@@ -52,7 +173,6 @@ export class WarroomNormalComponent {
 		msg: "",
 		str: ""
 	}
-	// msgShow = false
 	machineDetail = false
 	showLine = false
 	machineEvent = {
@@ -134,13 +254,12 @@ export class WarroomNormalComponent {
 	}
 	line(num: number) {
 		if (this.isEdit) { return }
-		console.log(window.innerWidth)
 		this.lineEvent.num = num
 		let itemBox = this.el.nativeElement.querySelector('.warroom_content');
 		let item = this.el.nativeElement.querySelectorAll('.warroom_machine')[num];
 		var move: string
 		if (window.innerWidth < 1441) {
-			itemBox.style=`overflow: unset;`;
+			itemBox.style = `overflow: unset;`;
 			move = (itemBox.offsetTop + 236 * num - itemBox.scrollTop + 206) * -1 + 'px'
 		} else {
 			move = (itemBox.offsetTop + 236 * num - itemBox.scrollTop) * -1 + 'px'
@@ -175,9 +294,9 @@ export class WarroomNormalComponent {
 				let item = this.el.nativeElement.querySelectorAll('.warroom_machine')[this.lineEvent.num]
 				item.style.transform = `translateY(0px)`
 				if (window.innerWidth < 1441) {
-					this.el.nativeElement.querySelector('.warroom_content').style=`overflow: ;`;
-				
-				} 
+					this.el.nativeElement.querySelector('.warroom_content').style = `overflow: ;`;
+
+				}
 				setTimeout(() => {
 					this.lineEvent.show = false
 				}, 500);
