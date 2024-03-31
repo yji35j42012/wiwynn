@@ -19,7 +19,7 @@ export class WarroomNormalComponent {
 	machine_data = [
 		{
 			isLong: false,
-			title1: 'S12345',
+			title1: 's11',
 			title2: 'YV3.5 MP FIO BO1ARD',
 			inp: 200,
 			out: 201,
@@ -40,7 +40,7 @@ export class WarroomNormalComponent {
 		},
 		{
 			isLong: true,
-			title: 's31',
+			title: 's22',
 			state: 'WAIT',
 			stateNum: 99,
 			lists: [
@@ -50,7 +50,35 @@ export class WarroomNormalComponent {
 		},
 		{
 			isLong: false,
-			title1: 'S7891011',
+			title1: 's33',
+			title2: 'YV3.5 MP FIO BO1ARD',
+			inp: 200,
+			out: 201,
+			mo: '000010091072',
+			oee: 65,
+			product: 100,
+			payment: 33653338,
+			glyph: 12345556,
+			water: 12345556,
+			lists: [
+				{ txt: 'EQ_WAIT', state: "WAIT", name: 'sss1' },
+				{ txt: 'PM', state: "PM", name: 'sss2' },
+				{ txt: 'PD_RUN', state: "PD_RUN", name: 'sss3' },
+				{ txt: 'ENG', state: "ENG", name: 'sss4' },
+				{ txt: 'OFF', state: "OFF", name: 'sss5' },
+				{ txt: 'PR_RUN', state: "PR_RUN", name: 'sss6' },
+				{ txt: 'EQ_WAIT', state: "WAIT", name: 'sss7' },
+				{ txt: 'PM', state: "PM", name: 'sss8' },
+				{ txt: 'PD_RUN', state: "PD_RUN", name: 'sss9' },
+				{ txt: 'ENG', state: "ENG", name: 'sss10' },
+				{ txt: 'OFF', state: "OFF", name: 'sss11' },
+				{ txt: 'PR_RUN', state: "PR_RUN", name: 'sss12' },
+				{ txt: 'EQ_WAIT', state: "WAIT", name: 'sss13' },
+			]
+		},
+		{
+			isLong: false,
+			title1: 's44',
 			title2: 'YV3.5 MP FIO BO1ARD',
 			inp: 200,
 			out: 201,
@@ -80,45 +108,56 @@ export class WarroomNormalComponent {
 	line_move = {
 		move_num: -1,
 		moveStartY: 0,
-
-	}
-	lineDown(e: MouseEvent, num: number) {
-		if (!this.isEdit) return
-		let lineMove = this.line_move
-		console.log('lineDown');
-		lineMove.move_num = num
-		lineMove.moveStartY = e.clientY
 	}
 
-	lineMove(e: MouseEvent, num: number) {
-		let lineMove = this.line_move
+	line_startId = -1
+	line_overId = -1
+	line_temb: any = null
+	dragstart(num: number) {
 		if (!this.isEdit) return
-		if (lineMove.move_num !== num) return
-		console.log('lineMove');
-		const dragEndY = e.clientY;
-		const deltaY = dragEndY - lineMove.moveStartY;
-		console.log('deltaY', deltaY);
-		let item = this.el.nativeElement.querySelector("#machine" + num);
-		item.style = `transform: translateY(${deltaY}px); transition-duration: 0s; z-index:999;`;
-
-		// const nextY =
-		if (deltaY * (num + 1) > (num + 1) * 118) {
-			let numNext = num + 1
-			let itemNext = this.el.nativeElement.querySelector("#machine" + numNext);
-			console.log('itemNext', itemNext);
-
-			itemNext.style = `transform: translateY(calc(-100% - 10px));`
-			console.log('比第二個多');
+		this.line_startId = num
+	}
+	dragEnd(num: number) {
+		if (!this.isEdit) return
+		if (this.line_startId !== this.line_overId) {
+			this.line_temb = this.machine_data[this.line_startId]
+			this.machine_data[this.line_startId] = this.machine_data[this.line_overId]
+			this.machine_data[this.line_overId] = this.line_temb
 		}
+
+	}
+	dragover(e: Event, num: number) {
+		if (!this.isEdit) return
+		this.line_overId = num
+		e.preventDefault();
+		e.stopPropagation();
+		return false;
 	}
 
-	lineUp(num: number) {
-		let lineMove = this.line_move
+	lineList_startId = -1
+	lineList_overId = -1
+	lineList_temb: any = null
+
+	Mdragstart(e: Event, num: number) {
 		if (!this.isEdit) return
-		lineMove.move_num = -1
-		console.log('lineUp');
-		let item = this.el.nativeElement.querySelector("#machine" + num);
-		item.style = ``
+		this.lineList_startId = num
+
+	}
+	MdragEnd(i: number, num: number) {
+		if (!this.isEdit) return
+		if (this.lineList_startId !== this.lineList_overId) {
+			this.lineList_temb = this.machine_data[i].lists[this.lineList_startId]
+			this.machine_data[i].lists[this.lineList_startId] = this.machine_data[i].lists[this.lineList_overId]
+			this.machine_data[i].lists[this.lineList_overId] = this.lineList_temb
+		}
+
+	}
+	Mdragover(e: Event, num: number) {
+		if (!this.isEdit) return
+		this.lineList_overId = num
+		e.preventDefault();
+		e.stopPropagation();
+		return false;
 	}
 
 

@@ -169,13 +169,13 @@
 	&_machine {
 		position: relative;
 		padding-right: 5px;
-		padding-bottom: 20px;
-		// @extend %transition;
 		transform: translateY(var(--moveY));
+		border-radius: 10px;
 
 		&+& {
 			margin-top: 10px;
 		}
+
 
 		.icon_btn {
 			z-index: 1;
@@ -187,9 +187,23 @@
 		}
 
 		@include hv {
+
 			.warroom_machine_head::before,
 			.warroom_machine_outside::before {
 				opacity: 1;
+			}
+		}
+
+		.edit & {
+			@extend %transition;
+
+			@include hv {
+				cursor: grab;
+			}
+
+			@include ac {
+				cursor: grabbing;
+				box-shadow: 0px 10px 20px 0px #0000004D;
 			}
 		}
 

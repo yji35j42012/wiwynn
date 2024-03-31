@@ -261,18 +261,15 @@
 							<li>9</li>
 							<li>10</li>
 						</ul>
-						<ul class="alert_linefix_group">
-							<li class="alert_linefix_item">NPM-NS-0008</li>
-							<li class="alert_linefix_item">NPM-NS-0008</li>
-							<li class="alert_linefix_item">NPM-NS-0008</li>
-							<li class="alert_linefix_item">NPM-NS-0008</li>
-							<li class="alert_linefix_item">NPM-NS-0008</li>
-							<li class="alert_linefix_item">NPM-NS-0008</li>
-							<li class="alert_linefix_item">NPM-NS-0008</li>
-							<li class="alert_linefix_item">NPM-NS-0008</li>
-							<li class="alert_linefix_item">NPM-NS-0008</li>
-							<li class="alert_linefix_item">NPM-NS-0008</li>
-						</ul>
+						<div id="drag_box1" class="alert_linefix_group" data-role="drag_drop_container"
+							(drop)="droped($event)" (dragover)="dragover($event)" (dragleave)="dragLeave($event)"
+							(dragenter)="cancelDefault($event)">
+							<div class="alert_linefix_item" *ngFor="let item of stage_data.box1;"
+								[id]="'drag_source_multiple'+item.id" draggable="true"
+								(dragstart)="dragStart($event,item.id)" (dragend)="dragEnd($event,item.id)">
+								{{item.name}}
+							</div>
+						</div>
 					</div>
 				</div>
 				<div class="alert_linefix_content _right">
@@ -296,10 +293,16 @@
 							<li>9</li>
 							<li>10</li>
 						</ul>
-						<ul class="alert_linefix_group">
-							<li class="alert_linefix_item">NPM-NS-0008</li>
-							<li class="alert_linefix_item">NPM-NS-0008</li>
-						</ul>
+						<div id="drag_box2" class="alert_linefix_group" data-role="drag_drop_container"
+							(drop)="droped2($event)" (dragover)="dragover2($event)" (dragleave)="dragLeave2($event)"
+							(dragenter)="cancelDefault2($event)">
+
+							<div class="alert_linefix_item" *ngFor="let item of stage_data.box2"
+								[id]="'drag_source_multiple'+item.id" draggable="true"
+								(dragstart)="dragStart($event,item.id)" (dragend)="dragEnd($event,item.id)">
+								{{item.name}}
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
