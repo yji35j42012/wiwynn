@@ -138,8 +138,10 @@ export class WarroomNormalComponent {
 	lineList_overId = -1
 	lineList_temb: any = null
 
-	Mdragstart(e: Event, num: number) {
+	Mdragstart(e: Event,i:number, num: number) {
 		if (!this.isEdit) return
+		this.line_startId = i
+		this.line_overId=i
 		this.lineList_startId = num
 
 	}

@@ -102,7 +102,7 @@
 						<li class="warroom_machine_item" 
 						*ngFor="let list of item.lists ; index as listi" 
 
-						(dragstart)="Mdragstart($event,listi)"
+						(dragstart)="Mdragstart($event,i,listi)"
 						(dragend)="MdragEnd(i,listi)"
 						(dragover)="Mdragover($event,listi)" 
 						draggable="true"

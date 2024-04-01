@@ -965,7 +965,7 @@ h2 {
 		background-color: #ffffff;
 		border: 1px solid #bcbcbc;
 		border-radius: 8px;
-
+		.calendar_time  &{left:0;}
 		.on+& {
 			display: block;
 		}
