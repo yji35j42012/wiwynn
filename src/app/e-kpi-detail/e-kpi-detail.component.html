@@ -80,7 +80,13 @@
 			<button class="border_btn _export"><i _ngcontent-ng-c2185158378=""></i>匯出 Excel</button>
 		</div>
 		<div class="kpi_chart" *ngIf="!isIssue">
-			<div class="kpi_chart_title">E-TRON UBB</div>
+			<div class="kpi_chart_title">
+				<span>Rete(%)</span>
+				<span>E-TRON UBB</span>
+				<span>Qty</span>
+			</div>
+			<canvas id="myChart" class="chart" width="1440" height="420"></canvas>
+			<!--
 			<ul class="kpi_chart_y" data-msg="Rete(%)">
 				<li *ngFor="let item of chart_time.y1" [attr.data-msg]="item"></li>
 			</ul>
@@ -97,7 +103,7 @@
 			</ul>
 			<ul class="kpi_chart_x">
 				<li *ngFor="let item of chart_time.x">{{item}}</li>
-			</ul>
+			</ul> -->
 		</div>
 		<div class="kpi_detailTb" *ngIf="!isIssue">
 			<div class="kpi_detailTb_filter">
@@ -266,7 +272,8 @@
 		</div>
 		<div class="kpi_chart _issue" *ngIf="isIssue">
 			<div class="kpi_chart_title"></div>
-			<ul class="kpi_chart_y">
+			<canvas id="issueChart" class="chart" width="1440" height="420"></canvas>
+			<!-- <ul class="kpi_chart_y">
 				<li *ngFor="let item of chart_issue.y1" [attr.data-msg]="item"></li>
 			</ul>
 			<ul id="chartbox_group" class="kpi_chart_content">
@@ -280,7 +287,7 @@
 			</ul>
 			<ul class="kpi_chart_x">
 				<li *ngFor="let item of chart_issue.x">{{item}}</li>
-			</ul>
+			</ul> -->
 		</div>
 		<div class="kpi_detailTb _issue" *ngIf="isIssue">
 			<table class="kpi_detailTb_tb" *ngIf="chart_tb.state=='FPYR'">

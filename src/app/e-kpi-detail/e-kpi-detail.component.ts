@@ -3,6 +3,8 @@ import { CommonModule, Location } from '@angular/common';
 import { ModelCalendarComponent } from '../model-calendar/model-calendar.component';
 import { ModelSelcheckComponent } from '../model-selcheck/model-selcheck.component';
 
+import Chart from 'chart.js/auto';
+
 @Component({
 	selector: 'app-e-kpi-detail',
 	standalone: true,
@@ -20,9 +22,7 @@ export class EKpiDetailComponent {
 
 	isTime = true
 	isIssue = false
-	issueHanler(s: boolean) {
-		this.isIssue = s
-	}
+
 	changeMode(s: string) {
 		s == 't' ? this.isTime = true : this.isTime = false
 	}
@@ -178,7 +178,6 @@ export class EKpiDetailComponent {
 			w.showLists.push(w.lists[obj.id]);
 		}
 	}
-
 	ngOnInit(): void {
 		this.line_sel.lists.forEach((item) => {
 			if (item.isChecked) {
@@ -190,8 +189,12 @@ export class EKpiDetailComponent {
 				this.stage_sel.showLists.push(item);
 			}
 		});
+
 	}
 
+	ngAfterViewInit(): void {
+		this.getChart()
+	}
 	@ViewChild('gridCanvas') gridCanvas!: ElementRef<HTMLCanvasElement>;
 	@ViewChild('lineCanvas') lineCanvas!: ElementRef<HTMLCanvasElement>;
 	@ViewChild('gridGroup') gridGroup!: ElementRef<HTMLCanvasElement>;
@@ -217,43 +220,168 @@ export class EKpiDetailComponent {
 	chartmouseLeave() {
 		this.chart_time.isChartdetail = false
 	}
+
+	chartBox: any
+	chartBox2: any
+	issueHanler(s: boolean) {
+
+		this.isIssue = s
+		if (this.isIssue) {
+			setTimeout(() => {
+				this.getIssChart()
+			}, 10);
+		} else {
+			setTimeout(() => {
+				this.getChart()
+			}, 10);
+		}
+	}
+	getChart() {
+		if (this.chartBox) { this.chartBox.destroy(); }
+		this.chartBox = new Chart(this.el.nativeElement.querySelector('#myChart'), {
+			type: 'bar',
+			data: {
+				labels: [
+					'08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00',
+					'16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00',
+					'00:00', '01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07:00', '08:00'
+				], // 標題
+				datasets: [
+					{
+						label: "",
+						data: [10, 20, 30, 40, 50, 10, 20, 30, 40, 50, 10, 20, 30, 40, 50, 10, 20, 30, 40, 50, 10, 20, 30, 40, 50,],
+						stack: '0',
+						backgroundColor: '#35BE13',
+					},
+				]
+			},
+			options: {
+
+				plugins: {
+					title: {
+						display: true,
+					},
+					tooltip: {
+						enabled: true,
+						callbacks: {
+							title: () => "",
+							label: (tooltipItem) => {
+								var m = ['Time:10/28 20:00'];
+								m.push("Target:98.5%");
+								m.push("Rate:100%");
+								m.push("Max Pass:1");
+								m.push("Line:D3");
+								m.push("Stage:TA");
+								return m
+							}
+						}
+					},
+					legend: {
+						display: false, // 隐藏图例
+					}
+				},
+				responsive: true,
+				scales: {
+
+					x: {
+						border: {
+							dash: [2, 4],
+						},
+					},
+					y: {
+						border: {
+							dash: [2, 4],
+						},
+					},
+					y1: {
+						position: 'right', // Y1 轴位置在右侧
+						grid: {
+							display: false, // 不显示网格线
+						}
+					}
+				}
+			}
+		});
+	}
+	getIssChart() {
+		if (this.chartBox2) { this.chartBox2.destroy(); }
+		this.chartBox2 = new Chart(this.el.nativeElement.querySelector('#issueChart'), {
+			type: 'bar',
+			data: {
+				labels: ['D2-AC', 'D2-AC', 'D2-BD', 'D2-FG', 'D2-IA', 'D2-PF', 'D2-T1', 'D2-TA', 'D2-TD',], // 標題
+				datasets: [
+
+					{
+						label: "",
+						data: [10, 20, 30, 40, 50, 10, 20, 30, 40],
+						stack: '0',
+						backgroundColor: '#35BE13',
+					},
+					{
+						label: '',
+						data: [20, 30, 40, 50, 60, 20, 30, 40, 50],
+						stack: '0',
+						backgroundColor: '#FB9823',
+					},
+					{
+						label: '',
+						data: [20, 30, 40, 50, 60, 20, 30, 40, 50],
+						stack: '0',
+						backgroundColor: '#FA2E2E',
+					}
+				]
+			},
+			options: {
+				plugins: {
+					title: {
+						display: true,
+					},
+					tooltip: {
+						enabled: true,
+						callbacks: {
+							title: () => "",
+							label: (tooltipItem) => {
+								var m = ['Time:10/28 20:00'];
+								m.push("Target:98.5%");
+								m.push("Rate:100%");
+								m.push("Max Pass:1");
+								m.push("Line:D3");
+								m.push("Stage:TA");
+								return m
+							}
+						}
+					},
+					legend: {
+						display: false, // 隐藏图例
+					}
+				},
+				responsive: true,
+				scales: {
+
+					x: {
+						grid: {
+							display: false, // 不显示网格线
+						}
+
+					},
+					y: {
+						border: {
+							dash: [2, 4],
+						},
+					},
+				},
+			}
+		});
+	}
+
 	chart_time = {
-		x: ['08:00', '10:00', '12:00', '14:00', '16:00', '18:00', '20:00', '22:00', '00:00', '02:00', '04:00', '06:00', '08:00',],
-		y1: [120, 100, 80, 60, 40, 20, 0],
-		y2: [1.2, 1, 0.8, 0.6, 0.4, 0.2, 0],
-		info: [
-			{ g: 40, o: 0, r: 0, state: "FPYR" },
-			{ g: 70, o: 0, r: 0, state: "UPPH" },
-			{ g: 40, o: 0, r: 0, state: "OEE" },
-			{ g: 70, o: 0, r: 0, state: "FPYR" },
-			{ g: 40, o: 0, r: 0, state: "UPPH" },
-			{ g: 70, o: 0, r: 0, state: "OEE" },
-			{ g: 40, o: 0, r: 0, state: "FPYR" },
-			{ g: 70, o: 0, r: 0, state: "FPYR" },
-			{ g: 40, o: 0, r: 0, state: "FPYR" },
-			{ g: 70, o: 0, r: 0, state: "FPYR" },
-			{ g: 40, o: 0, r: 0, state: "FPYR" },
-			{ g: 70, o: 0, r: 0, state: "FPYR" },
-			{ g: 40, o: 0, r: 0, state: "FPYR" },
-		],
+		
 		isChartdetail: false,
 		chartdetail_x: 0,
 		chartdetail_y: 0,
 	}
 	chart_issue = {
-		x: ['D2-AC', 'D2-AC', 'D2-BD', 'D2-FG', 'D2-IA', 'D2-PF', 'D2-T1', 'D2-TA', 'D2-TD',],
-		y1: [1500, 1200, 900, 600, 300, 0],
-		info: [
-			{ g: 40, o: 20, r: 10, state: "FPYR" },
-			{ g: 70, o: 50, r: 40, state: "UPPH" },
-			{ g: 40, o: 20, r: 10, state: "OEE" },
-			{ g: 70, o: 40, r: 30, state: "FPYR2" },
-			{ g: 40, o: 50, r: 50, state: "UPPH" },
-			{ g: 70, o: 20, r: 10, state: "OEE" },
-			{ g: 40, o: 40, r: 10, state: "FPYR" },
-			{ g: 70, o: 60, r: 20, state: "FPYR" },
-			{ g: 40, o: 10, r: 60, state: "FPYR" },
-		],
+		
 		isChartdetail: false,
 		chartdetail_x: 0,
 		chartdetail_y: 0,
