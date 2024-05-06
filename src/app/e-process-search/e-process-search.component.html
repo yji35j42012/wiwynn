@@ -1,6 +1,6 @@
 <div class="epk_filter">
 	<div class="normal_dateRange _hasMsg" data-msg="Date Range">
-		<div class="normal_dateRange_title" (click)="dateHanler('start')">
+		<div class="normal_dateRange_title" (click)="dateHanler($event,'start')">
 			<div class="date">
 				<span>{{ this.epk_filter.start.year }}</span>
 				<span>{{ this.epk_filter.start.month }}</span>
@@ -16,7 +16,7 @@
 		</app-model-calendar>
 	</div>
 	<div class="normal_dateRange">
-		<div class="normal_dateRange_title" (click)="dateHanler('end')">
+		<div class="normal_dateRange_title" (click)="dateHanler($event,'end')">
 			<div class="date">
 				<span>{{ this.epk_filter.end.year }}</span>
 				<span>{{ this.epk_filter.end.month }}</span>
@@ -35,8 +35,8 @@
 </div>
 <div class="epk_filter">
 	<div class="epk_sel _hasMsg" data-msg="廠別">
-		<div class="epk_sel_box _single" (click)="selHandler('factory')">{{epk_filter.factory.showSingle}}</div>
-		<div class="epk_sel_box _mult" (click)="selHandler('factory')" *ngIf="isQuery">
+		<div class="epk_sel_box _single" (click)="selHandler($event,'factory')">{{epk_filter.factory.showSingle}}</div>
+		<div class="epk_sel_box _mult" (click)="selHandler($event,'factory')" *ngIf="isQuery">
 			<div class="content">
 				<span class="mult_item" *ngFor="let item of epk_filter.factory.showMult">
 					{{item.name}}<button class="icon_btn _multclose"></button>
@@ -51,7 +51,7 @@
 		<div class="epk_sel_group" *ngIf="epk_filter.factory.isShow">
 			<div class="epk_sel_groupBox">
 				<label class="normal_radioCheckbox" *ngFor="let item of epk_filter.factory.singleLists; index as i">
-					<input type="radio" name="factory" [checked]="item.isChecked" (change)="factorySingle(i)" />
+					<input type="radio" name="factory" [checked]="item.isChecked" (change)="factorySingle($event , i)" />
 					<span></span>
 					<span class="normal_radioCheckbox_bg"></span>
 					<span class="normal_radioCheckbox_txt">{{item.name}}</span>
@@ -70,8 +70,8 @@
 		</div>
 	</div>
 	<div class="epk_sel _hasMsg" data-msg="線別">
-		<div class="epk_sel_box _single" (click)="selHandler('line')">{{epk_filter.line.showSingle}}</div>
-		<div class="epk_sel_box _mult" (click)="selHandler('line')" *ngIf="isQuery">
+		<div class="epk_sel_box _single" (click)="selHandler($event,'line')">{{epk_filter.line.showSingle}}</div>
+		<div class="epk_sel_box _mult" (click)="selHandler($event,'line')" *ngIf="isQuery">
 			<div class="content">
 				<span class="mult_item" *ngFor="let item of epk_filter.line.showMult">
 					{{item.name}}<button class="icon_btn _multclose"></button>
@@ -106,8 +106,8 @@
 </div>
 <div class="epk_filter">
 	<div class="epk_sel _hasMsg" data-msg="機台別">
-		<div class="epk_sel_box _single" (click)="selHandler('machine')">{{epk_filter.machine.showSingle}}</div>
-		<div class="epk_sel_box _mult" (click)="selHandler('machine')" *ngIf="isQuery">
+		<div class="epk_sel_box _single" (click)="selHandler($event,'machine')">{{epk_filter.machine.showSingle}}</div>
+		<div class="epk_sel_box _mult" (click)="selHandler($event,'machine')" *ngIf="isQuery">
 			<div class="content">
 				<span class="mult_item" *ngFor="let item of epk_filter.machine.showMult">
 					{{item.name}}<button class="icon_btn _multclose"></button>

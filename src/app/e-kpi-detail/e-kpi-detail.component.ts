@@ -299,7 +299,8 @@ export class EKpiDetailComponent {
 							display: false, // 不显示网格线
 						}
 					}
-				}
+				},
+				
 			}
 		});
 	}

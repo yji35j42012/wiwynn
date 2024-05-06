@@ -1137,7 +1137,7 @@ h2 {
 		position: absolute;
 		top: calc(100% + 20px);
 		left: 0;
-		height: 362px;
+		max-height: 362px;
 		padding: 10px 0;
 		background-color: #fff;
 		border-radius: 8px;

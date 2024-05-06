@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { ModelCalendarComponent } from '../model-calendar/model-calendar.component';
@@ -66,7 +66,11 @@ export class EProcessSearchComponent {
 	queryHandler() {
 		this.isQuery = true
 	}
-	dateHanler(s: string) {
+	dateHanler(event: MouseEvent, s: string) {
+		event.stopPropagation();
+		this.epk_filter.factory.isShow = false
+		this.epk_filter.machine.isShow = false
+		this.epk_filter.line.isShow = false
 		var item: any;
 		if (s == 'start') {
 			this.epk_filter.end.isShow = false;
@@ -97,9 +101,12 @@ export class EProcessSearchComponent {
 		item.hour = obj.hour;
 		item.min = obj.min;
 	}
-
-	selHandler(s: string) {
+	selHandler(event: MouseEvent, s: string) {
+		event.stopPropagation();
 		let item = this.epk_filter
+
+		this.epk_filter.start.isShow = false;
+		this.epk_filter.end.isShow = false;
 		switch (s) {
 			case 'factory':
 				item.factory.isShow = !item.factory.isShow
@@ -120,8 +127,8 @@ export class EProcessSearchComponent {
 				break;
 		}
 	}
-
-	factorySingle(i: number) {
+	factorySingle(event: Event, i: number) {
+		event.stopPropagation();
 		let item = this.epk_filter.factory
 		item.showSingle = item.singleLists[i].name
 	}
@@ -199,8 +206,6 @@ export class EProcessSearchComponent {
 			objItem.showMult.splice(rObj, 1);
 		}
 	}
-
-
 	generateHandler() {
 		this.router.navigate(['/home/E-Process/detail/']);
 	}
@@ -265,5 +270,25 @@ export class EProcessSearchComponent {
 			{ id: 4, isChecked: false, name: 'Printer-NS-0006' },
 			{ id: 5, isChecked: false, name: 'Printer-NS-0006' },
 		)
+	}
+
+
+	@HostListener('document:click', ['$event'])
+	onClick(event: MouseEvent) {
+		if (this.epk_filter.factory.isShow) {
+			this.epk_filter.factory.isShow = false
+		}
+		if (this.epk_filter.line.isShow) {
+			this.epk_filter.line.isShow = false
+		}
+		if (this.epk_filter.machine.isShow) {
+			this.epk_filter.machine.isShow = false
+		}
+		if (this.epk_filter.start.isShow) {
+			this.epk_filter.start.isShow = false;
+		}
+		if (this.epk_filter.end.isShow) {
+			this.epk_filter.end.isShow = false;
+		}
 	}
 }
