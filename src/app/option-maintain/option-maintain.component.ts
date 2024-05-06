@@ -14,13 +14,13 @@ export class OptionMaintainComponent {
 	filter_maintain = {
 		isShow: false,
 	}
-	filterMatintain () {
+	filterMatintain() {
 		this.filter_maintain.isShow = !this.filter_maintain.isShow
 	}
 	filter_color = {
 		isShow: false,
 	}
-	filterColor () {
+	filterColor() {
 		this.filter_color.isShow = !this.filter_color.isShow
 	}
 	type_selete = {
@@ -30,12 +30,12 @@ export class OptionMaintainComponent {
 		isShow: false,
 		msg: 'Type',
 	}
-	selShow (s: string) {
+	selShow(s: string) {
 		if (s == 'type_selete') {
 			this.type_selete.isShow = !this.type_selete.isShow;
 		}
 	}
-	selHandler (s: any) {
+	selHandler(s: any) {
 		if (s.name == 'type_selete') {
 			this.type_selete.title = s.title;
 			this.type_selete.isShow = false;
@@ -62,18 +62,18 @@ export class OptionMaintainComponent {
 		showLists: [] as { id: number, isChecked: boolean, name: string }[],
 	}
 
-	ngOnInit (): void {
+	ngOnInit(): void {
 		this.multsearch.lists.forEach(item => {
 			if (item.isChecked) {
 				this.multsearch.showLists.push(item)
 			}
 		});
 	}
-	editHandler (s: string) {
+	editHandler(s: string) {
 		this.editAlert.state = s
 		this.editAlert.isShow = true
 	}
-	checkedHandler (e: Event, n: number) {
+	checkedHandler(e: Event, n: number) {
 		e.stopPropagation();
 		let s = this.multsearch.lists.findIndex(item => item.id === n);
 		if (this.multsearch.lists[s].isChecked) {
@@ -84,7 +84,7 @@ export class OptionMaintainComponent {
 			this.multsearch.showLists.push(this.multsearch.lists[s])
 		}
 	}
-	unChecked (e: Event, n: number) {
+	unChecked(e: Event, n: number) {
 		e.stopPropagation();
 		let s = this.multsearch.lists.findIndex(item => item.id === n);
 		this.multsearch.lists[s].isChecked = false
@@ -93,16 +93,16 @@ export class OptionMaintainComponent {
 			this.multsearch.showLists.splice(rObj, 1);
 		}
 	}
-	multsearchHandler () {
+	multsearchHandler() {
 		this.multsearch.isShow = !this.multsearch.isShow
 	}
-	inpHandler (e: Event) {
+	inpHandler(e: Event) {
 		e.stopPropagation();
 	}
-	delHandler () {
+	delHandler() {
 		this.delAlert.isShow = true
 	}
-	alert_close (s: string) {
+	alert_close(s: string) {
 		switch (s) {
 			case 'editAlert':
 				this.editAlert.isShow = false

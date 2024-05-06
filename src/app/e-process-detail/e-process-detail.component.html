@@ -1,28 +1,39 @@
 <div class="epk_detail_box">
 	<div class="epk_detail">
-		<div class="epk_detail_item" data-msg="時間：">2023/11/20 08:00 ~ 2023/11/29 08:00</div>
-		<div class="epk_detail_item" data-msg="廠別：">F9C1 / S1, S2, S3, S4, S5, S6</div>
-		<div class="epk_detail_item" data-msg="線別：">S1 / Printer, Mounter, Reflow</div>
-		<div class="epk_detail_item" data-msg="機台別：">Printer / Printer-NS-0001, Printer-NS-0002, Printer-NS-0003,
-			Printer-NS-0004, Printer-NS-0005, Printer-NS-0006, Printer-NS-0007, Printer-NS-0008 </div>
+		<div class="epk_detail_item" data-msg="時間：">
+			2023/11/20 08:00 ~ 2023/11/29 08:00
+		</div>
+		<div class="epk_detail_item" data-msg="廠別：">
+			F9C1 / S1, S2, S3, S4, S5, S6
+		</div>
+		<div class="epk_detail_item" data-msg="線別：">
+			S1 / Printer, Mounter, Reflow
+		</div>
+		<div class="epk_detail_item" data-msg="機台別：">
+			Printer / Printer-NS-0001, Printer-NS-0002, Printer-NS-0003,
+			Printer-NS-0004, Printer-NS-0005, Printer-NS-0006, Printer-NS-0007,
+			Printer-NS-0008
+		</div>
 	</div>
 
 	<div class="epk_detail_filter" data-msg="產品 Model：">
-		<div [class]="['epk_detail_filterBox',model_checkbox.isShow?'_show':'']">
+		<div [class]="['epk_detail_filterBox', model_checkbox.isShow ? '_show' : '']">
 			<label class="normal_check" *ngFor="let item of model_checkbox.lists">
-				<input type="checkbox" class="normal_check_inp" [(ngModel)]="item.isChecked" (change)="checkChange('em',item.id)" />
+				<input type="checkbox" class="normal_check_inp" [(ngModel)]="item.isChecked"
+					(change)="checkChange('em', item.id)" />
 				<span class="normal_check_span"></span>
-				<span class="normal_check_txt">{{item.name}}</span>
+				<span class="normal_check_txt">{{ item.name }}</span>
 			</label>
 		</div>
 		<button class="icon_btn _showMore" (click)="showMore(0)"></button>
 	</div>
 	<div class="epk_detail_filter" data-msg="成品料號：">
-		<div [class]="['epk_detail_filterBox',stuff_checkbox.isShow?'_show':'']">
+		<div [class]="['epk_detail_filterBox', stuff_checkbox.isShow ? '_show' : '']">
 			<label class="normal_check" *ngFor="let item of stuff_checkbox.lists">
-				<input type="checkbox" class="normal_check_inp"  [(ngModel)]="item.isChecked" (change)="checkChange('es',item.id)"/>
+				<input type="checkbox" class="normal_check_inp" [(ngModel)]="item.isChecked"
+					(change)="checkChange('es', item.id)" />
 				<span class="normal_check_span"></span>
-				<span class="normal_check_txt">{{item.name}}</span>
+				<span class="normal_check_txt">{{ item.name }}</span>
 			</label>
 		</div>
 		<button class="icon_btn _showMore" (click)="showMore(1)"></button>
@@ -36,17 +47,18 @@
 					產品Model
 					<button class="icon_btn _sort"></button>
 					<button class="icon_btn _filter" (click)="modelFilter($event)"></button>
-					<div class="normal_tb_filterbox" *ngIf="model_filter.isShow">
+					<div class="normal_tb_filterbox" *ngIf="model_filter.isShow" (mouseenter)="mouseevent(true)"
+						(mouseleave)="mouseevent(false)">
 						<label class="normal_search">
 							<input class="normal_search_inp" type="text" placeholder="搜尋"
 								[(ngModel)]="model_filter.searchTerm" (input)="searchModel()" />
 						</label>
 						<label class="normal_check" *ngFor="let item of model_filter.filterLists">
 							<input type="checkbox" class="normal_check_inp" [(ngModel)]="item.isChecked"
-								(change)="checkChange('model',item.id)" />
+								(change)="checkChange('model', item.id)" />
 							<span class="normal_check_span"></span>
 							<span class="normal_check_bg"></span>
-							<span class="normal_check_txt">{{item.name}}</span>
+							<span class="normal_check_txt">{{ item.name }}</span>
 						</label>
 					</div>
 				</div>
@@ -56,17 +68,18 @@
 					成品料號
 					<button class="icon_btn _sort"></button>
 					<button class="icon_btn _filter" (click)="stuffFilter($event)"></button>
-					<div class="normal_tb_filterbox" *ngIf="stuff_fitler.isShow">
+					<div class="normal_tb_filterbox" *ngIf="stuff_fitler.isShow" (mouseenter)="mouseevent(true)"
+						(mouseleave)="mouseevent(false)">
 						<label class="normal_search">
 							<input class="normal_search_inp" type="text" placeholder="搜尋"
 								[(ngModel)]="stuff_fitler.searchTerm" (input)="searchStuff()" />
 						</label>
 						<label class="normal_check" *ngFor="let item of stuff_fitler.filterLists">
 							<input type="checkbox" class="normal_check_inp" [(ngModel)]="item.isChecked"
-								(change)="checkChange('stuff',item.id)" />
+								(change)="checkChange('stuff', item.id)" />
 							<span class="normal_check_span"></span>
 							<span class="normal_check_bg"></span>
-							<span class="normal_check_txt">{{item.name}}</span>
+							<span class="normal_check_txt">{{ item.name }}</span>
 						</label>
 					</div>
 				</div>
@@ -76,17 +89,18 @@
 					半成品料號
 					<button class="icon_btn _sort"></button>
 					<button class="icon_btn _filter" (click)="stuffhFilter($event)"></button>
-					<div class="normal_tb_filterbox" *ngIf="stuffh_fitler.isShow">
+					<div class="normal_tb_filterbox" *ngIf="stuffh_fitler.isShow" (mouseenter)="mouseevent(true)"
+						(mouseleave)="mouseevent(false)">
 						<label class="normal_search">
 							<input class="normal_search_inp" type="text" placeholder="搜尋"
 								[(ngModel)]="stuffh_fitler.searchTerm" (input)="searchStuffh()" />
 						</label>
 						<label class="normal_check" *ngFor="let item of stuffh_fitler.filterLists">
 							<input type="checkbox" class="normal_check_inp" [(ngModel)]="item.isChecked"
-								(change)="checkChange('stuffh',item.id)" />
+								(change)="checkChange('stuffh', item.id)" />
 							<span class="normal_check_span"></span>
 							<span class="normal_check_bg"></span>
-							<span class="normal_check_txt">{{item.name}}</span>
+							<span class="normal_check_txt">{{ item.name }}</span>
 						</label>
 					</div>
 				</div>
@@ -96,17 +110,18 @@
 					MO
 					<button class="icon_btn _sort"></button>
 					<button class="icon_btn _filter" (click)="moFilter($event)"></button>
-					<div class="normal_tb_filterbox" *ngIf="mo_fitler.isShow">
+					<div class="normal_tb_filterbox" *ngIf="mo_fitler.isShow" (mouseenter)="mouseevent(true)"
+						(mouseleave)="mouseevent(false)">
 						<label class="normal_search">
 							<input class="normal_search_inp" type="text" placeholder="搜尋"
 								[(ngModel)]="mo_fitler.searchTerm" (input)="searchMo()" />
 						</label>
 						<label class="normal_check" *ngFor="let item of mo_fitler.filterLists">
 							<input type="checkbox" class="normal_check_inp" [(ngModel)]="item.isChecked"
-								(change)="checkChange('mo',item.id)" />
+								(change)="checkChange('mo', item.id)" />
 							<span class="normal_check_span"></span>
 							<span class="normal_check_bg"></span>
-							<span class="normal_check_txt">{{item.name}}</span>
+							<span class="normal_check_txt">{{ item.name }}</span>
 						</label>
 					</div>
 				</div>
@@ -116,17 +131,18 @@
 					SN
 					<button class="icon_btn _sort"></button>
 					<button class="icon_btn _filter" (click)="snFilter($event)"></button>
-					<div class="normal_tb_filterbox" *ngIf="sn_fitler.isShow">
+					<div class="normal_tb_filterbox" *ngIf="sn_fitler.isShow" (mouseenter)="mouseevent(true)"
+						(mouseleave)="mouseevent(false)">
 						<label class="normal_search">
 							<input class="normal_search_inp" type="text" placeholder="搜尋"
 								[(ngModel)]="sn_fitler.searchTerm" (input)="searchSn()" />
 						</label>
 						<label class="normal_check" *ngFor="let item of sn_fitler.filterLists">
 							<input type="checkbox" class="normal_check_inp" [(ngModel)]="item.isChecked"
-								(change)="checkChange('sn',item.id)" />
+								(change)="checkChange('sn', item.id)" />
 							<span class="normal_check_span"></span>
 							<span class="normal_check_bg"></span>
-							<span class="normal_check_txt">{{item.name}}</span>
+							<span class="normal_check_txt">{{ item.name }}</span>
 						</label>
 					</div>
 				</div>
