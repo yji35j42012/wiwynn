@@ -2,9 +2,11 @@
 
 <div class="equipment_filter">
 	<app-model-select class="selbox" [selectContent]="line_sel" (selShowEvent)="selShow($event)"
-		(selEvent)="selHandler($event)"></app-model-select>
+		(selEvent)="selHandler($event)" (mouseenter)="mouseevent(true)"
+		(mouseleave)="mouseevent(false)"></app-model-select>
 	<div class="normal_dateRange _hasMsg" data-msg="Date Range">
-		<div class="normal_dateRange_title" (click)="dateHanler('start')">
+		<div class="normal_dateRange_title" (click)="dateHanler('start')" (mouseenter)="mouseevent(true)"
+			(mouseleave)="mouseevent(false)">
 			<div class="date">
 				<span>{{ this.equipment_filter.start.year }}</span>
 				<span>{{ this.equipment_filter.start.month }}</span>
@@ -16,11 +18,13 @@
 			</div>
 		</div>
 		<app-model-calendar class="calendar" *ngIf="equipment_filter.start.isShow" [calendar_content]="calendar"
-			(calendar_return)="calerdarReturnHandler($event)">
+			(calendar_return)="calerdarReturnHandler($event)" (mouseenter)="mouseevent(true)"
+			(mouseleave)="mouseevent(false)">
 		</app-model-calendar>
 	</div>
 	<div class="normal_dateRange">
-		<div class="normal_dateRange_title" (click)="dateHanler('end')">
+		<div class="normal_dateRange_title" (click)="dateHanler('end')" (mouseenter)="mouseevent(true)"
+			(mouseleave)="mouseevent(false)">
 			<div class="date">
 				<span>{{ this.equipment_filter.end.year }}</span>
 				<span>{{ this.equipment_filter.end.month }}</span>
@@ -32,7 +36,8 @@
 			</div>
 		</div>
 		<app-model-calendar class="calendar" *ngIf="equipment_filter.end.isShow" [calendar_content]="calendar"
-			(calendar_return)="calerdarReturnHandler($event)">
+			(calendar_return)="calerdarReturnHandler($event)" (mouseenter)="mouseevent(true)"
+			(mouseleave)="mouseevent(false)">
 		</app-model-calendar>
 	</div>
 	<button class="normal_btn _primary">Search</button>
@@ -69,31 +74,30 @@
 	<ul class="equipment_group">
 		<li class="equipment_item" *ngFor="let item of equipment_data" (click)="equipmentHandler()">
 			<div class="equipment_item_title">
-				<div>{{item.line}}</div>
-				<div>{{item.machine}}</div>
+				<div>{{ item.line }}</div>
+				<div>{{ item.machine }}</div>
 			</div>
 			<div class="equipment_item_list">
 				<div class="equipment_item_plan">
 					<div class="txt">Plan</div>
 					<ul class="equipment_item_bar">
-						<li [class]="['equipment_item_barItem',item.color]" [style]="'width:'+item.value+'%;'"
+						<li [class]="['equipment_item_barItem', item.color]" [style]="'width:' + item.value + '%;'"
 							*ngFor="let item of item.plan">
-							<div class="kpicreaet_more_detail">{{item.msg}}</div>
+							<div class="kpicreaet_more_detail">{{ item.msg }}</div>
 						</li>
 					</ul>
 				</div>
 				<div class="equipment_item_result">
-					<div [class]="['txt',item.isWarning?'_warning':''] ">Results</div>
+					<div [class]="['txt', item.isWarning ? '_warning' : '']">Results</div>
 					<ul class="equipment_item_bar">
-						<li [class]="['equipment_item_barItem',item.color]" [style]="'width:'+item.value+'%;'"
+						<li [class]="['equipment_item_barItem', item.color]" [style]="'width:' + item.value + '%;'"
 							*ngFor="let item of item.result">
-							<div class="kpicreaet_more_detail">{{item.msg}}</div>
+							<div class="kpicreaet_more_detail">{{ item.msg }}</div>
 						</li>
 					</ul>
 				</div>
 			</div>
 		</li>
-
 	</ul>
 	<ul class="normal_page">
 		<li class="normal_page_item _prev"></li>
@@ -107,7 +111,6 @@
 		<li class="normal_page_item _next"></li>
 	</ul>
 </div>
-
 
 <div class="alert _equipment" *ngIf="equipment_detail.isShow">
 	<div class="alert_box">
