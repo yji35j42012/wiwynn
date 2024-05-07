@@ -63,10 +63,10 @@ export class EProcessSearchComponent {
 		min: 11,
 	};
 	isQuery = false;
-	queryHandler() {
+	queryHandler () {
 		this.isQuery = true;
 	}
-	dateHanler(event: MouseEvent, s: string) {
+	dateHanler (event: MouseEvent, s: string) {
 		event.stopPropagation();
 		this.epk_filter.factory.isShow = false;
 		this.epk_filter.machine.isShow = false;
@@ -88,7 +88,7 @@ export class EProcessSearchComponent {
 		this.calendar.hour = item.hour;
 		this.calendar.min = item.min;
 	}
-	calerdarReturnHandler(obj: any) {
+	calerdarReturnHandler (obj: any) {
 		var item: any;
 		if (this.calendar.state == 'start') {
 			item = this.epk_filter.start;
@@ -101,7 +101,7 @@ export class EProcessSearchComponent {
 		item.hour = obj.hour;
 		item.min = obj.min;
 	}
-	selHandler(event: MouseEvent, s: string) {
+	selHandler (event: MouseEvent, s: string) {
 		event.stopPropagation();
 		let item = this.epk_filter;
 
@@ -127,14 +127,14 @@ export class EProcessSearchComponent {
 				break;
 		}
 	}
-	factorySingle(event: Event, i: number) {
+	factorySingle (event: Event, i: number) {
 		event.stopPropagation();
 		let item = this.epk_filter.factory;
 		item.showSingle = item.singleLists[i].name;
 		this.epk_filter.factory.singleLists[i].isChecked =
 			!this.epk_filter.factory.singleLists[i].isChecked;
 	}
-	factoryMult(e: Event, i: number) {
+	factoryMult (e: Event, i: number) {
 		console.log('aadf')
 		e.stopPropagation();
 		let item = this.epk_filter.factory;
@@ -145,18 +145,18 @@ export class EProcessSearchComponent {
 			this.unChecked(e, 'factory', i);
 		}
 	}
-	removeFactoryMult(e: Event, id: number) {
+	removeFactoryMult (e: Event, id: number) {
 		e.stopPropagation();
 		let s = this.epk_filter.factory.multLists.findIndex(item => item.id === id);
 		this.unChecked(e, 'factory', s);
 	}
-	lineSingle(i: number) {
+	lineSingle (i: number) {
 		let item = this.epk_filter.line;
 		item.showSingle = item.singleLists[i].name;
 		this.epk_filter.line.singleLists[i].isChecked =
 			!this.epk_filter.line.singleLists[i].isChecked;
 	}
-	lineMult(e: Event, i: number) {
+	lineMult (e: Event, i: number) {
 		e.stopPropagation();
 		let item = this.epk_filter.line;
 		let s = item.multLists.findIndex((item) => item.id === i);
@@ -166,19 +166,19 @@ export class EProcessSearchComponent {
 			this.unChecked(e, 'line', i);
 		}
 	}
-	removeLineMult(e: Event, id: number) {
+	removeLineMult (e: Event, id: number) {
 		e.stopPropagation();
 		let s = this.epk_filter.line.multLists.findIndex(item => item.id === id);
 		this.unChecked(e, 'line', s);
 	}
 
-	machineSingle(i: number) {
+	machineSingle (i: number) {
 		let item = this.epk_filter.machine;
 		item.showSingle = item.singleLists[i].name;
 		this.epk_filter.machine.singleLists[i].isChecked =
 			!this.epk_filter.machine.singleLists[i].isChecked;
 	}
-	machineMult(e: Event, i: number) {
+	machineMult (e: Event, i: number) {
 		e.stopPropagation();
 		let item = this.epk_filter.machine;
 		let s = item.multLists.findIndex((item) => item.id === i);
@@ -189,12 +189,12 @@ export class EProcessSearchComponent {
 			this.unChecked(e, 'machine', i);
 		}
 	}
-	removeMachineMult(e: Event, id: number) {
+	removeMachineMult (e: Event, id: number) {
 		e.stopPropagation();
 		let s = this.epk_filter.machine.multLists.findIndex(item => item.id === id);
 		this.unChecked(e, 'machine', s);
 	}
-	unChecked(e: Event, s: string, n: number) {
+	unChecked (e: Event, s: string, n: number) {
 		e.stopPropagation();
 		var objItem: any;
 		var count: any;
@@ -234,10 +234,10 @@ export class EProcessSearchComponent {
 			objItem.showMult.splice(rObj, 1);
 		}
 	}
-	generateHandler() {
+	generateHandler () {
 		this.router.navigate(['/home/E-Process/detail/']);
 	}
-	ngOnInit(): void {
+	ngOnInit (): void {
 		this.epk_filter.factory.singleLists.push(
 			{ id: 0, isChecked: false, name: 'F9C1' },
 			{ id: 1, isChecked: false, name: 'F9C2' },
@@ -301,11 +301,11 @@ export class EProcessSearchComponent {
 	}
 
 	isHostListener: Boolean = false;
-	mouseevent(b: Boolean) {
+	mouseevent (b: Boolean) {
 		this.isHostListener = b;
 	}
 	@HostListener('document:click', ['$event'])
-	onClick(event: MouseEvent) {
+	onClick (event: MouseEvent) {
 		if (this.isHostListener) return;
 		if (this.epk_filter.factory.isShow) {
 			this.epk_filter.factory.isShow = false;

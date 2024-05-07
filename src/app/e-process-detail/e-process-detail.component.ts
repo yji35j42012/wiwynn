@@ -48,7 +48,7 @@ export class EProcessDetailComponent {
 			{ id: 13, isChecked: false, name: 'YV4.5 MP VF2.0 HSC MAXIM' },
 		],
 	};
-	showMore(n: number) {
+	showMore (n: number) {
 		if (n == 0) {
 			this.model_checkbox.isShow = !this.model_checkbox.isShow;
 		} else if (n == 1) {
@@ -68,7 +68,7 @@ export class EProcessDetailComponent {
 		filterLists: [] as any[],
 		searchTerm: '',
 	};
-	modelFilter(event: MouseEvent) {
+	modelFilter (event: MouseEvent) {
 		event.stopPropagation();
 		this.model_filter.isShow = !this.model_filter.isShow;
 		if (this.stuff_fitler.isShow) {
@@ -84,7 +84,7 @@ export class EProcessDetailComponent {
 			this.sn_fitler.isShow = false;
 		}
 	}
-	searchModel() {
+	searchModel () {
 		this.model_filter.filterLists = this.model_filter.lists.filter((item) =>
 			item.name
 				.toLowerCase()
@@ -104,7 +104,7 @@ export class EProcessDetailComponent {
 		filterLists: [] as any[],
 		searchTerm: '',
 	};
-	stuffFilter(event: MouseEvent) {
+	stuffFilter (event: MouseEvent) {
 		event.stopPropagation();
 		this.stuff_fitler.isShow = !this.stuff_fitler.isShow;
 		if (this.model_filter.isShow) {
@@ -121,7 +121,7 @@ export class EProcessDetailComponent {
 		}
 	}
 
-	searchStuff() {
+	searchStuff () {
 		this.stuff_fitler.filterLists = this.stuff_fitler.lists.filter((item) =>
 			item.name
 				.toLowerCase()
@@ -141,7 +141,7 @@ export class EProcessDetailComponent {
 		filterLists: [] as any[],
 		searchTerm: '',
 	};
-	stuffhFilter(event: MouseEvent) {
+	stuffhFilter (event: MouseEvent) {
 		event.stopPropagation();
 		this.stuffh_fitler.isShow = !this.stuffh_fitler.isShow;
 		if (this.model_filter.isShow) {
@@ -157,7 +157,7 @@ export class EProcessDetailComponent {
 			this.sn_fitler.isShow = false;
 		}
 	}
-	searchStuffh() {
+	searchStuffh () {
 		this.stuffh_fitler.filterLists = this.stuffh_fitler.lists.filter((item) =>
 			item.name
 				.toLowerCase()
@@ -177,7 +177,7 @@ export class EProcessDetailComponent {
 		filterLists: [] as any[],
 		searchTerm: '',
 	};
-	moFilter(event: MouseEvent) {
+	moFilter (event: MouseEvent) {
 		event.stopPropagation();
 		this.mo_fitler.isShow = !this.mo_fitler.isShow;
 		if (this.model_filter.isShow) {
@@ -193,7 +193,7 @@ export class EProcessDetailComponent {
 			this.sn_fitler.isShow = false;
 		}
 	}
-	searchMo() {
+	searchMo () {
 		this.mo_fitler.filterLists = this.mo_fitler.lists.filter((item) =>
 			item.name.toLowerCase().includes(this.mo_fitler.searchTerm.toLowerCase())
 		);
@@ -211,7 +211,7 @@ export class EProcessDetailComponent {
 		filterLists: [] as any[],
 		searchTerm: '',
 	};
-	snFilter(event: MouseEvent) {
+	snFilter (event: MouseEvent) {
 		event.stopPropagation();
 		this.sn_fitler.isShow = !this.sn_fitler.isShow;
 		if (this.model_filter.isShow) {
@@ -227,19 +227,19 @@ export class EProcessDetailComponent {
 			this.mo_fitler.isShow = false;
 		}
 	}
-	searchSn() {
+	searchSn () {
 		this.sn_fitler.filterLists = this.sn_fitler.lists.filter((item) =>
 			item.name.toLowerCase().includes(this.sn_fitler.searchTerm.toLowerCase())
 		);
 	}
-	ngOnInit(): void {
+	ngOnInit (): void {
 		this.model_filter.filterLists = this.model_filter.lists;
 		this.stuff_fitler.filterLists = this.stuff_fitler.lists;
 		this.stuffh_fitler.filterLists = this.stuffh_fitler.lists;
 		this.mo_fitler.filterLists = this.mo_fitler.lists;
 		this.sn_fitler.filterLists = this.sn_fitler.lists;
 	}
-	checkChange(s: string, i: number) {
+	checkChange (s: string, i: number) {
 		if (i !== 0) return;
 		var item: any;
 		if (s == 'model') {
@@ -271,12 +271,12 @@ export class EProcessDetailComponent {
 	}
 
 	isHostListener: Boolean = false;
-	mouseevent(b: Boolean) {
+	mouseevent (b: Boolean) {
 		this.isHostListener = b;
 	}
 
 	@HostListener('document:click', ['$event'])
-	onClick(event: MouseEvent) {
+	onClick (event: MouseEvent) {
 		if (this.isHostListener) return;
 		if (this.model_filter.isShow) {
 			this.model_filter.isShow = false;

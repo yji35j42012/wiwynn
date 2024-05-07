@@ -1,6 +1,7 @@
 <div class="kpi_filter">
 	<div class="normal_dateRange _hasMsg" data-msg="Date Range">
-		<div class="normal_dateRange_title" (click)="dateHanler('start')">
+		<div class="normal_dateRange_title" (click)="dateHanler('start')" (mouseenter)="mouseevent(true)"
+			(mouseleave)="mouseevent(false)">
 			<div class="date">
 				<span>{{ this.kpi_filter.start.year }}</span>
 				<span>{{ this.kpi_filter.start.month }}</span>
@@ -12,11 +13,13 @@
 			</div>
 		</div>
 		<app-model-calendar class="calendar" *ngIf="kpi_filter.start.isShow" [calendar_content]="calendar"
-			(calendar_return)="calerdarReturnHandler($event)">
+			(calendar_return)="calerdarReturnHandler($event)" (mouseenter)="mouseevent(true)"
+			(mouseleave)="mouseevent(false)">
 		</app-model-calendar>
 	</div>
 	<div class="normal_dateRange">
-		<div class="normal_dateRange_title" (click)="dateHanler('end')">
+		<div class="normal_dateRange_title" (click)="dateHanler('end')" (mouseenter)="mouseevent(true)"
+			(mouseleave)="mouseevent(false)">
 			<div class="date">
 				<span>{{ this.kpi_filter.end.year }}</span>
 				<span>{{ this.kpi_filter.end.month }}</span>
@@ -28,11 +31,14 @@
 			</div>
 		</div>
 		<app-model-calendar class="calendar" *ngIf="kpi_filter.end.isShow" [calendar_content]="calendar"
-			(calendar_return)="calerdarReturnHandler($event)">
+			(calendar_return)="calerdarReturnHandler($event)" (mouseenter)="mouseevent(true)"
+			(mouseleave)="mouseevent(false)">
 		</app-model-calendar>
 	</div>
 	<button class="normal_btn _primary">Query</button>
-	<button class="normal_btn _primary _kpi" (click)="favoriteHandler(1)">設定 My KPI</button>
+	<button class="normal_btn _primary _kpi" (click)="favoriteHandler(1)">
+		設定 My KPI
+	</button>
 </div>
 
 <div class="kpi_content">
@@ -66,39 +72,30 @@
 	<div class="kpi_body">
 		<div class="kpi_level _lv1">
 			<div class="kpi_level_title">
-				Level.1 <button class="icon_btn _filter" (click)="filterLv1()"></button>
-				<div class="normal_tb_filterbox" *ngIf="filter_lv1.isShow">
-					<label class="normal_check">
-						<input type="checkbox" class="normal_check_inp" />
+				Level.1
+				<button class="icon_btn _filter" (click)="filterLv1()" (mouseenter)="mouseevent(true)"
+					(mouseleave)="mouseevent(false)"></button>
+				<div class="normal_tb_filterbox" *ngIf="filter_lv1.isShow" (mouseenter)="mouseevent(true)"
+					(mouseleave)="mouseevent(false)">
+					<label class="normal_check" *ngFor="let item of filter_lv1.filterLists">
+						<input type="checkbox" class="normal_check_inp" [(ngModel)]="item.isChecked"
+							(change)="checkChange('lv1', item.id)" />
 						<span class="normal_check_span"></span>
 						<span class="normal_check_bg"></span>
-						<span class="normal_check_txt">Select All</span>
-					</label>
-					<label class="normal_check">
-						<input type="checkbox" class="normal_check_inp" />
-						<span class="normal_check_span"></span>
-						<span class="normal_check_bg"></span>
-						<span class="normal_check_txt">SMT</span>
-					</label>
-					<label class="normal_check">
-						<input type="checkbox" class="normal_check_inp" />
-						<span class="normal_check_span"></span>
-						<span class="normal_check_bg"></span>
-						<span class="normal_check_txt">DIP</span>
-					</label>
-					<label class="normal_check">
-						<input type="checkbox" class="normal_check_inp" />
-						<span class="normal_check_span"></span>
-						<span class="normal_check_bg"></span>
-						<span class="normal_check_txt">FA</span>
+						<span class="normal_check_txt">{{ item.name }}</span>
 					</label>
 				</div>
 			</div>
 			<ul class="kpi_group">
-				<li [class]="['kpi_item',item.isOn?'_on':'']" *ngFor="let item of kpi.data_lv1; index as i"
+				<li [class]="['kpi_item', item.isOn ? '_on' : '']" *ngFor="let item of kpi.data_lv1; index as i"
 					(click)="kpiLv1Handler(i)">
-					<div [class]="['normal_cicle','_min',item.range,item.isRed ? '_red' : '',item.isNodata ? '_nodata' : ''	]"
-						[attr.data-num]="item.number">
+					<div [class]="[
+				'normal_cicle',
+				'_min',
+				item.range,
+				item.isRed ? '_red' : '',
+				item.isNodata ? '_nodata' : ''
+			  ]" [attr.data-num]="item.number">
 						<span class="normal_cicle_s1" [style]="'--rot:' + item.rotate"></span>
 						<span class="normal_cicle_fake"></span>
 					</div>
@@ -123,17 +120,24 @@
 			<div class="kpi_level_title">
 				Level.2
 				<app-model-selcheck class="normal_selcheck _hasMsg" data-msg="Line" [selectContent]="line_sel"
-					(selCheckShowEvent)="selCheckShow($event)" (selCheckEvent)="selCheckHandler($event)">
+					(selCheckShowEvent)="selCheckShow($event)" (selCheckEvent)="selCheckHandler($event)"
+					(mouseenter)="mouseevent(true)" (mouseleave)="mouseevent(false)">
 				</app-model-selcheck>
 				<app-model-selcheck class="normal_selcheck _hasMsg" data-msg="Stations" [selectContent]="stage_sel"
-					(selCheckShowEvent)="selCheckShow($event)" (selCheckEvent)="selCheckHandler($event)">
+					(selCheckShowEvent)="selCheckShow($event)" (selCheckEvent)="selCheckHandler($event)"
+					(mouseenter)="mouseevent(true)" (mouseleave)="mouseevent(false)">
 				</app-model-selcheck>
 			</div>
 			<ul class="kpi_group">
-				<li [class]="['kpi_item',item.isOn?'_on':'']" *ngFor="let item of kpi.data_lv2; index as i"
+				<li [class]="['kpi_item', item.isOn ? '_on' : '']" *ngFor="let item of kpi.data_lv2; index as i"
 					(click)="kpiLv2Handler(i)">
-					<div [class]="['normal_cicle','_min',item.range,item.isRed ? '_red' : '',item.isNodata ? '_nodata' : ''	]"
-						[attr.data-num]="item.number">
+					<div [class]="[
+				'normal_cicle',
+				'_min',
+				item.range,
+				item.isRed ? '_red' : '',
+				item.isNodata ? '_nodata' : ''
+			  ]" [attr.data-num]="item.number">
 						<span class="normal_cicle_s1" [style]="'--rot:' + item.rotate"></span>
 						<span class="normal_cicle_fake"></span>
 					</div>
@@ -146,18 +150,24 @@
 						<div>Line:D1,D2,D3,D4,D6,D7</div>
 						<div>Stages:BD,CT,HB,IA,TA,TD</div>
 					</div>
-					<div [class]="['kpi_item_state','_'+item.state]">{{item.state}}</div>
+					<div [class]="['kpi_item_state', '_' + item.state]">
+						{{ item.state }}
+					</div>
 				</li>
 			</ul>
-
 		</div>
 		<div class="kpi_level _lv3">
 			<div class="kpi_level_title">Level.3</div>
 			<ul class="kpi_group">
-				<li [class]="['kpi_item',item.isOn?'_on':'']" *ngFor="let item of kpi.data_lv3; index as i"
+				<li [class]="['kpi_item', item.isOn ? '_on' : '']" *ngFor="let item of kpi.data_lv3; index as i"
 					(click)="kpiLv3Handler(i)">
-					<div [class]="['normal_cicle','_min',item.range,item.isRed ? '_red' : '',item.isNodata ? '_nodata' : ''	]"
-						[attr.data-num]="item.number">
+					<div [class]="[
+				'normal_cicle',
+				'_min',
+				item.range,
+				item.isRed ? '_red' : '',
+				item.isNodata ? '_nodata' : ''
+			  ]" [attr.data-num]="item.number">
 						<span class="normal_cicle_s1" [style]="'--rot:' + item.rotate"></span>
 						<span class="normal_cicle_fake"></span>
 					</div>

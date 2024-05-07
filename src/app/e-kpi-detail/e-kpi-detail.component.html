@@ -1,7 +1,9 @@
 <div class="kpi_detail">
 	<div class="kpi_detail_head">
 		<button class="icon_btn _back" (click)="goBack()">Back</button>
-		<div class="kpi_detail_title">Levle 4 PCBA FPYR - PCBA FPYR - E- TRON UBB - Line:D3</div>
+		<div class="kpi_detail_title">
+			Levle 4 PCBA FPYR - PCBA FPYR - E- TRON UBB - Line:D3
+		</div>
 	</div>
 	<div class="kpi_detail_filter">
 		<div class="radiobox">
@@ -19,7 +21,8 @@
 		</div>
 		<div class="searchbox">
 			<div class="normal_dateRange _hasMsg" data-msg="Date Range" *ngIf="isTime">
-				<div class="normal_dateRange_title" (click)="dateHanler('start')">
+				<div class="normal_dateRange_title" (click)="dateHanler('start')" (mouseenter)="mouseevent(true)"
+					(mouseleave)="mouseevent(false)">
 					<div class="date">
 						<span>{{ this.kpi_filter.start.year }}</span>
 						<span>{{ this.kpi_filter.start.month }}</span>
@@ -31,11 +34,13 @@
 					</div>
 				</div>
 				<app-model-calendar class="calendar" *ngIf="kpi_filter.start.isShow" [calendar_content]="calendar"
-					(calendar_return)="calerdarReturnHandler($event)">
+					(calendar_return)="calerdarReturnHandler($event)" (mouseenter)="mouseevent(true)"
+					(mouseleave)="mouseevent(false)">
 				</app-model-calendar>
 			</div>
 			<div class="normal_dateRange" *ngIf="isTime">
-				<div class="normal_dateRange_title" (click)="dateHanler('end')">
+				<div class="normal_dateRange_title" (click)="dateHanler('end')" (mouseenter)="mouseevent(true)"
+					(mouseleave)="mouseevent(false)">
 					<div class="date">
 						<span>{{ this.kpi_filter.end.year }}</span>
 						<span>{{ this.kpi_filter.end.month }}</span>
@@ -47,27 +52,34 @@
 					</div>
 				</div>
 				<app-model-calendar class="calendar" *ngIf="kpi_filter.end.isShow" [calendar_content]="calendar"
-					(calendar_return)="calerdarReturnHandler($event)">
+					(calendar_return)="calerdarReturnHandler($event)" (mouseenter)="mouseevent(true)"
+					(mouseleave)="mouseevent(false)">
 				</app-model-calendar>
 			</div>
 			<div class="normal_inp _hasMsg" data-msg="UPN(成品料號)" *ngIf="!isTime">
-				<input type="text">
+				<input type="text" />
 			</div>
 			<div class="normal_inp _hasMsg" data-msg="Mo" *ngIf="!isTime">
-				<input type="text">
+				<input type="text" />
 			</div>
 			<app-model-selcheck class="normal_selcheck _hasMsg" data-msg="Line" [selectContent]="line_sel"
-				(selCheckShowEvent)="selCheckShow($event)" (selCheckEvent)="selCheckHandler($event)">
+				(selCheckShowEvent)="selCheckShow($event)" (selCheckEvent)="selCheckHandler($event)"
+				(mouseenter)="mouseevent(true)" (mouseleave)="mouseevent(false)">
 			</app-model-selcheck>
 			<app-model-selcheck class="normal_selcheck _hasMsg" data-msg="Stage" [selectContent]="stage_sel"
-				(selCheckShowEvent)="selCheckShow($event)" (selCheckEvent)="selCheckHandler($event)">
+				(selCheckShowEvent)="selCheckShow($event)" (selCheckEvent)="selCheckHandler($event)"
+				(mouseenter)="mouseevent(true)" (mouseleave)="mouseevent(false)">
 			</app-model-selcheck>
 			<button class="normal_btn _primary">Query</button>
 		</div>
 	</div>
 	<div class="kpi_tabbox">
-		<button [class]="['border_btn' ,'_kpi' ,isIssue?'':'on']" (click)="issueHanler(false)">Time Chart</button>
-		<button [class]="['border_btn' ,'_kpi' ,isIssue?'on':'']" (click)="issueHanler(true)">Issue</button>
+		<button [class]="['border_btn', '_kpi', isIssue ? '' : 'on']" (click)="issueHanler(false)">
+			Time Chart
+		</button>
+		<button [class]="['border_btn', '_kpi', isIssue ? 'on' : '']" (click)="issueHanler(true)">
+			Issue
+		</button>
 
 		<button class="border_btn _kpi">Houarly</button>
 		<button class="border_btn _kpi on">Bi-Hourly</button>
@@ -77,7 +89,9 @@
 	</div>
 	<div class="kpi_detail_content">
 		<div class="btnbox">
-			<button class="border_btn _export"><i _ngcontent-ng-c2185158378=""></i>匯出 Excel</button>
+			<button class="border_btn _export">
+				<i _ngcontent-ng-c2185158378=""></i>匯出 Excel
+			</button>
 		</div>
 		<div class="kpi_chart" *ngIf="!isIssue">
 			<div class="kpi_chart_title">
@@ -86,34 +100,17 @@
 				<span>Qty</span>
 			</div>
 			<canvas id="myChart" class="chart" width="1440" height="420"></canvas>
-			<!--
-			<ul class="kpi_chart_y" data-msg="Rete(%)">
-				<li *ngFor="let item of chart_time.y1" [attr.data-msg]="item"></li>
-			</ul>
-			<ul class="kpi_chart_y _right" data-msg="Qty">
-				<li *ngFor="let item of chart_time.y2" [attr.data-msg]="item"></li>
-			</ul>
-			<ul id="chartbox_group" class="kpi_chart_content">
-				<li *ngFor="let item of chart_time.info;index as i">
-					<div class="kpi_chart_line"></div>
-					<span [id]="'green'+i" class="green" [style]="'height:'+item.g+'px;'"
-						(mousemove)="chartmouseMove($event ,i)" (mouseleave)="chartmouseLeave()"
-						(click)="chartHandler(item.state)"></span>
-				</li>
-			</ul>
-			<ul class="kpi_chart_x">
-				<li *ngFor="let item of chart_time.x">{{item}}</li>
-			</ul> -->
 		</div>
 		<div class="kpi_detailTb" *ngIf="!isIssue">
 			<div class="kpi_detailTb_filter">
 				<span class="txt">kpi_detailTb_filter</span>
 				<button class="normal_btn _kpiviewall">View All</button>
 				<app-model-selcheck class="normal_selcheck _hasMsg" data-msg="Mo Filter" [selectContent]="mofilter_sel"
-					(selCheckShowEvent)="selCheckShow($event)" (selCheckEvent)="selCheckHandler($event)">
+					(selCheckShowEvent)="selCheckShow($event)" (selCheckEvent)="selCheckHandler($event)"
+					(mouseenter)="mouseevent(true)" (mouseleave)="mouseevent(false)">
 				</app-model-selcheck>
 			</div>
-			<table class="kpi_detailTb_tb" *ngIf="chart_tb.state=='FPYR'">
+			<table class="kpi_detailTb_tb" *ngIf="chart_tb.state == 'FPYR'">
 				<tr>
 					<th rowspan="2">Time</th>
 					<th rowspan="2">Target</th>
@@ -188,7 +185,7 @@
 					<td>TK</td>
 				</tr>
 			</table>
-			<table class="kpi_detailTb_tb" *ngIf="chart_tb.state=='UPPH'">
+			<table class="kpi_detailTb_tb" *ngIf="chart_tb.state == 'UPPH'">
 				<tr>
 					<th rowspan="2">Time</th>
 					<th rowspan="2">Target</th>
@@ -221,7 +218,7 @@
 					<td>50</td>
 				</tr>
 			</table>
-			<table class="kpi_detailTb_tb" *ngIf="chart_tb.state=='OEE'">
+			<table class="kpi_detailTb_tb" *ngIf="chart_tb.state == 'OEE'">
 				<tr>
 					<th rowspan="2">Time</th>
 					<th rowspan="2">Target</th>
@@ -274,23 +271,23 @@
 			<div class="kpi_chart_title"></div>
 			<canvas id="issueChart" class="chart" width="1440" height="420"></canvas>
 			<!-- <ul class="kpi_chart_y">
-				<li *ngFor="let item of chart_issue.y1" [attr.data-msg]="item"></li>
-			</ul>
-			<ul id="chartbox_group" class="kpi_chart_content">
-				<li *ngFor="let item of chart_issue.info;index as i">
-					<div class="kpi_chart_line"></div>
-					<span [id]="'green'+i" class="green" [style]="'height:'+item.g+'px;'"
-						(click)="chartHandler(item.state)"></span>
-					<span class="orange" [style]="'height:'+item.o+'px;'"></span>
-					<span class="red" [style]="'height:'+item.r+'px;'"></span>
-				</li>
-			</ul>
-			<ul class="kpi_chart_x">
-				<li *ngFor="let item of chart_issue.x">{{item}}</li>
-			</ul> -->
+				  <li *ngFor="let item of chart_issue.y1" [attr.data-msg]="item"></li>
+			  </ul>
+			  <ul id="chartbox_group" class="kpi_chart_content">
+				  <li *ngFor="let item of chart_issue.info;index as i">
+					  <div class="kpi_chart_line"></div>
+					  <span [id]="'green'+i" class="green" [style]="'height:'+item.g+'px;'"
+						  (click)="chartHandler(item.state)"></span>
+					  <span class="orange" [style]="'height:'+item.o+'px;'"></span>
+					  <span class="red" [style]="'height:'+item.r+'px;'"></span>
+				  </li>
+			  </ul>
+			  <ul class="kpi_chart_x">
+				  <li *ngFor="let item of chart_issue.x">{{item}}</li>
+			  </ul> -->
 		</div>
 		<div class="kpi_detailTb _issue" *ngIf="isIssue">
-			<table class="kpi_detailTb_tb" *ngIf="chart_tb.state=='FPYR'">
+			<table class="kpi_detailTb_tb" *ngIf="chart_tb.state == 'FPYR'">
 				<tr>
 					<th rowspan="2" class="txtl">Unit P/N</th>
 					<th rowspan="2" class="txtl">MO</th>
@@ -329,9 +326,10 @@
 					<td>3</td>
 					<td>0</td>
 					<td>100</td>
-
+				</tr>
 			</table>
-			<table class="kpi_detailTb_tb" *ngIf="chart_tb.state=='UPPH'">
+
+			<table class="kpi_detailTb_tb" *ngIf="chart_tb.state == 'UPPH'">
 				<tr>
 					<th class="txtl">Line</th>
 					<th class="txtl">Stage</th>
@@ -363,7 +361,7 @@
 					<td>助工借機複測</td>
 				</tr>
 			</table>
-			<table class="kpi_detailTb_tb" *ngIf="chart_tb.state=='OEE'">
+			<table class="kpi_detailTb_tb" *ngIf="chart_tb.state == 'OEE'">
 				<tr>
 					<th class="txtl">Line</th>
 					<th class="txtl">Stage</th>
@@ -396,12 +394,12 @@
 				</tr>
 			</table>
 
-			<div *ngIf="chart_tb.state=='FPYR2'">
-				<table [class]="['kpi_detailTb_tb',item.ismore?'':'_hide']"
+			<div *ngIf="chart_tb.state == 'FPYR2'">
+				<table [class]="['kpi_detailTb_tb', item.ismore ? '' : '_hide']"
 					*ngFor="let item of fpyr2_table; index as i">
 					<caption class="kpi_detailTb_title">
-						<span>{{item.title}} </span>
-						<span>Total Defect Qty: {{item.total}}</span>
+						<span>{{ item.title }} </span>
+						<span>Total Defect Qty: {{ item.total }}</span>
 					</caption>
 					<tr>
 						<th class="txtl">Stage</th>
@@ -416,16 +414,16 @@
 						<th>F/R(%)</th>
 					</tr>
 					<tr *ngFor="let itemInside of item.data">
-						<td class="txtl">{{itemInside.stage}}</td>
-						<td class="txtl">{{itemInside.errorcode}}</td>
-						<td class="txtl">{{itemInside.defectsymptom}}</td>
-						<td>{{itemInside.qty}}</td>
-						<td>{{itemInside.fr}}</td>
-						<td>{{itemInside.reasoncode}}</td>
-						<td>{{itemInside.reasondescription}}</td>
-						<td>{{itemInside.location}}</td>
-						<td>{{itemInside.qty2}}</td>
-						<td>{{itemInside.fr2}}</td>
+						<td class="txtl">{{ itemInside.stage }}</td>
+						<td class="txtl">{{ itemInside.errorcode }}</td>
+						<td class="txtl">{{ itemInside.defectsymptom }}</td>
+						<td>{{ itemInside.qty }}</td>
+						<td>{{ itemInside.fr }}</td>
+						<td>{{ itemInside.reasoncode }}</td>
+						<td>{{ itemInside.reasondescription }}</td>
+						<td>{{ itemInside.location }}</td>
+						<td>{{ itemInside.qty2 }}</td>
+						<td>{{ itemInside.fr2 }}</td>
 					</tr>
 					<tr class="kpi_detailTb_more">
 						<td colspan="10">
@@ -434,16 +432,17 @@
 					</tr>
 				</table>
 			</div>
-
-
-
 		</div>
 	</div>
 </div>
 
-
-<div class="chartDetail" *ngIf="chart_time.isChartdetail"
-	[style]="'left:'+chart_time.chartdetail_x+'px; top:'+chart_time.chartdetail_y+'px;'">
+<div class="chartDetail" *ngIf="chart_time.isChartdetail" [style]="
+	  'left:' +
+	  chart_time.chartdetail_x +
+	  'px; top:' +
+	  chart_time.chartdetail_y +
+	  'px;'
+	">
 	<table class="chartDetail_tb">
 		<tr>
 			<th>Item Name</th>
