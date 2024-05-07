@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet, RouterModule, Router } from '@angular/router';
 import { OptionSelectComponent } from '../option-select/option-select.component';
@@ -102,7 +102,7 @@ export class OptionComponent {
 		},
 	];
 
-	ngOnInit(): void {
+	ngOnInit (): void {
 		const currentRoute = this.router.url;
 		let s = currentRoute.split('/');
 		let last = s.length - 1;
@@ -165,7 +165,7 @@ export class OptionComponent {
 		}
 	}
 
-	selShowHandler(s: number) {
+	selShowHandler (s: number) {
 		if (!this.option_sel[s].isShow) {
 			for (let i = 0; i < this.option_sel.length; i++) {
 				this.option_sel[i].isShow = false;
@@ -176,7 +176,7 @@ export class OptionComponent {
 		}
 	}
 
-	option_page(obj: any) {
+	option_page (obj: any) {
 		for (let i = 0; i < this.option_sel.length; i++) {
 			this.option_sel[i].isOn = false;
 		}
@@ -194,5 +194,17 @@ export class OptionComponent {
 		}
 	}
 
-	alert_close(s: string) { }
+	alert_close (s: string) { }
+
+	isHostListener: Boolean = false;
+	mouseevent (b: Boolean) {
+		this.isHostListener = b;
+	}
+	@HostListener('document:click', ['$event'])
+	onClick (event: MouseEvent) {
+		if (this.isHostListener) return;
+		for (let i = 0; i < this.option_sel.length; i++) {
+			this.option_sel[i].isShow = false;
+		}
+	}
 }

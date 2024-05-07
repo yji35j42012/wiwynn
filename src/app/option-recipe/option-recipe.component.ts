@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ModelSelectComponent } from '../model-select/model-select.component';
 import { AlertDelmsgComponent } from '../alert-delmsg/alert-delmsg.component';
@@ -32,7 +32,7 @@ export class OptionRecipeComponent {
 		isShow: false,
 		msg: 'Model',
 	};
-	selShow(s: string) {
+	selShow (s: string) {
 		if (s == 'equipment_sel') {
 			this.equipment_sel.isShow = !this.equipment_sel.isShow;
 			this.model_sel.isShow = false;
@@ -41,7 +41,7 @@ export class OptionRecipeComponent {
 			this.equipment_sel.isShow = false;
 		}
 	}
-	selHandler(s: any) {
+	selHandler (s: any) {
 		if (s.name == 'equipment_sel') {
 			this.equipment_sel.title = s.title;
 			this.equipment_sel.isShow = false;
@@ -53,7 +53,7 @@ export class OptionRecipeComponent {
 
 	recipe = {
 		isShow: true,
-		data: [] as { name: string, }[],
+		data: [] as { name: string }[],
 	};
 
 	editAlert = {
@@ -67,23 +67,23 @@ export class OptionRecipeComponent {
 		msg: '',
 		str: '',
 	};
-	queryHandler() {
+	queryHandler () {
 		this.recipe.isShow = true;
 		this.recipe.data = [
-			{ name: '前刮刀壓力', },
-			{ name: '後刮刀壓力', },
-			{ name: '向前印刷速度', },
-			{ name: '向後印刷速度', },
-			{ name: '脫模速度', },
-			{ name: '脫模距離', },
-			{ name: '印刷空隙', },
+			{ name: '前刮刀壓力' },
+			{ name: '後刮刀壓力' },
+			{ name: '向前印刷速度' },
+			{ name: '向後印刷速度' },
+			{ name: '脫模速度' },
+			{ name: '脫模距離' },
+			{ name: '印刷空隙' },
 		];
 	}
-	editHandler(s: string) {
+	editHandler (s: string) {
 		this.editAlert.isShow = true;
 		this.editAlert.state = s;
 	}
-	alert_close(s: string) {
+	alert_close (s: string) {
 		switch (s) {
 			case 'editAlert':
 				this.editAlert.isShow = false;
@@ -96,13 +96,28 @@ export class OptionRecipeComponent {
 				break;
 		}
 	}
-	delHandler() {
+	delHandler () {
 		this.alertMsg.show = true;
 		this.alertMsg.title = '刪除欄位';
 		this.alertMsg.msg = '您確定要刪除此欄位？';
 		this.alertMsg.str = 'del';
 	}
-	alert_del(s: Event) {
+	alert_del (s: Event) {
 		//  確認要刪除的動作
+	}
+
+	isHostListener: Boolean = false;
+	mouseevent (b: Boolean) {
+		this.isHostListener = b;
+	}
+	@HostListener('document:click', ['$event'])
+	onClick (event: MouseEvent) {
+		if (this.isHostListener) return;
+		if (this.equipment_sel.isShow) {
+			this.equipment_sel.isShow = false;
+		}
+		if (this.model_sel.isShow) {
+			this.model_sel.isShow = false;
+		}
 	}
 }

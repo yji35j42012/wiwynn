@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ModelSelectComponent } from '../model-select/model-select.component';
 import { AlertDelmsgComponent } from '../alert-delmsg/alert-delmsg.component';
@@ -45,6 +45,13 @@ export class OptionParameterComponent {
 		isShow: false,
 		msg: 'Line',
 	};
+	line_clone_sel = {
+		name: 'line_clone_sel',
+		title: 's1',
+		lists: ['s1', 's2', 's3', 's4', 's5', 's6'],
+		isShow: false,
+		msg: 'LineClone',
+	};
 	range_sel = {
 		name: 'range_sel',
 		title: '(>=,<=)',
@@ -52,30 +59,46 @@ export class OptionParameterComponent {
 		isShow: false,
 		msg: '範圍涵數',
 	};
-	selShow(s: string) {
+	selShow (s: string) {
+		for (let i = 0; i < this.option_sel.length; i++) {
+			this.option_sel[i].isShow = false;
+		}
 		if (s == 'equipment_sel') {
 			this.equipment_sel.isShow = !this.equipment_sel.isShow;
 			this.model_sel.isShow = false;
 			this.line_sel.isShow = false;
 			this.range_sel.isShow = false;
+			this.line_clone_sel.isShow = false;
 		} else if (s == 'model_sel') {
 			this.model_sel.isShow = !this.model_sel.isShow;
 			this.equipment_sel.isShow = false;
 			this.line_sel.isShow = false;
 			this.range_sel.isShow = false;
+			this.line_clone_sel.isShow = false;
 		} else if (s == 'line_sel') {
 			this.line_sel.isShow = !this.line_sel.isShow;
 			this.equipment_sel.isShow = false;
 			this.model_sel.isShow = false;
 			this.range_sel.isShow = false;
+			this.line_clone_sel.isShow = false;
 		} else if (s == 'range_sel') {
 			this.range_sel.isShow = !this.range_sel.isShow;
 			this.equipment_sel.isShow = false;
 			this.model_sel.isShow = false;
 			this.line_sel.isShow = false;
+			this.line_clone_sel.isShow = false;
+		} else if (s == 'line_clone_sel') {
+			this.line_clone_sel.isShow = !this.line_clone_sel.isShow;
+			this.equipment_sel.isShow = false;
+			this.model_sel.isShow = false;
+			this.line_sel.isShow = false;
+			this.range_sel.isShow = false;
 		}
 	}
-	selHandler(s: any) {
+	selHandler (s: any) {
+		for (let i = 0; i < this.option_sel.length; i++) {
+			this.option_sel[i].isShow = false;
+		}
 		if (s.name == 'equipment_sel') {
 			this.equipment_sel.title = s.title;
 			this.equipment_sel.isShow = false;
@@ -88,12 +111,15 @@ export class OptionParameterComponent {
 		} else if (s.name == 'range_sel') {
 			this.range_sel.title = s.title;
 			this.range_sel.isShow = false;
+		} else if (s.name == 'line_clone_sel') {
+			this.line_clone_sel.title = s.title;
+			this.line_clone_sel.isShow = false;
 		}
 	}
 
 	parameter = {
 		isShow: false,
-		data: [] as { name: string, range: string, value: string, nuit: string }[],
+		data: [] as { name: string; range: string; value: string; nuit: string }[],
 	};
 
 	option_sel = [
@@ -134,7 +160,7 @@ export class OptionParameterComponent {
 		},
 	];
 
-	queryHandler() {
+	queryHandler () {
 		this.parameter.isShow = true;
 		this.parameter.data = [
 			{ name: '前刮刀壓力', range: '>', value: '12,15', nuit: 'kg' },
@@ -147,7 +173,10 @@ export class OptionParameterComponent {
 		];
 	}
 
-	selShowHandler(s: number) {
+	selShowHandler (s: number) {
+		this.line_sel.isShow = false;
+		this.line_clone_sel.isShow = false;
+		this.range_sel.isShow = false;
 		if (!this.option_sel[s].isShow) {
 			for (let i = 0; i < this.option_sel.length; i++) {
 				this.option_sel[i].isShow = false;
@@ -158,7 +187,7 @@ export class OptionParameterComponent {
 		}
 	}
 
-	option_page(obj: any) {
+	option_page (obj: any) {
 		for (let i = 0; i < this.option_sel.length; i++) {
 			this.option_sel[i].isOn = false;
 		}
@@ -177,16 +206,16 @@ export class OptionParameterComponent {
 	cloneAlert = {
 		isShow: false,
 	};
-	cloneHandler() {
+	cloneHandler () {
 		this.clone.isShow = true;
 	}
-	cancelClone() {
+	cancelClone () {
 		this.clone.isShow = false;
 	}
-	submitClone() {
+	submitClone () {
 		this.cloneAlert.isShow = true;
 	}
-	alert_close(s: string) {
+	alert_close (s: string) {
 		switch (s) {
 			case 'cloneAlert':
 				this.cloneAlert.isShow = false;
@@ -200,8 +229,29 @@ export class OptionParameterComponent {
 		state: '',
 		isShow: false,
 	};
-	editAlert(s: string) {
+	editAlert (s: string) {
 		this.edit_alert.state = s;
 		this.edit_alert.isShow = true;
+	}
+
+	isHostListener: Boolean = false;
+	mouseevent (b: Boolean) {
+		this.isHostListener = b;
+	}
+	@HostListener('document:click', ['$event'])
+	onClick (event: MouseEvent) {
+		if (this.isHostListener) return;
+		for (let i = 0; i < this.option_sel.length; i++) {
+			this.option_sel[i].isShow = false;
+		}
+		if (this.line_sel.isShow) {
+			this.line_sel.isShow = false;
+		}
+		if (this.line_clone_sel.isShow) {
+			this.line_clone_sel.isShow = false;
+		}
+		if (this.range_sel.isShow) {
+			this.range_sel.isShow = false;
+		}
 	}
 }

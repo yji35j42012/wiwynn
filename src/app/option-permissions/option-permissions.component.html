@@ -1,13 +1,18 @@
 <div class="option_content _permissions">
 	<div class="option_head">
 		<app-model-select class="" [selectContent]="number_sel" (selShowEvent)="selShow($event)"
-			(selEvent)="selHandler($event)"></app-model-select>
+			(selEvent)="selHandler($event)" (mouseenter)="mouseevent(true)"
+			(mouseleave)="mouseevent(false)"></app-model-select>
 		<app-model-select class="" [selectContent]="permissions_sel" (selShowEvent)="selShow($event)"
-			(selEvent)="selHandler($event)"></app-model-select>
+			(selEvent)="selHandler($event)" (mouseenter)="mouseevent(true)"
+			(mouseleave)="mouseevent(false)"></app-model-select>
 		<app-model-select class="selbox" [selectContent]="position_sel" (selShowEvent)="selShow($event)"
-			(selEvent)="selHandler($event)"></app-model-select>
+			(selEvent)="selHandler($event)" (mouseenter)="mouseevent(true)"
+			(mouseleave)="mouseevent(false)"></app-model-select>
 
-		<button class="border_btn _add " (click)="permissions_edit('add')"><i></i>Add Account</button>
+		<button class="border_btn _add" (click)="permissions_edit('add')">
+			<i></i>Add Account
+		</button>
 	</div>
 	<div class="option_body">
 		<div class="permissions_item">
@@ -37,7 +42,7 @@
 			</div>
 			<div class="permissions_item_btnBox">
 				<label class="normal_switch">
-					<input type="checkbox">
+					<input type="checkbox" />
 					<span class="normal_switch_ball"></span>
 				</label>
 				<button class="icon_btn _edit" (click)="permissions_edit('edit')"></button>
@@ -70,7 +75,7 @@
 			</div>
 			<div class="permissions_item_btnBox">
 				<label class="normal_switch">
-					<input type="checkbox">
+					<input type="checkbox" />
 					<span class="normal_switch_ball"></span>
 				</label>
 				<button class="icon_btn _edit" (click)="permissions_edit('edit')"></button>
@@ -103,7 +108,7 @@
 			</div>
 			<div class="permissions_item_btnBox">
 				<label class="normal_switch">
-					<input type="checkbox">
+					<input type="checkbox" />
 					<span class="normal_switch_ball"></span>
 				</label>
 				<button class="icon_btn _edit" (click)="permissions_edit('edit')"></button>
@@ -136,7 +141,7 @@
 			</div>
 			<div class="permissions_item_btnBox">
 				<label class="normal_switch">
-					<input type="checkbox">
+					<input type="checkbox" />
 					<span class="normal_switch_ball"></span>
 				</label>
 				<button class="icon_btn _edit" (click)="permissions_edit('edit')"></button>
@@ -144,7 +149,6 @@
 		</div>
 	</div>
 </div>
-
 
 <!-- Add/Edit Account -->
 <div class="alert _option _permissionsEdit" *ngIf="editShow">
@@ -154,30 +158,35 @@
 		<div class="alert_title" *ngIf="!editData.isAdd">Edit Account</div>
 		<div class="alert_info">
 			<div class="normal_inp _hasMsg" data-msg="姓名">
-				<input type="text" [value]="editData.name">
+				<input type="text" [value]="editData.name" />
 			</div>
 			<div class="normal_inp _hasMsg" data-msg="工號">
-				<input type="text" [value]="editData.num">
+				<input type="text" [value]="editData.num" />
 			</div>
 			<div class="normal_inp _hasMsg" data-msg="email">
-				<input type="text" [value]="editData.mail">
+				<input type="text" [value]="editData.mail" />
 			</div>
-			<app-model-select [selectContent]="department_sel" (selShowEvent)="selShow($event)"
-				(selEvent)="selHandler($event)"></app-model-select>
-			<app-model-select [selectContent]="office_sel" (selShowEvent)="selShow($event)"
-				(selEvent)="selHandler($event)"></app-model-select>
-			<app-model-select [selectContent]="permissions_sel" (selShowEvent)="selShow($event)"
-				(selEvent)="selHandler($event)"></app-model-select>
+			<app-model-select class="option_permissionsEdit_sel" [selectContent]="department_sel"
+				(selShowEvent)="selShow($event)" (selEvent)="selHandler($event)" (mouseenter)="mouseevent(true)"
+				(mouseleave)="mouseevent(false)"></app-model-select>
+			<app-model-select class="option_permissionsEdit_sel" [selectContent]="office_sel"
+				(selShowEvent)="selShow($event)" (selEvent)="selHandler($event)" (mouseenter)="mouseevent(true)"
+				(mouseleave)="mouseevent(false)"></app-model-select>
+			<app-model-select class="option_permissionsEdit_sel" [selectContent]="permissions_in_sel"
+				(selShowEvent)="selShow($event)" (selEvent)="selHandler($event)" (mouseenter)="mouseevent(true)"
+				(mouseleave)="mouseevent(false)"></app-model-select>
 
 			<label class="normal_switch _leftMsg" data-msg="啟用">
-				<input type="checkbox">
+				<input type="checkbox" />
 				<span class="normal_switch_ball"></span>
 			</label>
 		</div>
 		<div class="alert_btnBox">
 			<button class="normal_btn _secondry" (click)="alert_close()">取消</button>
 			<button class="normal_btn _primary" *ngIf="editData.isAdd">新増</button>
-			<button class="normal_btn _primary" *ngIf="!editData.isAdd">儲存變更</button>
+			<button class="normal_btn _primary" *ngIf="!editData.isAdd">
+				儲存變更
+			</button>
 		</div>
 	</div>
 </div>

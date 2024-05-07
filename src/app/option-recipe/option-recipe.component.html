@@ -1,9 +1,10 @@
 <div class="option_content _recipe">
 	<div class="option_head _borderB">
 		<app-model-select [selectContent]="equipment_sel" (selShowEvent)="selShow($event)"
-			(selEvent)="selHandler($event)"></app-model-select>
-		<app-model-select [selectContent]="model_sel" (selShowEvent)="selShow($event)"
-			(selEvent)="selHandler($event)"></app-model-select>
+			(selEvent)="selHandler($event)" (mouseenter)="mouseevent(true)"
+			(mouseleave)="mouseevent(false)"></app-model-select>
+		<app-model-select [selectContent]="model_sel" (selShowEvent)="selShow($event)" (selEvent)="selHandler($event)"
+			(mouseenter)="mouseevent(true)" (mouseleave)="mouseevent(false)"></app-model-select>
 		<button class="normal_btn _primary" (click)="queryHandler()">Query</button>
 	</div>
 	<div class="option_body" *ngIf="recipe.isShow">

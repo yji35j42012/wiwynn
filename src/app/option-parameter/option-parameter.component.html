@@ -1,13 +1,13 @@
 <div class="option_content _parameter">
 	<div class="option_head _borderB">
 		<div class="normal_inp _hasMsg" data-msg="UPN(成品料號)">
-			<input type="text">
+			<input type="text" />
 		</div>
 		<div class="normal_inp _hasMsg" data-msg="SPN(半成品料號)">
-			<input type="text">
+			<input type="text" />
 		</div>
-		<app-model-select [selectContent]="line_sel" (selShowEvent)="selShow($event)"
-			(selEvent)="selHandler($event)"></app-model-select>
+		<app-model-select [selectContent]="line_sel" (selShowEvent)="selShow($event)" (selEvent)="selHandler($event)"
+			(mouseenter)="mouseevent(true)" (mouseleave)="mouseevent(false)"></app-model-select>
 		<button class="normal_btn _primary" (click)="queryHandler()">Query</button>
 	</div>
 	<div class="option_clone" *ngIf="clone.isShow">
@@ -19,8 +19,9 @@
 			<div class="normal_inp _hasMsg" data-msg="SPN(半成品料號)">
 				<input type="text" />
 			</div>
-			<app-model-select [selectContent]="line_sel" (selShowEvent)="selShow($event)"
-				(selEvent)="selHandler($event)"></app-model-select>
+			<app-model-select [selectContent]="line_clone_sel" (selShowEvent)="selShow($event)"
+				(selEvent)="selHandler($event)" (mouseenter)="mouseevent(true)"
+				(mouseleave)="mouseevent(false)"></app-model-select>
 			<div class="normal_selcheck _hasMsg" data-msg="Line" style="display: none;">
 				<!-- 點擊在span class裡面加上on -->
 				<span class="normal_selcheck_title on">s1</span>
@@ -57,7 +58,8 @@
 		</div>
 		<div class="option_body_filter">
 			<app-option-select *ngFor="let item of option_sel" [selectContent]="item" (selshow)="selShowHandler($event)"
-				(selEvent)="option_page($event)"></app-option-select>
+				(selEvent)="option_page($event)" (mouseenter)="mouseevent(true)"
+				(mouseleave)="mouseevent(false)"></app-option-select>
 		</div>
 		<table class="normal_tb">
 			<tr>
@@ -68,10 +70,10 @@
 				<th>編輯</th>
 			</tr>
 			<tr *ngFor="let item of parameter.data">
-				<td>{{item.name}}</td>
-				<td>{{item.range}}</td>
-				<td>{{item.value}}</td>
-				<td>{{item.nuit}}</td>
+				<td>{{ item.name }}</td>
+				<td>{{ item.range }}</td>
+				<td>{{ item.value }}</td>
+				<td>{{ item.nuit }}</td>
 				<td>
 					<div class="normal_tb_box _jucc">
 						<button class="icon_btn _edit" (click)="editAlert('edit')"></button>
@@ -197,7 +199,8 @@
 				<input type="text" />
 			</div>
 			<app-model-select class="selbox" [selectContent]="range_sel" (selShowEvent)="selShow($event)"
-				(selEvent)="selHandler($event)"></app-model-select>
+				(selEvent)="selHandler($event)" (mouseenter)="mouseevent(true)"
+				(mouseleave)="mouseevent(false)"></app-model-select>
 
 			<div class="normal_inp _hasMsg _hasMsgB" data-msg="標準數值" data-msgB="請將數值由 , 分開如：12,15">
 				<input type="text" />
@@ -207,7 +210,9 @@
 			</div>
 		</div>
 		<div class="alert_btnBox">
-			<button class="normal_btn _secondry" (click)="alert_close('editAlert')">取消</button>
+			<button class="normal_btn _secondry" (click)="alert_close('editAlert')">
+				取消
+			</button>
 			<button class="normal_btn _primary">確定</button>
 		</div>
 	</div>
