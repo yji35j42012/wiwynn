@@ -140,7 +140,20 @@
 				background-color: #2E7FDF;
 				color: #fff;
 				border-radius: 6px;
+				@extend %hand;
 			}
+
+			>button {
+				@extend %hand;
+			}
+		}
+	}
+
+	// .ac_btn
+	&_btn {
+		line-height: 1px;
+		&:focus .ac_table_group {
+			display: block;
 		}
 	}
 
@@ -397,15 +410,9 @@
 				transform: translateY(-100%);
 			}
 		}
-
-		&:focus .ac_alertMore_txt {
+		&:focus .ac_alertMore_txt{
 			display: block;
 		}
-	}
-
-	// .ac_btn
-	&_btn:focus .ac_table_group {
-		display: block;
 	}
 }
 

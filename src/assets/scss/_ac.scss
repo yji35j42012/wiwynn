@@ -151,6 +151,7 @@
 
 	// .ac_btn
 	&_btn {
+		line-height: 1px;
 		&:focus .ac_table_group {
 			display: block;
 		}
@@ -408,6 +409,9 @@
 				background: url('../images/icon_trangle.svg') no-repeat center / contain;
 				transform: translateY(-100%);
 			}
+		}
+		&:focus .ac_alertMore_txt{
+			display: block;
 		}
 	}
 }
