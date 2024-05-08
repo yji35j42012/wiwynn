@@ -153,7 +153,7 @@ export class OptionComponent {
 				this.option_sel[5].isOn = true;
 				this.option_sel[5].txt = 'KPI算法Target';
 				break;
-			case 'kpicreaet':
+			case 'kpicreate':
 				this.option_sel[5].isOn = true;
 				this.option_sel[5].txt = 'KPI指標建立';
 				break;

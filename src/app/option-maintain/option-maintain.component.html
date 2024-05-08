@@ -1,6 +1,8 @@
 <div class="option_content _maintain">
     <div class="option_head">
-        <button class="border_btn _add" (click)="editHandler('add')"><i></i>新増狀態</button>
+        <button class="border_btn _add" (click)="editHandler('add')">
+            <i></i>新増狀態
+        </button>
         <button class="border_btn _export"><i></i>匯出 Excel</button>
         <button class="border_btn _inport"><i></i>匯入 Excel</button>
         <button class="border_btn _refresh"><i></i>Refresh</button>
@@ -13,46 +15,20 @@
                         狀態代碼
                         <!-- 遞增加上 _asc 遞減加上 _desc-->
                         <button class="icon_btn _sort"></button>
-                        <button class="icon_btn _filter" (click)="filterMatintain()"></button>
-                        <div class="normal_tb_filterbox" *ngIf="filter_maintain.isShow">
+                        <button class="icon_btn _filter" (click)="filterMatintain()" (mouseenter)="mouseevent(true)"
+                            (mouseleave)="mouseevent(false)"></button>
+                        <div class="normal_tb_filterbox" *ngIf="filter_maintain.isShow" (mouseenter)="mouseevent(true)"
+                            (mouseleave)="mouseevent(false)">
                             <label class="normal_search">
-                                <input class="normal_search_inp" type="text" placeholder="搜尋">
+                                <input class="normal_search_inp" type="text" placeholder="搜尋"
+                                    [(ngModel)]="filter_maintain.searchTerm" (input)="searchMaintain()" />
                             </label>
-                            <label class="normal_check">
-                                <input type="checkbox" class="normal_check_inp">
+                            <label class="normal_check" *ngFor="let item of filter_maintain.filterLists">
+                                <input type="checkbox" class="normal_check_inp" [(ngModel)]="item.isChecked"
+                                    (change)="checkChange('maintain', item.id)" />
                                 <span class="normal_check_span"></span>
                                 <span class="normal_check_bg"></span>
-                                <span class="normal_check_txt">Select All</span>
-                            </label>
-                            <label class="normal_check">
-                                <input type="checkbox" class="normal_check_inp">
-                                <span class="normal_check_span"></span>
-                                <span class="normal_check_bg"></span>
-                                <span class="normal_check_txt">EQ_WAIT</span>
-                            </label>
-                            <label class="normal_check">
-                                <input type="checkbox" class="normal_check_inp">
-                                <span class="normal_check_span"></span>
-                                <span class="normal_check_bg"></span>
-                                <span class="normal_check_txt">PM</span>
-                            </label>
-                            <label class="normal_check">
-                                <input type="checkbox" class="normal_check_inp">
-                                <span class="normal_check_span"></span>
-                                <span class="normal_check_bg"></span>
-                                <span class="normal_check_txt">PD_RUN</span>
-                            </label>
-                            <label class="normal_check">
-                                <input type="checkbox" class="normal_check_inp">
-                                <span class="normal_check_span"></span>
-                                <span class="normal_check_bg"></span>
-                                <span class="normal_check_txt">ENG</span>
-                            </label>
-                            <label class="normal_check">
-                                <input type="checkbox" class="normal_check_inp">
-                                <span class="normal_check_span"></span>
-                                <span class="normal_check_bg"></span>
-                                <span class="normal_check_txt">OFF</span>
+                                <span class="normal_check_txt">{{ item.name }}</span>
                             </label>
                         </div>
                     </div>
@@ -60,49 +36,22 @@
                 <th>
                     <div class="normal_tb_box">
                         狀態顏色
-                        <button class="icon_btn _filter" (click)="filterColor()"></button>
-                        <div class="normal_tb_filterbox" *ngIf="filter_color.isShow">
+                        <button class="icon_btn _filter" (click)="filterColor()" (mouseenter)="mouseevent(true)"
+                            (mouseleave)="mouseevent(false)"></button>
+                        <div class="normal_tb_filterbox" *ngIf="filter_color.isShow" (mouseenter)="mouseevent(true)"
+                            (mouseleave)="mouseevent(false)">
                             <label class="normal_check">
-                                <input type="checkbox" class="normal_check_inp">
+                                <input type="checkbox" class="normal_check_inp" [(ngModel)]="filter_color.isAll"
+                                    (change)="colorAll(filter_color.isAll)" />
                                 <span class="normal_check_span"></span>
                                 <span class="normal_check_bg"></span>
                                 <span class="normal_check_txt">Select All</span>
                             </label>
-                            <label class="normal_check">
-                                <input type="checkbox" class="normal_check_inp">
+                            <label class="normal_check" *ngFor="let item of filter_color.lists">
+                                <input type="checkbox" class="normal_check_inp" [(ngModel)]="item.isChecked" />
                                 <span class="normal_check_span"></span>
                                 <span class="normal_check_bg"></span>
-                                <div class="state WAIT"></div>
-                            </label>
-                            <label class="normal_check">
-                                <input type="checkbox" class="normal_check_inp">
-                                <span class="normal_check_span"></span>
-                                <span class="normal_check_bg"></span>
-                                <div class="state PM"></div>
-                            </label>
-                            <label class="normal_check">
-                                <input type="checkbox" class="normal_check_inp">
-                                <span class="normal_check_span"></span>
-                                <span class="normal_check_bg"></span>
-                                <div class="state PD_RUN"></div>
-                            </label>
-                            <label class="normal_check">
-                                <input type="checkbox" class="normal_check_inp">
-                                <span class="normal_check_span"></span>
-                                <span class="normal_check_bg"></span>
-                                <div class="state ENG"></div>
-                            </label>
-                            <label class="normal_check">
-                                <input type="checkbox" class="normal_check_inp">
-                                <span class="normal_check_span"></span>
-                                <span class="normal_check_bg"></span>
-                                <div class="state OFF"></div>
-                            </label>
-                            <label class="normal_check">
-                                <input type="checkbox" class="normal_check_inp">
-                                <span class="normal_check_span"></span>
-                                <span class="normal_check_bg"></span>
-                                <div class="state PR_RUN"></div>
+                                <div [class]="['state', item.name] "></div>
                             </label>
                         </div>
                     </div>
@@ -168,71 +117,72 @@
 <div class="alert _maintain" *ngIf="editAlert.isShow">
     <div class="alert_box">
         <button class="icon_btn _close" (click)="alert_close('editAlert')"></button>
-        <div class="alert_title" *ngIf="editAlert.state=='add'">新增狀態</div>
-        <div class="alert_title" *ngIf="editAlert.state=='edit'">編輯狀態</div>
+        <div class="alert_title" *ngIf="editAlert.state == 'add'">新增狀態</div>
+        <div class="alert_title" *ngIf="editAlert.state == 'edit'">編輯狀態</div>
         <div class="alert_info">
             <div class="alert_info_box _filter">
                 <div class="normal_inp _hasMsg" data-msg="狀態代碼">
-                    <input type="text" placeholder="EQ_WAIT">
+                    <input type="text" placeholder="EQ_WAIT" />
                 </div>
                 <app-model-select class="sel_box" [selectContent]="type_selete" (selShowEvent)="selShow($event)"
-                    (selEvent)="selHandler($event)"></app-model-select>
+                    (selEvent)="selHandler($event)" (mouseenter)="mouseevent(true)"
+                    (mouseleave)="mouseevent(false)"></app-model-select>
             </div>
             <div class="alert_info_box _hasMsg" data-msg="狀態顏色">
                 <label class="maintain_color">
-                    <input type="radio" name="state_radio" id="">
+                    <input type="radio" name="state_radio" id="" />
                     <div class="state WAIT"></div>
                 </label>
                 <label class="maintain_color">
-                    <input type="radio" name="state_radio" id="">
+                    <input type="radio" name="state_radio" id="" />
                     <div class="state PM"></div>
                 </label>
                 <label class="maintain_color">
-                    <input type="radio" name="state_radio" id="">
+                    <input type="radio" name="state_radio" id="" />
                     <div class="state PD_RUN"></div>
                 </label>
                 <label class="maintain_color">
-                    <input type="radio" name="state_radio" id="">
+                    <input type="radio" name="state_radio" id="" />
                     <div class="state ENG"></div>
                 </label>
                 <label class="maintain_color">
-                    <input type="radio" name="state_radio" id="">
+                    <input type="radio" name="state_radio" id="" />
                     <div class="state OFF"></div>
                 </label>
                 <label class="maintain_color">
-                    <input type="radio" name="state_radio" id="">
+                    <input type="radio" name="state_radio" id="" />
                     <div class="state PR_RUN"></div>
                 </label>
                 <label class="maintain_color">
-                    <input type="radio" name="state_radio" id="">
+                    <input type="radio" name="state_radio" id="" />
                     <div class="state PINK"></div>
                 </label>
                 <label class="maintain_color">
-                    <input type="radio" name="state_radio" id="">
+                    <input type="radio" name="state_radio" id="" />
                     <div class="state BLUE"></div>
                 </label>
                 <label class="maintain_color">
-                    <input type="radio" name="state_radio" id="">
+                    <input type="radio" name="state_radio" id="" />
                     <div class="state GREEN"></div>
                 </label>
                 <label class="maintain_color">
-                    <input type="radio" name="state_radio" id="">
+                    <input type="radio" name="state_radio" id="" />
                     <div class="state YELLOW"></div>
                 </label>
                 <label class="maintain_color">
-                    <input type="radio" name="state_radio" id="">
+                    <input type="radio" name="state_radio" id="" />
                     <div class="state GRESS"></div>
                 </label>
                 <label class="maintain_color">
-                    <input type="radio" name="state_radio" id="">
+                    <input type="radio" name="state_radio" id="" />
                     <div class="state ORANGE"></div>
                 </label>
                 <label class="maintain_color">
-                    <input type="radio" name="state_radio" id="">
+                    <input type="radio" name="state_radio" id="" />
                     <div class="state GREYBLUE"></div>
                 </label>
                 <label class="maintain_color">
-                    <input type="radio" name="state_radio" id="">
+                    <input type="radio" name="state_radio" id="" />
                     <div class="state GREY"></div>
                 </label>
             </div>
@@ -240,37 +190,47 @@
                 <textarea class="alert_info_textarea"></textarea>
             </div>
             <!-- 打開class 加上on -->
-            <div [class]="['normal_multsearch' ,'_hasMsg', multsearch.isShow?'on':''] " data-msg="授權人員"
-                (click)="multsearchHandler()">
+            <div [class]="[
+            'normal_multsearch',
+            '_hasMsg',
+            multsearch.isShow ? 'on' : ''
+          ]" data-msg="授權人員" (click)="multsearchHandler()" (mouseenter)="mouseevent(true)"
+                (mouseleave)="mouseevent(false)">
                 <div class="normal_multsearch_btnbox">
                     <button class="icon_btn _multclose"></button>
                     <button class="icon_btn _multarr"></button>
                 </div>
                 <div class="normal_multsearch_content">
                     <span class="normal_multsearch_item" *ngFor="let item of multsearch.showLists">
-                        {{item.name}}
-                        <button class="icon_btn _multclose" (click)="unChecked($event,item.id)"></button>
+                        {{ item.name }}
+                        <button class="icon_btn _multclose" (click)="unChecked($event, item.id)"></button>
                     </span>
-
                 </div>
                 <div class="normal_search" (click)="inpHandler($event)">
-                    <input class="normal_search_inp" type="text" placeholder="搜尋">
+                    <input class="normal_search_inp" type="text" placeholder="搜尋" [(ngModel)]="multsearch.searchTerm"
+                        (input)="searchMail()" />
                 </div>
                 <div class="normal_multsearch_checkbox">
-                    <label class="normal_check" *ngFor="let item of multsearch.lists">
+                    <label class="normal_check" *ngFor="let item of multsearch.filterLists">
                         <input type="checkbox" class="normal_check_inp" [checked]="item.isChecked"
-                            (change)="checkedHandler($event,item.id)">
+                            (change)="checkedHandler($event, item.id)" />
                         <span class="normal_check_span"></span>
                         <span class="normal_check_bg"></span>
-                        <span class="normal_check_txt">{{item.name}}</span>
+                        <span class="normal_check_txt">{{ item.name }}</span>
                     </label>
                 </div>
             </div>
         </div>
         <div class="alert_btnBox">
-            <button class="normal_btn _secondry" (click)="alert_close('editAlert')">取消</button>
-            <button class="normal_btn _primary" *ngIf="editAlert.state=='add'">新增</button>
-            <button class="normal_btn _primary" *ngIf="editAlert.state=='edit'">儲存變更</button>
+            <button class="normal_btn _secondry" (click)="alert_close('editAlert')">
+                取消
+            </button>
+            <button class="normal_btn _primary" *ngIf="editAlert.state == 'add'">
+                新增
+            </button>
+            <button class="normal_btn _primary" *ngIf="editAlert.state == 'edit'">
+                儲存變更
+            </button>
         </div>
     </div>
 </div>
@@ -295,7 +255,9 @@
             </ul>
         </div>
         <div class="alert_btnBox">
-            <button class="normal_btn _secondry" (click)="alert_close('delAlert')">取消</button>
+            <button class="normal_btn _secondry" (click)="alert_close('delAlert')">
+                取消
+            </button>
             <button class="normal_btn _danger">刪除</button>
         </div>
     </div>

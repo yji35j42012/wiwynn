@@ -12,12 +12,7 @@ import { ModelSelcheckComponent } from '../model-selcheck/model-selcheck.compone
 	styleUrl: './option-kpicreate.component.scss'
 })
 export class OptionKpicreateComponent {
-	@HostListener('document:click', ['$event'])
-	onClick(event: MouseEvent) {
-		if (this.kpicreate.detailTxt !== '') {
-			this.kpicreate.detailTxt = ''
-		}
-	}
+
 	kpicreate = {
 		data: [] as { term: string, date: string, number: number, range: string, rotate: string, target: number, isRed: boolean, detail: string }[],
 		detailTxt: '',
@@ -108,8 +103,6 @@ export class OptionKpicreateComponent {
 		this.kpicreate.detailboxY = y
 		this.kpicreate.detailTxt = this.kpicreate.data[i].detail
 	}
-
-
 
 	kpi_sel = {
 		name: 'kpi_sel',
@@ -257,5 +250,28 @@ export class OptionKpicreateComponent {
 		}
 	}
 
+	isHostListener: Boolean = false;
+	mouseevent(b: Boolean) {
+		this.isHostListener = b;
+	}
 
+	@HostListener('document:click', ['$event'])
+	onClick(event: MouseEvent) {
+		if (this.kpicreate.detailTxt !== '') {
+			this.kpicreate.detailTxt = ''
+		}
+		if (this.isHostListener) return;
+		if (this.kpi_sel.isShow) {
+			this.kpi_sel.isShow = false;
+		}
+		if (this.line_sel.isShow) {
+			this.line_sel.isShow = false;
+		}
+		if (this.stage_sel.isShow) {
+			this.stage_sel.isShow = false;
+		}
+		if (this.category_sel.isShow) {
+			this.category_sel.isShow = false;
+		}
+	}
 }

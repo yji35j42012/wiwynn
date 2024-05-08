@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ModelSelectComponent } from '../model-select/model-select.component';
+import { FormsModule } from '@angular/forms'; // Import FormsModule
 
 @Component({
 	selector: 'app-option-condition',
 	standalone: true,
-	imports: [CommonModule, ModelSelectComponent],
+	imports: [CommonModule, ModelSelectComponent, FormsModule],
 	templateUrl: './option-condition.component.html',
 	styleUrl: './option-condition.component.scss',
 })
@@ -25,6 +26,9 @@ export class OptionConditionComponent {
 		msg: '新狀態',
 	};
 	selShow(s: string) {
+		this.filter_color.isShow = false;
+		this.filter_device.isShow = false;
+
 		if (s == 'line_sel') {
 			this.line_sel.isShow = !this.line_sel.isShow;
 			this.state_sel.isShow = false;
@@ -44,22 +48,56 @@ export class OptionConditionComponent {
 	}
 	filter_device = {
 		isShow: false,
+		lists: [
+			{ id: 0, isChecked: false, name: 'Select All' },
+			{ id: 1, isChecked: false, name: 'EQ_WAIT' },
+			{ id: 2, isChecked: false, name: 'PM' },
+			{ id: 3, isChecked: false, name: 'PD_RUN' },
+			{ id: 4, isChecked: false, name: 'ENG' },
+			{ id: 5, isChecked: false, name: 'OFF' },
+		],
+		filterLists: [] as any[],
+		searchTerm: '',
 	};
 	filterDevice() {
+		this.line_sel.isShow = false;
+		this.filter_color.isShow = false;
 		this.filter_device.isShow = !this.filter_device.isShow;
 	}
+
+	searchDevice() {
+		this.filter_device.filterLists = this.filter_device.lists.filter(
+			(item) =>
+				item.name
+					.toLowerCase()
+					.includes(this.filter_device.searchTerm.toLowerCase())
+		);
+	}
+
 	filter_color = {
 		isShow: false,
+		lists: [
+			{ id: 0, isChecked: false, name: 'WAIT' },
+			{ id: 1, isChecked: false, name: 'PM' },
+			{ id: 2, isChecked: false, name: 'PD_RUN' },
+			{ id: 3, isChecked: false, name: 'ENG' },
+			{ id: 4, isChecked: false, name: 'OFF' },
+			{ id: 5, isChecked: false, name: 'PR_RUN' },
+		],
+		isAll: false,
 	};
 	filterColor() {
+		this.line_sel.isShow = false;
+		this.filter_device.isShow = false;
 		this.filter_color.isShow = !this.filter_color.isShow;
 	}
-	filter_valid = {
-		isShow: false,
-	};
-	filterValid() {
-		this.filter_valid.isShow = !this.filter_valid.isShow;
+	colorAll(b: boolean) {
+		for (let i = 0; i < this.filter_color.lists.length; i++) {
+			const element = this.filter_color.lists[i];
+			element.isChecked = b
+		}
 	}
+
 	filter_num = {
 		isShow: false,
 	};
@@ -95,6 +133,7 @@ export class OptionConditionComponent {
 		isShow: false,
 	};
 	filteVendor() {
+
 		this.filter_vendor.isShow = !this.filter_vendor.isShow;
 	}
 	filter_dept = {
@@ -125,5 +164,51 @@ export class OptionConditionComponent {
 	}
 	alert_close(s: string) {
 		this.edit_alert.isShow = false;
+	}
+
+
+
+	ngOnInit(): void {
+		this.filter_device.filterLists = this.filter_device.lists;
+	}
+	checkChange(s: string, i: number) {
+		if (i !== 0) return;
+		var item: any;
+		if (s == 'device') {
+			item = this.filter_device.lists;
+		}
+		if (item[0].isChecked) {
+			for (let i = 0; i < item.length; i++) {
+				const element = item[i];
+				element.isChecked = true;
+			}
+		} else {
+			for (let i = 0; i < item.length; i++) {
+				const element = item[i];
+				element.isChecked = false;
+			}
+		}
+	}
+
+	isHostListener: Boolean = false;
+	mouseevent(b: Boolean) {
+		this.isHostListener = b;
+	}
+
+	@HostListener('document:click', ['$event'])
+	onClick(event: MouseEvent) {
+		if (this.isHostListener) return;
+		if (this.line_sel.isShow) {
+			this.line_sel.isShow = false;
+		}
+		if (this.filter_color.isShow) {
+			this.filter_color.isShow = false;
+		}
+		if (this.filter_device.isShow) {
+			this.filter_device.isShow = false;
+		}
+		if (this.state_sel.isShow) {
+			this.state_sel.isShow = false;
+		}
 	}
 }

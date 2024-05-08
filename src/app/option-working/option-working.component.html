@@ -6,14 +6,14 @@
 		<div class="normal_inp _hasMsg" data-msg="SPN(半成品料號)">
 			<input type="text" />
 		</div>
-		<app-model-select [selectContent]="line_sel" (selShowEvent)="selShow($event)"
-			(selEvent)="selHandler($event)"></app-model-select>
+		<app-model-select [selectContent]="line_sel" (selShowEvent)="selShow($event)" (selEvent)="selHandler($event)"
+			(mouseenter)="mouseevent(true)" (mouseleave)="mouseevent(false)"></app-model-select>
 
 		<div class="normal_inp _hasMsg" data-msg="PCBN">
 			<input type="text" />
 		</div>
 		<app-model-select [selectContent]="type_sel" (selShowEvent)="selShow($event)"
-			(selEvent)="selHandler($event)"></app-model-select>
+			(selEvent)="selHandler($event)" (mouseenter)="mouseevent(true)" (mouseleave)="mouseevent(false)"></app-model-select>
 		<button class="normal_btn _primary" (click)="queryHandler()">Query</button>
 	</div>
 	<div class="option_clone" *ngIf="clone_box.isShow">
@@ -27,14 +27,16 @@
 			</div>
 
 			<app-model-selcheck class="normal_selcheck _hasMsg" data-msg="Line" [selectContent]="lineclone_sel"
-				(selCheckShowEvent)="selCheckShow($event)" (selCheckEvent)="selCheckHandler($event)">
+				(selCheckShowEvent)="selCheckShow($event)" (selCheckEvent)="selCheckHandler($event)"
+				(mouseenter)="mouseevent(true)" (mouseleave)="mouseevent(false)">
 			</app-model-selcheck>
 
 			<div class="normal_inp _hasMsg" data-msg="PCBN">
 				<input type="text" />
 			</div>
 			<app-model-select [selectContent]="typeclone_sel" (selShowEvent)="selShow($event)"
-				(selEvent)="selHandler($event)"></app-model-select>
+				(selEvent)="selHandler($event)" (mouseenter)="mouseevent(true)"
+				(mouseleave)="mouseevent(false)"></app-model-select>
 		</div>
 		<div class="option_clone_btnbox">
 			<button class="normal_btn _secondry" (click)="alert_close('clone')">

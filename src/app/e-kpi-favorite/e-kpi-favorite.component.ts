@@ -112,12 +112,7 @@ export class EKpiFavoriteComponent {
 		this.favorite.detailboxY = y;
 		this.favorite.detailTxt = this.favorite.data[i].detail;
 	}
-	@HostListener('document:click', ['$event'])
-	onClick(event: MouseEvent) {
-		if (this.favorite.detailTxt !== '') {
-			this.favorite.detailTxt = '';
-		}
-	}
+
 
 
 	edit_alert = {
@@ -282,6 +277,32 @@ export class EKpiFavoriteComponent {
 				break;
 			default:
 				break;
+		}
+	}
+
+
+	isHostListener: Boolean = false;
+	mouseevent(b: Boolean) {
+		this.isHostListener = b;
+	}
+
+	@HostListener('document:click', ['$event'])
+	onClick(event: MouseEvent) {
+		if (this.favorite.detailTxt !== '') {
+			this.favorite.detailTxt = '';
+		}
+		if (this.isHostListener) return;
+		if (this.kpi_sel.isShow) {
+			this.kpi_sel.isShow = false;
+		}
+		if (this.line_sel.isShow) {
+			this.line_sel.isShow = false;
+		}
+		if (this.stage_sel.isShow) {
+			this.stage_sel.isShow = false;
+		}
+		if (this.category_sel.isShow) {
+			this.category_sel.isShow = false;
 		}
 	}
 }

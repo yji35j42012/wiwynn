@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ModelSelectComponent } from '../model-select/model-select.component';
 import { AlertDelmsgComponent } from '../alert-delmsg/alert-delmsg.component';
@@ -156,5 +156,20 @@ export class OptionKpitargetComponent {
 				this.alertMsg.show = false;
 				break;
 		}
+	}
+
+	isHostListener: Boolean = false;
+	mouseevent(b: Boolean) {
+		this.isHostListener = b;
+	}
+
+	@HostListener('document:click', ['$event'])
+	onClick(event: MouseEvent) {
+
+		if (this.isHostListener) return;
+		if (this.algorithm_sel.isShow) {
+			this.algorithm_sel.isShow = false;
+		}
+
 	}
 }

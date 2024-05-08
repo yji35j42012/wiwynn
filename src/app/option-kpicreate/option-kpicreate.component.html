@@ -62,18 +62,22 @@
 				<span class="detail">0/30</span>
 			</div>
 			<app-model-select class="selbox" [selectContent]="kpi_sel" (selShowEvent)="selShow($event)"
-				(selEvent)="selHandler($event)"></app-model-select>
+				(selEvent)="selHandler($event)" (mouseenter)="mouseevent(true)"
+				(mouseleave)="mouseevent(false)"></app-model-select>
 
 			<app-model-selcheck class="selbox normal_selcheck _hasMsg" data-msg="Lines" [selectContent]="line_sel"
-				(selCheckShowEvent)="selCheckShow($event)" (selCheckEvent)="selCheckHandler($event)">
+				(selCheckShowEvent)="selCheckShow($event)" (selCheckEvent)="selCheckHandler($event)"
+				(mouseenter)="mouseevent(true)" (mouseleave)="mouseevent(false)">
 			</app-model-selcheck>
 
 			<app-model-selcheck class="selbox normal_selcheck _hasMsg" data-msg="Stages" [selectContent]="stage_sel"
-				(selCheckShowEvent)="selCheckShow($event)" (selCheckEvent)="selCheckHandler($event)">
+				(selCheckShowEvent)="selCheckShow($event)" (selCheckEvent)="selCheckHandler($event)"
+				(mouseenter)="mouseevent(true)" (mouseleave)="mouseevent(false)">
 			</app-model-selcheck>
 
 			<app-model-select class="selbox" [selectContent]="category_sel" (selShowEvent)="selShow($event)"
-				(selEvent)="selHandler($event)"></app-model-select>
+				(selEvent)="selHandler($event)" (mouseenter)="mouseevent(true)"
+				(mouseleave)="mouseevent(false)"></app-model-select>
 			<div class="alert_info_box _hasMsg" data-msg="Description">
 				<textarea class="alert_info_textarea"></textarea>
 				<span class="textarea_mag">0/200</span>

@@ -25,7 +25,8 @@
 	<div class="warroom_info">
 		<div class="warroom_head">
 			<app-model-select [selectContent]="machineSelect" (selShowEvent)="selShow($event)"
-				(selEvent)="selHandler($event)"></app-model-select>
+				(selEvent)="selHandler($event)" (mouseenter)="mouseevent(true)"
+				(mouseleave)="mouseevent(false)"></app-model-select>
 
 			<div class="warroom_head_btnBox">
 				<button class="normal_btn _primary _edit" (click)="editHandler()" *ngIf="!isEdit">
@@ -42,55 +43,68 @@
 		</div>
 		<!-- 點擊編輯按鈕 在下面class加上edit -->
 		<div class="warroom_body" [class.edit]="isEdit">
-
-			<div class="warroom_machine" *ngFor="let item of machine_data; index as i" [id]="'machine'+i"
-				(click)="line(i)"
-				(dragstart)="dragstart(i)"
-				(dragend)="dragEnd(i)"
-				(dragover)="dragover($event,i)" 
-				draggable="true"
-				>
+			<div class="warroom_machine" *ngFor="let item of machine_data; index as i" [id]="'machine' + i"
+				(click)="line(i)" (dragstart)="dragstart(i)" (dragend)="dragEnd(i)" (dragover)="dragover($event, i)"
+				draggable="true">
 				<button class="icon_btn _del"></button>
 				<ul class="warroom_machine_head" *ngIf="!item.isLong">
 					<li class="warroom_machine_li _title">
-						<span class="warroom_machine_span">{{item.title1}}</span>
-						<span class="warroom_machine_span">{{item.title2}}</span>
+						<span class="warroom_machine_span">{{ item.title1 }}</span>
+						<span class="warroom_machine_span">{{ item.title2 }}</span>
 					</li>
 					<li class="warroom_machine_li">
 						<span class="warroom_machine_span">Input</span>
-						<span class="warroom_machine_span" data-unit="(pcs)">{{item.inp}}</span>
+						<span class="warroom_machine_span" data-unit="(pcs)">{{
+							item.inp
+							}}</span>
 					</li>
 					<li class="warroom_machine_li">
 						<span class="warroom_machine_span">Output</span>
-						<span class="warroom_machine_span" data-unit="(pcs)">{{item.out}}</span>
+						<span class="warroom_machine_span" data-unit="(pcs)">{{
+							item.out
+							}}</span>
 					</li>
 					<li class="warroom_machine_li">
 						<span class="warroom_machine_span">Mo工單</span>
-						<span class="warroom_machine_span">{{item.mo}}</span>
+						<span class="warroom_machine_span">{{ item.mo }}</span>
 					</li>
 					<li class="warroom_machine_li">
 						<span class="warroom_machine_span">稼動率 OEE</span>
-						<span class="warroom_machine_span" data-unit="%">{{item.oee}}</span>
+						<span class="warroom_machine_span" data-unit="%">{{
+							item.oee
+							}}</span>
 					</li>
 					<li class="warroom_machine_li">
 						<span class="warroom_machine_span">產品達成率</span>
-						<span class="warroom_machine_span" data-unit="%">{{item.product}}</span>
+						<span class="warroom_machine_span" data-unit="%">{{
+							item.product
+							}}</span>
 					</li>
-					<li class="warroom_machine_li _payment" data-unit="kwh">{{item.payment}}</li>
-					<li class="warroom_machine_li _glyph" data-unit="PA">{{item.glyph}}</li>
-					<li class="warroom_machine_li _water" data-unit="L">{{item.water}}</li>
-					<li class="warroom_machine_li _total" data-l="共" data-r="機台">999</li>
+					<li class="warroom_machine_li _payment" data-unit="kwh">
+						{{ item.payment }}
+					</li>
+					<li class="warroom_machine_li _glyph" data-unit="PA">
+						{{ item.glyph }}
+					</li>
+					<li class="warroom_machine_li _water" data-unit="L">
+						{{ item.water }}
+					</li>
+					<li class="warroom_machine_li _total" data-l="共" data-r="機台">
+						999
+					</li>
 				</ul>
 				<ul class="warroom_machine_head" *ngIf="item.isLong">
 					<li class="warroom_machine_li _title">
-						<span class="warroom_machine_span">{{item.title}}</span>
+						<span class="warroom_machine_span">{{ item.title }}</span>
 						<!-- <span class="warroom_machine_span">YV3.5 MP FIO BO1ARD</span> -->
 					</li>
 					<li class="warroom_machine_li _state">
-						<div [class]="['state',item.state]"></div>
-						<span class="warroom_machine_span">{{item.stateNum}}</span>
+						<div [class]="['state', item.state]"></div>
+						<span class="warroom_machine_span">{{ item.stateNum }}</span>
 					</li>
-					<li class="warroom_machine_li _total" data-l="共" data-r="機台">999</li>
+					<li class="warroom_machine_li _total" data-l="共" data-r="機台">
+						999
+					</li>
 				</ul>
 
 				<div class="warroom_machine_outside">
@@ -99,22 +113,15 @@
 						新增機台
 					</button>
 					<ul class="warroom_machine_group">
-						<li class="warroom_machine_item" 
-						*ngFor="let list of item.lists ; index as listi" 
-
-						(dragstart)="Mdragstart($event,i,listi)"
-						(dragend)="MdragEnd(i,listi)"
-						(dragover)="Mdragover($event,listi)" 
-						draggable="true"
-						
-						[attr.data-txt]="list.txt">
+						<li class="warroom_machine_item" *ngFor="let list of item.lists; index as listi"
+							(dragstart)="Mdragstart($event, i, listi)" (dragend)="MdragEnd(i, listi)"
+							(dragover)="Mdragover($event, listi)" draggable="true" [attr.data-txt]="list.txt">
 							<div [class]="['state', list.state]"></div>
 							<div class="normal_machine"></div>
-							<div class="name">{{list.name}}</div>
+							<div class="name">{{ list.name }}</div>
 						</li>
 					</ul>
 				</div>
-
 			</div>
 		</div>
 	</div>
@@ -258,19 +265,22 @@
 		<div class="alert_info">
 			<div class="alert_info_selBox" data-msg="線別 / 別產品別">
 				<app-model-select class="selModle" [selectContent]="newLintSelect" (selShowEvent)="selShow($event)"
-					(selEvent)="selHandler($event)"></app-model-select>
+					(selEvent)="selHandler($event)" (mouseenter)="mouseevent(true)"
+					(mouseleave)="mouseevent(false)"></app-model-select>
 				<button class="icon_btn _add"></button>
 			</div>
 
 			<!-- 點上面的加新增以下模組 -->
 			<div class="alert_info_selBox" data-msg="線別 / 別產品別">
 				<app-model-select class="selModle" [selectContent]="newLintSelect1" (selShowEvent)="selShow($event)"
-					(selEvent)="selHandler($event)"></app-model-select>
+					(selEvent)="selHandler($event)" (mouseenter)="mouseevent(true)"
+					(mouseleave)="mouseevent(false)"></app-model-select>
 				<button class="icon_btn _minus"></button>
 			</div>
 			<div class="alert_info_selBox" data-msg="線別 / 別產品別">
 				<app-model-select class="selModle" [selectContent]="newLintSelect2" (selShowEvent)="selShow($event)"
-					(selEvent)="selHandler($event)"></app-model-select>
+					(selEvent)="selHandler($event)" (mouseenter)="mouseevent(true)"
+					(mouseleave)="mouseevent(false)"></app-model-select>
 				<button class="icon_btn _minus"></button>
 			</div>
 		</div>

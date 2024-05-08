@@ -53,7 +53,8 @@
         <div class="alert_title" *ngIf="edit_alert.state=='edit'">編輯算法 Target</div>
         <div class="alert_info">
             <app-model-select [selectContent]="algorithm_sel" (selShowEvent)="selShow($event)"
-                (selEvent)="selHandler($event)"></app-model-select>
+                (selEvent)="selHandler($event)" (mouseenter)="mouseevent(true)"
+                (mouseleave)="mouseevent(false)"></app-model-select>
             <div class="normal_inp _hasMsg" data-msg="Target">
                 <input type="text" value="99.5">
             </div>

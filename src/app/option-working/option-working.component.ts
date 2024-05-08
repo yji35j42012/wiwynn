@@ -1,4 +1,4 @@
-import { Component, ElementRef } from '@angular/core';
+import { Component, ElementRef, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ModelSelectComponent } from '../model-select/model-select.component';
 import { AlertDelmsgComponent } from '../alert-delmsg/alert-delmsg.component';
@@ -107,7 +107,7 @@ export class OptionWorkingComponent {
 		name: 'lineclone_sel',
 		showLists: [] as { id: number; isChecked: boolean; name: string }[],
 		lists: [
-			{ id: 0, isChecked: true, name: 's1' },
+			{ id: 0, isChecked: false, name: 's1' },
 			{ id: 1, isChecked: false, name: 's2' },
 			{ id: 2, isChecked: false, name: 's3' },
 			{ id: 3, isChecked: false, name: 's4' },
@@ -164,6 +164,9 @@ export class OptionWorkingComponent {
 	}
 
 	selCheckShow(s: any) {
+		this.type_sel.isShow = false;
+		this.line_sel.isShow = false;
+		this.typeclone_sel.isShow = false;
 		if (s == 'lineclone_sel') {
 			this.lineclone_sel.isShow = !this.lineclone_sel.isShow;
 		}
@@ -262,5 +265,28 @@ export class OptionWorkingComponent {
 			this.clone_alert.lists[i].isShow = false;
 		}
 		this.clone_alert.lists[n].isShow = true;
+	}
+
+	isHostListener: Boolean = false;
+	mouseevent(b: Boolean) {
+		this.isHostListener = b;
+	}
+
+	@HostListener('document:click', ['$event'])
+	onClick(event: MouseEvent) {
+
+		if (this.isHostListener) return;
+		if (this.lineclone_sel.isShow) {
+			this.lineclone_sel.isShow = false;
+		}
+		if (this.line_sel.isShow) {
+			this.line_sel.isShow = false;
+		}
+		if (this.typeclone_sel.isShow) {
+			this.typeclone_sel.isShow = false;
+		}
+		if (this.type_sel.isShow) {
+			this.type_sel.isShow = false;
+		}
 	}
 }
