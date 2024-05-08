@@ -140,6 +140,11 @@
 				background-color: #2E7FDF;
 				color: #fff;
 				border-radius: 6px;
+				@extend %hand;
+			}
+
+			>button {
+				@extend %hand;
 			}
 		}
 	}

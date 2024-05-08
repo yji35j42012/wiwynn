@@ -135,7 +135,6 @@ export class EProcessSearchComponent {
 			!this.epk_filter.factory.singleLists[i].isChecked;
 	}
 	factoryMult (e: Event, i: number) {
-		console.log('aadf')
 		e.stopPropagation();
 		let item = this.epk_filter.factory;
 		let s = item.multLists.findIndex((item) => item.id === i);

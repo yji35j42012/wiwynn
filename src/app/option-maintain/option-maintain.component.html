@@ -48,10 +48,11 @@
                                 <span class="normal_check_txt">Select All</span>
                             </label>
                             <label class="normal_check" *ngFor="let item of filter_color.lists">
-                                <input type="checkbox" class="normal_check_inp" [(ngModel)]="item.isChecked" />
+                                <input type="checkbox" class="normal_check_inp" [(ngModel)]="item.isChecked"
+                                    (change)="colorChange(item.isChecked)" />
                                 <span class="normal_check_span"></span>
                                 <span class="normal_check_bg"></span>
-                                <div [class]="['state', item.name] "></div>
+                                <div [class]="['state', item.name]"></div>
                             </label>
                         </div>
                     </div>

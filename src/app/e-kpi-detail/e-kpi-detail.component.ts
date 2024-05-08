@@ -134,10 +134,10 @@ export class EKpiDetailComponent {
 			{ id: 4, isChecked: false, name: 'B55.04S1A.M004' },
 			{ id: 5, isChecked: false, name: 'B55.04S1A.M005' },
 			{ id: 6, isChecked: false, name: 'B55.04S1A.M006' },
-			{ id: 6, isChecked: false, name: 'B55.04S1A.M007' },
-			{ id: 6, isChecked: false, name: 'B55.04S1A.M008' },
-			{ id: 6, isChecked: false, name: 'B55.04S1A.M009' },
-			{ id: 6, isChecked: false, name: 'B55.04S1A.M0010' },
+			{ id: 7, isChecked: false, name: 'B55.04S1A.M007' },
+			{ id: 8, isChecked: false, name: 'B55.04S1A.M008' },
+			{ id: 9, isChecked: false, name: 'B55.04S1A.M009' },
+			{ id: 10, isChecked: false, name: 'B55.04S1A.M0010' },
 		],
 		isShow: false,
 		msg: '',
@@ -189,6 +189,8 @@ export class EKpiDetailComponent {
 					w.lists[i].isChecked = false;
 				}
 				return;
+			} else if (w.lists[0].isChecked && w.lists[obj.id].isChecked) {
+				w.lists[0].isChecked = false;
 			}
 			rObj = this.mofilter_sel.showLists.findIndex(
 				(item) => item.id === obj.id

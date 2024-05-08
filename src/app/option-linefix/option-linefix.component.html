@@ -15,46 +15,20 @@
 						線別名稱
 						<!-- 遞增加上 _asc 遞減加上 _desc-->
 						<button class="icon_btn _sort"></button>
-						<button class="icon_btn _filter" (click)="filterLine()"></button>
-						<div class="normal_tb_filterbox" *ngIf="filte_line.isShow">
+						<button class="icon_btn _filter" (click)="filterLine()" (mouseenter)="mouseevent(true)"
+							(mouseleave)="mouseevent(false)"></button>
+						<div class="normal_tb_filterbox" *ngIf="filte_line.isShow" (mouseenter)="mouseevent(true)"
+							(mouseleave)="mouseevent(false)">
 							<label class="normal_search">
-								<input class="normal_search_inp" type="text" placeholder="搜尋" />
+								<input class="normal_search_inp" type="text" placeholder="搜尋"
+									[(ngModel)]="filte_line.searchTerm" (input)="searchLine()" />
 							</label>
-							<label class="normal_check">
-								<input type="checkbox" class="normal_check_inp" />
+							<label class="normal_check" *ngFor="let item of filte_line.filterLists">
+								<input type="checkbox" class="normal_check_inp" [(ngModel)]="item.isChecked"
+									(change)="checkChange('line', item.id)" />
 								<span class="normal_check_span"></span>
 								<span class="normal_check_bg"></span>
-								<span class="normal_check_txt">Select All</span>
-							</label>
-							<label class="normal_check">
-								<input type="checkbox" class="normal_check_inp" />
-								<span class="normal_check_span"></span>
-								<span class="normal_check_bg"></span>
-								<span class="normal_check_txt">EQ_WAIT</span>
-							</label>
-							<label class="normal_check">
-								<input type="checkbox" class="normal_check_inp" />
-								<span class="normal_check_span"></span>
-								<span class="normal_check_bg"></span>
-								<span class="normal_check_txt">PM</span>
-							</label>
-							<label class="normal_check">
-								<input type="checkbox" class="normal_check_inp" />
-								<span class="normal_check_span"></span>
-								<span class="normal_check_bg"></span>
-								<span class="normal_check_txt">PD_RUN</span>
-							</label>
-							<label class="normal_check">
-								<input type="checkbox" class="normal_check_inp" />
-								<span class="normal_check_span"></span>
-								<span class="normal_check_bg"></span>
-								<span class="normal_check_txt">ENG</span>
-							</label>
-							<label class="normal_check">
-								<input type="checkbox" class="normal_check_inp" />
-								<span class="normal_check_span"></span>
-								<span class="normal_check_bg"></span>
-								<span class="normal_check_txt">OFF</span>
+								<span class="normal_check_txt">{{ item.name }}</span>
 							</label>
 						</div>
 					</div>
@@ -86,46 +60,20 @@
 						Updater
 						<!-- 遞增加上 _asc 遞減加上 _desc-->
 						<button class="icon_btn _sort"></button>
-						<button class="icon_btn _filter" (click)="filterUpdater()"></button>
-						<div class="normal_tb_filterbox" *ngIf="filte_updater.isShow">
+						<button class="icon_btn _filter" (click)="filterUpdater()" (mouseenter)="mouseevent(true)"
+							(mouseleave)="mouseevent(false)"></button>
+						<div class="normal_tb_filterbox" *ngIf="filte_updater.isShow" (mouseenter)="mouseevent(true)"
+							(mouseleave)="mouseevent(false)">
 							<label class="normal_search">
-								<input class="normal_search_inp" type="text" placeholder="搜尋" />
+								<input class="normal_search_inp" type="text" placeholder="搜尋"
+									[(ngModel)]="filte_updater.searchTerm" (input)="searchUpdater()" />
 							</label>
-							<label class="normal_check">
-								<input type="checkbox" class="normal_check_inp" />
+							<label class="normal_check" *ngFor="let item of filte_updater.filterLists">
+								<input type="checkbox" class="normal_check_inp" [(ngModel)]="item.isChecked"
+									(change)="checkChange('updater', item.id)" />
 								<span class="normal_check_span"></span>
 								<span class="normal_check_bg"></span>
-								<span class="normal_check_txt">Select All</span>
-							</label>
-							<label class="normal_check">
-								<input type="checkbox" class="normal_check_inp" />
-								<span class="normal_check_span"></span>
-								<span class="normal_check_bg"></span>
-								<span class="normal_check_txt">EQ_WAIT</span>
-							</label>
-							<label class="normal_check">
-								<input type="checkbox" class="normal_check_inp" />
-								<span class="normal_check_span"></span>
-								<span class="normal_check_bg"></span>
-								<span class="normal_check_txt">PM</span>
-							</label>
-							<label class="normal_check">
-								<input type="checkbox" class="normal_check_inp" />
-								<span class="normal_check_span"></span>
-								<span class="normal_check_bg"></span>
-								<span class="normal_check_txt">PD_RUN</span>
-							</label>
-							<label class="normal_check">
-								<input type="checkbox" class="normal_check_inp" />
-								<span class="normal_check_span"></span>
-								<span class="normal_check_bg"></span>
-								<span class="normal_check_txt">ENG</span>
-							</label>
-							<label class="normal_check">
-								<input type="checkbox" class="normal_check_inp" />
-								<span class="normal_check_span"></span>
-								<span class="normal_check_bg"></span>
-								<span class="normal_check_txt">OFF</span>
+								<span class="normal_check_txt">{{ item.name }}</span>
 							</label>
 						</div>
 					</div>
@@ -189,7 +137,8 @@
 					<input type="text" placeholder="30000138" />
 				</div>
 				<app-model-select [selectContent]="lineinfo_sel" (selShowEvent)="selShow($event)"
-					(selEvent)="selHandler($event)"></app-model-select>
+					(selEvent)="selHandler($event)" (mouseenter)="mouseevent(true)"
+					(mouseleave)="mouseevent(false)"></app-model-select>
 			</div>
 			<div class="alert_linefix_body">
 				<div class="alert_linefix_content _left">
@@ -219,10 +168,10 @@
 						<div id="drag_box1" class="alert_linefix_group" data-role="drag_drop_container"
 							(drop)="droped($event)" (dragover)="dragover($event)" (dragleave)="dragLeave($event)"
 							(dragenter)="cancelDefault($event)">
-							<div class="alert_linefix_item" *ngFor="let item of stage_data.box1;"
-								[id]="'drag_source_multiple'+item.id" draggable="true"
-								(dragstart)="dragStart($event,item.id)" (dragend)="dragEnd($event,item.id)">
-								{{item.name}}
+							<div class="alert_linefix_item" *ngFor="let item of stage_data.box1"
+								[id]="'drag_source_multiple' + item.id" draggable="true"
+								(dragstart)="dragStart($event, item.id)" (dragend)="dragEnd($event, item.id)">
+								{{ item.name }}
 							</div>
 						</div>
 					</div>
@@ -252,11 +201,10 @@
 						<div id="drag_box2" class="alert_linefix_group" data-role="drag_drop_container"
 							(drop)="droped2($event)" (dragover)="dragover2($event)" (dragleave)="dragLeave2($event)"
 							(dragenter)="cancelDefault2($event)">
-
 							<div class="alert_linefix_item" *ngFor="let item of stage_data.box2"
-								[id]="'drag_source_multiple'+item.id" draggable="true"
-								(dragstart)="dragStart($event,item.id)" (dragend)="dragEnd($event,item.id)">
-								{{item.name}}
+								[id]="'drag_source_multiple' + item.id" draggable="true"
+								(dragstart)="dragStart($event, item.id)" (dragend)="dragEnd($event, item.id)">
+								{{ item.name }}
 							</div>
 						</div>
 					</div>

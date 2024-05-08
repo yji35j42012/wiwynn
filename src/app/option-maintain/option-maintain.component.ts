@@ -25,13 +25,12 @@ export class OptionMaintainComponent {
 		filterLists: [] as any[],
 		searchTerm: '',
 	};
-	filterMatintain() {
+	filterMatintain () {
 		this.filter_maintain.isShow = !this.filter_maintain.isShow;
-		this.filter_color.isShow = false
+		this.filter_color.isShow = false;
 	}
 
-
-	searchMaintain() {
+	searchMaintain () {
 		this.filter_maintain.filterLists = this.filter_maintain.lists.filter(
 			(item) =>
 				item.name
@@ -52,17 +51,22 @@ export class OptionMaintainComponent {
 		],
 		isAll: false,
 	};
-	filterColor() {
+	filterColor () {
 		this.filter_color.isShow = !this.filter_color.isShow;
-		this.filter_maintain.isShow = false
+		this.filter_maintain.isShow = false;
 	}
-	colorAll(b: boolean) {
+	colorAll (b: boolean) {
 		for (let i = 0; i < this.filter_color.lists.length; i++) {
 			const element = this.filter_color.lists[i];
-			element.isChecked = b
+			element.isChecked = b;
 		}
 	}
-	
+	colorChange (b: boolean) {
+		if (this.filter_color.isAll && !b) {
+			this.filter_color.isAll = false;
+		}
+	}
+
 	type_selete = {
 		name: 'type_selete',
 		title: 'Loss',
@@ -70,13 +74,13 @@ export class OptionMaintainComponent {
 		isShow: false,
 		msg: 'Type',
 	};
-	selShow(s: string) {
+	selShow (s: string) {
 		this.multsearch.isShow = false;
 		if (s == 'type_selete') {
 			this.type_selete.isShow = !this.type_selete.isShow;
 		}
 	}
-	selHandler(s: any) {
+	selHandler (s: any) {
 		if (s.name == 'type_selete') {
 			this.type_selete.title = s.title;
 			this.type_selete.isShow = false;
@@ -104,20 +108,17 @@ export class OptionMaintainComponent {
 		searchTerm: '',
 		showLists: [] as { id: number; isChecked: boolean; name: string }[],
 	};
-	searchMail() {
-		this.multsearch.filterLists = this.multsearch.lists.filter(
-			(item) =>
-				item.name
-					.toLowerCase()
-					.includes(this.multsearch.searchTerm.toLowerCase())
+	searchMail () {
+		this.multsearch.filterLists = this.multsearch.lists.filter((item) =>
+			item.name.toLowerCase().includes(this.multsearch.searchTerm.toLowerCase())
 		);
 	}
 
-	editHandler(s: string) {
+	editHandler (s: string) {
 		this.editAlert.state = s;
 		this.editAlert.isShow = true;
 	}
-	checkedHandler(e: Event, n: number) {
+	checkedHandler (e: Event, n: number) {
 		e.stopPropagation();
 		let s = this.multsearch.lists.findIndex((item) => item.id === n);
 		if (this.multsearch.lists[s].isChecked) {
@@ -128,7 +129,7 @@ export class OptionMaintainComponent {
 			this.multsearch.showLists.push(this.multsearch.lists[s]);
 		}
 	}
-	unChecked(e: Event, n: number) {
+	unChecked (e: Event, n: number) {
 		e.stopPropagation();
 		let s = this.multsearch.lists.findIndex((item) => item.id === n);
 		this.multsearch.lists[s].isChecked = false;
@@ -137,17 +138,17 @@ export class OptionMaintainComponent {
 			this.multsearch.showLists.splice(rObj, 1);
 		}
 	}
-	multsearchHandler() {
+	multsearchHandler () {
 		this.type_selete.isShow = false;
 		this.multsearch.isShow = !this.multsearch.isShow;
 	}
-	inpHandler(e: Event) {
+	inpHandler (e: Event) {
 		e.stopPropagation();
 	}
-	delHandler() {
+	delHandler () {
 		this.delAlert.isShow = true;
 	}
-	alert_close(s: string) {
+	alert_close (s: string) {
 		switch (s) {
 			case 'editAlert':
 				this.editAlert.isShow = false;
@@ -161,39 +162,42 @@ export class OptionMaintainComponent {
 		}
 	}
 
-	ngOnInit(): void {
+	ngOnInit (): void {
 		this.filter_maintain.filterLists = this.filter_maintain.lists;
 		this.multsearch.filterLists = this.multsearch.lists;
-
 	}
 
-
-
-	checkChange(s: string, i: number) {
-		if (i !== 0) return;
+	checkChange (s: string, i: number) {
 		var item: any;
 		if (s == 'maintain') {
 			item = this.filter_maintain.lists;
 		}
-		if (item[0].isChecked) {
-			for (let i = 0; i < item.length; i++) {
-				const element = item[i];
-				element.isChecked = true;
+		if (i == 0) {
+			if (item[0].isChecked) {
+				for (let i = 0; i < item.length; i++) {
+					const element = item[i];
+					element.isChecked = true;
+				}
+			} else {
+				for (let i = 0; i < item.length; i++) {
+					const element = item[i];
+					element.isChecked = false;
+				}
 			}
-		} else {
-			for (let i = 0; i < item.length; i++) {
-				const element = item[i];
-				element.isChecked = false;
+			return;
+		} else if (i !== 0) {
+			if (item[0].isChecked && !item[i].isChecked) {
+				item[0].isChecked = item[i].isChecked;
 			}
 		}
 	}
 
 	isHostListener: Boolean = false;
-	mouseevent(b: Boolean) {
+	mouseevent (b: Boolean) {
 		this.isHostListener = b;
 	}
 	@HostListener('document:click', ['$event'])
-	onClick(event: MouseEvent) {
+	onClick (event: MouseEvent) {
 		if (this.isHostListener) return;
 
 		if (this.filter_maintain.isShow) {

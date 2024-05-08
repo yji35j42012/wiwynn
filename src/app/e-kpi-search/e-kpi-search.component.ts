@@ -48,7 +48,7 @@ export class EKpiSearchComponent {
 		min: 11,
 	};
 
-	dateHanler(s: string) {
+	dateHanler (s: string) {
 		var item: any;
 		this.line_sel.isShow = false;
 		this.stage_sel.isShow = false;
@@ -69,7 +69,7 @@ export class EKpiSearchComponent {
 		this.calendar.hour = item.hour;
 		this.calendar.min = item.min;
 	}
-	calerdarReturnHandler(obj: any) {
+	calerdarReturnHandler (obj: any) {
 		var item: any;
 		if (this.calendar.state == 'start') {
 			item = this.kpi_filter.start;
@@ -104,7 +104,7 @@ export class EKpiSearchComponent {
 			{ id: 3, isChecked: false, name: 'FA' },
 		],
 	};
-	filterLv1() {
+	filterLv1 () {
 		this.filter_lv1.isShow = !this.filter_lv1.isShow;
 		this.line_sel.isShow = false;
 		this.line_sel.isShow = false;
@@ -155,7 +155,7 @@ export class EKpiSearchComponent {
 			isOn: boolean;
 		}[],
 	};
-	calcNum(num: number) {
+	calcNum (num: number) {
 		if (num >= 0 && num <= 25) {
 			return '_quarter1';
 		} else if (num > 25 && num <= 50) {
@@ -168,10 +168,10 @@ export class EKpiSearchComponent {
 			return ''; // 或者你可以选择返回一个错误提示或其他值
 		}
 	}
-	calcRotate(num: number) {
+	calcRotate (num: number) {
 		return num * 3.6 + 'deg';
 	}
-	ngOnInit(): void {
+	ngOnInit (): void {
 		this.kpi.data_lv1.push(
 			{
 				term: 'PCBA FPYR DIP',
@@ -250,7 +250,7 @@ export class EKpiSearchComponent {
 			}
 		});
 	}
-	kpiLv1Handler(i: number) {
+	kpiLv1Handler (i: number) {
 		for (let i = 0; i < this.kpi.data_lv1.length; i++) {
 			const element = this.kpi.data_lv1[i];
 			element.isOn = false;
@@ -311,7 +311,7 @@ export class EKpiSearchComponent {
 			}
 		);
 	}
-	kpiLv2Handler(i: number) {
+	kpiLv2Handler (i: number) {
 		for (let i = 0; i < this.kpi.data_lv2.length; i++) {
 			const element = this.kpi.data_lv2[i];
 			element.isOn = false;
@@ -370,7 +370,7 @@ export class EKpiSearchComponent {
 			}
 		);
 	}
-	kpiLv3Handler(i: number) {
+	kpiLv3Handler (i: number) {
 		for (let i = 0; i < this.kpi.data_lv3.length; i++) {
 			const element = this.kpi.data_lv3[i];
 			element.isOn = false;
@@ -378,7 +378,7 @@ export class EKpiSearchComponent {
 		this.kpi.data_lv3[i].isOn = true;
 		this.router.navigate(['/home/E-KPI/detail/' + i]);
 	}
-	moreHandler(event: MouseEvent, i: number) {
+	moreHandler (event: MouseEvent, i: number) {
 		event.stopPropagation();
 		const button = event.target as HTMLButtonElement;
 		const rect = button.getBoundingClientRect();
@@ -389,22 +389,26 @@ export class EKpiSearchComponent {
 		this.kpi.detailTxt = this.kpi.data_lv1[i].detail;
 	}
 
-	checkChange(s: string, i: number) {
-		if (i !== 0) return;
+	checkChange (s: string, i: number) {
 		var item: any;
 		if (s == 'lv1') {
 			item = this.filter_lv1.filterLists;
 		}
-
-		if (item[0].isChecked) {
-			for (let i = 0; i < item.length; i++) {
-				const element = item[i];
-				element.isChecked = true;
+		if (i == 0) {
+			if (item[0].isChecked) {
+				for (let i = 0; i < item.length; i++) {
+					const element = item[i];
+					element.isChecked = true;
+				}
+			} else {
+				for (let i = 0; i < item.length; i++) {
+					const element = item[i];
+					element.isChecked = false;
+				}
 			}
-		} else {
-			for (let i = 0; i < item.length; i++) {
-				const element = item[i];
-				element.isChecked = false;
+		} else if (i !== 0) {
+			if (item[0].isChecked && !item[i].isChecked) {
+				item[0].isChecked = item[i].isChecked;
 			}
 		}
 	}
@@ -439,7 +443,7 @@ export class EKpiSearchComponent {
 		isShow: false,
 		msg: '',
 	};
-	selCheckShow(s: any) {
+	selCheckShow (s: any) {
 		this.filter_lv1.isShow = false;
 		this.kpi_filter.end.isShow = false;
 		this.kpi_filter.start.isShow = false;
@@ -452,7 +456,7 @@ export class EKpiSearchComponent {
 			this.line_sel.isShow = false;
 		}
 	}
-	selCheckHandler(obj: any) {
+	selCheckHandler (obj: any) {
 		var w: any;
 		var rObj: any;
 		if (obj.name == 'line_sel') {
@@ -473,16 +477,16 @@ export class EKpiSearchComponent {
 		}
 	}
 
-	favoriteHandler(i: number) {
+	favoriteHandler (i: number) {
 		this.router.navigate(['/home/E-KPI/favorite/' + i]);
 	}
 
 	isHostListener: Boolean = false;
-	mouseevent(b: Boolean) {
+	mouseevent (b: Boolean) {
 		this.isHostListener = b;
 	}
 	@HostListener('document:click', ['$event'])
-	onClick(event: MouseEvent) {
+	onClick (event: MouseEvent) {
 		this.kpi.detailTxt = '';
 		if (this.isHostListener) return;
 		if (this.filter_lv1.isShow) {

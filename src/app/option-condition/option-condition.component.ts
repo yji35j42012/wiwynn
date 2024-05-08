@@ -25,7 +25,7 @@ export class OptionConditionComponent {
 		isShow: false,
 		msg: '新狀態',
 	};
-	selShow(s: string) {
+	selShow (s: string) {
 		this.filter_color.isShow = false;
 		this.filter_device.isShow = false;
 
@@ -37,7 +37,7 @@ export class OptionConditionComponent {
 			this.line_sel.isShow = false;
 		}
 	}
-	selHandler(s: any) {
+	selHandler (s: any) {
 		if (s.name == 'line_sel') {
 			this.line_sel.title = s.title;
 			this.line_sel.isShow = false;
@@ -59,18 +59,17 @@ export class OptionConditionComponent {
 		filterLists: [] as any[],
 		searchTerm: '',
 	};
-	filterDevice() {
+	filterDevice () {
 		this.line_sel.isShow = false;
 		this.filter_color.isShow = false;
 		this.filter_device.isShow = !this.filter_device.isShow;
 	}
 
-	searchDevice() {
-		this.filter_device.filterLists = this.filter_device.lists.filter(
-			(item) =>
-				item.name
-					.toLowerCase()
-					.includes(this.filter_device.searchTerm.toLowerCase())
+	searchDevice () {
+		this.filter_device.filterLists = this.filter_device.lists.filter((item) =>
+			item.name
+				.toLowerCase()
+				.includes(this.filter_device.searchTerm.toLowerCase())
 		);
 	}
 
@@ -86,117 +85,124 @@ export class OptionConditionComponent {
 		],
 		isAll: false,
 	};
-	filterColor() {
+	filterColor () {
 		this.line_sel.isShow = false;
 		this.filter_device.isShow = false;
 		this.filter_color.isShow = !this.filter_color.isShow;
 	}
-	colorAll(b: boolean) {
+	colorAll (b: boolean) {
 		for (let i = 0; i < this.filter_color.lists.length; i++) {
 			const element = this.filter_color.lists[i];
-			element.isChecked = b
+			element.isChecked = b;
 		}
 	}
-
+	colorChange (b: boolean) {
+		if (this.filter_color.isAll && !b) {
+			this.filter_color.isAll = false;
+		}
+	}
 	filter_num = {
 		isShow: false,
 	};
 
-	filterNum() {
+	filterNum () {
 		this.filter_num.isShow = !this.filter_num.isShow;
 	}
 	filter_category = {
 		isShow: false,
 	};
-	filterCategory() {
+	filterCategory () {
 		this.filter_category.isShow = !this.filter_category.isShow;
 	}
 	filter_place = {
 		isShow: false,
 	};
-	filtePlace() {
+	filtePlace () {
 		this.filter_place.isShow = !this.filter_place.isShow;
 	}
 	filter_model = {
 		isShow: false,
 	};
-	filteModel() {
+	filteModel () {
 		this.filter_model.isShow = !this.filter_model.isShow;
 	}
 	filter_process = {
 		isShow: false,
 	};
-	filteProcess() {
+	filteProcess () {
 		this.filter_process.isShow = !this.filter_process.isShow;
 	}
 	filter_vendor = {
 		isShow: false,
 	};
-	filteVendor() {
-
+	filteVendor () {
 		this.filter_vendor.isShow = !this.filter_vendor.isShow;
 	}
 	filter_dept = {
 		isShow: false,
 	};
-	filteDept() {
+	filteDept () {
 		this.filter_dept.isShow = !this.filter_dept.isShow;
 	}
 	filter_factory = {
 		isShow: false,
 	};
-	filteFactory() {
+	filteFactory () {
 		this.filter_factory.isShow = !this.filter_factory.isShow;
 	}
 	filter_name = {
 		isShow: false,
 	};
-	filteName() {
+	filteName () {
 		this.filter_name.isShow = !this.filter_name.isShow;
 	}
 	edit_alert = {
 		state: '',
 		isShow: false,
 	};
-	editAlert(s: string) {
+	editAlert (s: string) {
 		this.edit_alert.state = s;
 		this.edit_alert.isShow = true;
 	}
-	alert_close(s: string) {
+	alert_close (s: string) {
 		this.edit_alert.isShow = false;
 	}
 
-
-
-	ngOnInit(): void {
+	ngOnInit (): void {
 		this.filter_device.filterLists = this.filter_device.lists;
 	}
-	checkChange(s: string, i: number) {
-		if (i !== 0) return;
+	checkChange (s: string, i: number) {
 		var item: any;
 		if (s == 'device') {
 			item = this.filter_device.lists;
 		}
-		if (item[0].isChecked) {
-			for (let i = 0; i < item.length; i++) {
-				const element = item[i];
-				element.isChecked = true;
+		if (i == 0) {
+			if (item[0].isChecked) {
+				for (let i = 0; i < item.length; i++) {
+					const element = item[i];
+					element.isChecked = true;
+				}
+			} else {
+				for (let i = 0; i < item.length; i++) {
+					const element = item[i];
+					element.isChecked = false;
+				}
 			}
-		} else {
-			for (let i = 0; i < item.length; i++) {
-				const element = item[i];
-				element.isChecked = false;
+			return;
+		} else if (i !== 0) {
+			if (item[0].isChecked && !item[i].isChecked) {
+				item[0].isChecked = item[i].isChecked;
 			}
 		}
 	}
 
 	isHostListener: Boolean = false;
-	mouseevent(b: Boolean) {
+	mouseevent (b: Boolean) {
 		this.isHostListener = b;
 	}
 
 	@HostListener('document:click', ['$event'])
-	onClick(event: MouseEvent) {
+	onClick (event: MouseEvent) {
 		if (this.isHostListener) return;
 		if (this.line_sel.isShow) {
 			this.line_sel.isShow = false;

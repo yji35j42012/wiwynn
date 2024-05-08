@@ -25,11 +25,11 @@
 									[(ngModel)]="filter_device.searchTerm" (input)="searchDevice()" />
 							</label>
 							<label class="normal_check" *ngFor="let item of filter_device.filterLists">
-								<input type="checkbox" class="normal_check_inp" (change)="checkChange('device', item.id)"
-									[(ngModel)]="item.isChecked" />
+								<input type="checkbox" class="normal_check_inp"
+									(change)="checkChange('device', item.id)" [(ngModel)]="item.isChecked" />
 								<span class="normal_check_span"></span>
 								<span class="normal_check_bg"></span>
-								<span class="normal_check_txt">{{item.name}}</span>
+								<span class="normal_check_txt">{{ item.name }}</span>
 							</label>
 						</div>
 					</div>
@@ -51,10 +51,11 @@
 								<span class="normal_check_txt">Select All</span>
 							</label>
 							<label class="normal_check" *ngFor="let item of filter_color.lists">
-								<input type="checkbox" class="normal_check_inp" [(ngModel)]="item.isChecked" />
+								<input type="checkbox" class="normal_check_inp" [(ngModel)]="item.isChecked"
+									(change)="colorChange(item.isChecked)" />
 								<span class="normal_check_span"></span>
 								<span class="normal_check_bg"></span>
-								<div [class]="['state', item.name] "></div>
+								<div [class]="['state', item.name]"></div>
 							</label>
 						</div>
 					</div>
@@ -140,16 +141,17 @@
 					<app-model-select [selectContent]="state_sel" (selShowEvent)="selShow($event)"
 						(selEvent)="selHandler($event)" (mouseenter)="mouseevent(true)"
 						(mouseleave)="mouseevent(false)"></app-model-select>
-
 				</div>
 			</div>
 			<div class="alert_info_box _hasMsg" data-msg="狀態備註">
 				<textarea class="alert_info_textarea">
-  機台設備異常當機，機台設備異常當機，機台設備異常當機，機台設備異常當機，機台設備異常當機，機台設備異常當機，</textarea>
+	機台設備異常當機，機台設備異常當機，機台設備異常當機，機台設備異常當機，機台設備異常當機，機台設備異常當機，</textarea>
 			</div>
 		</div>
 		<div class="alert_btnBox">
-			<button class="normal_btn _secondry" (click)="alert_close('editAlert')">取消</button>
+			<button class="normal_btn _secondry" (click)="alert_close('editAlert')">
+				取消
+			</button>
 			<button class="normal_btn _primary">儲存變更</button>
 		</div>
 	</div>

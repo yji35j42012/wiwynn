@@ -397,6 +397,15 @@
 				transform: translateY(-100%);
 			}
 		}
+
+		&:focus .ac_alertMore_txt {
+			display: block;
+		}
+	}
+
+	// .ac_btn
+	&_btn:focus .ac_table_group {
+		display: block;
 	}
 }
 

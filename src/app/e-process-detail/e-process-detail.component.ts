@@ -240,7 +240,6 @@ export class EProcessDetailComponent {
 		this.sn_fitler.filterLists = this.sn_fitler.lists;
 	}
 	checkChange (s: string, i: number) {
-		if (i !== 0) return;
 		var item: any;
 		if (s == 'model') {
 			item = this.model_filter.lists;
@@ -257,15 +256,22 @@ export class EProcessDetailComponent {
 		} else if (s == 'es') {
 			item = this.stuff_checkbox.lists;
 		}
-		if (item[0].isChecked) {
-			for (let i = 0; i < item.length; i++) {
-				const element = item[i];
-				element.isChecked = true;
+		if (i == 0) {
+			if (item[0].isChecked) {
+				for (let i = 0; i < item.length; i++) {
+					const element = item[i];
+					element.isChecked = true;
+				}
+			} else {
+				for (let i = 0; i < item.length; i++) {
+					const element = item[i];
+					element.isChecked = false;
+				}
 			}
-		} else {
-			for (let i = 0; i < item.length; i++) {
-				const element = item[i];
-				element.isChecked = false;
+			return;
+		} else if (i !== 0) {
+			if (item[0].isChecked && !item[i].isChecked) {
+				item[0].isChecked = item[i].isChecked;
 			}
 		}
 	}

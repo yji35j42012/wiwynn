@@ -2,10 +2,14 @@
 <div class="ac_box">
 	<div class="ac_head">
 		<div class="ac_head_date">
-			<div class="ac_head_day">20</div>
-			<div class="ac_head_txt" data-msg="Today">Wednesday</div>
-			<div class="ac_head_txt" data-msg="">December</div>
-			<div class="ac_head_txt" data-msg="">2023</div>
+			<div class="ac_head_day">{{ date.day }}</div>
+			<div class="ac_head_txt" data-msg="Today">
+				{{ date.weekName[date.week] }}
+			</div>
+			<div class="ac_head_txt" data-msg="">
+				{{ date.monthName[date.month] }}
+			</div>
+			<div class="ac_head_txt" data-msg="">{{ date.year }}</div>
 		</div>
 		<div class="ac_head_alert">
 			<div class="txt" data-msg="Alerts: ">4</div>
@@ -45,41 +49,41 @@
 	</div>
 	<div class="ac_filter">
 		<!-- 打開class 加上on -->
-		<div [class]="['normal_multsearch' ,'_hasMsg', multsearch.isShow?'on':''] " data-msg="選擇部門"
-			(click)="multsearchHandler()">
+		<div [class]="['normal_multsearch', '_hasMsg', multsearch.isShow ? 'on' : '']" data-msg="選擇部門"
+			(click)="multsearchHandler()" (mouseenter)="mouseevent(true)" (mouseleave)="mouseevent(false)">
 			<div class="normal_multsearch_btnbox">
 				<button class="icon_btn _multclose"></button>
 				<button class="icon_btn _multarr"></button>
 			</div>
 			<div class="normal_multsearch_content">
 				<span class="normal_multsearch_item" *ngFor="let item of multsearch.showLists">
-					{{item.name}}
-					<button class="icon_btn _multclose" (click)="unChecked($event,item.id)"></button>
+					{{ item.name }}
+					<button class="icon_btn _multclose" (click)="unChecked($event, item.id)"></button>
 				</span>
-
 			</div>
 			<div class="normal_search" (click)="inpHandler($event)">
-				<input class="normal_search_inp" type="text" placeholder="搜尋">
+				<input class="normal_search_inp" type="text" placeholder="搜尋" [(ngModel)]="multsearch.searchTerm"
+					(input)="searchEep()" />
 			</div>
-			<div class="normal_multsearch_checkbox">
-				<label class="normal_check" *ngFor="let item of multsearch.lists">
+			<div class="normal_multsearch_checkbox" (mouseenter)="mouseevent(true)" (mouseleave)="mouseevent(false)">
+				<label class="normal_check" *ngFor="let item of multsearch.filterLists">
 					<input type="checkbox" class="normal_check_inp" [checked]="item.isChecked"
-						(change)="checkedHandler($event,item.id)">
+						(change)="checkedHandler($event, item.id)" />
 					<span class="normal_check_span"></span>
 					<span class="normal_check_bg"></span>
-					<span class="normal_check_txt">{{item.name}}</span>
+					<span class="normal_check_txt">{{ item.name }}</span>
 				</label>
 			</div>
 		</div>
 	</div>
 	<div class="ac_content">
 		<div class="ac_content_title">
-			<div class="ac_content_week">December</div>
-			<div class="ac_content_year">2023</div>
+			<div class="ac_content_week">{{ date.monthName[tbData.month] }}</div>
+			<div class="ac_content_year">{{ tbData.year }}</div>
 			<div class="ac_content_day">
-				<button class="calendar_head_prev"></button>
-				<div class="txt">Today</div>
-				<button class="calendar_head_next"></button>
+				<button class="calendar_head_prev" (click)="prevMonth()"></button>
+				<div class="txt" (click)="tbToday()">Today</div>
+				<button class="calendar_head_next" (click)="nextMonth()"></button>
 			</div>
 		</div>
 		<table class="ac_table">
@@ -92,215 +96,25 @@
 				<th>Fri</th>
 				<th>Sat</th>
 			</tr>
-			<tr>
-				<td>
-					<div class="day _un">26</div>
-				</td>
-				<td>
-					<div class="day _un">27</div>
-					<div class="ac_table_item" (click)="acDetail()" data-l="LV.3" data-r="6">MA100000</div>
-					<div class="ac_table_item" (click)="acDetail()" data-l="LV.3" data-r="6">MA100000</div>
-					<div class="ac_table_item" (click)="acDetail()" data-l="LV.3" data-r="6">MA100000</div>
-					<!-- button 加上on 開啟 ul -->
-					<button class="border_btn ac_btn">
-						more
-						<ul class="ac_table_group">
-							<div class="ac_table_item" (click)="acDetail()" data-l="LV.3" data-r="6">MA100000</div>
-						</ul>
-					</button>
-				</td>
-				<td>
-					<div class="day _un">28</div>
-				</td>
-				<td>
-					<div class="day _un">29</div>
-				</td>
-				<td>
-					<div class="day _un">30</div>
-					<div class="ac_table_item" (click)="acDetail()" data-l="LV.3" data-r="6">MA100000</div>
-					<div class="ac_table_item" (click)="acDetail()" data-l="LV.3" data-r="6">MA100000</div>
-				</td>
-				<td>
-					<div class="day">1</div>
-				</td>
-				<td>
-					<div class="day">2</div>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<div class="day">3</div>
-				</td>
-				<td>
-					<div class="day">4</div>
 
-					<div class="ac_table_item" (click)="acDetail()" data-l="LV.3" data-r="6">MA100000</div>
-					<div class="ac_table_item" (click)="acDetail()" data-l="LV.3" data-r="6">MA100000</div>
-					<div class="ac_table_item" (click)="acDetail()" data-l="LV.3" data-r="6">MA100000</div>
-					<!-- button 加上on 開啟 ul -->
-					<button class="border_btn ">
+			<tr *ngFor="let week of tbData.dates">
+				<td *ngFor="let date of week">
+					<div [class]="['day', date.c]">{{ date.d }}</div>
+					<ng-container *ngFor="let item of date.lists; let i = index">
+						<div *ngIf="i < 3" class="ac_table_item" (click)="acDetail()" [attr.data-l]="item.lv"
+							[attr.data-r]="item.num">
+							{{ item.name }}
+						</div>
+					</ng-container>
+					<button class="border_btn ac_btn" *ngIf="date.lists.length > 3">
 						more
-						<ul class="ac_table_group">
-							<div class="ac_table_item" (click)="acDetail()" data-l="LV.3" data-r="6">MA100000</div>
-						</ul>
+						<div class="ac_table_group">
+							<div *ngFor="let item of date.lists; let i = index" class="ac_table_item"
+								(click)="acDetail()" [attr.data-l]="item.lv" [attr.data-r]="item.num">
+								{{ item.name }}
+							</div>
+						</div>
 					</button>
-				</td>
-				<td>
-					<div class="day">5</div>
-				</td>
-				<td>
-					<div class="day">6</div>
-				</td>
-				<td>
-					<div class="day">7</div>
-				</td>
-				<td>
-					<div class="day">8</div>
-					<div class="ac_table_item" (click)="acDetail()" data-l="LV.3" data-r="6">MA100000</div>
-					<div class="ac_table_item" (click)="acDetail()" data-l="LV.3" data-r="6">MA100000</div>
-					<div class="ac_table_item" (click)="acDetail()" data-l="LV.3" data-r="6">MA100000</div>
-					<!-- button 加上on 開啟 ul -->
-					<button class="border_btn ">
-						more
-						<ul class="ac_table_group">
-							<div class="ac_table_item" (click)="acDetail()" data-l="LV.3" data-r="6">MA100000</div>
-						</ul>
-					</button>
-				</td>
-				<td>
-					<div class="day">9</div>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<div class="day">10</div>
-				</td>
-				<td>
-					<div class="day">11</div>
-				</td>
-				<td>
-					<div class="day">12</div>
-					<div class="ac_table_item" (click)="acDetail()" data-l="LV.3" data-r="6">MA100000</div>
-					<div class="ac_table_item" (click)="acDetail()" data-l="LV.3" data-r="6">MA100000</div>
-					<div class="ac_table_item" (click)="acDetail()" data-l="LV.3" data-r="6">MA100000</div>
-					<!-- button 加上on 開啟 ul -->
-					<button class="border_btn ">
-						more
-						<ul class="ac_table_group">
-							<div class="ac_table_item" (click)="acDetail()" data-l="LV.3" data-r="6">MA100000</div>
-						</ul>
-					</button>
-				</td>
-				<td>
-					<div class="day">13</div>
-				</td>
-				<td>
-					<div class="day">14</div>
-				</td>
-				<td>
-					<div class="day">15</div>
-				</td>
-				<td>
-					<div class="day">16</div>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<div class="day">17</div>
-				</td>
-				<td>
-					<div class="day">18</div>
-				</td>
-				<td>
-					<div class="day">19</div>
-				</td>
-				<td>
-					<div class="day">20</div>
-					<div class="ac_table_item" (click)="acDetail()" data-l="LV.3" data-r="6">MA100000</div>
-					<div class="ac_table_item" (click)="acDetail()" data-l="LV.3" data-r="6">MA100000</div>
-					<div class="ac_table_item" (click)="acDetail()" data-l="LV.3" data-r="6">MA100000</div>
-					<!-- button 加上on 開啟 ul -->
-					<button class="border_btn ">
-						more
-						<ul class="ac_table_group">
-							<div class="ac_table_item" (click)="acDetail()" data-l="LV.3" data-r="6">MA100000</div>
-						</ul>
-					</button>
-				</td>
-				<td>
-					<div class="day">21</div>
-				</td>
-				<td>
-					<div class="day">22</div>
-				</td>
-				<td>
-					<div class="day">23</div>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<div class="day">24</div>
-				</td>
-				<td>
-					<div class="day">25</div>
-				</td>
-				<td>
-					<div class="day">26</div>
-				</td>
-				<td>
-					<div class="day">27</div>
-				</td>
-				<td>
-					<div class="day">29</div>
-					<div class="ac_table_item" (click)="acDetail()" data-l="LV.3" data-r="6">MA100000</div>
-					<div class="ac_table_item" (click)="acDetail()" data-l="LV.3" data-r="6">MA100000</div>
-					<div class="ac_table_item" (click)="acDetail()" data-l="LV.3" data-r="6">MA100000</div>
-					<!-- button 加上on 開啟 ul -->
-					<button class="border_btn ">
-						more
-						<ul class="ac_table_group">
-							<div class="ac_table_item" (click)="acDetail()" data-l="LV.3" data-r="6">MA100000</div>
-						</ul>
-					</button>
-				</td>
-				<td>
-					<div class="day">29</div>
-				</td>
-				<td>
-					<div class="day">30</div>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<div class="day">31</div>
-				</td>
-				<td>
-					<div class="day _un">1</div>
-				</td>
-				<td>
-					<div class="day _un">2</div>
-				</td>
-				<td>
-					<div class="day">3</div>
-					<div class="ac_table_item" (click)="acDetail()" data-l="LV.3" data-r="6">MA100000</div>
-					<div class="ac_table_item" (click)="acDetail()" data-l="LV.3" data-r="6">MA100000</div>
-					<div class="ac_table_item" (click)="acDetail()" data-l="LV.3" data-r="6">MA100000</div>
-					<!-- button 加上on 開啟 ul -->
-					<button class="border_btn ">
-						more
-						<ul class="ac_table_group">
-							<div class="ac_table_item" (click)="acDetail()" data-l="LV.3" data-r="6">MA100000</div>
-						</ul>
-					</button>
-				</td>
-				<td>
-					<div class="day _un">4</div>
-				</td>
-				<td>
-					<div class="day _un">5</div>
-				</td>
-				<td>
-					<div class="day _un">6</div>
 				</td>
 			</tr>
 		</table>
@@ -325,7 +139,7 @@
 					</div>
 					<div class="row _juspbe">
 						<div class="col_txt" data-msg="發生時間">
-							2023/11/22 <br>
+							2023/11/22 <br />
 							10:00:00
 						</div>
 						<div class="stepLv">
@@ -338,7 +152,7 @@
 							<div class="stepLv_line"></div>
 						</div>
 						<div class="col_txt" data-msg="解除時間">
-							2023/11/22 <br>
+							2023/11/22 <br />
 							10:00:00
 						</div>
 					</div>
@@ -351,7 +165,8 @@
 					</div>
 					<div class="row _bd">
 						<div class="col_txt _line2" data-msg="故障描述">
-							<span>OP誤觸導致，金針歪斜OP誤觸導致，金針歪斜OP誤觸導致，金針歪斜導致，金金針歪斜導致針歪斜導致，金針歪斜 </span>
+							<span>OP誤觸導致，金針歪斜OP誤觸導致，金針歪斜OP誤觸導致，金針歪斜導致，金金針歪斜導致針歪斜導致，金針歪斜
+							</span>
 							<!-- 打開more class加上 on -->
 							<button data-msg="more" class="ac_alertMore" data-msg="more">
 								...
@@ -387,7 +202,7 @@
 					</div>
 					<div class="row _juspbe">
 						<div class="col_txt" data-msg="發生時間">
-							2023/11/22 <br>
+							2023/11/22 <br />
 							10:00:00
 						</div>
 						<div class="stepLv">
@@ -400,7 +215,7 @@
 							<div class="stepLv_line"></div>
 						</div>
 						<div class="col_txt" data-msg="解除時間">
-							2023/11/22 <br>
+							2023/11/22 <br />
 							10:00:00
 						</div>
 					</div>
@@ -413,7 +228,8 @@
 					</div>
 					<div class="row _bd">
 						<div class="col_txt _line2" data-msg="故障描述">
-							<span>OP誤觸導致，金針歪斜OP誤觸導致，金針歪斜OP誤觸導致，金針歪斜導致，金金針歪斜導致針歪斜導致，金針歪斜 </span>
+							<span>OP誤觸導致，金針歪斜OP誤觸導致，金針歪斜OP誤觸導致，金針歪斜導致，金金針歪斜導致針歪斜導致，金針歪斜
+							</span>
 							<!-- 打開more class加上 on -->
 							<button data-msg="more" class="ac_alertMore" data-msg="more">
 								...
@@ -449,7 +265,7 @@
 					</div>
 					<div class="row _juspbe">
 						<div class="col_txt" data-msg="發生時間">
-							2023/11/22 <br>
+							2023/11/22 <br />
 							10:00:00
 						</div>
 						<div class="stepLv">
@@ -462,7 +278,7 @@
 							<div class="stepLv_line"></div>
 						</div>
 						<div class="col_txt" data-msg="解除時間">
-							2023/11/22 <br>
+							2023/11/22 <br />
 							10:00:00
 						</div>
 					</div>
@@ -475,7 +291,8 @@
 					</div>
 					<div class="row _bd">
 						<div class="col_txt _line2" data-msg="故障描述">
-							<span>OP誤觸導致，金針歪斜OP誤觸導致，金針歪斜OP誤觸導致，金針歪斜導致，金金針歪斜導致針歪斜導致，金針歪斜 </span>
+							<span>OP誤觸導致，金針歪斜OP誤觸導致，金針歪斜OP誤觸導致，金針歪斜導致，金金針歪斜導致針歪斜導致，金針歪斜
+							</span>
 							<!-- 打開more class加上 on -->
 							<button data-msg="more" class="ac_alertMore" data-msg="more">
 								...
@@ -511,7 +328,7 @@
 					</div>
 					<div class="row _juspbe">
 						<div class="col_txt" data-msg="發生時間">
-							2023/11/22 <br>
+							2023/11/22 <br />
 							10:00:00
 						</div>
 						<div class="stepLv">
@@ -524,7 +341,7 @@
 							<div class="stepLv_line"></div>
 						</div>
 						<div class="col_txt" data-msg="解除時間">
-							2023/11/22 <br>
+							2023/11/22 <br />
 							10:00:00
 						</div>
 					</div>
@@ -537,7 +354,8 @@
 					</div>
 					<div class="row _bd">
 						<div class="col_txt _line2" data-msg="故障描述">
-							<span>OP誤觸導致，金針歪斜OP誤觸導致，金針歪斜OP誤觸導致，金針歪斜導致，金金針歪斜導致針歪斜導致，金針歪斜 </span>
+							<span>OP誤觸導致，金針歪斜OP誤觸導致，金針歪斜OP誤觸導致，金針歪斜導致，金金針歪斜導致針歪斜導致，金針歪斜
+							</span>
 							<!-- 打開more class加上 on -->
 							<button data-msg="more" class="ac_alertMore" data-msg="more">
 								...
@@ -573,7 +391,7 @@
 					</div>
 					<div class="row _juspbe">
 						<div class="col_txt" data-msg="發生時間">
-							2023/11/22 <br>
+							2023/11/22 <br />
 							10:00:00
 						</div>
 						<div class="stepLv">
@@ -586,7 +404,7 @@
 							<div class="stepLv_line"></div>
 						</div>
 						<div class="col_txt" data-msg="解除時間">
-							2023/11/22 <br>
+							2023/11/22 <br />
 							10:00:00
 						</div>
 					</div>
@@ -599,7 +417,8 @@
 					</div>
 					<div class="row _bd">
 						<div class="col_txt _line2" data-msg="故障描述">
-							<span>OP誤觸導致，金針歪斜OP誤觸導致，金針歪斜OP誤觸導致，金針歪斜導致，金金針歪斜導致針歪斜導致，金針歪斜 </span>
+							<span>OP誤觸導致，金針歪斜OP誤觸導致，金針歪斜OP誤觸導致，金針歪斜導致，金金針歪斜導致針歪斜導致，金針歪斜
+							</span>
 							<!-- 打開more class加上 on -->
 							<button data-msg="more" class="ac_alertMore" data-msg="more">
 								...
@@ -635,7 +454,7 @@
 					</div>
 					<div class="row _juspbe">
 						<div class="col_txt" data-msg="發生時間">
-							2023/11/22 <br>
+							2023/11/22 <br />
 							10:00:00
 						</div>
 						<div class="stepLv">
@@ -648,7 +467,7 @@
 							<div class="stepLv_line"></div>
 						</div>
 						<div class="col_txt" data-msg="解除時間">
-							2023/11/22 <br>
+							2023/11/22 <br />
 							10:00:00
 						</div>
 					</div>
@@ -661,7 +480,8 @@
 					</div>
 					<div class="row _bd">
 						<div class="col_txt _line2" data-msg="故障描述">
-							<span>OP誤觸導致，金針歪斜OP誤觸導致，金針歪斜OP誤觸導致，金針歪斜導致，金金針歪斜導致針歪斜導致，金針歪斜 </span>
+							<span>OP誤觸導致，金針歪斜OP誤觸導致，金針歪斜OP誤觸導致，金針歪斜導致，金金針歪斜導致針歪斜導致，金針歪斜
+							</span>
 							<!-- 打開more class加上 on -->
 							<button data-msg="more" class="ac_alertMore" data-msg="more">
 								...
@@ -697,7 +517,7 @@
 					</div>
 					<div class="row _juspbe">
 						<div class="col_txt" data-msg="發生時間">
-							2023/11/22 <br>
+							2023/11/22 <br />
 							10:00:00
 						</div>
 						<div class="stepLv">
@@ -710,7 +530,7 @@
 							<div class="stepLv_line"></div>
 						</div>
 						<div class="col_txt" data-msg="解除時間">
-							2023/11/22 <br>
+							2023/11/22 <br />
 							10:00:00
 						</div>
 					</div>
@@ -723,7 +543,8 @@
 					</div>
 					<div class="row _bd">
 						<div class="col_txt _line2" data-msg="故障描述">
-							<span>OP誤觸導致，金針歪斜OP誤觸導致，金針歪斜OP誤觸導致，金針歪斜導致，金金針歪斜導致針歪斜導致，金針歪斜 </span>
+							<span>OP誤觸導致，金針歪斜OP誤觸導致，金針歪斜OP誤觸導致，金針歪斜導致，金金針歪斜導致針歪斜導致，金針歪斜
+							</span>
 							<!-- 打開more class加上 on -->
 							<button data-msg="more" class="ac_alertMore" data-msg="more">
 								...
@@ -759,7 +580,7 @@
 					</div>
 					<div class="row _juspbe">
 						<div class="col_txt" data-msg="發生時間">
-							2023/11/22 <br>
+							2023/11/22 <br />
 							10:00:00
 						</div>
 						<div class="stepLv">
@@ -772,7 +593,7 @@
 							<div class="stepLv_line"></div>
 						</div>
 						<div class="col_txt" data-msg="解除時間">
-							2023/11/22 <br>
+							2023/11/22 <br />
 							10:00:00
 						</div>
 					</div>
@@ -785,7 +606,8 @@
 					</div>
 					<div class="row _bd">
 						<div class="col_txt _line2" data-msg="故障描述">
-							<span>OP誤觸導致，金針歪斜OP誤觸導致，金針歪斜OP誤觸導致，金針歪斜導致，金金針歪斜導致針歪斜導致，金針歪斜 </span>
+							<span>OP誤觸導致，金針歪斜OP誤觸導致，金針歪斜OP誤觸導致，金針歪斜導致，金金針歪斜導致針歪斜導致，金針歪斜
+							</span>
 							<!-- 打開more class加上 on -->
 							<button data-msg="more" class="ac_alertMore" data-msg="more">
 								...
@@ -821,7 +643,7 @@
 					</div>
 					<div class="row _juspbe">
 						<div class="col_txt" data-msg="發生時間">
-							2023/11/22 <br>
+							2023/11/22 <br />
 							10:00:00
 						</div>
 						<div class="stepLv">
@@ -834,7 +656,7 @@
 							<div class="stepLv_line"></div>
 						</div>
 						<div class="col_txt" data-msg="解除時間">
-							2023/11/22 <br>
+							2023/11/22 <br />
 							10:00:00
 						</div>
 					</div>
@@ -847,7 +669,8 @@
 					</div>
 					<div class="row _bd">
 						<div class="col_txt _line2" data-msg="故障描述">
-							<span>OP誤觸導致，金針歪斜OP誤觸導致，金針歪斜OP誤觸導致，金針歪斜導致，金金針歪斜導致針歪斜導致，金針歪斜 </span>
+							<span>OP誤觸導致，金針歪斜OP誤觸導致，金針歪斜OP誤觸導致，金針歪斜導致，金金針歪斜導致針歪斜導致，金針歪斜
+							</span>
 							<!-- 打開more class加上 on -->
 							<button data-msg="more" class="ac_alertMore" data-msg="more">
 								...
@@ -880,5 +703,4 @@
 			</ul>
 		</div>
 	</div>
-
 </div>
